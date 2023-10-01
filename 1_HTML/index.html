@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karl4Knows</title>
+    <link rel="icon" href="/IMG/LOGO.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="/2_CSS/index.css">
+    <link rel="stylesheet" type="text/css" href="/2_CSS/form.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+</head>
+
+<body>
+    <a href="#" onclick="reloadPage();" class="aLOGO">
+        <div class="logo">
+            <img src="/IMG/LOGO.png" class="logoKK" alt="HOME">
+        </div>
+    </a>
+
+    <header>
+        <h1>Karl4Knows</h1>
+        <div id="openForm" class="form">
+            <a class="but_card">Cad. Erro</a> <a class="but_alert">⚠️</a>
+        </div>
+    </header>
+    <aside id="custom-scroll">
+        <div class="scroll-content">
+            <ul>
+                <a class="icons" href="#" onclick="showSection('SGA'); setSelected(this);" title="SGA"><img
+                        src="/Icones/SGA.png" class="icones">SGA</a>
+                <a class="icons" href="#" onclick="showSection('SGABOXNEW'); setSelected(this);"
+                    title="SGABOX NOVO"><img src="/Icones/SGABOX_LITE.png" class="icones">SGABOX (NOVO)</a>
+                <a class="icons" href="#" onclick="showSection('SOBOX'); setSelected(this);" title="SOBOX"><img
+                        src="/Icones/SOBOX.png" class="icones">SOBOX</a>
+                <a class="icons" href="#" onclick="showSection('SGABOX2010'); setSelected(this);"
+                    title="SGABOX2010"><img src="/Icones/SGABOX2010.png" class="icones">SGABOX (2010)</a>
+                <a class="icons" href="#" onclick="showSection('SGALITE'); setSelected(this);" title="SGALITE"><img
+                        src="/Icones/SGABOX_LITE.png" class="icones">SGA-Lite</a>
+                <a class="icons" href="#" onclick="showSection('GOURMET'); setSelected(this);" title="GOURMET"><img
+                        src="/Icones/GOURMET.png" class="icones">Gourmet</a>
+                <a class="icons" href="#" onclick="showSection('SGAOS'); setSelected(this);" title="SGAOS"><img
+                        src="/Icones/OS.png" class="icones">
+                    SGA-OS</a>
+                <a class="icons" href="#" onclick="showSection('SGAOTICA'); setSelected(this);" title="SGAOTICA"><img
+                        src="/Icones/OTICA.png" class="icones">SGA Ótica</a>
+                <a class="icons" href="#" onclick="showSection('SPEDS'); setSelected(this);" title="SPEDS"><img
+                        src="/Icones/SPEDs.png" class="icones">SPEDS</a>
+                <a class="icons" href="#" onclick="showSection('MONITOR'); setSelected(this);" title="MONITOR"><img
+                        src="/Icones/MONITOR.png" class="icones">MONITOR</a>
+                <a class="icons" href="#" onclick="showSection('ROBOT'); setSelected(this);" title="ROBOT"><img
+                        src="/Icones/ROBOT.png" class="icones">ROBOT</a>
+                <a class="icons" href="#" onclick="showSection('ETIQUETAS'); setSelected(this);" title="ETIQUETAS"><img
+                        src="/Icones/ETIQUETAS.png" class="icones">ETIQUETAS</a>
+                <a class="icons" href="#" onclick="showSection('DISPOSITIVO'); setSelected(this);"
+                    title="DISPOSITIVO"><img src="/Icones/Dispositivo.png" class="icones">DISPOSITIVO</a>
+                <a class="icons" href="#" onclick="showSection('IMPRESSORA'); setSelected(this);"
+                    title="IMPRESSORA"><img src="/Icones/IMP.png" class="icones">IMPRESSORA</a>
+                <a class="icons" href="#" onclick="showSection('TEF'); setSelected(this);" title="TEF"><img
+                        src="/Icones/TEF.png" class="icones">TEF</a>
+            </ul>
+        </div>
+        <div class="scroll-up">▲</div>
+        <div class="scroll-down">▼</div>
+    </aside>
+    <main>
+        <div id="alerta"></div>
+        <div class="load" id="load"></div>
+        <div id="desfoque"></div>
+        <div class="hidden_main">
+            <div id="envioForm" class="hidden">
+                <span class="close" id="closeModalForm"><img src="/IMG/excluir.png" class="fechar"></span>
+
+                <form class="formulario" method="post" action="">
+                    <div class="titulo_form_div">
+
+                        <a class="titulo_form_1" id="openErro">
+                            <h4 class="titulo_form">Cad. erros</h4>
+                        </a>
+
+                        <a class="titulo_form_2" id="openAnexo">
+                            <h4 class="titulo_form">Anexo</h4>
+                        </a>
+
+                    </div>
+
+                    <div action="" class="formulario1" id="form_erro">
+
+                        <label class="label1_1 ">
+                            <span>Erro Resumido</span>
+                            <input type="text" name="erro_resumido" class="campo" class="maiuscula"
+                                placeholder="Erro Resumido" required="" autocomplete="off" />
+                        </label>
+                        <label class="label1_2">
+                            <span class="sistem1">Sistema</span>
+                            <select name="sistema" class="campo" id="select" required="">
+                                <div class="sistema">
+                                    <option></option>
+                                    <option>SGA</option>
+                                    <option>SGABOXN</option>
+                                    <option>SOBOX</option>
+                                    <option>SGABOX2010</option>
+                                    <option>SGA-Lite</option>
+                                    <option>GOURMET</option>
+                                    <option>SGA-OS</option>
+                                    <option>SGA OTICA</option>
+                                    <option>SPEDS</option>
+                                    <option>MONITOR</option>
+                                    <option>ROBOT</option>
+                                    <option>ETIQUETAS</option>
+                                    <option>DISPOSITIVO</option>
+                                    <option>IMPRESSORA</option>
+                                </div>
+                            </select>
+                        </label>
+
+                        <label class="label_1">
+                            <span>Erro Detalhado</span>
+                            <textarea type="text" name="erro" class="campo" id="texto" placeholder="Digite o Erro Detalhado"
+                                required="" autocomplete="off"></textarea>
+                        </label>
+
+                        <label class="label_2">
+                            <span>Solução</span>
+                            <textarea type="text" name="solucao" class="campo" id="texto" placeholder="Digite a Solução"
+                                required="" autocomplete="off"></textarea>
+                        </label>
+
+                    </div>
+
+                    <div action="" class="formulario2" id="form_anexo">
+
+                        <label class="label2_1">
+                            <span>Anexo Descrição</span>
+                            <input type="text" name="descricao_anexo" class="campo_anexo" placeholder="Digite a Solução"
+                                autocomplete="off" />
+                        </label>
+
+                        <label class="label2_2">
+                            <span>Anexo</span>
+                            <input type="text" name="anexo" class="campo_anexo" placeholder="Coloque o Link do Mega"
+                                autocomplete="off" />
+                        </label>
+
+                        <label class="label3">
+                            <span>Script</span>
+                            <textarea type="" name="script" class="campo" id="texto"
+                                placeholder="Deixe seu Script"></textarea>
+                        </label>
+
+                    </div>
+
+                    <label class="botao_form">
+
+                        <button type="submit" id="submit" class="botao"> Enviar </button>
+
+                    </label>
+
+                </form>
+            </div>
+        </div>
+
+        <section id="HOME" class="rotinas" style="display: block;">
+
+            <div class="sistemas" id="HOMEK">
+                <h2> HOME </h2>
+                <img src="" alt="">
+            </div>
+        </section>
+
+        <section id="SGA" class="rotinas" style="display: none;">
+            <div class="container-input">
+                <a class="pesquisa1">
+                    <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input"
+                        id="pesquisa_sga" title="Pesquisa">
+            </div>
+            <div class="sistemas" id="SGAK">
+                <h2> SGA </h2>
+                <div class="containerD1">
+                    <div class="containerD">
+                        <table id="data-table-sga" class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Resumo do Erro</th>
+                                    <th>Visualizar</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabela_sga">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div id="infoModalsga" class="modal">
+                <div class="modal-content">
+                    <span class="close" id="closeModalsga"><img src="/IMG/excluir.png" class="fechar"></span>
+                    <div id="modalContentsga"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="SGABOXNEW" class="rotinas" style="display: none;">
+            <div class="container-input">
+                <a class="pesquisa1">
+                    <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input"
+                        id="pesquisa_sgaboxnew" title="Pesquisa">
+            </div>
+            <div class="sistemas" id="SGABOXNEWK">
+                <h2> SGABOX NEW </h2>
+                <div class="containerD1">
+                    <div class="containerD">
+                        <table id="data-table-sgaboxnew" class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Resumo do Erro</th>
+                                    <th>Visualizar</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabela_sgaboxnew">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div id="infoModalsgaboxnew" class="modal">
+                <div class="modal-content">
+                    <span class="close" id="closeModalsgaboxnew"><img src="/IMG/excluir.png" class="fechar"></span>
+                    <div id="modalContentsgaboxnew"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="SOBOX" class="rotinas" style="display: none;">
+            <div class="container-input">
+                <a class="pesquisa1">
+                    <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input"
+                        id="pesquisa_sobox" title="Pesquisa">
+            </div>
+            <div class="sistemas" id="SOBOXK">
+                <h2> SOBOX </h2>
+                <div class="containerD1">
+                    <div class="containerD">
+                        <table id="data-table-sobox" class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Resumo do Erro</th>
+                                    <th>Visualizar</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabela_sobox">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div id="infoModalsobox" class="modal">
+                <div class="modal-content">
+                    <span class="close" id="closeModalsobox"><img src="/IMG/excluir.png" class="fechar"></span>
+                    <div id="modalContentsobox"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="SGABOX2010" class="rotinas" style="display: none;">
+            <div class="sistemas" id="SGABOX2010K">
+                <h2> SGABOX2010 </h2>
+            </div>
+        </section>
+
+        <section id="SGALITE" class="rotinas" style="display: none;">
+            <div class="sistemas" id="SGALITEK">
+                <h2> SGALITE </h2>
+            </div>
+        </section>
+
+        <section id="GOURMET" class="rotinas" style="display: none;">
+            <div class="sistemas" id="GOURMETK">
+                <h2> GOURMET </h2>
+            </div>
+        </section>
+
+        <section id="SGAOS" class="rotinas" style="display: none;">
+            <div class="sistemas" id="SGAOSK">
+                <h2> SGAOS </h2>
+            </div>
+        </section>
+
+        <section id="SGAOTICA" class="rotinas" style="display: none;">
+            <div class="sistemas" id="SGAOTICAK">
+                <h2> SGAOTICA </h2>
+            </div>
+        </section>
+
+        <section id="SPEDS" class="rotinas" style="display: none;">
+            <div class="container-input">
+                <a class="pesquisa1">
+                    <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input"
+                        id="pesquisa_sped" title="Pesquisa">
+            </div>
+            <div class="sistemas" id="SPEDSK">
+                <h2> SPEDS </h2>
+                <div class="containerD1">
+                    <div class="containerD">
+                        <table id="data-table-sped" class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Resumo do Erro</th>
+                                    <th>Visualizar</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabela_sped">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div id="infoModalsped" class="modal">
+                <div class="modal-content">
+                    <span class="close" id="closeModalsped"><img src="/IMG/excluir.png" class="fechar"></span>
+                    <div id="modalContentsped"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script type="text/javascript">
+        window.onload = function () {
+            document.body.classList.add('fade-in');
+        } 
+    </script>
+    <script src="/3_JS/sga.js"></script>
+    <script src="/3_JS/sobox.js"></script>
+    <script src="/3_JS/sgabox_new.js"></script>
+    <script src="/3_JS/sped.js"></script>
+    <script src="/3_JS/script.js"></script>
+    <script src="/3_JS/form.js"></script>
+</body>
+
+
+</html>
