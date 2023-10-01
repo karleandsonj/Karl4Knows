@@ -22,8 +22,8 @@
     z-index: 9;
     position: absolute;
     background-color: #0000004b;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     bottom: 0;
     top: 0;
   }
@@ -31,15 +31,6 @@
   /* Fim Botão p/ abrir erro */
 
   /* Inicio Fomulario */
-
-  .hidden_main{
-    position: absolute;
-    height: 100vh;
-    width: 100vw;
-    overflow-y: auto; /* Habilita a rolagem vertical quando o conteúdo ultrapassa a altura máxima */
-    bottom: 0;
-  }
-
   .hidden {
       margin-left: 38px;
       position: absolute;

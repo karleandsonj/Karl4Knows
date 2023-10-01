@@ -22,6 +22,8 @@ option {
 }
 
 body {
+  top: 0;
+  bottom: 0;
   overflow: hidden;
 }
 
@@ -211,8 +213,7 @@ main {
   justify-content: center;
   align-items: center;
   position: relative;
-  margin-top: 80px;
-  margin-left: 75px;
+  margin-top: 10px;
   height: 40px;
   width: auto;
   border-radius: 10px;
@@ -285,37 +286,46 @@ main {
 
 /* DIV SISTEMAS */
 
+.section_main {
+  top: 0;
+  margin-top: 50px;
+  margin-left: 70px;
+  position: relative;
+  width: auto; /* Use 'auto' para dimensionar a largura com base no conteúdo */
+  height: 100vh;
+  text-align: center;
+  right: 0; /* Alinhe o lado direito com a borda direita da tela */
+}
+
+
 .sistemas {
+  margin: 0 auto;
   border-radius: 15px;
-  top: 20px;
   z-index: 1;
+  top: 20px;
   position: absolute;
   left: 50%;
-  /* Centraliza horizontalmente */
   transform: translateX(-50%);
-  /* Centraliza horizontalmente */
   background-color: blanchedalmond;
   width: 75vw;
   height: 70vh;
   text-align: center;
   align-self: center;
-  margin-left: 40px;
-  margin-right: 40px;
 }
 
 #HOMEK {
   border-radius: 15px;
-  top: 100px;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  z-index: 1;
+  top: 80px;
+  position: relative;
+/*   left: 50%;
+  transform: translateX(-50%); */
+  margin: 0 auto;
   background-color: blanchedalmond;
   width: 75vw;
-  height: 75vh;
+  height: 70vh;
   text-align: center;
   align-self: center;
-  margin-left: 40px;
-  margin-right: 40px;
 }
 
 .containerD1 {
@@ -346,6 +356,7 @@ main {
   min-height: 7VH;
   margin-bottom: 80px;
   font-family: 'Tan Twinkle', sans-serif;
+  width: 90%;
 }
 
 /* Estilo para a barra de rolagem interna */
@@ -405,10 +416,16 @@ main {
 
 /* Estilo para o texto das células */
 .data-table td span {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: bold;
   color: #333;
   left: 1px;
+}
+
+@media screen and (max-width: 480px) {
+
+  .data-table td span{font-size: 12px;}
+  .lupa1{width: 16px;}
 }
 
 /* Estilos para o card/modal */

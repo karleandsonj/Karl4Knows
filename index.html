@@ -67,7 +67,7 @@
         <div id="alerta"></div>
         <div class="load" id="load"></div>
         <div id="desfoque"></div>
-        <div class="hidden_main">
+        <div class="hidden_main" id="hidden_main">
             <div id="envioForm" class="hidden">
                 <span class="close" id="closeModalForm"><img src="IMG/excluir.png" class="fechar"></span>
 
@@ -160,170 +160,196 @@
             </div>
         </div>
 
-        <section id="HOME" class="rotinas" style="display: block;">
+        <div class="section_main">
 
-            <div class="sistemas" id="HOMEK">
-                <h2> HOME </h2>
-                <img src="" alt="">
-            </div>
-        </section>
+            <section id="HOME" class="rotinas" style="display: block;">
+                <div class="home" id="HOMEK">
+                    <h2> HOME </h2>
+                </div>
+            </section>
 
-        <section id="SGA" class="rotinas" style="display: none;">
-            <div class="container-input">
-                <a class="pesquisa1">
-                    <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input"
-                        id="pesquisa_sga" title="Pesquisa">
-            </div>
-            <div class="sistemas" id="SGAK">
-                <h2> SGA </h2>
-                <div class="containerD1">
-                    <div class="containerD">
-                        <table id="data-table-sga" class="data-table">
-                            <thead>
-                                <tr>
-                                    <th>Resumo do Erro</th>
-                                    <th>Visualizar</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tabela_sga">
+            <section id="SGA" class="rotinas" style="display: none;">
+                <div class="container-input">
+                    <a class="pesquisa1">
+                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input"
+                            id="pesquisa_sga" title="Pesquisa">
+                </div>
+                <div class="sistemas" id="SGAK">
+                    <h2> SGA </h2>
+                    <div class="containerD1">
+                        <div class="containerD">
+                            <table id="data-table-sga" class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Resumo do Erro</th>
+                                        <th>Visualizar</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabela_sga">
 
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div id="infoModalsga" class="modal">
-                <div class="modal-content">
-                    <span class="close" id="closeModalsga"><img src="IMG/excluir.png" class="fechar"></span>
-                    <div id="modalContentsga"></div>
-                </div>
-            </div>
-        </section>
-
-        <section id="SGABOXNEW" class="rotinas" style="display: none;">
-            <div class="container-input">
-                <a class="pesquisa1">
-                    <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input"
-                        id="pesquisa_sgaboxnew" title="Pesquisa">
-            </div>
-            <div class="sistemas" id="SGABOXNEWK">
-                <h2> SGABOX NEW </h2>
-                <div class="containerD1">
-                    <div class="containerD">
-                        <table id="data-table-sgaboxnew" class="data-table">
-                            <thead>
-                                <tr>
-                                    <th>Resumo do Erro</th>
-                                    <th>Visualizar</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tabela_sgaboxnew">
-
-                            </tbody>
-                        </table>
+                <div id="infoModalsga" class="modal">
+                    <div class="modal-content">
+                        <span class="close" id="closeModalsga"><img src="IMG/excluir.png" class="fechar"></span>
+                        <div id="modalContentsga"></div>
                     </div>
                 </div>
-            </div>
-            <div id="infoModalsgaboxnew" class="modal">
-                <div class="modal-content">
-                    <span class="close" id="closeModalsgaboxnew"><img src="IMG/excluir.png" class="fechar"></span>
-                    <div id="modalContentsgaboxnew"></div>
+            </section>
+
+            <section id="SGABOXNEW" class="rotinas" style="display: none;">
+                <div class="container-input">
+                    <a class="pesquisa1">
+                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input"
+                            id="pesquisa_sgaboxnew" title="Pesquisa">
                 </div>
-            </div>
-        </section>
+                <div class="sistemas" id="SGABOXNEWK">
+                    <h2> SGABOX NEW </h2>
+                    <div class="containerD1">
+                        <div class="containerD">
+                            <table id="data-table-sgaboxnew" class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Resumo do Erro</th>
+                                        <th>Visualizar</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabela_sgaboxnew">
 
-        <section id="SOBOX" class="rotinas" style="display: none;">
-            <div class="container-input">
-                <a class="pesquisa1">
-                    <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input"
-                        id="pesquisa_sobox" title="Pesquisa">
-            </div>
-            <div class="sistemas" id="SOBOXK">
-                <h2> SOBOX </h2>
-                <div class="containerD1">
-                    <div class="containerD">
-                        <table id="data-table-sobox" class="data-table">
-                            <thead>
-                                <tr>
-                                    <th>Resumo do Erro</th>
-                                    <th>Visualizar</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tabela_sobox">
-
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div id="infoModalsobox" class="modal">
-                <div class="modal-content">
-                    <span class="close" id="closeModalsobox"><img src="IMG/excluir.png" class="fechar"></span>
-                    <div id="modalContentsobox"></div>
-                </div>
-            </div>
-        </section>
-
-        <section id="SGABOX2010" class="rotinas" style="display: none;">
-            <div class="sistemas" id="SGABOX2010K">
-                <h2> SGABOX2010 </h2>
-            </div>
-        </section>
-
-        <section id="SGALITE" class="rotinas" style="display: none;">
-            <div class="sistemas" id="SGALITEK">
-                <h2> SGALITE </h2>
-            </div>
-        </section>
-
-        <section id="GOURMET" class="rotinas" style="display: none;">
-            <div class="sistemas" id="GOURMETK">
-                <h2> GOURMET </h2>
-            </div>
-        </section>
-
-        <section id="SGAOS" class="rotinas" style="display: none;">
-            <div class="sistemas" id="SGAOSK">
-                <h2> SGAOS </h2>
-            </div>
-        </section>
-
-        <section id="SGAOTICA" class="rotinas" style="display: none;">
-            <div class="sistemas" id="SGAOTICAK">
-                <h2> SGAOTICA </h2>
-            </div>
-        </section>
-
-        <section id="SPEDS" class="rotinas" style="display: none;">
-            <div class="container-input">
-                <a class="pesquisa1">
-                    <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input"
-                        id="pesquisa_sped" title="Pesquisa">
-            </div>
-            <div class="sistemas" id="SPEDSK">
-                <h2> SPEDS </h2>
-                <div class="containerD1">
-                    <div class="containerD">
-                        <table id="data-table-sped" class="data-table">
-                            <thead>
-                                <tr>
-                                    <th>Resumo do Erro</th>
-                                    <th>Visualizar</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tabela_sped">
-                            </tbody>
-                        </table>
+                <div id="infoModalsgaboxnew" class="modal">
+                    <div class="modal-content">
+                        <span class="close" id="closeModalsgaboxnew"><img src="IMG/excluir.png" class="fechar"></span>
+                        <div id="modalContentsgaboxnew"></div>
                     </div>
                 </div>
-            </div>
-            <div id="infoModalsped" class="modal">
-                <div class="modal-content">
-                    <span class="close" id="closeModalsped"><img src="IMG/excluir.png" class="fechar"></span>
-                    <div id="modalContentsped"></div>
+            </section>
+
+            <section id="SOBOX" class="rotinas" style="display: none;">
+                <div class="container-input">
+                    <a class="pesquisa1">
+                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input"
+                            id="pesquisa_sobox" title="Pesquisa">
                 </div>
-            </div>
-        </section>
+                <div class="sistemas" id="SOBOXK">
+                    <h2> SOBOX </h2>
+                    <div class="containerD1">
+                        <div class="containerD">
+                            <table id="data-table-sobox" class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Resumo do Erro</th>
+                                        <th>Visualizar</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabela_sobox">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div id="infoModalsobox" class="modal">
+                    <div class="modal-content">
+                        <span class="close" id="closeModalsobox"><img src="IMG/excluir.png" class="fechar"></span>
+                        <div id="modalContentsobox"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="SGABOX2010" class="rotinas" style="display: none;">
+                <div class="container-input">
+                    <a class="pesquisa1">
+                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input"
+                            id="pesquisa_sgabox2010" title="Pesquisa">
+                </div>
+                <div class="sistemas" id="SGABOX2010K">
+                    <h2> SGABOX2010 </h2>
+                </div>
+            </section>
+
+            <section id="SGALITE" class="rotinas" style="display: none;">
+                <div class="container-input">
+                    <a class="pesquisa1">
+                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input"
+                            id="pesquisa_sgalite" title="Pesquisa">
+                </div>
+                <div class="sistemas" id="SGALITEK">
+                    <h2> SGALITE </h2>
+                </div>
+            </section>
+
+            <section id="GOURMET" class="rotinas" style="display: none;">
+                <div class="container-input">
+                    <a class="pesquisa1">
+                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input"
+                            id="pesquisa_gourmet" title="Pesquisa">
+                </div>
+                <div class="sistemas" id="GOURMETK">
+                    <h2> GOURMET </h2>
+                </div>
+            </section>
+
+            <section id="SGAOS" class="rotinas" style="display: none;">
+                <div class="container-input">
+                    <a class="pesquisa1">
+                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input"
+                            id="pesquisa_sgaos" title="Pesquisa">
+                </div>
+                <div class="sistemas" id="SGAOSK">
+                    <h2> SGAOS </h2>
+                </div>
+            </section>
+
+            <section id="SGAOTICA" class="rotinas" style="display: none;">
+                <div class="container-input">
+                    <a class="pesquisa1">
+                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input"
+                            id="pesquisa_sgaotica" title="Pesquisa">
+                </div>
+                <div class="sistemas" id="SGAOTICAK">
+                    <h2> SGAOTICA </h2>
+                </div>
+            </section>
+
+            <section id="SPEDS" class="rotinas" style="display: none;">
+                <div class="container-input">
+                    <a class="pesquisa1">
+                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input"
+                            id="pesquisa_sped" title="Pesquisa">
+                </div>
+                <div class="sistemas" id="SPEDSK">
+                    <h2> SPEDS </h2>
+                    <div class="containerD1">
+                        <div class="containerD">
+                            <table id="data-table-sped" class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Resumo do Erro</th>
+                                        <th>Visualizar</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabela_sped">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div id="infoModalsped" class="modal">
+                    <div class="modal-content">
+                        <span class="close" id="closeModalsped"><img src="IMG/excluir.png" class="fechar"></span>
+                        <div id="modalContentsped"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
     </main>
     <script type="text/javascript">
         window.onload = function () {
