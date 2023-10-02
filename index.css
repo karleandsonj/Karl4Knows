@@ -220,7 +220,7 @@ main {
   justify-content: center;
   align-items: center;
   position: relative;
-  margin-top: 25px;
+  top: 20px;
   height: 40px;
   width: auto;
   border-radius: 10px;
