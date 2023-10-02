@@ -530,6 +530,7 @@ p {
   justify-content: space-between;
   /* Espaço igual entre as divs */
   margin-top: 5px;
+/*   width: 100%; */
 }
 
 /* Anexo */
@@ -540,6 +541,99 @@ p {
   margin-top: 5px;
   margin: 2px;
   border: #000000 1px solid;
+  width: 100vw;
+}
+
+.modal5 {
+/*   display: grid; */
+  position: relative;
+  background-color: rgb(62, 255, 94);
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 5px;
+  margin: 2px;
+  border: #000000 1px solid;
+/*   width: 20vw;
+  min-width: 5vw; */
+}
+
+.img_anexo{
+  position: relative;
+  display: inline-block;
+  box-shadow: 0px 0px 2vh black ;
+  border: #000 solid 1px;
+  border-radius: 10px;
+  width: 150px;
+  transition: .5s, color .10s;
+  -webkit-transition: .5s, color .10s;
+  -moz-transition: .5s, color .10s;
+}
+
+#trocarImagem{
+  display: block;
+  border-radius: 10px;
+  border: #000 solid 1px;
+  text-decoration: none;
+  color: #000;
+  background-color: #54a2fc;
+  padding: 5px;
+}
+
+#trocarImagem:hover{
+  background-color: #3694ff;
+}
+
+.img_anexo:hover{
+  background-color: #19689c38;
+  transform: scale3d(1.03, 1.03, 0.3);
+      -webkit-transform: scale3d(1.03, 1.03, 0.3);
+      -moz-transform: scale3d(1.03, 1.03, 0.3);
+}
+
+ 
+/* .modalcontainer{
+  margin: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+  background-color: #ee000041;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+} */
+
+.imagem-ampliada {
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  box-shadow: 0px 0px 5vh rgb(173, 0, 0);
+  background-color: #f7515180;
+  position: fixed;
+  top: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-amp-close{
+  display: grid;
+  top: 0;
+  position: absolute;
+}
+
+.imagem-ampliada img{
+  width: 50%;
+}
+
+#fecharImagem{
+  top: 0;
+  right: 20%;
+  font-size: 30px;
+  text-decoration: none;
+  position: absolute;
+  display: flex;
 }
 
 .close {
@@ -581,6 +675,7 @@ h3 {
   text-indent: 15px;
   border: none;
   border-radius: 20px;
+  margin-bottom: 10px;
 }
 
 .buttonDownload:hover {

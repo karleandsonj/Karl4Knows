@@ -34,10 +34,10 @@ function loadsgaSheetData(url) {
                     const viewButtonCell = document.createElement('td'); // Criar uma nova célula para o botão
                     const viewButton = document.createElement('img'); // Criar um elemento de imagem
                     viewButton.setAttribute('src', 'IMG/lupa.png'); // Definir o atributo 'src' para o caminho da imagem
-                    
+
                     // Adicionar uma classe ao elemento de imagem
                     viewButton.classList.add('lupa1'); // Substitua 'sua-classe-aqui' pelo nome da classe desejada
-                    
+
                     // Adicionar o elemento de imagem à célula da tabela
                     viewButtonCell.appendChild(viewButton);
 
@@ -47,38 +47,94 @@ function loadsgaSheetData(url) {
                         const sistema = columns[0].textContent.trim(); // Supondo que a primeira coluna seja ID_sga
                         const erros = columns[2].textContent.trim(); // Supondo que a segunda coluna seja ERROS
                         const solucoes = columns[3].textContent.trim(); // Supondo que a quinta coluna seja SOLUCOES
-                        const script = columns[4].textContent.trim(); 
-                        const descricao_anexo = columns[5].textContent.trim(); 
-                        const anexo = columns[6].textContent.trim(); 
-                        const imagemLink = columns[6].textContent.trim(); // Supondo que a oitava coluna seja o link da imagem
+                        const script = columns[4].textContent.trim();
+                        const descricao_anexo = columns[5].textContent.trim();
+                        const anexo = columns[6].textContent.trim();
+                        const imagemLink = columns[7].textContent.trim(); // Supondo que a oitava coluna seja o link da imagem
+
+                        // Dividir a variável imagemLink em várias imagens usando o ponto e vírgula como separador
+                        const imagens = imagemLink.split(';');
 
                         // Construir o HTML para exibir os dados no modalContent
                         const modalContent = document.getElementById('modalContentsga');
                         modalContent.innerHTML = `
-                                <div class="modal1">
-                                    <h3>${sistema}</h3>
+                            <div class="modal1">
+                                <h3>${sistema}</h3>
+                            </div>
+                            <div id="column">
+                                <div class="modal2" id="modal2">
+                                    <h3>Erro Detalhado: </h3></br>
+                                    <p id="P_sga">${erros}</p>
                                 </div>
-                                <div id="column">
-                                    <div class="modal2" id="modal2">
-                                        <h3>Erro Detalhado: </h3></br>
-                                        <p id="P_sga">${erros}</p>
-                                    </div>
-                                    <div class="modal3">
-                                        <h3>Soluções: </h3></br>
-                                        <p id="P_sga1">${solucoes}</p>
-                                    </div>
+                                <div class="modal3">
+                                    <h3>Soluções: </h3></br>
+                                    <p id="P_sga1">${solucoes}</p>
                                 </div>
-                                <div class="modal4">
-                                    <h3>Scripts / Anexos: </h3><br>
+                            </div>
+                            <div id="column">
+                                <div class="modal4" style="${script ? '' : 'display: none;'}">
+                                    <h3>Scripts: </h3><br>
                                     <p id="P_sga2">${script}</p>              
                                 </div>
-                                <div class="modal5">
+                                <div class="modal5" style="${(anexo || imagens.length > 1) ? '' : 'display: none;'}">
                                     <h3>Anexos: </h3><br>
-                                    ${anexo ? `<a href="${anexo}" target="_blank" class="buttonDownload">${descricao_anexo}</a>` : ''}
-                                    <img id="P_sga3" src="${imagemLink}" alt="Imagem Exibida">
+                                    ${anexo ? `<a href="${anexo}" id="P_sga3" target="_blank" class="buttonDownload">${descricao_anexo}</a>` : ''}
+                                    ${imagens.map((imagem, index) => `
+                                        <div class="imagem-div" style="${index === 0 ? '' : 'display: none;'}">
+                                            <img class="img_anexo" class="imagem-div1" id="P_sga4" src="${imagem}" alt="">
+                                        </div>
+                                    `).join('')}
+                                    <a href="#" id="trocarImagem">Proxima Imagem</a>
                                 </div>
-                            `;
+                            </div>
+                        `;
 
+
+
+                        // Adicionar um evento de clique ao link "Clique para trocar a imagem"
+                        const trocarImagemLink = document.getElementById('trocarImagem');
+                        const imagemDivs = document.querySelectorAll('.imagem-div');
+                        const modalContainer = document.getElementById('modalContainer');
+                        let imagemAtual = 0;
+
+                        trocarImagemLink.addEventListener('click', () => {
+                            // Ocultar a imagem atual
+                            imagemDivs[imagemAtual].style.display = 'none';
+                    
+                            // Avançar para a próxima imagem
+                            imagemAtual = (imagemAtual + 1) % imagens.length;
+                    
+                            // Exibir a nova imagem
+                            imagemDivs[imagemAtual].style.display = 'block';
+                        });
+
+                        imagemDivs.forEach((imagemDiv, index) => {
+                            const imagem = imagemDiv.querySelector('img');
+
+                            imagem.addEventListener('click', () => {
+                                // Exibir a imagem ampliada em um modal ou em um elemento específico da página
+                                const imagemAmpliada = document.createElement('div');
+                                imagemAmpliada.classList.add('imagem-ampliada');
+                                imagemAmpliada.innerHTML = `
+                                        <img src="${imagens[index]}" alt="">
+                                    <div class="img-amp-close">
+                                        <a href="#" id="fecharImagem">❎</a>
+                                    </div>
+                                `;
+                                modalContainer.appendChild(imagemAmpliada);
+
+                                // Exibir o modal
+                                modalContainer.style.display = 'block';
+
+                                // Adicionar um evento de clique ao link "Fechar"
+                                const fecharImagemLink = imagemAmpliada.querySelector('#fecharImagem');
+                                fecharImagemLink.addEventListener('click', () => {
+                                    // Ocultar o modal ao fechar a imagem
+                                    modalContainer.style.display = 'none';
+                                    modalContainer.removeChild(imagemAmpliada);
+                                });
+                            });
+                        });
 
 
                         // Exibir o card/modal
@@ -87,32 +143,33 @@ function loadsgaSheetData(url) {
 
                         function formatarTextoComQuebrasDeLinha(elementId) {
                             var elemento = document.querySelector('#' + elementId);
-                          
-                            if (elemento) {
-                              var texto = elemento.innerHTML;
-                              var arrayDeLinhas = texto.split(';');
-                              var novoTexto = arrayDeLinhas.join('<br><br>');
-                              elemento.innerHTML = novoTexto;
-                            }
-                          }
 
-                          function formatarTextoComQuebrasDeLinha2(elementId) {
-                            var elemento2 = document.querySelector('#' + elementId);
-                          
-                            if (elemento2) {
-                              var texto = elemento2.innerHTML;
-                              var arrayDeLinhas2 = texto.split(';');
-                              var novoTexto2 = arrayDeLinhas2.join('<br>');
-                              elemento2.innerHTML = novoTexto2;
+                            if (elemento) {
+                                var texto = elemento.innerHTML;
+                                var arrayDeLinhas = texto.split(';');
+                                var novoTexto = arrayDeLinhas.join('<br><br>');
+                                elemento.innerHTML = novoTexto;
                             }
-                          }
-                          
-                          
-                          // Para usar a função com outro campo, basta chamar a função com o ID do novo elemento:
-                          formatarTextoComQuebrasDeLinha('P_sga');
-                          formatarTextoComQuebrasDeLinha('P_sga1');
-                          formatarTextoComQuebrasDeLinha2('P_sga2');
-                          formatarTextoComQuebrasDeLinha2('P_sga3');
+                        }
+
+                        function formatarTextoComQuebrasDeLinha2(elementId) {
+                            var elemento2 = document.querySelector('#' + elementId);
+
+                            if (elemento2) {
+                                var texto = elemento2.innerHTML;
+                                var arrayDeLinhas2 = texto.split(';');
+                                var novoTexto2 = arrayDeLinhas2.join('<br>');
+                                elemento2.innerHTML = novoTexto2;
+                            }
+                        }
+
+
+                        // Para usar a função com outro campo, basta chamar a função com o ID do novo elemento:
+                        formatarTextoComQuebrasDeLinha('P_sga');
+                        formatarTextoComQuebrasDeLinha('P_sga1');
+                        formatarTextoComQuebrasDeLinha2('P_sga2');
+                        formatarTextoComQuebrasDeLinha2('P_sga3');
+                        formatarTextoComQuebrasDeLinha2('P_sga4');
                     });
 
                     viewButtonCell.appendChild(viewButton); // Adicionar o botão à célula
