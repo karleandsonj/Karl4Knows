@@ -5,7 +5,6 @@
 th {
   position: sticky;
   top: -2px;
-  z-index: 2;
 }
 
 /* MANTER SELECIONADO ICONES */
@@ -22,13 +21,14 @@ option {
 }
 
 body {
+/*   position: absolute; */
   top: 0;
   bottom: 0;
   overflow: hidden;
 }
 
 header {
-  z-index: 8;
+  z-index: 2;
   top: 0;
   position: absolute;
   display: flex;
@@ -45,7 +45,7 @@ h1 {
 }
 
 .logo {
-  z-index: 9;
+  z-index: 3;
   position: absolute;
   display: flex;
   background-color: aqua;
@@ -73,7 +73,7 @@ h1 {
 }
 
 aside {
-  z-index: 8;
+  z-index: 2;
   position: absolute;
   background-color: aqua;
   height: 100vh;
@@ -193,15 +193,20 @@ ul {
 }
 
 main {
-  display: grid;
+  display: block;
   background-color: blueviolet;
-  width: 100%;
-  height: 100%;
-  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  bottom: 0;
+  top: 0;
+  margin: 0 auto;
+
+
 }
 
 .rotinas {
-  z-index: 2;
+  z-index: 1;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -213,7 +218,7 @@ main {
   justify-content: center;
   align-items: center;
   position: relative;
-  margin-top: 10px;
+  margin-top: 25px;
   height: 40px;
   width: auto;
   border-radius: 10px;
@@ -295,6 +300,7 @@ main {
   height: 100vh;
   text-align: center;
   right: 0; /* Alinhe o lado direito com a borda direita da tela */
+  z-index: 3;
 }
 
 
@@ -302,7 +308,7 @@ main {
   margin: 0 auto;
   border-radius: 15px;
   z-index: 1;
-  top: 20px;
+  top: 80px;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -426,19 +432,19 @@ main {
 
   .data-table td span{font-size: 12px;}
   .lupa1{width: 16px;}
+
 }
 
 /* Estilos para o card/modal */
 .modal {
-  padding-left: 40px;
+  margin-top: -50px;
+  left: -70px; 
   display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
+  position:absolute;
+  z-index: 5;
   top: 0;
-  width: 100%;
+  width: 100vw;
   height: 100%;
-  overflow: auto;
   background-color: rgba(0, 0, 0, 0.7);
   align-content: center;
 }
@@ -451,11 +457,13 @@ main {
   padding: 20px;
   border: 2px solid #353333;
   border-radius: 10px;
-  width: 70%;
+  width: 80%;
   /* Use uma porcentagem para a largura */
   max-height: 100%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  position: relative;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 p {
@@ -756,7 +764,7 @@ h3 {
 }
 
 .card {
-  z-index: 50;
+  z-index: 25;
   position: absolute;
   width: 350px;
   height: 130px;
@@ -777,3 +785,4 @@ h3 {
   right: 50%;
   transform: translate(-50%, -50%);
 }
+

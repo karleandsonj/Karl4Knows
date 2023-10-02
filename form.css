@@ -20,7 +20,7 @@
   #desfoque{
     display: none;
     z-index: 9;
-    position: absolute;
+    position: relative;
     background-color: #0000004b;
     width: 100vw;
     height: 100vh;

@@ -50,6 +50,7 @@ function loadsgaSheetData(url) {
                         const script = columns[4].textContent.trim(); 
                         const descricao_anexo = columns[5].textContent.trim(); 
                         const anexo = columns[6].textContent.trim(); 
+                        const imagemLink = columns[6].textContent.trim(); // Supondo que a oitava coluna seja o link da imagem
 
                         // Construir o HTML para exibir os dados no modalContent
                         const modalContent = document.getElementById('modalContentsga');
@@ -69,10 +70,13 @@ function loadsgaSheetData(url) {
                                 </div>
                                 <div class="modal4">
                                     <h3>Scripts / Anexos: </h3><br>
-                                    <p id="P_sga2">${script}</p><br>
-                                    ${anexo ? `<a href="${anexo}" target="_blank" class="buttonDownload">${descricao_anexo}</a>` : ''}
+                                    <p id="P_sga2">${script}</p>              
                                 </div>
-
+                                <div class="modal5">
+                                    <h3>Anexos: </h3><br>
+                                    ${anexo ? `<a href="${anexo}" target="_blank" class="buttonDownload">${descricao_anexo}</a>` : ''}
+                                    <img id="P_sga3" src="${imagemLink}" alt="Imagem Exibida">
+                                </div>
                             `;
 
 
@@ -108,6 +112,7 @@ function loadsgaSheetData(url) {
                           formatarTextoComQuebrasDeLinha('P_sga');
                           formatarTextoComQuebrasDeLinha('P_sga1');
                           formatarTextoComQuebrasDeLinha2('P_sga2');
+                          formatarTextoComQuebrasDeLinha2('P_sga3');
                     });
 
                     viewButtonCell.appendChild(viewButton); // Adicionar o botão à célula
