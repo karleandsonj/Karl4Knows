@@ -134,15 +134,16 @@ aside {
 
 .scroll-down {
   width: 100%;
+  background-color: aqua;
   left: 50%;
   transform: translateX(-50%);
   position: absolute;
   bottom: 0;
   font-size: 20px;
   cursor: pointer;
-  padding: 5px;
+  padding: 5px 0px 0px 5px;
   user-select: none;
-  order: 3;
+  order: 2;
 }
 
 .scroll-up:hover,
