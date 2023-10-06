@@ -56,7 +56,7 @@ function loadsgaSheetData(url) {
                         const imagens = imagemLink.split(';');
 
                         // Construir o HTML para exibir os dados no modalContent
-                        const modalContent = document.getElementById('modalContentsga');
+                        const modalContent = document.getElementById('modalContent');
                         modalContent.innerHTML = `
                             <div class="modal1">
                                 <h3>${sistema}</h3>
@@ -89,6 +89,40 @@ function loadsgaSheetData(url) {
                             </div>
                         `;
 
+                        function transformarEmListaOrdenada(idDoElemento) {
+                            // Obtém a referência ao elemento <p> com o ID especificado
+                            var elementoParagrafo = document.getElementById(idDoElemento);
+                        
+                            if (elementoParagrafo) {
+                                // Obtém o texto do elemento <p>
+                                var conteudo = elementoParagrafo.textContent;
+                        
+                                // Divida o conteúdo em linhas (supondo que cada item da lista esteja em uma nova linha)
+                                var linhas = conteudo.split('§');
+                                
+                                // Cria um elemento <ol> (lista ordenada) para a lista numerada
+                                var listaOrdenada = document.createElement('ol');
+                        
+                                // Para cada linha, crie um elemento <li> (item da lista) e adicione-o à lista ordenada
+                                for (var i = 0; i < linhas.length; i++) {
+                                    var linha = linhas[i].trim(); // Remove espaços em branco em excesso
+                                    if (linha.length > 0) {
+                                        var itemLista = document.createElement('li');
+                                        itemLista.textContent = linha;
+                                        listaOrdenada.appendChild(itemLista);
+                                    }
+                                }
+                        
+                                // Substitui o elemento <p> pelo elemento <ol> criado
+                                elementoParagrafo.parentNode.replaceChild(listaOrdenada, elementoParagrafo);
+                            } else {
+                                console.log('Elemento não encontrado com ID: ' + idDoElemento);
+                            }
+                        }
+                        
+                        // Chame a função com o ID do elemento desejado
+                        transformarEmListaOrdenada('P_sga'); // Substituir 'P_sga1' pelo ID desejado
+                        transformarEmListaOrdenada('P_sga1'); // Substituir 'P_sga2' pelo ID desejado                        
 
 
                         // Adicionar um evento de clique ao link "Clique para trocar a imagem"
@@ -100,10 +134,10 @@ function loadsgaSheetData(url) {
                         trocarImagemLink.addEventListener('click', () => {
                             // Ocultar a imagem atual
                             imagemDivs[imagemAtual].style.display = 'none';
-                    
+
                             // Avançar para a próxima imagem
                             imagemAtual = (imagemAtual + 1) % imagens.length;
-                    
+
                             // Exibir a nova imagem
                             imagemDivs[imagemAtual].style.display = 'block';
                         });
@@ -138,15 +172,16 @@ function loadsgaSheetData(url) {
 
 
                         // Exibir o card/modal
-                        const infoModal = document.getElementById('infoModalsga');
+                        const infoModal = document.getElementById('infoModal');
                         infoModal.style.display = 'block';
 
+                        //pular linhas onde tiver caracter §
                         function formatarTextoComQuebrasDeLinha(elementId) {
                             var elemento = document.querySelector('#' + elementId);
 
                             if (elemento) {
                                 var texto = elemento.innerHTML;
-                                var arrayDeLinhas = texto.split(';');
+                                var arrayDeLinhas = texto.split('§');
                                 var novoTexto = arrayDeLinhas.join('<br><br>');
                                 elemento.innerHTML = novoTexto;
                             }
@@ -157,7 +192,7 @@ function loadsgaSheetData(url) {
 
                             if (elemento2) {
                                 var texto = elemento2.innerHTML;
-                                var arrayDeLinhas2 = texto.split(';');
+                                var arrayDeLinhas2 = texto.split('§');
                                 var novoTexto2 = arrayDeLinhas2.join('<br>');
                                 elemento2.innerHTML = novoTexto2;
                             }
@@ -189,8 +224,8 @@ function loadsgaSheetData(url) {
 }
 
 // Fechar o card/modal quando o botão de fechar é clicado
-const closeModalsgaButton = document.getElementById('closeModalsga');
-const infoModalsga = document.getElementById('infoModalsga');
+const closeModalsgaButton = document.getElementById('closeModal');
+const infoModalsga = document.getElementById('infoModal');
 
 closeModalsgaButton.addEventListener('click', () => {
     infoModalsga.style.display = 'none';

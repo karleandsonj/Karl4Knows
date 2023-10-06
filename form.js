@@ -1,3 +1,23 @@
+//adicionado para inserir caracter § sempre que tiver uma quebra de linha nos textarea
+document.getElementById('submit').addEventListener('click', function() {
+    console.log('Botão "Enviar" clicado.');
+    const textarea1 = document.getElementById('texto-1');
+    const textarea2 = document.getElementById('texto-2');
+    const textarea3 = document.getElementById('texto-3');
+    const text1 = textarea1.value;
+    const text2 = textarea2.value;
+    const text3 = textarea3.value;
+    const lines1 = text1.split('\n');
+    const lines2 = text2.split('\n');
+    const lines3 = text3.split('\n');
+    const formattedText1 = lines1.join('§');
+    const formattedText2 = lines2.join('§');
+    const formattedText3 = lines3.join('§');
+    textarea1.value = formattedText1;
+    textarea2.value = formattedText2;
+    textarea3.value = formattedText3;
+});
+
 /* FORM ABRIR CORRIGIR NO HIDDEN DO CSS O DISPLAY DEPOIS */
 const openFormButton = document.getElementById('openForm');
 const envioForm = document.getElementById('envioForm');
@@ -128,4 +148,7 @@ const removeloading = () => {
     });
 
 }
+
+
+
 /* FIM API para enviar Form para Planilha "FORM" */

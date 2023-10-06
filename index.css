@@ -1,10 +1,18 @@
+/* Reset de margem para todos os elementos */
 * {
   margin: 0;
 }
-
 th {
   position: sticky;
   top: -2px;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 200px;
+  max-height: 300px;
+  overflow-y: auto;
+  width: 100%;
 }
 
 /* MANTER SELECIONADO ICONES */
@@ -22,12 +30,8 @@ option {
 
 body {
   position: relative;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  bottom: 0;
-  overflow: auto;
+  width: 100vw;
+  height: 100vh;
 }
 
 header {
@@ -75,54 +79,46 @@ h1 {
   background-color: none;
 }
 
-aside {
+#custom-scroll {
   z-index: 2;
   position: absolute;
   background-color: aqua;
-  height: 100vh;
   width: 70px;
-  bottom: 0;
+  height: 100vh; /* Altura igual à altura da viewport */
   top: 0;
+  bottom: 0;
   box-shadow: 0px 0px 2vh rgba(1, 187, 204, 0.8);
   text-align: center;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
 }
 
 .scroll-content {
-  margin-top: 68px;
+  margin-top: 24px;
   margin-bottom: 32px;
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start; /* Alinhar ao topo */
   align-items: center;
-  max-height: 100%;
   overflow-y: scroll;
-  /* Habilita a rolagem do mouse */
   scrollbar-width: none;
-  /* Para navegadores baseados no motor WebKit (Safari) */
   -ms-overflow-style: none;
-  /* Para o Internet Explorer */
 }
 
-/* Define um estilo para a barra de rolagem */
+
+
 .scroll-content::-webkit-scrollbar {
   width: 0;
-  /* Largura zero para tornar a barra de rolagem invisível no Chrome e no Safari */
   height: 0;
-  /* Altura zero para tornar a barra de rolagem invisível no Chrome e no Safari */
 }
 
-/* Define um estilo para os cantos da barra de rolagem */
 .scroll-content::-webkit-scrollbar-corner {
   display: none;
-  /* Oculta os cantos da barra de rolagem no Chrome e no Safari */
 }
 
 .scroll-up {
-  width: 100%;
+  width: 65px;
   background-color: aqua;
   left: 50%;
   transform: translateX(-50%);
@@ -136,7 +132,7 @@ aside {
 }
 
 .scroll-down {
-  width: 100%;
+  width: 65px;
   background-color: aqua;
   left: 50%;
   transform: translateX(-50%);
@@ -155,6 +151,12 @@ aside {
   color: rgb(133, 0, 0);
 }
 
+/* Adicione uma Media Query para ajustar o layout em telas menores */
+/* @media screen and (max-width: 768px) {
+  #custom-scroll {
+    width: 50px;
+  }
+  } */
 
 
 ul {
@@ -199,12 +201,13 @@ ul {
 main {
   display: block;
   background-color: blueviolet;
-  width: 100vw;
+  width: auto;
   height: 100vh;
   position: relative;
   bottom: 0;
   top: 0;
-  margin: 0 auto;
+  margin: 0;
+  overflow: auto;
 }
 
 /* .rotinas {
@@ -303,11 +306,10 @@ main {
   position: relative;
   width: auto;
   /* Use 'auto' para dimensionar a largura com base no conteúdo */
-/*   height: 100%; */
   text-align: center;
   right: 0;
   /* Alinhe o lado direito com a borda direita da tela */
-  z-index: 3;
+/*   z-index: 3; */
 }
 
 
@@ -321,7 +323,8 @@ main {
   transform: translateX(-50%);
   background-color: blanchedalmond;
   width: 75vw;
-  height: 70vh;
+/*   height: 70vh; */
+  max-height: 90vh;
   text-align: center;
   align-self: center;
 }
@@ -352,7 +355,9 @@ main {
   /* Centralizar horizontalmente */
   border-radius: 0 0 20px 20px;
   margin: 10px auto;
-  bottom: 0;
+  padding: 20px;
+  
+/*   bottom: 0; */
   /* Adicionando margem automática para centralizar horizontalmente */
 
 }
@@ -365,11 +370,10 @@ main {
   border: #333 solid;
   width: 90%;
   /* Definindo um valor máximo para evitar que o container fique muito grande */
-  max-height: 58vh;
+  max-height: 50vh;
   min-height: 7VH;
-  margin-bottom: 80px;
   font-family: 'Tan Twinkle', sans-serif;
-  width: 90%;
+
 }
 
 /* Estilo para a barra de rolagem interna */
@@ -449,16 +453,44 @@ main {
 
 /* Estilos para o card/modal */
 .modal {
-  margin-top: -50px;
-  left: -70px;
+/*   margin-top: -50px;*/
+/*   padding-left: 70px; */
   display: none;
-  position: absolute;
+  position:absolute;
   z-index: 5;
+  margin: 0;
   top: 0;
+  left: 0;
+  right: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
   align-content: center;
+  margin-bottom: 50px;
+}
+
+.modal-content {
+    /* Adiciona uma barra de rolagem apenas quando o conteúdo excede a altura máxima */
+  /* Estilo da barra de rolagem */
+  scrollbar-width: thin; /* Adiciona uma barra de rolagem fina (funciona no Firefox) */
+  scrollbar-color: #666666 #f0f0f0; /* Cor da barra de rolagem e do fundo (funciona no Firefox) */
+  /* Estilo da barra de rolagem (para navegadores baseados no WebKit, como Chrome e Safari) */
+  ::-webkit-scrollbar {
+      width: 8px; /* Largura da barra de rolagem */
+  }
+  ::-webkit-scrollbar-track {
+      background: #00bd1f; /* Cor de fundo da barra de rolagem */
+      border-top-right-radius: 100px;
+      border-bottom-right-radius: 100px;
+      border-top: #000000 0.3px solid;
+      border-right: #000000 0.3px solid;
+      border-bottom: #000000 0.3px solid;
+  }
+  ::-webkit-scrollbar-thumb {
+      background: #00441c; /* Cor da barra de rolagem */
+      border-top-right-radius: 100px;
+      border-bottom-right-radius: 100px;
+  }
 }
 
 .modal-content {
@@ -471,7 +503,6 @@ main {
   border-radius: 10px;
   width: 80%;
   /* Use uma porcentagem para a largura */
-  max-height: 100%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   position: absolute;
   left: 50%;
@@ -511,6 +542,9 @@ p {
   margin-top: 10px;
   border: #000000 1px solid;
   margin: 2px;
+  text-align: left;
+  max-height: 200px;
+  overflow: auto;
 }
 
 /* Solucao */
@@ -523,6 +557,9 @@ p {
   margin-top: 10px;
   border: #000000 1px solid;
   margin: 2px;
+  text-align: left;
+  max-height: 200px;
+  overflow: auto;
 }
 
 #column {
@@ -530,7 +567,7 @@ p {
   justify-content: space-between;
   /* Espaço igual entre as divs */
   margin-top: 5px;
-/*   width: 100%; */
+  /*   width: 100%; */
 }
 
 /* Anexo */
@@ -542,10 +579,13 @@ p {
   margin: 2px;
   border: #000000 1px solid;
   width: 100vw;
+  text-align: left;
+  max-height: 300px;
+  overflow: auto;
 }
 
 .modal5 {
-/*   display: grid; */
+  /*   display: grid; */
   position: relative;
   background-color: rgb(62, 255, 94);
   border-radius: 10px;
@@ -553,14 +593,15 @@ p {
   margin-top: 5px;
   margin: 2px;
   border: #000000 1px solid;
-/*   width: 20vw;
+  max-height: 300px;
+  /*   width: 20vw;
   min-width: 5vw; */
 }
 
-.img_anexo{
+.img_anexo {
   position: relative;
   display: inline-block;
-  box-shadow: 0px 0px 2vh black ;
+  box-shadow: 0px 0px 2vh black;
   border: #000 solid 1px;
   border-radius: 10px;
   width: 150px;
@@ -569,7 +610,7 @@ p {
   -moz-transition: .5s, color .10s;
 }
 
-#trocarImagem{
+#trocarImagem {
   display: block;
   border-radius: 10px;
   border: #000 solid 1px;
@@ -579,18 +620,18 @@ p {
   padding: 5px;
 }
 
-#trocarImagem:hover{
+#trocarImagem:hover {
   background-color: #3694ff;
 }
 
-.img_anexo:hover{
+.img_anexo:hover {
   background-color: #19689c38;
   transform: scale3d(1.03, 1.03, 0.3);
-      -webkit-transform: scale3d(1.03, 1.03, 0.3);
-      -moz-transform: scale3d(1.03, 1.03, 0.3);
+  -webkit-transform: scale3d(1.03, 1.03, 0.3);
+  -moz-transform: scale3d(1.03, 1.03, 0.3);
 }
 
- 
+
 /* .modalcontainer{
   margin: 0;
   left: 50%;
@@ -617,17 +658,17 @@ p {
   align-items: center;
 }
 
-.img-amp-close{
+.img-amp-close {
   display: grid;
   top: 0;
   position: absolute;
 }
 
-.imagem-ampliada img{
+.imagem-ampliada img {
   width: 50%;
 }
 
-#fecharImagem{
+#fecharImagem {
   top: 0;
   right: 20%;
   font-size: 30px;
