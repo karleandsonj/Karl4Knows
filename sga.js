@@ -34,6 +34,7 @@ function loadsgaSheetData(url) {
                     const viewButtonCell = document.createElement('td'); // Criar uma nova célula para o botão
                     const viewButton = document.createElement('img'); // Criar um elemento de imagem
                     viewButton.setAttribute('src', 'IMG/lupa.png'); // Definir o atributo 'src' para o caminho da imagem
+                    
 
                     // Adicionar uma classe ao elemento de imagem
                     viewButton.classList.add('lupa1'); // Substitua 'sua-classe-aqui' pelo nome da classe desejada
@@ -76,15 +77,16 @@ function loadsgaSheetData(url) {
                                     <h3>Scripts: </h3><br>
                                     <p id="P_sga2">${script}</p>              
                                 </div>
-                                <div class="modal5" style="${(anexo || imagens.length > 1) ? '' : 'display: none;'}">
+                                <div class="modal5" style="${(anexo || imagemLink.length > 0) ? '' : 'display: none;'}">
                                     <h3>Anexos: </h3><br>
                                     ${anexo ? `<a href="${anexo}" id="P_sga3" target="_blank" class="buttonDownload">${descricao_anexo}</a>` : ''}
                                     ${imagens.map((imagem, index) => `
-                                        <div class="imagem-div" style="${index === 0 ? '' : 'display: none;'}">
+                                        <div class="imagem-div" style="${index > 0 ? '' : 'display: none;'}">
                                             <img class="img_anexo" class="imagem-div1" id="P_sga4" src="${imagem}" alt="">
                                         </div>
                                     `).join('')}
-                                    <a href="#" id="trocarImagem">Proxima Imagem</a>
+                                    <a href="#" id="trocarImagem" style="${imagemLink.length > 0 ? '' : 'display: none;'}">Proxima Imagem</a>
+                                    
                                 </div>
                             </div>
                         `;

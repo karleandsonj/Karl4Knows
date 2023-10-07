@@ -28,12 +28,40 @@ const AbrirErro = document.getElementById('form_erro');
 const desfoque = document.getElementById('desfoque');
 const closeModalButtonForm1 = document.getElementById('closeModalForm');
 
-openFormButton.addEventListener('click', () => {
+const senhaContainer = document.getElementById('senhaContainer');
+const senhaInput = document.getElementById('senhaInput');
+const verificarSenhaButton = document.getElementById('verificarSenha');
+
+// Defina a senha válida
+const senhaValida = '123'; // Substitua 'suaSenha' pela senha desejada
+
+// Adicione um ouvinte de evento ao botão "Cad. Erro" para abrir o campo de senha
+openFormButton.addEventListener('click', function () {
+    senhaContainer.style.display = 'block';
+});
+
+// Adicione um ouvinte de evento ao botão "Verificar" para verificar a senha
+verificarSenhaButton.addEventListener('click', function () {
+    const senhaInserida = senhaInput.value;
+    
+    if (senhaInserida === senhaValida) {
+        // Senha correta, execute o código desejado
+        envioForm.style.display = 'block';
+        AbrirErro.style.display = 'block';
+        AbrirAnexo.style.display = 'none';
+        desfoque.style.display = 'block';
+    } else {
+        // Senha incorreta, exiba uma mensagem de erro
+        alert('Senha incorreta. Por favor, tente novamente.');
+    }
+});
+
+/* verificarSenhaButton.addEventListener('click', () => {
     envioForm.style.display = 'block';
     AbrirErro.style.display = 'block';
     AbrirAnexo.style.display = 'none';
     desfoque.style.display = 'block';
-});
+}); */
 
 closeModalButtonForm.addEventListener('click', () => {
     desfoque.style.display = 'none';

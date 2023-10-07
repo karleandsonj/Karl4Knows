@@ -2,6 +2,7 @@
 * {
   margin: 0;
 }
+
 th {
   position: sticky;
   top: -2px;
@@ -84,7 +85,8 @@ h1 {
   position: absolute;
   background-color: aqua;
   width: 70px;
-  height: 100vh; /* Altura igual à altura da viewport */
+  height: 100vh;
+  /* Altura igual à altura da viewport */
   top: 0;
   bottom: 0;
   box-shadow: 0px 0px 2vh rgba(1, 187, 204, 0.8);
@@ -99,7 +101,8 @@ h1 {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Alinhar ao topo */
+  justify-content: flex-start;
+  /* Alinhar ao topo */
   align-items: center;
   overflow-y: scroll;
   scrollbar-width: none;
@@ -247,7 +250,6 @@ main {
 }
 
 .input:focus {
-  /* Mantenha as configurações anteriores */
   opacity: 1;
   width: 250px;
   cursor: text;
@@ -256,8 +258,21 @@ main {
   padding-right: 20px;
 }
 
+.input:not(:placeholder-shown) {
+  opacity: 1;
+  width: 250px;
+  cursor: text;
+  background-color: rgb(255, 255, 255);
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+
 @media screen and (max-width: 480px) {
   .input:focus {
+    width: 150px;
+  }
+  .input:not(:placeholder-shown) {
     width: 150px;
   }
 }
@@ -309,7 +324,7 @@ main {
   text-align: center;
   right: 0;
   /* Alinhe o lado direito com a borda direita da tela */
-/*   z-index: 3; */
+  /*   z-index: 3; */
 }
 
 
@@ -323,8 +338,8 @@ main {
   transform: translateX(-50%);
   background-color: blanchedalmond;
   width: 75vw;
-/*   height: 70vh; */
-  max-height: 90vh;
+  /*   height: 70vh; */
+  max-height: 95vh;
   text-align: center;
   align-self: center;
 }
@@ -355,9 +370,9 @@ main {
   /* Centralizar horizontalmente */
   border-radius: 0 0 20px 20px;
   margin: 10px auto;
-  padding: 20px;
-  
-/*   bottom: 0; */
+  padding: 10px;
+
+  /*   bottom: 0; */
   /* Adicionando margem automática para centralizar horizontalmente */
 
 }
@@ -368,9 +383,9 @@ main {
   /* Oculta a barra de rolagem fora da borda */
   border-radius: 20px;
   border: #333 solid;
-  width: 90%;
+  width: 97%;
   /* Definindo um valor máximo para evitar que o container fique muito grande */
-  max-height: 50vh;
+  max-height: 60vh;
   min-height: 7VH;
   font-family: 'Tan Twinkle', sans-serif;
 
@@ -453,10 +468,10 @@ main {
 
 /* Estilos para o card/modal */
 .modal {
-/*   margin-top: -50px;*/
-/*   padding-left: 70px; */
+  /*   margin-top: -50px;*/
+  /*   padding-left: 70px; */
   display: none;
-  position:absolute;
+  position: absolute;
   z-index: 5;
   margin: 0;
   top: 0;
@@ -467,29 +482,38 @@ main {
   background-color: rgba(0, 0, 0, 0.7);
   align-content: center;
   margin-bottom: 50px;
+  overflow: auto;
 }
 
 .modal-content {
-    /* Adiciona uma barra de rolagem apenas quando o conteúdo excede a altura máxima */
+  /* Adiciona uma barra de rolagem apenas quando o conteúdo excede a altura máxima */
   /* Estilo da barra de rolagem */
-  scrollbar-width: thin; /* Adiciona uma barra de rolagem fina (funciona no Firefox) */
-  scrollbar-color: #666666 #f0f0f0; /* Cor da barra de rolagem e do fundo (funciona no Firefox) */
+  scrollbar-width: thin;
+  /* Adiciona uma barra de rolagem fina (funciona no Firefox) */
+  scrollbar-color: #666666 #f0f0f0;
+
+  /* Cor da barra de rolagem e do fundo (funciona no Firefox) */
   /* Estilo da barra de rolagem (para navegadores baseados no WebKit, como Chrome e Safari) */
   ::-webkit-scrollbar {
-      width: 8px; /* Largura da barra de rolagem */
+    width: 8px;
+    /* Largura da barra de rolagem */
   }
+
   ::-webkit-scrollbar-track {
-      background: #00bd1f; /* Cor de fundo da barra de rolagem */
-      border-top-right-radius: 100px;
-      border-bottom-right-radius: 100px;
-      border-top: #000000 0.3px solid;
-      border-right: #000000 0.3px solid;
-      border-bottom: #000000 0.3px solid;
+    background: #00bd1f;
+    /* Cor de fundo da barra de rolagem */
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+    border-top: #000000 0.3px solid;
+    border-right: #000000 0.3px solid;
+    border-bottom: #000000 0.3px solid;
   }
+
   ::-webkit-scrollbar-thumb {
-      background: #00441c; /* Cor da barra de rolagem */
-      border-top-right-radius: 100px;
-      border-bottom-right-radius: 100px;
+    background: #00441c;
+    /* Cor da barra de rolagem */
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
   }
 }
 
@@ -497,7 +521,7 @@ main {
   background-color: #adadad;
   margin: 15% auto;
   /* Centralizar verticalmente e manter margens laterais */
-  margin-top: 100px;
+  margin-top: 60px;
   padding: 20px;
   border: 2px solid #353333;
   border-radius: 10px;
@@ -570,7 +594,7 @@ p {
   /*   width: 100%; */
 }
 
-/* Anexo */
+/* Anexo / script*/
 .modal4 {
   background-color: rgb(62, 255, 94);
   border-radius: 10px;
@@ -578,7 +602,7 @@ p {
   margin-top: 5px;
   margin: 2px;
   border: #000000 1px solid;
-  width: 100vw;
+  width: 80%;
   text-align: left;
   max-height: 300px;
   overflow: auto;
@@ -586,16 +610,44 @@ p {
 
 .modal5 {
   /*   display: grid; */
+  text-align: center;
   position: relative;
   background-color: rgb(62, 255, 94);
   border-radius: 10px;
-  padding: 10px;
+  padding: 5px;
   margin-top: 5px;
   margin: 2px;
   border: #000000 1px solid;
   max-height: 300px;
-  /*   width: 20vw;
-  min-width: 5vw; */
+  width: 20%;
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 768px) {
+
+  .modal2,
+  .modal3,
+  .modal4 {
+    margin-bottom: 5px;
+    box-sizing: border-box;
+    width: 100%;
+    max-height: 200px;
+  }
+
+  .modal5 {
+    /*     left: 50%;
+    transform: translateX(-50%); */
+    box-sizing: border-box;
+    width: 100%;
+    max-height: 200px;
+    text-align: center;
+  }
+
+  #column {
+    flex-direction: column;
+    /* Stack elements below each other */
+    text-align: center;
+  }
 }
 
 .img_anexo {
@@ -604,13 +656,18 @@ p {
   box-shadow: 0px 0px 2vh black;
   border: #000 solid 1px;
   border-radius: 10px;
-  width: 150px;
+  /*   width: 30%; */
+  max-height: 65px;
   transition: .5s, color .10s;
   -webkit-transition: .5s, color .10s;
   -moz-transition: .5s, color .10s;
 }
 
 #trocarImagem {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
   display: block;
   border-radius: 10px;
   border: #000 solid 1px;
@@ -704,14 +761,18 @@ h3 {
 }
 
 .buttonDownload {
-  display: inline-block;
+  justify-content: center;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  display: block;
   position: relative;
   padding: 10px 25px;
   background-color: #854c03;
   color: white;
   font-family: sans-serif;
   text-decoration: none;
-  font-size: 0.7em;
+  font-size: 80%;
   text-align: center;
   text-indent: 15px;
   border: none;

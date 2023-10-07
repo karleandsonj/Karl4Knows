@@ -23,9 +23,14 @@
             <h1>Karl4Knows</h1>
             <div id="openForm" class="form">
                 <a class="but_card">Cad. Erro</a> <a class="but_alert">⚠️</a>
+                <div id="senhaContainer" style="display: none;">
+                    <input type="password" id="senhaInput" placeholder="Digite a senha">
+                    <button id="verificarSenha">Verificar</button>
+                </div>
             </div>
+            
         </header>
-        <div id="custom-scroll">
+        <aside id="custom-scroll">
             <div class="scroll-content">
                 <ul>
                     <a class="icons" href="#" onclick="showSection('SGA'); setSelected(this);" title="SGA"><img
@@ -63,12 +68,11 @@
             </div>
             <div class="scroll-up">▲</div>
             <div class="scroll-down">▼</div>
-        </div>
+        </aside>
   
         <div id="alerta"></div>
         <div class="load" id="load"></div>
-        <div id="desfoque"></div>
-        <div class="hidden_main" id="hidden_main">
+        <div class="hidden_main" id="desfoque">
             <div id="envioForm" class="hidden">
                 <span class="close" id="closeModalForm"><img src="IMG/excluir.png" class="fechar"></span>
 
@@ -369,6 +373,5 @@
     <script src="script.js"></script>
     <script src="form.js"></script>
 </body>
-
 
 </html>

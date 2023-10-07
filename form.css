@@ -19,14 +19,22 @@
   /* Desfoque quando tiver no FORM */
   #desfoque{
     display: none;
+    position:absolute;
     z-index: 9;
-    position: absolute;
-    background-color: #0000004b;
-    width: 100vw;
-    height: 100vh;
-    bottom: 0;
+    margin: 0;
     top: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    overflow: auto;
   }
+
+/* .hidden_main{
+    overflow: auto;
+} */
+ 
 
   /* Fim Botão p/ abrir erro */
 
@@ -274,4 +282,13 @@
           margin: 20px auto;
       }
 
+  }
+
+  /* ------------------------------ */
+
+  #campoSenha{
+    position: absolute;
+    margin: 0 auto;
+    margin-top: 200px;
+    margin-left: 500px;
   }
