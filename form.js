@@ -1,7 +1,18 @@
+const meuFormulario = document.getElementById('meu-formulario');
+    const camposDeTexto = meuFormulario.querySelectorAll('input');
+    
+    // Adiciona event listeners para o evento "keydown" nos campos de texto
+    camposDeTexto.forEach(function (campo) {
+        campo.addEventListener('keydown', function (event) {
+            if (event.key === 'Enter') {
+                event.preventDefault(); // Impede o comportamento padrão (envio do formulário)
+            }
+        });
+    });
 
 
 //adicionado para inserir caracter § sempre que tiver uma quebra de linha nos textarea
-document.getElementById('submit').addEventListener('click', function() {
+document.getElementById('submit').addEventListener('click', function () {
     console.log('Botão "Enviar" clicado.');
     const textarea1 = document.getElementById('texto-1');
     const textarea2 = document.getElementById('texto-2');
@@ -18,6 +29,15 @@ document.getElementById('submit').addEventListener('click', function() {
     textarea1.value = formattedText1;
     textarea2.value = formattedText2;
     textarea3.value = formattedText3;
+/* 
+    function addAsteriskToText(textarea) {
+        textarea.value = '*' + textarea.value;
+    }
+
+    // Chama a função para cada área de texto
+    addAsteriskToText(textarea1);
+    addAsteriskToText(textarea2); */
+
 });
 
 /* FORM ABRIR CORRIGIR NO HIDDEN DO CSS O DISPLAY DEPOIS */
@@ -34,14 +54,16 @@ const senhaContainer = document.getElementById('senhaContainer');
 const senhaInput = document.getElementById('senhaInput');
 const verificarSenhaButton = document.getElementById('verificarSenha');
 const butcard = document.getElementById('but_card');
+const butalert = document.getElementById('but_alert');
 
 // Defina a senha válida
-const senhaValida = '123'; 
+const senhaValida = '123';
 
 // Função para abrir o campo de senha
 function abrirSenhaContainer() {
     senhaContainer.style.display = 'block';
     butcard.style.display = 'none';
+    butalert.style.display = 'none';
 
     // Adicione um ouvinte de evento ao documento para fechar o módulo de senha ao clicar fora dele
     document.addEventListener('click', fecharSenhaContainerAoClicarFora);
@@ -51,6 +73,7 @@ function abrirSenhaContainer() {
 function fecharSenhaContainer() {
     senhaContainer.style.display = 'none';
     butcard.style.display = '';
+    butalert.style.display = '';
 
     // Remova o ouvinte de evento do documento
     document.removeEventListener('click', fecharSenhaContainerAoClicarFora);
@@ -69,6 +92,7 @@ function verificarSenha() {
     } else {
         // Senha incorreta, exiba uma mensagem de erro
         alert('Senha incorreta. Por favor, tente novamente.');
+        location.reload(); // Isso recarregará a página
     }
 }
 
@@ -254,6 +278,5 @@ const removeloading = () => {
     });
 
 }
-
 
 /* FIM API para enviar Form para Planilha "FORM" */

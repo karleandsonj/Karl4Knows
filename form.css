@@ -17,6 +17,10 @@
       background-color: #00013b56;
   }
 
+#senhaContainer{
+    top: 50px;
+}
+
 #senhaInput{
     border: none; /* Remover sublinhado */
     padding: 5px;

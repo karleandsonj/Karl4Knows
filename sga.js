@@ -59,19 +59,34 @@ function loadsgaSheetData(url) {
                         // Criar uma array de links e descrições de anexo separados pelo caractere especial §
                         const separador = '§';
                         const linksArray = anexo.split(separador);
+                        const imagensArray = imagemLink.split(separador);
                         const descricaoAnexoArray = descricao_anexo.split(separador);
 
-
-                        // Criar uma string que contenha todos os links com as descrições correspondentes
+                        // Criar uma string que contenha todas as tags <a> com os links e descrições correspondentes
                         const linksString = linksArray.map((link, index) => `
-                            <a href="${link}" id="P_sga5" target="_blank" class="buttonDownload" style="${index ? '' : 'display: none;'}">${descricaoAnexoArray[index]}</a>
+                            <a href="${link}" id="P_sga${index + 1}" target="_blank" class="buttonDownload">${descricaoAnexoArray[index]}</a>
                         `).join('');
 
-                        // Construir o HTML para exibir os dados no modalContent
+                        // Criar uma string que contenha todas as tags <img> com as imagens correspondentes
+                        const imagensString = imagensArray.map((link, index) => `
+                        <div class="imagem-div">
+                            <img class="img_anexo imagem-div1" id="P_sga4${index + 1}" src="${link}" alt="" >
+                        </div>
+                        `).join('');
+
+                        
+
+                        // Verificar se tanto 'anexo' quanto 'imagensString' estão vazios
+                        const anexoVazio = anexo.trim() == '';
+                        const imagensStringVazio = imagensString.trim() == '';
+
+                        const ambosVazios = anexoVazio && imagensStringVazio;
+
+                        // Construir o HTML para exibir os dados no modalContent com base nas condições
                         const modalContent = document.getElementById('modalContent');
                         modalContent.innerHTML = `
-                            <div class="modal1">
-                                <h3>${sistema}</h3>
+                        <div class="modal1">
+                        <h3>${sistema}</h3>
                             </div>
                             <div id="column">
                                 <div class="modal2" id="modal2" class="scroll-modal">
@@ -84,48 +99,44 @@ function loadsgaSheetData(url) {
                                 </div>
                             </div>
                             <div id="column">
-
                                 <div class="modal4" style="${script ? '' : 'display: none;'}">
                                     <h3>Scripts: </h3><br>
-                                    <p id="P_sga2" class="scroll-modal">${script}</p>              
+                                    <p id="P_sga2" class="scroll-modal">${script}</p>
                                 </div>
-
-                                <div id="Modalanexo" class="modal5" style="${anexo ? '' : 'display: none;'}; ${imagens ? '' : 'display: none;'}" >
-                                    <h3>Anexos: </h3><br>
-                                    <div class="anexo-main" style="${linksString ? '' : 'display: none;'}">
+                                <div id="Modalanexo" class="modal5" style="${ambosVazios ? 'display: none;' : '' }">
+                                    <h3>
+                                        ${!anexoVazio && !imagensStringVazio ? 'Anexo e Imagem' : ''}
+                                        ${anexoVazio && !imagensStringVazio ? 'Imagem' : ''}
+                                        ${!anexoVazio && imagensStringVazio ? 'Anexo' : ''}
+                                    </h3><br>
+                                    <div class="anexo-main" style="${!anexoVazio ? '' : 'display: none;'}">
                                         ${linksString}
                                     </div>
                                     <hr>
-                                    <div class="imagem-div-main">
-                                        
-                                        ${imagens.map((imagem, index) => `
-                                            <div class="imagem-div" style="${index ? '' : 'display: none;'}">
-                                                <img class="img_anexo" class="imagem-div1" id="P_sga4" src="${imagem}" alt="">
-                                            </div>
-                                        `).join('')}                                        
+                                    <div class="imagem-div-main" style="${!imagensStringVazio ? 0 : 'display: none;'}">
+                                        ${imagensString}
                                     </div>
                                 </div>
-
                             </div>
                         `;
-
+                        
                         const imagemDivMain = document.querySelector('.imagem-div-main');
 
                         imagemDivMain.addEventListener('wheel', (e) => {
-                          // Impedir o comportamento padrão da roda do mouse
-                          e.preventDefault();
-                        
-                          // Definir a quantidade de pixels a serem rolados por clique
-                          const scrollAmount = 100;
-                        
-                          // Rolar a div horizontalmente com base na direção da roda do mouse
-                          if (e.deltaY > 0) {
-                            imagemDivMain.scrollLeft += scrollAmount;
-                          } else {
-                            imagemDivMain.scrollLeft -= scrollAmount;
-                          }
+                            // Impedir o comportamento padrão da roda do mouse
+                            e.preventDefault();
+
+                            // Definir a quantidade de pixels a serem rolados por clique
+                            const scrollAmount = 100;
+
+                            // Rolar a div horizontalmente com base na direção da roda do mouse
+                            if (e.deltaY > 0) {
+                                imagemDivMain.scrollLeft += scrollAmount;
+                            } else {
+                                imagemDivMain.scrollLeft -= scrollAmount;
+                            }
                         });
-                        
+
 
                         function transformarEmListaOrdenada(idDoElemento) {
                             // Obtém a referência ao elemento <p> com o ID especificado
