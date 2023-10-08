@@ -1,3 +1,5 @@
+
+
 //adicionado para inserir caracter § sempre que tiver uma quebra de linha nos textarea
 document.getElementById('submit').addEventListener('click', function() {
     console.log('Botão "Enviar" clicado.');
@@ -31,19 +33,33 @@ const closeModalButtonForm1 = document.getElementById('closeModalForm');
 const senhaContainer = document.getElementById('senhaContainer');
 const senhaInput = document.getElementById('senhaInput');
 const verificarSenhaButton = document.getElementById('verificarSenha');
+const butcard = document.getElementById('but_card');
 
 // Defina a senha válida
-const senhaValida = '123'; // Substitua 'suaSenha' pela senha desejada
+const senhaValida = '123'; 
 
-// Adicione um ouvinte de evento ao botão "Cad. Erro" para abrir o campo de senha
-openFormButton.addEventListener('click', function () {
+// Função para abrir o campo de senha
+function abrirSenhaContainer() {
     senhaContainer.style.display = 'block';
-});
+    butcard.style.display = 'none';
 
-// Adicione um ouvinte de evento ao botão "Verificar" para verificar a senha
-verificarSenhaButton.addEventListener('click', function () {
+    // Adicione um ouvinte de evento ao documento para fechar o módulo de senha ao clicar fora dele
+    document.addEventListener('click', fecharSenhaContainerAoClicarFora);
+}
+
+// Função para fechar o campo de senha
+function fecharSenhaContainer() {
+    senhaContainer.style.display = 'none';
+    butcard.style.display = '';
+
+    // Remova o ouvinte de evento do documento
+    document.removeEventListener('click', fecharSenhaContainerAoClicarFora);
+}
+
+// Função para verificar a senha
+function verificarSenha() {
     const senhaInserida = senhaInput.value;
-    
+
     if (senhaInserida === senhaValida) {
         // Senha correta, execute o código desejado
         envioForm.style.display = 'block';
@@ -54,7 +70,69 @@ verificarSenhaButton.addEventListener('click', function () {
         // Senha incorreta, exiba uma mensagem de erro
         alert('Senha incorreta. Por favor, tente novamente.');
     }
+}
+
+// Adicione um ouvinte de evento ao botão "Cad. Erro" para abrir o campo de senha
+openFormButton.addEventListener('click', function (e) {
+    e.stopPropagation(); // Impedir a propagação do evento para o documento
+    abrirSenhaContainer();
 });
+
+// Adicione um ouvinte de evento ao botão "Verificar" para verificar a senha
+verificarSenhaButton.addEventListener('click', function (e) {
+    e.stopPropagation(); // Impedir a propagação do evento para o documento
+    verificarSenha();
+});
+
+// Ouvinte de evento de teclado para o campo de senha
+senhaInput.addEventListener('keydown', function (e) {
+    // Verifique se a tecla pressionada é a tecla "Enter" (código de tecla 13)
+    if (e.key === 'Enter') {
+        verificarSenha();
+    }
+});
+
+// Função para fechar o campo de senha ao clicar fora dele
+function fecharSenhaContainerAoClicarFora(e) {
+    if (!senhaContainer.contains(e.target)) {
+        fecharSenhaContainer();
+    }
+}
+
+// Impedir a propagação de cliques dentro do módulo de senha para evitar o fechamento imediato
+senhaContainer.addEventListener('click', function (e) {
+    e.stopPropagation();
+});
+
+// Adicione um ouvinte de evento ao documento para fechar o campo de senha ao clicar fora dele
+document.addEventListener('click', function () {
+    fecharSenhaContainer();
+});
+
+
+// Adicione um ouvinte de evento ao botão "Verificar" para verificar a senha
+verificarSenhaButton.addEventListener('click', function (e) {
+    e.stopPropagation(); // Impedir a propagação do evento para o documento
+    verificarSenha();
+});
+
+// Função para fechar o módulo de senha ao clicar fora dele
+function fecharSenhaContainerAoClicarFora(e) {
+    if (!senhaContainer.contains(e.target)) {
+        fecharSenhaContainer();
+    }
+}
+
+// Impedir a propagação de cliques dentro do módulo de senha para evitar o fechamento imediato
+senhaContainer.addEventListener('click', function (e) {
+    e.stopPropagation();
+});
+
+// Adicione um ouvinte de evento ao documento para fechar o módulo de senha ao clicar fora dele
+document.addEventListener('click', function () {
+    fecharSenhaContainer();
+});
+
 
 /* verificarSenhaButton.addEventListener('click', () => {
     envioForm.style.display = 'block';
@@ -63,11 +141,11 @@ verificarSenhaButton.addEventListener('click', function () {
     desfoque.style.display = 'block';
 }); */
 
-closeModalButtonForm.addEventListener('click', () => {
+closeModalButtonForm1.addEventListener('click', () => {
     desfoque.style.display = 'none';
 });
 
-closeModalButtonForm.addEventListener('click', () => {
+closeModalButtonForm1.addEventListener('click', () => {
     infoModalForm.style.display = 'none';
 });
 
@@ -176,7 +254,6 @@ const removeloading = () => {
     });
 
 }
-
 
 
 /* FIM API para enviar Form para Planilha "FORM" */

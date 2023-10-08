@@ -7,13 +7,47 @@
       border: none;
       cursor: pointer;
       right: 0;
-      padding: 5px;
-      padding-bottom: 10px;
+      padding: 10px;
+      padding-bottom: 5px;
+      padding-top: 5px;
       border-radius: 20px 0 0 20px;
   }
 
   .form:hover {
       background-color: #00013b56;
+  }
+
+#senhaInput{
+    border: none; /* Remover sublinhado */
+    padding: 5px;
+    border-radius: 10px;
+}
+
+#senhaInput:focus {
+    border: none; /* Remover sublinhado */
+    background-color: #c5ffb0;
+}
+
+#verificarSenha{
+
+    margin-top: 2px;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 10px;
+}
+
+#verificarSenha:hover{
+    background-color: #9de782;
+    margin-top: 2px;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 10px;
+}
+
+  .but_alert{
+    position: absolute;
+    right: 0;
+
   }
 
   /* Desfoque quando tiver no FORM */

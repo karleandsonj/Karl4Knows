@@ -111,3 +111,18 @@ function setSelected(link) {
   link.classList.add('selected'); // Adiciona a classe 'selected' ao link clicado
 }
 
+const container = document.querySelector('.imagem-div-main');
+const scrollLeftButton = document.getElementById('scrollLeftButton');
+const scrollRightButton = document.getElementById('scrollRightButton');
+
+scrollLeftButton.addEventListener('click', () => {
+  // Define a quantidade de rolagem para a esquerda
+  const scrollAmount = 50; // Ajuste conforme necessário
+  container.scrollLeft -= scrollAmount;
+});
+
+scrollRightButton.addEventListener('click', () => {
+  // Define a quantidade de rolagem para a direita
+  const scrollAmount = 50; // Ajuste conforme necessário
+  container.scrollLeft += scrollAmount;
+});
