@@ -195,28 +195,30 @@ function loadsgaSheetData(url) {
 
                         imagemDivs.forEach((imagemDiv, index) => {
                             const imagem = imagemDiv.querySelector('img');
-
+                        
                             imagem.addEventListener('click', () => {
                                 // Exibir a imagem ampliada em um modal ou em um elemento específico da página
                                 const imagemAmpliada = document.createElement('div');
                                 imagemAmpliada.classList.add('imagem-ampliada');
                                 imagemAmpliada.innerHTML = `
-                                        <img src="${imagens[index]}" alt="">
-                                        <div class="img-amp-close">
-                                            <a href="#" id="fecharImagem">❎</a>
-                                        </div>
+                                    <img src="${imagens[index]}" alt="">
+                                    <div class="img-amp-close">
+                                        <a href="#" id="fecharImagem">❎</a>
+                                    </div>
                                 `;
                                 modalContainer.appendChild(imagemAmpliada);
-
+                        
                                 // Exibir o modal
                                 modalContainerborda.style.display = 'flex';
-
-                                // Adicionar um evento de clique ao link "Fechar"
+                        
+                                // Adicionar um evento de clique ao link "Fechar" apenas para a imagem ampliada atual
                                 const fecharImagemLink = imagemAmpliada.querySelector('#fecharImagem');
                                 fecharImagemLink.addEventListener('click', () => {
                                     // Ocultar o modal ao fechar a imagem
-
                                     modalContainerborda.style.display = 'none';
+                                    
+                                    // Remover a imagem ampliada do DOM após fechar
+                                    modalContainer.removeChild(imagemAmpliada);
                                 });
                             });
                         });

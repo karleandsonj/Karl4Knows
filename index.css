@@ -8,9 +8,9 @@ hr {
   /* Remove a borda padrão */
   background-color: #000000;
   /* Cor de fundo da linha */
-  height: 2px;
+  height: 1.2px;
   /* Altura da linha */
-  margin: 5px 0;
+  margin: 10px 0;
   /* Margens superior e inferior para espaçamento */
 }
 
@@ -25,6 +25,51 @@ textarea {
   max-height: 300px;
   overflow-y: auto;
   width: 100%;
+}
+
+.bemvindo{
+  position: relative;
+  top: 50px;
+}
+
+.home {
+  border-radius: 15px;
+  z-index: 1;
+  top: 60px;
+  position: relative;
+  margin: 0 auto;
+  background-color: blanchedalmond;
+  width: 75vw;
+  height: 70vh;
+  text-align: center;
+  align-self: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Distribuir os elementos filhos em duas colunas */
+}
+
+.homefacil {
+  padding: 10px;
+  height: 100px;
+  text-align: center;
+  color: #076fe5;
+  text-decoration: none;
+  margin: 50px auto;
+  border: #000544 solid 2px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+}
+
+.homefacil:hover{
+  background-color: rgb(207, 207, 207);
+  border: red solid 2px;
+}
+
+.iconehome {
+  display: flex;
+  position: relative;
+  width: 100px;
+  height: 80px;
 }
 
 /* MANTER SELECIONADO ICONES */
@@ -214,7 +259,7 @@ ul {
 
 main {
   display: block;
-  background-color: blueviolet;
+  background-color: rgb(223, 188, 255);
   width: auto;
   height: 100vh;
   position: relative;
@@ -352,21 +397,6 @@ main {
   width: 75vw;
   /*   height: 70vh; */
   max-height: 95vh;
-  text-align: center;
-  align-self: center;
-}
-
-#HOMEK {
-  border-radius: 15px;
-  z-index: 1;
-  top: 80px;
-  position: relative;
-  /*   left: 50%;
-  transform: translateX(-50%); */
-  margin: 0 auto;
-  background-color: blanchedalmond;
-  width: 75vw;
-  height: 70vh;
   text-align: center;
   align-self: center;
 }
@@ -791,32 +821,37 @@ ol {
 }
 
 .imagem-ampliada img {
-  position: absolute;
-  width: 70vw;
-  height: 60vh;
+  margin: 0 auto;
+  position:absolute;
+  width: 40%;
+  /* height: 60vh; */
+  box-shadow: #000 0 0 2px 2px;
 }
 
 #modalContainer {
   justify-content: center;
   align-items: center;
   margin: 100px auto;
-  background-color: #000000;
-  box-shadow: #000 0 0 5px 5px;
+/*   background-color: #000000; */
+/*   box-shadow: #000 0 0 5px 5px; */
   padding: 25px;
-  width: 70vw;
-  height: 60vh;
+  width: 40%;
+  /* width: 70vw;
+  height: 60vh; */
 }
 
 
 @media screen and (max-width: 480px) {
   .imagem-ampliada img {
-    width: 70vw;
-    height: 40vh;
+ /*    width: 70vw;
+    height: 40vh; */
+    width: 90%;
   }
 
   #modalContainer {
-    width: 70vw;
-    height: 40vh;
+/*     width: 70vw;
+    height: 40vh; */
+    width: 90%;
   }
 }
 
