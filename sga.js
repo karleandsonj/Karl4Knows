@@ -69,24 +69,16 @@ function loadsgaSheetData(url) {
 
                         // Criar uma string que contenha todas as tags <img> com as imagens correspondentes
                         const imagensString = imagensArray.map((link, index) => `
-                        <div class="imagem-div">
-                            <img class="img_anexo imagem-div1" id="P_sga4${index + 1}" src="${link}" alt="" >
+                        <div class="imagem-div" >
+                            <img class="img_anexo imagem-div1" id="P_sga4${index + 1}" src="${link}" alt="">
                         </div>
                         `).join('');
-
-                        
-
-                        // Verificar se tanto 'anexo' quanto 'imagensString' estão vazios
-                        const anexoVazio = anexo.trim() == '';
-                        const imagensStringVazio = imagensString.trim() == '';
-
-                        const ambosVazios = anexoVazio && imagensStringVazio;
 
                         // Construir o HTML para exibir os dados no modalContent com base nas condições
                         const modalContent = document.getElementById('modalContent');
                         modalContent.innerHTML = `
-                        <div class="modal1">
-                        <h3>${sistema}</h3>
+                            <div class="modal1">
+                                <h3>${sistema}</h3>
                             </div>
                             <div id="column">
                                 <div class="modal2" id="modal2" class="scroll-modal">
@@ -103,23 +95,25 @@ function loadsgaSheetData(url) {
                                     <h3>Scripts: </h3><br>
                                     <p id="P_sga2" class="scroll-modal">${script}</p>
                                 </div>
-                                <div id="Modalanexo" class="modal5" style="${ambosVazios ? 'display: none;' : '' }">
+                                <div id="Modalanexo" class="modal5" style="${anexo || imagemLink ? '' : 'display: none;'}">
                                     <h3>
-                                        ${!anexoVazio && !imagensStringVazio ? 'Anexo e Imagem' : ''}
-                                        ${anexoVazio && !imagensStringVazio ? 'Imagem' : ''}
-                                        ${!anexoVazio && imagensStringVazio ? 'Anexo' : ''}
-                                    </h3><br>
-                                    <div class="anexo-main" style="${!anexoVazio ? '' : 'display: none;'}">
+                                        ${anexo && imagemLink ? 'Anexo e Imagem' : ''}
+                                        ${!anexo && imagemLink ? 'Imagem' : ''}
+                                        ${anexo && !imagemLink ? 'Anexo' : ''}
+                                    </h3>
+                                    <br>
+                                    <div class="anexo-main" style="${anexo ? '' : 'display: none;'}">
                                         ${linksString}
                                     </div>
-                                    <hr>
-                                    <div class="imagem-div-main" style="${!imagensStringVazio ? 0 : 'display: none;'}">
+                                    <hr style="${anexo && imagemLink ? '' : 'display: none;'}">
+                                    <div class="imagem-div-main" style="${imagemLink ? '' : 'display: none;'}">
                                         ${imagensString}
                                     </div>
                                 </div>
                             </div>
                         `;
-                        
+
+
                         const imagemDivMain = document.querySelector('.imagem-div-main');
 
                         imagemDivMain.addEventListener('wheel', (e) => {
@@ -180,7 +174,7 @@ function loadsgaSheetData(url) {
                         const modalContainer = document.getElementById('modalContainer');
                         const modalContainerborda = document.getElementById('modalContainer-borda');
 
-                        let imagemAtual = 0;
+                        /* let imagemAtual = 0; */
 
                         /* trocarImagemLink.addEventListener('click', () => {
                             // Ocultar a imagem atual
@@ -195,7 +189,7 @@ function loadsgaSheetData(url) {
 
                         imagemDivs.forEach((imagemDiv, index) => {
                             const imagem = imagemDiv.querySelector('img');
-                        
+
                             imagem.addEventListener('click', () => {
                                 // Exibir a imagem ampliada em um modal ou em um elemento específico da página
                                 const imagemAmpliada = document.createElement('div');
@@ -207,16 +201,16 @@ function loadsgaSheetData(url) {
                                     </div>
                                 `;
                                 modalContainer.appendChild(imagemAmpliada);
-                        
+
                                 // Exibir o modal
                                 modalContainerborda.style.display = 'flex';
-                        
+
                                 // Adicionar um evento de clique ao link "Fechar" apenas para a imagem ampliada atual
                                 const fecharImagemLink = imagemAmpliada.querySelector('#fecharImagem');
                                 fecharImagemLink.addEventListener('click', () => {
                                     // Ocultar o modal ao fechar a imagem
                                     modalContainerborda.style.display = 'none';
-                                    
+
                                     // Remover a imagem ampliada do DOM após fechar
                                     modalContainer.removeChild(imagemAmpliada);
                                 });

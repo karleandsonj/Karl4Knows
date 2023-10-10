@@ -28,6 +28,8 @@ textarea {
 }
 
 .bemvindo{
+  margin-left: 20px;
+  margin-right: 20px;
   position: relative;
   top: 50px;
 }
@@ -40,24 +42,39 @@ textarea {
   margin: 0 auto;
   background-color: blanchedalmond;
   width: 75vw;
-  height: 70vh;
+  height: auto; /* Alterado para altura automática para acomodar o conteúdo */
   text-align: center;
-  align-self: center;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between; /* Distribuir os elementos filhos em duas colunas */
+  gap: 8px;
+  flex-flow: row wrap;
+  justify-content: center; /* Centraliza os elementos horizontalmente */
 }
 
+/* Define o tamanho base para os elementos filhos */
 .homefacil {
-  padding: 10px;
-  height: 100px;
+  position: relative;
+  padding: 5px;
   text-align: center;
+  align-content: center;
   color: #076fe5;
   text-decoration: none;
-  margin: 50px auto;
+  margin: 25px; /* Reduzi a margem para diminuir o espaçamento */
   border: #000544 solid 2px;
   background-color: rgb(255, 255, 255);
   border-radius: 10px;
+/*   height: 80px; */
+  flex: 0 1 calc(20% - 20px); /* Define a largura do elemento para ocupar 25% do espaço e considera o espaçamento de 8px */
+  max-width: calc(20% - 20px); /* Define a largura máxima para evitar que os elementos se espalhem demais */
+}
+
+/* Estilo para dispositivos menores (mídia query) */
+@media (max-width: 768px) {
+  .homefacil {
+    flex: 0 1 calc(20% - 20px); /* Em telas menores, divida os elementos em 2 colunas */
+    max-width: calc(50% - 20px);
+    margin: 5px; /* Reduzi a margem para diminuir o espaçamento */
+  }
 }
 
 .homefacil:hover{
@@ -66,10 +83,13 @@ textarea {
 }
 
 .iconehome {
+  margin: 0 auto;
+  text-align: center;
+  align-content: center;
   display: flex;
-  position: relative;
-  width: 100px;
-  height: 80px;
+  position: relative; 
+  width: 80px;
+  height: 60px;
 }
 
 /* MANTER SELECIONADO ICONES */
@@ -269,12 +289,6 @@ main {
   overflow: auto;
 }
 
-/* .rotinas {
-  z-index: 1;
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-} */
 /*  */
 /* Area de pesquisa */
 .container-input {
@@ -629,6 +643,8 @@ p {
 
 /* Anexo / script*/
 .modal4 {
+  text-align: center;
+  position: relative;
   background-color: rgb(62, 255, 94);
   border-radius: 10px;
   padding: 10px;
@@ -647,7 +663,7 @@ p {
   position: relative;
   background-color: rgb(200, 83, 255);
   border-radius: 10px;
-  padding: 5px;
+  padding: 10px;
   margin-top: 5px;
   margin: 2px;
   border: #000000 1px solid;
@@ -658,7 +674,7 @@ p {
 
 /* Define a largura como 100% quando .modal4 não estiver visível */
 .modal5:not(:has(.modal4)) {
-  width: 40%;
+  width: 50%;
   margin: 0 auto;
   max-height: 300px;
 }

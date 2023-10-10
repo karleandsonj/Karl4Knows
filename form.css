@@ -1,21 +1,20 @@
-  /* Botão p/ abrir erro */
-  .form {
-      position: absolute;
-      color: red;
-      font-size: 20px;
-      background-color: #00040563;
-      border: none;
-      cursor: pointer;
-      right: 0;
-      padding: 10px;
-      padding-bottom: 5px;
-      padding-top: 5px;
-      border-radius: 20px 0 0 20px;
-  }
-
-  .form:hover {
-      background-color: #00013b56;
-  }
+/* Botão p/ abrir erro */
+.form {
+    position: absolute;
+    color: red;
+    font-size: 20px;
+    background-color: #00040563;
+    border: none;
+    cursor: pointer;
+    right: 0;
+    padding: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    border-radius: 20px 0 0 20px;
+}
+.form:hover {
+    background-color: #00013b56;
+}
 
 #senhaContainer{
     top: 50px;
