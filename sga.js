@@ -41,6 +41,7 @@ function loadsgaSheetData(url) {
                     const editButton = document.createElement('img'); // Criar um botão "EDIT"
                     editButton.setAttribute('src', 'IMG/lapis.png');
                     editButton.classList.add('edit1'); // Adicionar uma classe ao botão
+                    editButton.style.display = 'none';
 
                     // Adicionar os botões à célula da tabela
                     viewButtonCell.appendChild(viewButton);
