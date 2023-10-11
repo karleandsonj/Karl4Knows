@@ -423,7 +423,7 @@ main {
 }
 
 .visu_erro {
-  display: inline-flex;
+  display: flex;
 }
 
 /* DIV SISTEMAS */
