@@ -1,0 +1,19 @@
+.editar_form {
+    margin-left: 38px;
+    position: absolute;
+    z-index: 10;
+    background-color: #a7fff8;
+    border: #3744ff 2px solid;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px;
+    width: 75%;
+    border-radius: 20px;
+    height: 100px;
+    text-align: center;
+}
+
+.edt{
+    margin: 20px;
+}

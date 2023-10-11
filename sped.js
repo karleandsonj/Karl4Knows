@@ -35,6 +35,7 @@ function loadspedSheetData(url) {
                     const viewButton = document.createElement('img'); // Criar um elemento de imagem
                     viewButton.setAttribute('src', 'IMG/lupa.png'); // Definir o atributo 'src' para o caminho da imagem
 
+
                     // Adicionar uma classe ao elemento de imagem
                     viewButton.classList.add('lupa1'); // Substitua 'sua-classe-aqui' pelo nome da classe desejada
 
@@ -44,65 +45,107 @@ function loadspedSheetData(url) {
                     // Adicionar um evento de clique ao botão para exibir os detalhes da linha
                     viewButton.addEventListener('click', () => {
                         // Obter os dados das colunas relevantes da linha
-                        const sistema = columns[0].textContent.trim(); // Supondo que a primeira coluna seja ID_sped
-                        const erros = columns[2].textContent.trim(); // Supondo que a segunda coluna seja ERROS
-                        const solucoes = columns[3].textContent.trim(); // Supondo que a quinta coluna seja SOLUCOES
+                        const sistema = columns[0].textContent.trim();
+                        const erros = columns[2].textContent.trim();
+                        const solucoes = columns[3].textContent.trim();
                         const script = columns[4].textContent.trim();
                         const descricao_anexo = columns[5].textContent.trim();
                         const anexo = columns[6].textContent.trim();
-                        const imagemLink = columns[7].textContent.trim(); // Supondo que a oitava coluna seja o link da imagem
+                        const imagemLink = columns[7].textContent.trim();
 
                         // Dividir a variável imagemLink em várias imagens usando o ponto e vírgula como separador
-                        const imagens = imagemLink.split(';');
+                        const imagens = imagemLink.split('§');
 
-                        // Construir o HTML para exibir os dados no modalContent
+                        // Criar uma array de links e descrições de anexo separados pelo caractere especial §
+                        const separador = '§';
+                        const linksArray = anexo.split(separador);
+                        const imagensArray = imagemLink.split(separador);
+                        const descricaoAnexoArray = descricao_anexo.split(separador);
+
+                        // Criar uma string que contenha todas as tags <a> com os links e descrições correspondentes
+                        const linksString = linksArray.map((link, index) => `
+                            <a href="${link}" id="P_sped${index + 1}" target="_blank" class="buttonDownload">${descricaoAnexoArray[index]}</a>
+                        `).join('');
+
+                        // Criar uma string que contenha todas as tags <img> com as imagens correspondentes
+                        const imagensString = imagensArray.map((link, index) => `
+                        <div class="imagem-div" >
+                            <img class="img_anexo imagem-div1" id="P_sped4${index + 1}" src="${link}" alt="">
+                        </div>
+                        `).join('');
+
+                        // Construir o HTML para exibir os dados no modalContent com base nas condições
                         const modalContent = document.getElementById('modalContent');
                         modalContent.innerHTML = `
                             <div class="modal1">
                                 <h3>${sistema}</h3>
                             </div>
                             <div id="column">
-                                <div class="modal2" id="modal2">
-                                    <h3>Erro Detalhado: </h3></br>
+                                <div class="modal2" id="modal2" class="scroll-modal">
+                                    <h3>Erro Detalhado: </h3><br>
                                     <p id="P_sped">${erros}</p>
                                 </div>
-                                <div class="modal3">
-                                    <h3>Soluções: </h3></br>
+                                <div class="modal3" class="scroll-modal">
+                                    <h3>Soluções: </h3><br>
                                     <p id="P_sped1">${solucoes}</p>
                                 </div>
                             </div>
                             <div id="column">
                                 <div class="modal4" style="${script ? '' : 'display: none;'}">
                                     <h3>Scripts: </h3><br>
-                                    <p id="P_sped2">${script}</p>              
+                                    <p id="P_sped2" class="scroll-modal">${script}</p>
                                 </div>
-                                <div class="modal5" style="${(anexo || imagens.length > 1) ? '' : 'display: none;'}">
-                                    <h3>Anexos: </h3><br>
-                                    ${anexo ? `<a href="${anexo}" id="P_sped3" target="_blank" class="buttonDownload">${descricao_anexo}</a>` : ''}
-                                    ${imagens.map((imagem, index) => `
-                                        <div class="imagem-div" style="${index === 0 ? '' : 'display: none;'}">
-                                            <img class="img_anexo" class="imagem-div1" id="P_sped4" src="${imagem}" alt="">
-                                        </div>
-                                    `).join('')}
-                                    <a href="#" id="trocarImagem">Proxima Imagem</a>
+                                <div id="Modalanexo" class="modal5" style="${anexo || imagemLink ? '' : 'display: none;'}">
+                                    <h3>
+                                        ${anexo && imagemLink ? 'Anexo e Imagem' : ''}
+                                        ${!anexo && imagemLink ? 'Imagem' : ''}
+                                        ${anexo && !imagemLink ? 'Anexo' : ''}
+                                    </h3>
+                                    <br>
+                                    <div class="anexo-main" style="${anexo ? '' : 'display: none;'}">
+                                        ${linksString}
+                                    </div>
+                                    <hr style="${anexo && imagemLink ? '' : 'display: none;'}">
+                                    <div class="imagem-div-main" style="${imagemLink ? '' : 'display: none;'}">
+                                        ${imagensString}
+                                    </div>
                                 </div>
                             </div>
                         `;
 
+
+                        const imagemDivMain = document.querySelector('.imagem-div-main');
+
+                        imagemDivMain.addEventListener('wheel', (e) => {
+                            // Impedir o comportamento padrão da roda do mouse
+                            e.preventDefault();
+
+                            // Definir a quantidade de pixels a serem rolados por clique
+                            const scrollAmount = 100;
+
+                            // Rolar a div horizontalmente com base na direção da roda do mouse
+                            if (e.deltaY > 0) {
+                                imagemDivMain.scrollLeft += scrollAmount;
+                            } else {
+                                imagemDivMain.scrollLeft -= scrollAmount;
+                            }
+                        });
+
+
                         function transformarEmListaOrdenada(idDoElemento) {
                             // Obtém a referência ao elemento <p> com o ID especificado
                             var elementoParagrafo = document.getElementById(idDoElemento);
-                        
+
                             if (elementoParagrafo) {
                                 // Obtém o texto do elemento <p>
                                 var conteudo = elementoParagrafo.textContent;
-                        
+
                                 // Divida o conteúdo em linhas (supondo que cada item da lista esteja em uma nova linha)
                                 var linhas = conteudo.split('§');
-                                
+
                                 // Cria um elemento <ol> (lista ordenada) para a lista numerada
                                 var listaOrdenada = document.createElement('ol');
-                        
+
                                 // Para cada linha, crie um elemento <li> (item da lista) e adicione-o à lista ordenada
                                 for (var i = 0; i < linhas.length; i++) {
                                     var linha = linhas[i].trim(); // Remove espaços em branco em excesso
@@ -112,26 +155,28 @@ function loadspedSheetData(url) {
                                         listaOrdenada.appendChild(itemLista);
                                     }
                                 }
-                        
+
                                 // Substitui o elemento <p> pelo elemento <ol> criado
                                 elementoParagrafo.parentNode.replaceChild(listaOrdenada, elementoParagrafo);
                             } else {
                                 console.log('Elemento não encontrado com ID: ' + idDoElemento);
                             }
                         }
-                        
+
                         // Chame a função com o ID do elemento desejado
                         transformarEmListaOrdenada('P_sped'); // Substituir 'P_sped1' pelo ID desejado
                         transformarEmListaOrdenada('P_sped1'); // Substituir 'P_sped2' pelo ID desejado                        
 
 
                         // Adicionar um evento de clique ao link "Clique para trocar a imagem"
-                        const trocarImagemLink = document.getElementById('trocarImagem');
+                        /* const trocarImagemLink = document.getElementById('trocarImagem'); */
                         const imagemDivs = document.querySelectorAll('.imagem-div');
                         const modalContainer = document.getElementById('modalContainer');
-                        let imagemAtual = 0;
+                        const modalContainerborda = document.getElementById('modalContainer-borda');
 
-                        trocarImagemLink.addEventListener('click', () => {
+                        /* let imagemAtual = 0; */
+
+                        /* trocarImagemLink.addEventListener('click', () => {
                             // Ocultar a imagem atual
                             imagemDivs[imagemAtual].style.display = 'none';
 
@@ -140,7 +185,7 @@ function loadspedSheetData(url) {
 
                             // Exibir a nova imagem
                             imagemDivs[imagemAtual].style.display = 'block';
-                        });
+                        }); */
 
                         imagemDivs.forEach((imagemDiv, index) => {
                             const imagem = imagemDiv.querySelector('img');
@@ -150,7 +195,7 @@ function loadspedSheetData(url) {
                                 const imagemAmpliada = document.createElement('div');
                                 imagemAmpliada.classList.add('imagem-ampliada');
                                 imagemAmpliada.innerHTML = `
-                                        <img src="${imagens[index]}" alt="">
+                                    <img src="${imagens[index]}" alt="">
                                     <div class="img-amp-close">
                                         <a href="#" id="fecharImagem">❎</a>
                                     </div>
@@ -158,13 +203,15 @@ function loadspedSheetData(url) {
                                 modalContainer.appendChild(imagemAmpliada);
 
                                 // Exibir o modal
-                                modalContainer.style.display = 'block';
+                                modalContainerborda.style.display = 'flex';
 
-                                // Adicionar um evento de clique ao link "Fechar"
+                                // Adicionar um evento de clique ao link "Fechar" apenas para a imagem ampliada atual
                                 const fecharImagemLink = imagemAmpliada.querySelector('#fecharImagem');
                                 fecharImagemLink.addEventListener('click', () => {
                                     // Ocultar o modal ao fechar a imagem
-                                    modalContainer.style.display = 'none';
+                                    modalContainerborda.style.display = 'none';
+
+                                    // Remover a imagem ampliada do DOM após fechar
                                     modalContainer.removeChild(imagemAmpliada);
                                 });
                             });
@@ -205,6 +252,7 @@ function loadspedSheetData(url) {
                         formatarTextoComQuebrasDeLinha2('P_sped2');
                         formatarTextoComQuebrasDeLinha2('P_sped3');
                         formatarTextoComQuebrasDeLinha2('P_sped4');
+                        formatarTextoComQuebrasDeLinha2('P_sped5');
                     });
 
                     viewButtonCell.appendChild(viewButton); // Adicionar o botão à célula

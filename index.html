@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>🔍Karl-4-Knows🔍</title>
+    <title>🔍Karl4Knows🔍</title>
     <link rel="icon" href="IMG/LOGO.png" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="index.css">
     <link rel="stylesheet" type="text/css" href="form.css">
+    <link rel="stylesheet" type="text/css" href="editform.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 </head>
 
@@ -20,7 +21,7 @@
     </a>
 
     <header>
-        <h1>Karl4Knows</h1>
+        <h1 class="titulo">Karl4Knows</h1>
         <div id="openForm" class="form">
             <a class="but_card" id="but_card">Cad. Erro </a> <a id="but_alert"> ⚠️</a>
             <div id="senhaContainer" style="display: none;">
@@ -164,6 +165,10 @@
             </form>
         </div>
     </div>
+    <div id="editform" class="editar_form" style="display: none;">
+        <span class="close" id="closeModalEDForm"><img src="IMG/excluir.png" class="fechar"></span>
+        <h1 class="edt">AQUI VOU FAZER UM EDITOR DE FORM</h1>
+    </div>
     <main>
         <div class="section_main">
 
@@ -194,7 +199,7 @@
                                 <thead>
                                     <tr>
                                         <th>Resumo do Erro</th>
-                                        <th>Visualizar</th>
+                                        <th>Visualizar</th>                                       
                                     </tr>
                                 </thead>
                                 <tbody id="tabela_sga">
@@ -232,12 +237,6 @@
                         </div>
                     </div>
                 </div>
-                <div id="infoModalsgaboxnew" class="modal">
-                    <div class="modal-content">
-                        <span class="close" id="closeModalsgaboxnew"><img src="IMG/excluir.png" class="fechar"></span>
-                        <div id="modalContentsgaboxnew"></div>
-                    </div>
-                </div>
             </section>
 
             <section id="SOBOX" class="rotinas" style="display: none;">
@@ -265,12 +264,6 @@
                         </div>
                     </div>
                 </div>
-                <div id="infoModalsobox" class="modal">
-                    <div class="modal-content">
-                        <span class="close" id="closeModalsobox"><img src="IMG/excluir.png" class="fechar"></span>
-                        <div id="modalContentsobox"></div>
-                    </div>
-                </div>
             </section>
 
             <section id="SGABOX2010" class="rotinas" style="display: none;">
@@ -281,7 +274,22 @@
                     </a>
                 </div>
                 <div class="sistemas" id="SGABOX2010K">
-                    <h2> SGABOX2010 </h2>
+                    <h2> SGABOX 2010 </h2>
+                    <div class="containerD1">
+                        <div class="containerD">
+                            <table id="data-table-sgabox2010" class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Resumo do Erro</th>
+                                        <th>Visualizar</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabela_sgabox2010">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -294,6 +302,21 @@
                 </div>
                 <div class="sistemas" id="SGALITEK">
                     <h2> SGALITE </h2>
+                    <div class="containerD1">
+                        <div class="containerD">
+                            <table id="data-table-sgalite" class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Resumo do Erro</th>
+                                        <th>Visualizar</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabela_sgalite">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -306,6 +329,21 @@
                 </div>
                 <div class="sistemas" id="GOURMETK">
                     <h2> GOURMET </h2>
+                    <div class="containerD1">
+                        <div class="containerD">
+                            <table id="data-table-gourmet" class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Resumo do Erro</th>
+                                        <th>Visualizar</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabela_gourmet">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -317,7 +355,22 @@
                     </a>
                 </div>
                 <div class="sistemas" id="SGAOSK">
-                    <h2> SGAOS </h2>
+                    <h2> SGA-OS </h2>
+                    <div class="containerD1">
+                        <div class="containerD">
+                            <table id="data-table-sgaos" class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Resumo do Erro</th>
+                                        <th>Visualizar</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabela_sgaos">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -329,7 +382,22 @@
                     </a>
                 </div>
                 <div class="sistemas" id="SGAOTICAK">
-                    <h2> SGAOTICA </h2>
+                    <h2> SGA OTICA </h2>
+                    <div class="containerD1">
+                        <div class="containerD">
+                            <table id="data-table-sgaotica" class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Resumo do Erro</th>
+                                        <th>Visualizar</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabela_sgaotica">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </section>
 

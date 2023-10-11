@@ -55,6 +55,8 @@ textarea {
 .homefacil {
   position: relative;
   padding: 5px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   text-align: center;
   align-content: center;
   color: #076fe5;
@@ -63,7 +65,6 @@ textarea {
   border: #000544 solid 2px;
   background-color: rgb(255, 255, 255);
   border-radius: 10px;
-/*   height: 80px; */
   flex: 0 1 calc(20% - 20px); /* Define a largura do elemento para ocupar 25% do espaço e considera o espaçamento de 8px */
   max-width: calc(20% - 20px); /* Define a largura máxima para evitar que os elementos se espalhem demais */
 }
@@ -75,6 +76,28 @@ textarea {
     max-width: calc(50% - 20px);
     margin: 5px; /* Reduzi a margem para diminuir o espaçamento */
   }
+
+}
+
+@media (max-width: 468px) {
+
+  .home{
+    top: 20px;
+  }
+
+  .bemvindo{
+    top: 15px;
+  }
+}
+
+@media (max-width: 330px) {
+
+  .titulo {
+    left: 50%;
+    margin-inline-start: 110px;
+    font-size: 8vw;
+  }
+
 }
 
 .homefacil:hover{
@@ -374,12 +397,33 @@ main {
   border-radius: 10px;
   padding: 2px 10px;
   cursor: pointer;
-  width: 25px;
+  width: 20px;
+  order: 1;
 }
 
 .lupa1:hover {
   background-color: rgba(132, 234, 241, 0.938);
   border: #0d4941 solid 2px;
+}
+
+.edit1 {
+  border-radius: 10px;
+  background-color: whitesmoke;
+  border: #199c8b solid 2px;
+  padding: 2px 10px; /* Espaçamento interno do botão */
+  cursor: pointer; /* Cursor ao passar o mouse */
+  margin-right: 2px; /* Espaçamento à esquerda para separar o botão "VIEW" */
+  width: 20px;
+  order: 2;
+}
+
+.edit1:hover {
+  background-color: rgba(132, 234, 241, 0.938);
+  border: #0d4941 solid 2px;
+}
+
+.visu_erro {
+  display: inline-flex;
 }
 
 /* DIV SISTEMAS */
@@ -516,7 +560,7 @@ main {
     font-size: 12px;
   }
 
-  .lupa1 {
+  .lupa1, .edit1 {
     width: 16px;
   }
 
@@ -675,7 +719,6 @@ p {
 /* Define a largura como 100% quando .modal4 não estiver visível */
 .modal5:not(:has(.modal4)) {
   width: 50%;
-  margin: 0 auto;
   max-height: 300px;
 }
 
@@ -839,19 +882,20 @@ ol {
 .imagem-ampliada img {
   margin: 0 auto;
   position:absolute;
-  width: 40%;
+  width: 55%;
   /* height: 60vh; */
   box-shadow: #000 0 0 2px 2px;
+  margin: 0 auto;
 }
 
 #modalContainer {
   justify-content: center;
   align-items: center;
-  margin: 100px auto;
+  margin: 25px auto;
 /*   background-color: #000000; */
 /*   box-shadow: #000 0 0 5px 5px; */
   padding: 25px;
-  width: 40%;
+  width: 55%;
   /* width: 70vw;
   height: 60vh; */
 }
@@ -861,13 +905,29 @@ ol {
   .imagem-ampliada img {
  /*    width: 70vw;
     height: 40vh; */
-    width: 90%;
+    width: 100%;
+    margin: 0 auto;
   }
 
   #modalContainer {
 /*     width: 70vw;
     height: 40vh; */
-    width: 90%;
+    width: 100%;
+    margin: 100px auto;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .imagem-ampliada img {
+ /*    width: 70vw;
+    height: 40vh; */
+    width: 80%;
+  }
+
+  #modalContainer {
+/*     width: 70vw;
+    height: 40vh; */
+    width: 80%;
   }
 }
 
@@ -1153,3 +1213,4 @@ h3 {
   right: 50%;
   transform: translate(-50%, -50%);
 }
+

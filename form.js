@@ -67,7 +67,14 @@ function abrirSenhaContainer() {
 
     // Adicione um ouvinte de evento ao documento para fechar o módulo de senha ao clicar fora dele
     document.addEventListener('click', fecharSenhaContainerAoClicarFora);
+
+    // Foque no campo de senha (assumindo que você tenha um campo de senha)
+    const campoSenha = document.getElementById('senhaInput'); // Substitua 'campoSenha' pelo ID do seu campo de senha
+    if (campoSenha) {
+        campoSenha.focus();
+    }
 }
+
 
 // Função para fechar o campo de senha
 function fecharSenhaContainer() {
@@ -225,7 +232,10 @@ const handleSubmit = (event) => {
     const solucao = document.querySelector('textarea[name=solucao]').value;
     const script = document.querySelector('textarea[name=script]').value;
     const descricao_anexo = document.querySelector('input[name=descricao_anexo]').value;
-    const anexo = document.querySelector('input[name=anexo]').value;
+    const anexo = document.querySelector('input[name=descricao_anexo]').value;
+    const imagem = document.querySelector('input[name=descricao_anexo]').value;
+    // Crie um ID único
+    const uniqueID = generateUniqueID();
 
     fetch('https://api.sheetmonkey.io/form/2qyovDumZThgeSJs7A4ZHD', {
         method: 'post',
@@ -233,11 +243,28 @@ const handleSubmit = (event) => {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ sistema, erro_resumido, erro, solucao, script, descricao_anexo, anexo }),
+        body: JSON.stringify({sistema, erro_resumido, erro, solucao, script, descricao_anexo, anexo, imagem, uniqueID}),
     }).then(() => {
         removeloading();
     });
 }
+
+// Função para gerar um ID único com base na data e hora atual
+function generateUniqueID() {
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Adicione 1 ao mês, pois os meses são baseados em zero
+    const day = String(currentDate.getDate()).padStart(2, '0');
+    const hours = String(currentDate.getHours()).padStart(2, '0');
+    const minutes = String(currentDate.getMinutes()).padStart(2, '0');
+    const seconds = String(currentDate.getSeconds()).padStart(2, '0');
+
+    // Combine as informações da data e hora para criar o ID
+    const uniqueID = `${day}${month}${year}${hours}${minutes}${seconds}`;
+
+    return uniqueID;
+}
+
 document.querySelector('form').addEventListener('submit', handleSubmit);/* location.reload(true); */
 
 const addloading = () => {

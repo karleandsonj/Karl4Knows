@@ -8,7 +8,7 @@
     cursor: pointer;
     right: 0;
     padding: 10px;
-    padding-bottom: 5px;
+    padding-bottom: 8px;
     padding-top: 5px;
     border-radius: 20px 0 0 20px;
 }
@@ -47,10 +47,10 @@
     border-radius: 10px;
 }
 
-  .but_alert{
-    position: absolute;
+  #but_alert{
+    padding: 0px;
+    position: relative;
     right: 0;
-
   }
 
   /* Desfoque quando tiver no FORM */

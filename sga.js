@@ -32,15 +32,37 @@ function loadsgaSheetData(url) {
                     errorsressumosgaCell.classList.add('erro1'); // Substitua 'sua-classe-aqui' pelo nome da classe desejada
 
                     const viewButtonCell = document.createElement('td'); // Criar uma nova célula para o botão
-                    const viewButton = document.createElement('img'); // Criar um elemento de imagem
-                    viewButton.setAttribute('src', 'IMG/lupa.png'); // Definir o atributo 'src' para o caminho da imagem
+                    const viewButton = document.createElement('img');
+                    viewButton.setAttribute('src', 'IMG/lupa.png');
+                    viewButton.classList.add('lupa1');
 
+                    viewButtonCell.classList.add('visu_erro');
 
-                    // Adicionar uma classe ao elemento de imagem
-                    viewButton.classList.add('lupa1'); // Substitua 'sua-classe-aqui' pelo nome da classe desejada
+                    const editButton = document.createElement('img'); // Criar um botão "EDIT"
+                    editButton.setAttribute('src', 'IMG/lapis.png');
+                    editButton.classList.add('edit1'); // Adicionar uma classe ao botão
 
-                    // Adicionar o elemento de imagem à célula da tabela
+                    // Adicionar os botões à célula da tabela
                     viewButtonCell.appendChild(viewButton);
+
+                    // Adicione o botão "EDIT" à célula
+                    viewButtonCell.appendChild(editButton);
+
+                    const closeModalButtonFormED = document.getElementById('closeModalEDForm');
+                    const editform = document.getElementById('editform');
+
+                    closeModalButtonFormED.addEventListener('click', function () {
+                        editform.style.display = 'none';
+                    });
+
+                    editButton.addEventListener('click', function () {
+                        editform.style.display = 'block';
+                    });
+
+
+
+
+
 
                     // Adicionar um evento de clique ao botão para exibir os detalhes da linha
                     viewButton.addEventListener('click', () => {
@@ -179,10 +201,10 @@ function loadsgaSheetData(url) {
                         /* trocarImagemLink.addEventListener('click', () => {
                             // Ocultar a imagem atual
                             imagemDivs[imagemAtual].style.display = 'none';
-
+                
                             // Avançar para a próxima imagem
                             imagemAtual = (imagemAtual + 1) % imagens.length;
-
+                
                             // Exibir a nova imagem
                             imagemDivs[imagemAtual].style.display = 'block';
                         }); */
