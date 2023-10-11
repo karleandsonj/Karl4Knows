@@ -719,6 +719,7 @@ p {
 /* Define a largura como 100% quando .modal4 não estiver visível */
 .modal5:not(:has(.modal4)) {
   width: 50%;
+  margin: 0 auto;
   max-height: 300px;
 }
 
