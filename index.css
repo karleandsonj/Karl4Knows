@@ -407,6 +407,7 @@ main {
 }
 
 .edit1 {
+  display: inline-block;
   border-radius: 10px;
   background-color: whitesmoke;
   border: #199c8b solid 2px;
@@ -415,15 +416,12 @@ main {
   margin-right: 2px; /* Espaçamento à esquerda para separar o botão "VIEW" */
   width: 20px;
   order: 2;
+  display: none;
 }
 
 .edit1:hover {
   background-color: rgba(132, 234, 241, 0.938);
   border: #0d4941 solid 2px;
-}
-
-.visu_erro {
-  display: flex;
 }
 
 /* DIV SISTEMAS */
@@ -528,7 +526,7 @@ main {
 
 /* Estilo para as células dos dados */
 .data-table td {
-  padding: 8px;
+  padding: 5px;
   border: 1px solid #000000;
   border-bottom: 0px solid #000000;
   text-align: center;
@@ -878,6 +876,7 @@ ol {
   height: 100vh;
   position: fixed;
   background-color: #ff00004b;
+  overflow-x: auto;
 }
 
 .imagem-ampliada img {
