@@ -232,8 +232,8 @@ const handleSubmit = (event) => {
     const solucao = document.querySelector('textarea[name=solucao]').value;
     const script = document.querySelector('textarea[name=script]').value;
     const descricao_anexo = document.querySelector('input[name=descricao_anexo]').value;
-    const anexo = document.querySelector('input[name=descricao_anexo]').value;
-    const imagem = document.querySelector('input[name=descricao_anexo]').value;
+    const anexo = document.querySelector('input[name=arq_anexo]').value;
+    const imagem = document.querySelector('input[name=img_anexo]').value;
     // Crie um ID único
     const uniqueID = generateUniqueID();
 

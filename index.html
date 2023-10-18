@@ -144,13 +144,17 @@
 
                     <label class="label2_2">
                         <span>Anexo</span>
-                        <input type="text" name="anexo" class="campo_anexo" placeholder="Coloque o Link do Mega"
-                            autocomplete="off" />
+                        <input type="file" name="arq_anexo" class="campo_anexo" accept=".pdf, .doc, .docx, .xls, .xlsx, .zip" title="Clique para Carregar Arquivos" />
                     </label>
 
+                    <label class="label2_2">
+                        <span>Imagens</span>
+                        <input type="file" name="img_anexo" class="campo_anexo" accept="image/*" multiple title="Clique para Carregar Imagens" />
+                    </label>
+                                  
                     <label class="label3">
                         <span>Script</span>
-                        <textarea type="" name="script" class="campo" id="texto-3"
+                        <textarea type="text" name="script" class="campo" id="texto-3"
                             placeholder="Deixe seu Script"></textarea>
                     </label>
 

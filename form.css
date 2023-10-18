@@ -274,6 +274,10 @@
       color: #00013b;
   }
 
+  #file{
+    background-color: #00013b;
+  }
+
   .formulario #texto {
       height: 250px;
       line-height: 100%;
