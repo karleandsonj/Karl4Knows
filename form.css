@@ -12,26 +12,37 @@
     padding-top: 5px;
     border-radius: 20px 0 0 20px;
 }
+
+textarea {
+    resize: vertical;
+    min-height: 200px;
+    max-height: 300px;
+    overflow-y: auto;
+    width: 100%;
+}
+
 .form:hover {
     background-color: #00013b56;
 }
 
-#senhaContainer{
+#senhaContainer {
     top: 50px;
 }
 
-#senhaInput{
-    border: none; /* Remover sublinhado */
+#senhaInput {
+    border: none;
+    /* Remover sublinhado */
     padding: 5px;
     border-radius: 10px;
 }
 
 #senhaInput:focus {
-    border: none; /* Remover sublinhado */
+    border: none;
+    /* Remover sublinhado */
     background-color: #c5ffb0;
 }
 
-#verificarSenha{
+#verificarSenha {
 
     margin-top: 2px;
     cursor: pointer;
@@ -39,7 +50,7 @@
     border-radius: 10px;
 }
 
-#verificarSenha:hover{
+#verificarSenha:hover {
     background-color: #9de782;
     margin-top: 2px;
     cursor: pointer;
@@ -47,16 +58,16 @@
     border-radius: 10px;
 }
 
-  #but_alert{
+#but_alert {
     padding: 0px;
     position: relative;
     right: 0;
-  }
+}
 
-  /* Desfoque quando tiver no FORM */
-  #desfoque{
+/* Desfoque quando tiver no FORM */
+#desfoque {
     display: none;
-    position:absolute;
+    position: absolute;
     z-index: 9;
     margin: 0;
     top: 0;
@@ -66,85 +77,85 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
     overflow: auto;
-  }
+}
 
 /* .hidden_main{
     overflow: auto;
 } */
- 
 
-  /* Fim Botão p/ abrir erro */
 
-  /* Inicio Fomulario */
-  .hidden {
-      margin-left: 38px;
-      position: absolute;
-      z-index: 10;
-      display: none;
-      background-color: #a7fff8;
-      border: #3744ff 2px solid;
-      top: 15%;
-      left: 50%;
-      transform: translateX(-50%);
-      padding: 10px;
-      width: 75%;
-      border-radius: 20px;
-  }
+/* Fim Botão p/ abrir erro */
 
-  .active {
-      color: red;
-      /* Manter ativo botão */
-  }
+/* Inicio Fomulario */
+.hidden {
+    margin-left: 38px;
+    position: absolute;
+    z-index: 10;
+    display: none;
+    background-color: #a7fff8;
+    border: #3744ff 2px solid;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px;
+    width: 75%;
+    border-radius: 20px;
+}
 
-  .formulario1 {
-      top: -30px;
-      position: relative;
-      margin-left: 2.5;
-      display: block;
-      text-align: center;
-  }
+.active {
+    color: red;
+    /* Manter ativo botão */
+}
 
-  .formulario2 {
-      top: -30px;
-      position: relative;
-      margin-left: 2.5;
-      display: none;
-      text-align: center;
-  }
+.formulario1 {
+    top: -30px;
+    position: relative;
+    margin-left: 2.5;
+    display: block;
+    text-align: center;
+}
 
-  .titulo_form_1,
-  .titulo_form_2 {
-      cursor: pointer;
-      text-align: center;
-      background-color: #a7fff8;
-      border: #3744ff 2px solid;
-      width: 20%;
-      border-radius: 20px;
-      padding: 5px;
-      padding-top: 10px;
-      padding-bottom: 10px;
-      top: -40px;
-      margin: 0 5px;
-      display: inline-block;
-  }
+.formulario2 {
+    top: -30px;
+    position: relative;
+    margin-left: 2.5;
+    display: none;
+    text-align: center;
+}
 
-  .titulo_form_1:hover,
-  .titulo_form_2:hover{
+.titulo_form_1,
+.titulo_form_2 {
+    cursor: pointer;
+    text-align: center;
+    background-color: #a7fff8;
+    border: #3744ff 2px solid;
+    width: 20%;
+    border-radius: 20px;
+    padding: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    top: -40px;
+    margin: 0 5px;
+    display: inline-block;
+}
+
+.titulo_form_1:hover,
+.titulo_form_2:hover {
     background-color: #a7ffcf;
-  }
+}
 
-  .titulo_form_div {
-      text-align: center;
-      width: 100%;
-      position: relative;
-      top: -40px;
-  }
+.titulo_form_div {
+    text-align: center;
+    width: 100%;
+    position: relative;
+    top: -40px;
+}
 
-  .titulo_form {
-      font-size: 100%;
-  }
+.titulo_form {
+    font-size: 100%;
+}
 
-  /*   .formulario .title {
+/*   .formulario .title {
       width: 100%;
       margin-bottom: 1em;
       font-size: 1.5em;
@@ -155,181 +166,286 @@
       color: #8db57f;
   } */
 
-  /*   .botao_form {
+/*   .botao_form {
       text-align: center;
   } */
 
-  .label1_1 {
-      width: 45%;
-      margin-bottom: 10px;
-/*       margin-left: 3%; */
-      display: inline-block;
-      text-align: center;
+.label1_1 {
+    width: 45%;
+    margin-bottom: 10px;
+    /*       margin-left: 3%; */
+    display: inline-block;
+    text-align: center;
+}
+
+.label1_2 {
+    width: 45%;
+    margin-bottom: 10px;
+    margin-left: 2.5%;
+    display: inline-block;
+    text-align: center;
+}
+
+.label1_1,
+.label1_2 span {
+    color: #393838;
+    margin-bottom: 3px;
+}
+
+.label_1 {
+    width: 45%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    /*       margin-left: 2.5%; */
+    display: inline-block;
+    text-align: center;
+}
+
+.label_2 {
+    width: 45%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-left: 3.5%;
+    display: inline-block;
+    text-align: center;
+}
+
+.label3 {
+    width: 93%;
+    display: inline-block;
+    text-align: center;
+}
+
+@media screen and (max-width: 480px) {
+
+    .hidden {
+        top: 5%;
+    }
+
+    .label1_1 {
+        width: 95%;
+        margin-bottom: 10px;
+    }
+
+    .label1_2 {
+        width: 95%;
+        margin-left: 0;
+    }
+
+    .label_1 {
+        width: 95%;
+        margin-top: 0;
+    }
+
+    .label_2 {
+        width: 95%;
+        margin-bottom: 0;
+        margin-top: 0;
+        margin-left: 0;
+    }
+
+    textarea {
+        min-height: 150px;
+        max-height: 180px;
+    }
+}
+
+
+.label2_2 {
+    width: 46%;
+    display: inline-block;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.label2_3 {
+    width: 46%;
+    display: inline-block;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+
+.lixo{
+    width: 25px;
+}
+
+.excluirimg {
+    border-radius: 10px;
+    z-index: 5;
+    position: absolute;
+    display: flex;
+    top: 8.6%;
+    right: 51%;
+    background-color: #ffffff;
+    border: 2px solid rgb(0, 0, 0);
+    cursor: url('IMG/cursor-X-small.png') 8 8, auto;
+    /* 16 16 é o ponto de destino no centro da imagem */
+}
+
+.excluiranx {
+    border-radius: 10px;
+    z-index: 5;
+    position: absolute;
+    display: flex;
+    top: 8.6%;
+    right: 4.3%;
+    background-color: #ffffff;
+    border: 2px solid rgb(0, 0, 0);
+    cursor: url('IMG/cursor-X-small.png') 8 8, auto;
+    /* 16 16 é o ponto de destino no centro da imagem */
+}
+
+/* Remova a largura fixa da tag <span> dentro de .label2 */
+.label2_1,
+.label2_2 span {
+    color: #393838;
+    margin-bottom: 3px;
+}
+
+/*   progress{
+    top: 35px;
+    position: absolute;
   }
+ */
+.formulario .campo {
+    position: relative;
+    display: grid;
+    color: #000000;
+    font-family: 'open_sansregular';
+    font-size: 14px;
+    border-radius: 3px;
+    line-height: 20px;
+    background-color: white;
+    border: 2px solid #60aaff;
+    transition: all 0.3s;
+    padding: 11px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: 0;
+    border-radius: 10px;
+}
 
-  .label1_2 {
-      width: 45%;
-      margin-bottom: 10px;
-      margin-left: 2.5%;
-      display: inline-block;
-      text-align: center;
-  }
+.formulario .campo_anexo {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    color: #000000;
+    font-family: 'open_sansregular';
+    font-size: 12px;
+    /*     line-height: 20px; */
+    background-color: rgb(255, 255, 255);
+    border: 2px solid #60aaff;
+    transition: all 0.3s;
+    padding: 11px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: 0;
+    border-radius: 10px;
+    /*     margin-bottom: 20px; */
+}
 
-  .label1_1,
-  .label1_2 span {
-      color: #393838;
-      margin-bottom: 3px;
-  }
+.campo_anexo::-webkit-file-upload-button{
+    display: none;    
+}
 
-  .label_1 {
-      width: 45%;
-      margin-bottom: 10px;
-      margin-top: 10px;
-/*       margin-left: 2.5%; */
-      display: inline-block;
-      text-align: center;
-  }
+.formulario .campo:focus,
+.campo_anexo:focus {
+    border: 2px solid #3744ff;
+    color: #00013b;
+}
 
-  .label_2 {
-      width: 45%;
-      margin-bottom: 10px;
-      margin-top: 10px;
-      margin-left: 3.5%;
-      display: inline-block;
-      text-align: center;
-  }
-
-  /*   .formulario .label span {
-      width: 50%;
-      float: left;
-      color: #393838;
-      margin-bottom: 3px;
-  } */
-
-  .label3 {
-      width: 93%;
-      display: inline-block;
-      text-align: center;
-  }
-
-  .label2_1 {
-      width: 45%;
-      display: inline-block;
-      text-align: center;
-  }
-
-  .label2_2 {
-      width: 45%;
-      margin-left: 2.5%;
-      display: inline-block;
-      text-align: center;
-  }
-
-  /* Remova a largura fixa da tag <span> dentro de .label2 */
-  .label2_1,
-  .label2_2 span {
-      color: #393838;
-      margin-bottom: 3px;
-  }
-
-  .formulario .campo {
-      position: relative;
-      display: grid;
-      color: #000000;
-      font-family: 'open_sansregular';
-      font-size: 14px;
-      border-radius: 3px;
-      line-height: 20px;
-      background-color: white;
-      border: 2px solid #60aaff;
-      transition: all 0.3s;
-      padding: 11px;
-      width: 100%;
-      box-sizing: border-box;
-      outline: 0;
-      border-radius: 10px;
-  }
-
-  .formulario .campo_anexo {
-      position: relative;
-      display: grid;
-      color: #000000;
-      font-family: 'open_sansregular';
-      font-size: 14px;
-      border-radius: 3px;
-      line-height: 20px;
-      background-color: white;
-      border: 2px solid #60aaff;
-      transition: all 0.3s;
-      padding: 11px;
-      width: 100%;
-      box-sizing: border-box;
-      outline: 0;
-      border-radius: 10px;
-      margin-bottom: 20px;
-  }
-
-  .formulario .campo:focus, .campo_anexo:focus {
-      border: 2px solid #3744ff;
-      color: #00013b;
-  }
-
-  #file{
+#file {
     background-color: #00013b;
-  }
+}
 
-  .formulario #texto {
-      height: 250px;
-      line-height: 100%;
-      resize: none;
-  }
+.formulario #texto {
+    height: 250px;
+    line-height: 100%;
+    resize: none;
+}
 
-  .formulario .botao {
-      position: relative;
-      font-family: 'open_sansregular';
-      width: 30%;
-      background: #8DB57F;
-      color: #ffffff;
-      border-radius: 5px;
-      border: 0;
-      cursor: pointer;
-      font-size: 22px;
-      padding-top: 10px;
-      padding-bottom: 10px;
-      transition: all 0.3s;
-      margin-top: -100%;
-      font-weight: 700;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: 0;
-  }
+.formulario .botao {
+    position: relative;
+    font-family: 'open_sansregular';
+    width: 30%;
+    background: #8DB57F;
+    color: #ffffff;
+    border-radius: 5px;
+    border: 0;
+    cursor: pointer;
+    font-size: 22px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: all 0.3s;
+    margin-top: -100%;
+    font-weight: 700;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+}
 
-  .formulario .botao:hover {
-      background: #669954;
-  }
+.formulario .botao:hover {
+    background: #669954;
+}
 
-  @media screen and (max-width: 480px) {
+@media screen and (max-width: 480px) {
 
-      .titulo_form_1,
-      .titulo_form_2 {
-          width: 35%;
-      }
+    .titulo_form_1,
+    .titulo_form_2 {
+        width: 35%;
+    }
 
-      .but_card {
-          display: none;
-      }
+    .but_card {
+        display: none;
+    }
 
-      .hidden {
-          margin: 20px auto;
-      }
+    .hidden {
+        margin: 20px auto;
+    }
 
-  }
+    .label2_3 {
+        width: 93%;
+        text-align: center;
+    }
 
-  /* ------------------------------ */
+    .label2_2 {
+        width: 93%;
+        text-align: center;
+    }
 
-  #campoSenha{
+    .excluiranx {
+        z-index: 5;
+        position: absolute;
+        display: flex;
+        top: 30.5%;
+        right: 4%;
+    }
+
+    .excluirimg {
+        z-index: 5;
+        position: absolute;
+        display: flex;
+        top: 7.2%;
+        right: 4%;
+    }
+
+
+    /*     .excluirimg{
+        font-size: 100%;
+        text-align: start;
+        width: 5%;
+        position: relative;
+        display: inline-block;
+    } */
+
+}
+
+/* ------------------------------ */
+
+#campoSenha {
     position: absolute;
     margin: 0 auto;
     margin-top: 200px;
     margin-left: 500px;
-  }
+}

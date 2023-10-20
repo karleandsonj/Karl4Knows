@@ -1,3 +1,5 @@
+
+
 const meuFormulario = document.getElementById('meu-formulario');
     const camposDeTexto = meuFormulario.querySelectorAll('input');
     
@@ -221,6 +223,7 @@ link2.addEventListener('click', () => {
 
 /* ------------------------------------------------------------------------------------------------ */
 
+
 /* INICIO API para enviar Form para Planilha "FORM" */
 const handleSubmit = (event) => {
     event.preventDefault();
@@ -231,9 +234,9 @@ const handleSubmit = (event) => {
     const erro = document.querySelector('textarea[name=erro]').value;
     const solucao = document.querySelector('textarea[name=solucao]').value;
     const script = document.querySelector('textarea[name=script]').value;
-    const descricao_anexo = document.querySelector('input[name=descricao_anexo]').value;
     const anexo = document.querySelector('input[name=arq_anexo]').value;
     const imagem = document.querySelector('input[name=img_anexo]').value;
+
     // Crie um ID único
     const uniqueID = generateUniqueID();
 
@@ -243,7 +246,7 @@ const handleSubmit = (event) => {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({sistema, erro_resumido, erro, solucao, script, descricao_anexo, anexo, imagem, uniqueID}),
+        body: JSON.stringify({sistema, erro_resumido, erro, solucao, script, anexo, imagem, uniqueID}),
     }).then(() => {
         removeloading();
     });
@@ -305,5 +308,11 @@ const removeloading = () => {
     });
 
 }
+
+//FIREBASE
+
+
+
+//FIM FIREBASE
 
 /* FIM API para enviar Form para Planilha "FORM" */

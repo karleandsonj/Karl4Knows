@@ -81,11 +81,11 @@
                 <div class="titulo_form_div">
 
                     <a class="titulo_form_1" id="openErro">
-                        <h4 class="titulo_form">Cad. erros</h4>
+                        <h4 class="titulo_form">Erros</h4>
                     </a>
 
                     <a class="titulo_form_2" id="openAnexo">
-                        <h4 class="titulo_form">Anexo</h4>
+                        <h4 class="titulo_form">Anexos</h4>
                     </a>
 
                 </div>
@@ -136,22 +136,61 @@
 
                 <div action="" class="formulario2" id="form_anexo">
 
-                    <label class="label2_1">
+                    <!--                     <label class="label2_1">
                         <span>Anexo Descrição</span>
                         <input type="text" name="descricao_anexo" class="campo_anexo" placeholder="Digite a Solução"
                             autocomplete="off" />
-                    </label>
+                    </label> -->
 
+                    <label class="label2_3">
+                        <span>Imagens</span>
+                        <input type="file" name="img_anexo" class="campo_anexo" accept="image/*" multiple id="imgimpt"
+                            title="Clique para Carregar Imagens" onchange="verificarInput('imgimpt', '.excluirimg')" />
+                        <button class="excluirimg" style="display: none;" onclick="excluirImagem()"><img src="IMG/lixo2.png" class="lixo"></button>
+                    </label>
+                    
                     <label class="label2_2">
                         <span>Anexo</span>
-                        <input type="file" name="arq_anexo" class="campo_anexo" accept=".pdf, .doc, .docx, .xls, .xlsx, .zip" title="Clique para Carregar Arquivos" />
+                        <input type="file" name="arq_anexo" class="campo_anexo" multiple id="anexoimpt"
+                            accept=".pdf, .doc, .docx, .xls, .xlsx, .zip" title="Clique para Carregar Arquivos"
+                            onchange="verificarInput('anexoimpt', '.excluiranx')" />
+                        <button class="excluiranx" style="display: none;" onclick="excluirAnexo()"><img src="IMG/lixo2.png" class="lixo"></button>
                     </label>
+                    
 
-                    <label class="label2_2">
-                        <span>Imagens</span>
-                        <input type="file" name="img_anexo" class="campo_anexo" accept="image/*" multiple title="Clique para Carregar Imagens" />
-                    </label>
-                                  
+
+
+
+                    <script>
+                        function excluirImagem() {
+                            var input = document.getElementById("imgimpt");
+                            input.value = ""; // Limpa o valor do input
+                            verificarInput('imgimpt', '.excluirimg'); // Oculta o botão novamente
+                        }
+
+                        function excluirAnexo() {
+                            var input = document.getElementById("anexoimpt");
+                            input.value = ""; // Limpa o valor do input
+                            verificarInput('anexoimpt', '.excluiranx'); // Oculta o botão novamente
+                        }
+
+
+                        function verificarInput(inputId, botaoSelector) {
+                            var input = document.getElementById(inputId);
+                            var botaoExcluir = document.querySelector(botaoSelector);
+
+                            if (input.files.length > 0) {
+                                botaoExcluir.style.display = "flex";
+                            } else {
+                                botaoExcluir.style.display = "none";
+                            }
+                        }
+
+
+
+
+                    </script>
+
                     <label class="label3">
                         <span>Script</span>
                         <textarea type="text" name="script" class="campo" id="texto-3"
@@ -179,12 +218,17 @@
             <section id="HOME" class="rotinas" style="display: block;">
                 <h2 class="bemvindo"> Bem vindi a todis ao Karl4Knows ! </h2>
                 <div class="home" id="HOMEK">
-                    <a target="_blank" href="https://www.nfe.fazenda.gov.br/portal/consultaRecaptcha.aspx?tipoConsulta=resumo&tipoConteudo=7PhJ+gAVw2g=" class="homefacil"><img src="icones home/NFe.png" alt="" class="iconehome">Consulta NF-e</a>
-                    <a target="_blank" href="http://nfe.sefaz.ba.gov.br/servicos/nfce/Modulos/Geral/NFCEC_consulta_chave_acesso.aspx" class="homefacil"><img src="icones home/NFCe.png" alt="" class="iconehome">Consulta NFC-e</a>
-                    <a target="_blank" href="https://portal.sefaz.ba.gov.br/scripts/cadastro/cadastroBa/consultaBa.asp" class="homefacil"><img src="icones home/cnpj.png" alt="" class="iconehome">Consulta CNPJ</a>               
-                    <a target="_blank" href="#" class="homefacil"><img src="#" alt="" class="iconehome">TESTE</a>               
-                    <a target="_blank" href="#" class="homefacil"><img src="#" alt="" class="iconehome">TESTE</a>               
-                    <a target="_blank" href="#" class="homefacil"><img src="#" alt="" class="iconehome">TESTE</a>               
+                    <a target="_blank"
+                        href="https://www.nfe.fazenda.gov.br/portal/consultaRecaptcha.aspx?tipoConsulta=resumo&tipoConteudo=7PhJ+gAVw2g="
+                        class="homefacil"><img src="icones home/NFe.png" alt="" class="iconehome">Consulta NF-e</a>
+                    <a target="_blank"
+                        href="http://nfe.sefaz.ba.gov.br/servicos/nfce/Modulos/Geral/NFCEC_consulta_chave_acesso.aspx"
+                        class="homefacil"><img src="icones home/NFCe.png" alt="" class="iconehome">Consulta NFC-e</a>
+                    <a target="_blank" href="https://portal.sefaz.ba.gov.br/scripts/cadastro/cadastroBa/consultaBa.asp"
+                        class="homefacil"><img src="icones home/cnpj.png" alt="" class="iconehome">Consulta CNPJ</a>
+                    <a target="_blank" href="#" class="homefacil"><img src="#" alt="" class="iconehome">TESTE</a>
+                    <a target="_blank" href="#" class="homefacil"><img src="#" alt="" class="iconehome">TESTE</a>
+                    <a target="_blank" href="#" class="homefacil"><img src="#" alt="" class="iconehome">TESTE</a>
                 </div>
             </section>
 
@@ -203,7 +247,7 @@
                                 <thead>
                                     <tr>
                                         <th>Resumo do Erro</th>
-                                        <th>Visualizar</th>                                       
+                                        <th>Visualizar</th>
                                     </tr>
                                 </thead>
                                 <tbody id="tabela_sga">
@@ -455,6 +499,53 @@
     <script src="sped.js"></script>
     <script src="script.js"></script>
     <script src="form.js"></script>
+    <!-- Inicio da biblioteca do Firebase -->
+    <!-- FIM da biblioteca do Firebase -->
 </body>
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
+    import { storage } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-storage.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyDyb4PgtHxVWRUvr3xv3v4-ENxWp-BEILA",
+        authDomain: "karl4knows-new.firebaseapp.com",
+        projectId: "karl4knows-new",
+        storageBucket: "karl4knows-new.appspot.com",
+        messagingSenderId: "1015624557324",
+        appId: "1:1015624557324:web:508579b53fa1a25cf81f29"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+
+    document.querySelector('#submit').addEventListener('click', uploadimage);
+
+    function uploadimage() {
+        const ref = firebase.storage().ref()
+
+        const file = document.querySelector("#imgimpt").files[0]
+
+        const name = new Date() + '-' + file.name
+
+        const metadata = {
+            contentType: file.type
+        }
+
+        const task = ref.child(name).put(file, metadata)
+
+        task
+            .then(snapshot => snapshot.ref.getDownloadURL())
+            .then(url => {
+                console.log(url)
+                alert("Imagem deu certo")
+                const image1 = document.querySelector('#image1')
+                image1.src = url
+            })
+    }
+</script>
 
 </html>

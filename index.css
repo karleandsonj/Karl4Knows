@@ -19,14 +19,6 @@ th {
   top: -2px;
 }
 
-textarea {
-  resize: vertical;
-  min-height: 200px;
-  max-height: 300px;
-  overflow-y: auto;
-  width: 100%;
-}
-
 .bemvindo{
   margin-left: 20px;
   margin-right: 20px;
@@ -974,6 +966,26 @@ ol {
   -webkit-transform: scale3d(1.5, 1.5, 0.3);
   -moz-transform: scale3d(1.5, 1.5, 0.3);
 }
+
+/* .excluirimg{
+  border: #ff0000 1px solid;
+  display: flex;
+  position: absolute;
+  top: 0px;
+  right: 0;
+  margin-right: 30px;
+}
+
+#imgimpt::file-selector-button {
+  margin-right: 20px;
+  border: none;
+  background: #084cdf;
+  padding: 5px 5px;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  transition: background .2s ease-in-out;
+} */
 
 h3 {
   text-align: center;
