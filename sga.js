@@ -257,13 +257,16 @@ function loadsgaSheetData(url) {
                         }
 
                         function formatarTextoComQuebrasDeLinha2(elementId) {
-                            var elemento2 = document.querySelector('#' + elementId);
+                            var elemento = document.querySelector('#' + elementId);
 
-                            if (elemento2) {
-                                var texto = elemento2.innerHTML;
-                                var arrayDeLinhas2 = texto.split('§');
-                                var novoTexto2 = arrayDeLinhas2.join('<br>');
-                                elemento2.innerHTML = novoTexto2;
+                            if (elemento) {
+                                elemento.style.whiteSpace = 'pre'; // Aplicar a propriedade 'white-space' com valor 'pre'
+                                var texto = elemento.innerHTML;
+                                var arrayDeLinhas = texto.split('§');
+                                var novoTexto = arrayDeLinhas.join('<br>');
+                                elemento.innerHTML = novoTexto;
+                                elemento.style.whiteSpace = 'pre-wrap'; // Permite quebras de linha e espaço branco
+                                elemento.style.wordWrap = 'break-word'; // Força quebra de palavra em caso de overflow
                             }
                         }
 

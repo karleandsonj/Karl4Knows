@@ -19,11 +19,16 @@ th {
   top: -2px;
 }
 
-.bemvindo{
+.bemvindo {
   margin-left: 20px;
   margin-right: 20px;
   position: relative;
   top: 50px;
+}
+
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 .home {
@@ -34,13 +39,15 @@ th {
   margin: 0 auto;
   background-color: blanchedalmond;
   width: 75vw;
-  height: auto; /* Alterado para altura automática para acomodar o conteúdo */
+  height: auto;
+  /* Alterado para altura automática para acomodar o conteúdo */
   text-align: center;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   flex-flow: row wrap;
-  justify-content: center; /* Centraliza os elementos horizontalmente */
+  justify-content: center;
+  /* Centraliza os elementos horizontalmente */
 }
 
 /* Define o tamanho base para os elementos filhos */
@@ -53,31 +60,36 @@ th {
   align-content: center;
   color: #076fe5;
   text-decoration: none;
-  margin: 25px; /* Reduzi a margem para diminuir o espaçamento */
+  margin: 25px;
+  /* Reduzi a margem para diminuir o espaçamento */
   border: #000544 solid 2px;
   background-color: rgb(255, 255, 255);
   border-radius: 10px;
-  flex: 0 1 calc(20% - 20px); /* Define a largura do elemento para ocupar 25% do espaço e considera o espaçamento de 8px */
-  max-width: calc(20% - 20px); /* Define a largura máxima para evitar que os elementos se espalhem demais */
+  flex: 0 1 calc(20% - 20px);
+  /* Define a largura do elemento para ocupar 25% do espaço e considera o espaçamento de 8px */
+  max-width: calc(20% - 20px);
+  /* Define a largura máxima para evitar que os elementos se espalhem demais */
 }
 
 /* Estilo para dispositivos menores (mídia query) */
 @media (max-width: 768px) {
   .homefacil {
-    flex: 0 1 calc(20% - 20px); /* Em telas menores, divida os elementos em 2 colunas */
+    flex: 0 1 calc(20% - 20px);
+    /* Em telas menores, divida os elementos em 2 colunas */
     max-width: calc(50% - 20px);
-    margin: 5px; /* Reduzi a margem para diminuir o espaçamento */
+    margin: 5px;
+    /* Reduzi a margem para diminuir o espaçamento */
   }
 
 }
 
 @media (max-width: 468px) {
 
-  .home{
+  .home {
     top: 20px;
   }
 
-  .bemvindo{
+  .bemvindo {
     top: 15px;
   }
 }
@@ -92,7 +104,7 @@ th {
 
 }
 
-.homefacil:hover{
+.homefacil:hover {
   background-color: rgb(207, 207, 207);
   border: red solid 2px;
 }
@@ -102,7 +114,7 @@ th {
   text-align: center;
   align-content: center;
   display: flex;
-  position: relative; 
+  position: relative;
   width: 80px;
   height: 60px;
 }
@@ -403,9 +415,12 @@ main {
   border-radius: 10px;
   background-color: whitesmoke;
   border: #199c8b solid 2px;
-  padding: 2px 10px; /* Espaçamento interno do botão */
-  cursor: pointer; /* Cursor ao passar o mouse */
-  margin-right: 2px; /* Espaçamento à esquerda para separar o botão "VIEW" */
+  padding: 2px 10px;
+  /* Espaçamento interno do botão */
+  cursor: pointer;
+  /* Cursor ao passar o mouse */
+  margin-right: 2px;
+  /* Espaçamento à esquerda para separar o botão "VIEW" */
   width: 20px;
   order: 2;
   display: none;
@@ -550,7 +565,8 @@ main {
     font-size: 12px;
   }
 
-  .lupa1, .edit1 {
+  .lupa1,
+  .edit1 {
     width: 16px;
   }
 
@@ -873,7 +889,7 @@ ol {
 
 .imagem-ampliada img {
   margin: 0 auto;
-  position:absolute;
+  position: absolute;
   width: 55%;
   /* height: 60vh; */
   box-shadow: #000 0 0 2px 2px;
@@ -884,8 +900,8 @@ ol {
   justify-content: center;
   align-items: center;
   margin: 25px auto;
-/*   background-color: #000000; */
-/*   box-shadow: #000 0 0 5px 5px; */
+  /*   background-color: #000000; */
+  /*   box-shadow: #000 0 0 5px 5px; */
   padding: 25px;
   width: 55%;
   /* width: 70vw;
@@ -895,14 +911,14 @@ ol {
 
 @media screen and (max-width: 480px) {
   .imagem-ampliada img {
- /*    width: 70vw;
+    /*    width: 70vw;
     height: 40vh; */
     width: 100%;
     margin: 0 auto;
   }
 
   #modalContainer {
-/*     width: 70vw;
+    /*     width: 70vw;
     height: 40vh; */
     width: 100%;
     margin: 100px auto;
@@ -911,13 +927,13 @@ ol {
 
 @media screen and (max-width: 768px) {
   .imagem-ampliada img {
- /*    width: 70vw;
+    /*    width: 70vw;
     height: 40vh; */
     width: 80%;
   }
 
   #modalContainer {
-/*     width: 70vw;
+    /*     width: 70vw;
     height: 40vh; */
     width: 80%;
   }
