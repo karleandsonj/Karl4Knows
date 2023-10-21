@@ -247,6 +247,21 @@ function verificarInput(inputId, botaoSelector) {
 
 /* ------------------------------------------------------------------------------------------------ */
 
+// Função para gerar um ID único com base na data e hora atual
+function generateUniqueID() {
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Adicione 1 ao mês, pois os meses são baseados em zero
+    const day = String(currentDate.getDate()).padStart(2, '0');
+    const hours = String(currentDate.getHours()).padStart(2, '0');
+    const minutes = String(currentDate.getMinutes()).padStart(2, '0');
+    const seconds = String(currentDate.getSeconds()).padStart(2, '0');
+
+    // Combine as informações da data e hora para criar o ID
+    const uniqueID = `${day}${month}${year}${hours}${minutes}${seconds}`;
+
+    return uniqueID;
+}
 
 /* INICIO API para enviar Form para Planilha "FORM" */
 const handleSubmit = (event) => {
@@ -275,23 +290,6 @@ const handleSubmit = (event) => {
     }).then(() => {
         removeloading();
     });
-}
-
-
-// Função para gerar um ID único com base na data e hora atual
-function generateUniqueID() {
-    const currentDate = new Date();
-    const year = currentDate.getFullYear();
-    const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Adicione 1 ao mês, pois os meses são baseados em zero
-    const day = String(currentDate.getDate()).padStart(2, '0');
-    const hours = String(currentDate.getHours()).padStart(2, '0');
-    const minutes = String(currentDate.getMinutes()).padStart(2, '0');
-    const seconds = String(currentDate.getSeconds()).padStart(2, '0');
-
-    // Combine as informações da data e hora para criar o ID
-    const uniqueID = `${day}${month}${year}${hours}${minutes}${seconds}`;
-
-    return uniqueID;
 }
 
 document.querySelector('form').addEventListener('submit', handleSubmit);/* location.reload(true); */

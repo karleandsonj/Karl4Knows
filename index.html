@@ -145,7 +145,8 @@
                     <label class="label2_3">
                         <span>Imagens</span>
                         <input type="file" name="img_anexo" class="campo_anexo" accept="image/*" multiple id="imgimpt"
-                            title="Clique para Carregar Imagens" onchange="verificarInput('imgimpt', '.excluirimg')" class="excluirimg" />
+                            title="Clique para Carregar Imagens" onchange="verificarInput('imgimpt', '.excluirimg')"
+                            class="excluirimg" />
                         <button class="excluirimg" style="display: none;" onclick="excluirImagem()"><img
                                 src="IMG/lixo2.png" class="lixo"></button>
                     </label>
@@ -468,6 +469,8 @@
     <script src="script.js"></script>
     <script src="form.js"></script>
     <!-- Inicio da biblioteca do Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-storage.js"></script>
     <!-- FIM da biblioteca do Firebase -->
 </body>
 
