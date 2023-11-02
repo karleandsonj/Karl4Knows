@@ -1,3 +1,8 @@
+/* INICIO FIRE BASE */
+
+
+
+/* Fim FIRE BASE */
 const meuFormulario = document.getElementById('meu-formulario');
 const camposDeTexto = meuFormulario.querySelectorAll('input');
 
@@ -232,8 +237,6 @@ function excluirAnexo() {
     input.value = ""; // Limpa o valor do input
     verificarInput('anexoimpt', '.excluiranx'); // Oculta o botão novamente
 }
-
-
 function verificarInput(inputId, botaoSelector) {
     var input = document.getElementById(inputId);
     var botaoExcluir = document.querySelector(botaoSelector);
@@ -248,6 +251,98 @@ function verificarInput(inputId, botaoSelector) {
 /* ------------------------------------------------------------------------------------------------ */
 
 // Função para gerar um ID único com base na data e hora atual
+/* function generateUniqueID() {
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Adicione 1 ao mês, pois os meses são baseados em zero
+    const day = String(currentDate.getDate()).padStart(2, '0');
+    const hours = String(currentDate.getHours()).padStart(2, '0');
+    const minutes = String(currentDate.getMinutes()).padStart(2, '0');
+    const seconds = String(currentDate.getSeconds()).padStart(2, '0');
+
+    // Combine as informações da data e hora para criar o ID
+    const uniqueID = `${day}${month}${year}${hours}${minutes}${seconds}`;
+
+    return uniqueID;
+} */
+
+/* ENVIAR IMG PARA DRIVE */
+
+/* let url = "https://script.google.com/macros/s/AKfycbymtNul-CssQ1Mn0Ud31QzzLsXC8vzck__f1j7NkyBNeXw-fXxrJmtq5iTPSxOazBYBhQ/exec";
+let file = document.getElementById("imgimpt");
+let imageUrl = "";
+
+file.addEventListener('change', () => {
+    // Esta linha cria um novo objeto FileReader chamado "fr"
+    let fr = new FileReader();
+    // Esta linha adiciona um ouvinte de evento ao evento "loadend" do objeto FileReader
+    fr.addEventListener('loadend', () => {
+        // Esta linha declara uma variável chamada "res" e atribui a ela o resultado do objeto FileReader
+        let res = fr.result;
+        // Esta linha define o atributo "src" do elemento "img" como o valor de "res"
+        file.src = res;
+        // Esta linha divide a variável "res" em um array, usando a string "base64," como separador, e atribui o segundo elemento a uma variável chamada "spt"
+        let spt = res.split("base64,")[1];
+        // Esta linha cria um objeto chamado "obj" com três propriedades: "base64", "type" e "name"
+        let obj = {
+            base64: spt,
+            type: file.files[0].type,
+            name: file.files[0].name
+        }
+
+        // Esta linha envia uma solicitação POST para a URL especificada na variável "url", com o objeto "obj" como corpo da solicitação
+        fetch(url, {
+            method: "POST",
+            body: JSON.stringify(obj)
+        })
+            // Esta linha aguarda a resposta do servidor e a converte em texto
+            .then(r => r.text())
+            .then(data => {
+                    // Após o envio bem-sucedido, atualize a variável imageUrl com o URL da imagem no Drive
+                    imageUrl = "https://drive.google.com/uc?id=" + data.imageId;
+                    console.log("Image URL:", imageUrl);
+                })
+    });
+
+    fr.readAsDataURL(file.files[0]);
+});
+
+const handleSubmit = (event) => {
+    event.preventDefault();
+
+    addloading();
+
+    const sistema = document.querySelector('select[name=sistema]').value;
+    const erro_resumido = document.querySelector('input[name=erro_resumido]').value;
+    const erro = document.querySelector('textarea[name=erro]').value;
+    const solucao = document.querySelector('textarea[name=solucao]').value;
+    const script = document.querySelector('textarea[name=script]').value;
+    const anexo = document.querySelector('input[name=arq_anexo]').value;
+
+    // Crie um ID único
+    const uniqueID = generateUniqueID();
+
+    fetch('https://api.sheetmonkey.io/form/2qyovDumZThgeSJs7A4ZHD', {
+        method: 'post',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ sistema, uniqueID, erro_resumido, erro, solucao, script, imageUrl , descricao_anexo , anexo }),
+    }).then(() => {
+        removeloading();
+    });
+}
+
+document.querySelector('form').addEventListener('submit', handleSubmit); */
+
+/* const sistema = document.querySelector('select[name=sistema]').value;
+const erro_resumido = document.querySelector('input[name=erro_resumido]').value;
+const erro = document.querySelector('textarea[name=erro]').value;
+const solucao = document.querySelector('textarea[name=solucao]').value;
+const script = document.querySelector('textarea[name=script]').value;
+const anexo = document.querySelector('input[name=arq_anexo]').value; */
+
 function generateUniqueID() {
     const currentDate = new Date();
     const year = currentDate.getFullYear();
@@ -263,36 +358,95 @@ function generateUniqueID() {
     return uniqueID;
 }
 
-/* INICIO API para enviar Form para Planilha "FORM" */
-const handleSubmit = (event) => {
-    event.preventDefault();
+// Gere o ID único
+const uniqueID = generateUniqueID();
 
-    addloading();
+// Atualize o campo "uniqueID" no formulário
+document.getElementById('uniqueID').value = uniqueID;
 
-    const sistema = document.querySelector('select[name=sistema]').value;
-    const erro_resumido = document.querySelector('input[name=erro_resumido]').value;
-    const erro = document.querySelector('textarea[name=erro]').value;
-    const solucao = document.querySelector('textarea[name=solucao]').value;
-    const script = document.querySelector('textarea[name=script]').value;
-    const anexo = document.querySelector('input[name=arq_anexo]').value;
-    const imagem = document.querySelector('input[name=img_anexo]').value;
+/* FIM Envio de IMAGEM */
 
-    // Crie um ID único
-    const uniqueID = generateUniqueID();
+const scriptURL = 'https://script.google.com/macros/s/AKfycbw6D9QRNHrEVTgndJz8k-xxS-5iaYfIJ8IFUBbe2PXW4jrSulGwiabNHK3GNrvagFvWMQ/exec'
+const form = document.forms['meu-formulario']
 
-    fetch('https://api.sheetmonkey.io/form/2qyovDumZThgeSJs7A4ZHD', {
-        method: 'post',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ sistema, erro_resumido, erro, solucao, script, anexo, imagem, uniqueID }),
-    }).then(() => {
-        removeloading();
+let url = "https://script.google.com/macros/s/AKfycbxL2m_EwZsm2y66BCL24Nwm4RDK2LUqg_85rKCeQd7XOUsjGcswdVNWcL5gdYWiaB4dog/exec";
+let file = document.getElementById("imgimpt");
+let img = document.getElementById("imgimpt1");
+let progress = document.getElementById("progress");
+let imageUrl = "";
+
+let folderId = '1dO1Xdj1anOcbamuITwxbwZTxXj0EQicU';
+
+file.addEventListener('change', () => {
+    let loadingimg = document.getElementById("loadingimg");
+    loadingimg.style.display = 'block'; // Mostra o elemento de carregamento
+
+    let fr = new FileReader();
+    fr.addEventListener('loadend', () => {
+        let res = fr.result;
+        img.src = res;
+        let spt = res.split("base64,")[1];
+        let obj = {
+            base64: spt,
+            type: file.files[0].type,
+            name: file.files[0].name
+        }
+        // This line sends a POST request to the URL specified in the "url" variable, with the "obj" object as the request body
+        fetch(url, {
+            method: "POST",
+            body: JSON.stringify(obj)
+        })
+            // This line waits for the response from the server and converts it to text
+            .then(response => response.json())
+            // This line logs the response data to the console
+            .then(data => {
+                // Após o envio bem-sucedido, atualize a variável imageUrl com o URL da imagem no Drive
+                imageUrl = "https://drive.google.com/uc?id=" + data.imageId;
+                imageId = data.imageId;
+                console.log("Image URL:", imageUrl);
+                console.log("Image ID:", imageId);
+
+                // Agora você pode salvar a imageId em um banco de dados ou usá-la conforme necessário.
+
+                let imgimpt2 = document.getElementById("imgimpt2");
+
+                imgimpt2.value = imageUrl;
+
+                loadingimg.style.display = 'none';
+
+            });
+
     });
+    
+    // This line reads the selected file as a data URL
+    fr.readAsDataURL(file.files[0])
+});
+
+function moveFileToFolder(fileId, folderId) {
+    const file = DriveApp.getFileById(fileId);
+    const folder = DriveApp.getFolderById(folderId);
+    folder.createFile(file);
+    file.setTrashed(true); // Mover o arquivo para a pasta e, em seguida, excluí-lo da pasta anterior
 }
 
-document.querySelector('form').addEventListener('submit', handleSubmit);/* location.reload(true); */
+
+form.addEventListener('submit', e => {
+    e.preventDefault();
+    addloading(); // Adicione o carregamento antes do envio do formulário
+
+    fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+        .then(response => {
+            if (response.status === 200) {
+                // Atualize a imagem no formulário com a URL da imagem
+                document.getElementById('imgimpt').src = imageUrl;
+
+                removeloading(); // Remova o alerta de sucesso após o sucesso
+            } else {
+                console.error('Erro no servidor:', response.status);
+            }
+        })
+        .catch(error => console.error('Erro na requisição:', error.message));
+});
 
 const addloading = () => {
     const load = document.querySelector('#load');
@@ -326,7 +480,7 @@ const removeloading = () => {
 
         setTimeout(function () {
             location.reload();
-        }, 4000); // 2000 milissegundos = 2 segundos
+        }, 500); // 2000 milissegundos = 2 segundos
 
 
     });

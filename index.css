@@ -188,7 +188,7 @@ h1 {
   position: absolute;
   background-color: aqua;
   width: 70px;
-  height: 100vh;
+  height: 100%;
   /* Altura igual à altura da viewport */
   top: 0;
   bottom: 0;
@@ -210,6 +210,7 @@ h1 {
   overflow-y: scroll;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  bottom: 0;
 }
 
 
@@ -820,7 +821,13 @@ ol {
   max-height: 300px;
   /* Defina a altura máxima desejada */
   scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
   /* Rola suavemente quando o usuário clica e arrasta a área de rolagem horizontal */
+}
+
+.imagem-div-main img {
+  scroll-snap-align: start;
+
 }
 
 /* Personalização da barra de rolagem para navegadores WebKit (Chrome, Safari) */
@@ -869,14 +876,15 @@ ol {
   transition: .5s, color .10s;
   -webkit-transition: .5s, color .10s;
   -moz-transition: .5s, color .10s;
+  cursor: pointer;
 }
 
-.img_anexo:hover {
+/* .img_anexo:hover {
   background-color: #19689c38;
   transform: scale3d(1.03, 1.03, 0.3);
   -webkit-transform: scale3d(1.03, 1.03, 0.3);
   -moz-transform: scale3d(1.03, 1.03, 0.3);
-}
+} */
 
 .borda-img {
   display: none;
@@ -890,20 +898,19 @@ ol {
 .imagem-ampliada img {
   margin: 0 auto;
   position: absolute;
-  width: 55%;
+  width: 50%;
   /* height: 60vh; */
   box-shadow: #000 0 0 2px 2px;
   margin: 0 auto;
+/*   margin-bottom: 50px; */
 }
 
 #modalContainer {
   justify-content: center;
   align-items: center;
-  margin: 25px auto;
-  /*   background-color: #000000; */
-  /*   box-shadow: #000 0 0 5px 5px; */
+  margin: 50px auto;
   padding: 25px;
-  width: 55%;
+  width: 50%;
   /* width: 70vw;
   height: 60vh; */
 }

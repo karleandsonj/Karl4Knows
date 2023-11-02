@@ -23,10 +23,10 @@ function loadsgaSheetData(url) {
                 const columns = row.querySelectorAll('td');
 
                 // Verificar se todas as colunas relevantes (ID_sga, ERROS, FOTOS, SOLUCOES) estão preenchidas
-                if (columns[2].textContent.trim() !== '') {
+                if (columns[0].textContent.trim() !== '') {
 
                     const errorsressumosgaCell = document.createElement('td');
-                    const errorsressumosgaData = columns[1].textContent.trim();
+                    const errorsressumosgaData = columns[2].textContent.trim();
                     errorsressumosgaCell.innerHTML = `<span>${errorsressumosgaData}</span>`;
 
                     errorsressumosgaCell.classList.add('erro1'); // Substitua 'sua-classe-aqui' pelo nome da classe desejada
@@ -68,12 +68,12 @@ function loadsgaSheetData(url) {
                     viewButton.addEventListener('click', () => {
                         // Obter os dados das colunas relevantes da linha
                         const sistema = columns[0].textContent.trim();
-                        const erros = columns[2].textContent.trim();
-                        const solucoes = columns[3].textContent.trim();
-                        const script = columns[4].textContent.trim();
-                        const descricao_anexo = columns[5].textContent.trim();
-                        const anexo = columns[6].textContent.trim();
-                        const imagemLink = columns[7].textContent.trim();
+                        const erros = columns[3].textContent.trim();
+                        const solucoes = columns[4].textContent.trim();
+                        const script = columns[5].textContent.trim();
+                        const imagemLink = columns[6].textContent.trim();
+                        const descricao_anexo = columns[7].textContent.trim();
+                        const anexo = columns[8].textContent.trim();
 
                         // Dividir a variável imagemLink em várias imagens usando o ponto e vírgula como separador
                         const imagens = imagemLink.split('§');
@@ -194,6 +194,7 @@ function loadsgaSheetData(url) {
                         /* const trocarImagemLink = document.getElementById('trocarImagem'); */
                         const imagemDivs = document.querySelectorAll('.imagem-div');
                         const modalContainer = document.getElementById('modalContainer');
+
                         const modalContainerborda = document.getElementById('modalContainer-borda');
 
                         /* let imagemAtual = 0; */
