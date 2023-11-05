@@ -451,7 +451,7 @@ const removeloading = () => {
 
         setTimeout(function () {
             location.reload();
-        }, 500); // 2000 milissegundos = 2 segundos
+        }, 2000); // 2000 milissegundos = 2 segundos
 
 
     });
