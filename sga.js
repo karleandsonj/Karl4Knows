@@ -75,8 +75,11 @@ function loadsgaSheetData(url) {
                         const descricao_anexo = columns[7].textContent.trim();
                         const anexo = columns[8].textContent.trim();
 
+                        /* console.log(anexo) */
+
                         // Dividir a variável imagemLink em várias imagens usando o ponto e vírgula como separador
                         const imagens = imagemLink.split('§');
+                        /* const anexos = anexo.split('§'); */
 
                         // Criar uma array de links e descrições de anexo separados pelo caractere especial §
                         const separador = '§';

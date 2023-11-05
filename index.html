@@ -138,33 +138,31 @@
 
                 <div action="" class="formulario2" id="form_anexo">
 
-                    <!--                     <label class="label2_1">
-                        <span>Anexo Descrição</span>
-                        <input type="text" name="descricao_anexo" class="campo_anexo" placeholder="Digite a Solução"
-                            autocomplete="off" />
-                    </label> -->
+                    <input type="text" name="descricao_anexo" style="display: none;" readonly id="nomearq1" />
 
                     <label class="label2_3">
                         <span>Imagens</span>
-                        <input type="file" name="imageUrl1" class="campo_anexo" accept="image/*" id="imgimpt"
+                        <input type="file" name="imageUrl1" class="campo_anexo" multiple accept="image/*" id="imgimpt"
                             title="Clique para Carregar Imagens" onchange="verificarInput('imgimpt', '.excluirimg')"
                             class="excluirimg" />
-                            <img src="" alt="" id="imgimpt1" style="display: none;">   
-                            <input type="text" name="imageUrl" id="imgimpt2" readonly style="display: none;">
-                        <button class="excluirimg" style="display: none;" onclick="excluirImagem()"><img
-                                src="IMG/lixo2.png" class="lixo"></button>
+                        <img src="" alt="" id="imgimpt1" style="display: none;">
+                        <input type="text" name="imageUrl" id="imgimpt2" readonly style="display: none;">
+                        <a class="excluirimg" style="display: none;" onclick="excluirImagem()"><img src="IMG/lixo2.png"
+                                class="lixo"></a>
                     </label>
 
                     <label class="label2_2">
                         <span>Anexo</span>
-                        <input type="file" name="anexoUrl" class="campo_anexo" id="anexoimpt"
+                        <input type="file" name="anexoUrl1" class="campo_anexo" multiple id="anexoimpt"
                             accept=".pdf, .doc, .docx, .xls, .xlsx, .zip" title="Clique para Carregar Arquivos"
                             onchange="verificarInput('anexoimpt', '.excluiranx')" />
-                        <button class="excluiranx" style="display: none;" onclick="excluirAnexo()"><img
-                                src="IMG/lixo2.png" class="lixo"></button>
+                        <img src="" alt="" id="anexoimpt1" style="display: none;">
+                        <input type="text" name="anexoUrl" id="anexoimpt2" readonly style="display: none;">
+                        <a class="excluiranx" style="display: none;" onclick="excluirAnexo()"><img src="IMG/lixo2.png"
+                                class="lixo"></a>
                     </label>
 
-                    
+
 
                     <label class="label3">
                         <span>Script</span>
@@ -176,9 +174,14 @@
 
                 <label class="botao_form">
 
-                    <div id="loadingimg" style="display: none;">
+                    <div id="loadinganx" style="display: none;">
                         <!-- <progress id="progress" max="100" value="0"> -->
-                            Enviando imagem...
+                        Enviando Anexo...
+                        <!-- </progress> -->
+                    </div>
+                    <div id="loadinganxenv" style="display: none;">
+                        <!-- <progress id="progress" max="100" value="0"> -->
+                        Anexo Enviado...
                         <!-- </progress> -->
                     </div>
                     <div id="loadingarq" style="display: none;">Enviando arquivo...</div>
