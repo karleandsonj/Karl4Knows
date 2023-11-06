@@ -117,14 +117,15 @@ function loadsgaSheetData(url) {
                             </div>
                             <div id="column">
                                 <div class="modal4" style="${script ? '' : 'display: none;'}">
-                                    <h3>Scripts: </h3><br>
+                                    <h3>Scripts: </h3>
+                                    <a href="#" id="copyLink" onclick="copyToClipboard()" >📄</a> <br>
                                     <p id="P_sga2" class="scroll-modal">${script}</p>
                                 </div>
                                 <div id="Modalanexo" class="modal5" style="${anexo || imagemLink ? '' : 'display: none;'}">
                                     <h3>
-                                        ${anexo && imagemLink ? 'Anexo e Imagem' : ''}
+                                        ${anexo && imagemLink ? 'Arquivo e Imagem' : ''}
                                         ${!anexo && imagemLink ? 'Imagem' : ''}
-                                        ${anexo && !imagemLink ? 'Anexo' : ''}
+                                        ${anexo && !imagemLink ? 'Arquivo' : ''}
                                     </h3>
                                     <br>
                                     <div class="anexo-main" style="${anexo ? '' : 'display: none;'}">

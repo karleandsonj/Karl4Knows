@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="index.css">
     <link rel="stylesheet" type="text/css" href="form.css">
     <link rel="stylesheet" type="text/css" href="editform.css">
+    <link rel="stylesheet" type="text/css" href="sechome.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 </head>
 
@@ -201,7 +202,7 @@
         <div class="section_main">
 
             <section id="HOME" class="rotinas" style="display: block;">
-                <h2 class="bemvindo"> Bem vindi a todis ao Karl4Knows ! </h2>
+                <h2 class="bemvindo"> Bem Vindo ao Karl4Knows </h2>
                 <div class="home" id="HOMEK">
                     <a target="_blank"
                         href="https://www.nfe.fazenda.gov.br/portal/consultaRecaptcha.aspx?tipoConsulta=resumo&tipoConteudo=7PhJ+gAVw2g="
@@ -211,10 +212,34 @@
                         class="homefacil"><img src="icones home/NFCe.png" alt="" class="iconehome">Consulta NFC-e</a>
                     <a target="_blank" href="https://portal.sefaz.ba.gov.br/scripts/cadastro/cadastroBa/consultaBa.asp"
                         class="homefacil"><img src="icones home/cnpj.png" alt="" class="iconehome">Consulta CNPJ</a>
-                    <a target="_blank" href="#" class="homefacil"><img src="#" alt="" class="iconehome">TESTE</a>
-                    <a target="_blank" href="#" class="homefacil"><img src="#" alt="" class="iconehome">TESTE</a>
-                    <a target="_blank" href="#" class="homefacil"><img src="#" alt="" class="iconehome">TESTE</a>
+                    <a href="#" onclick="showSection('caracteres')" class="homefacil" class="iconehome"><img
+                            src="icones home/REMOVEDOR-CARACTERE.png" alt="" class="iconehome">Remover Caractere</a>
+                    <a target="_blank"  class="homefacil"><img src="#" alt="" class="iconehome">TESTE</a>
+                    <a target="_blank"  class="homefacil"><img src="#" alt="" class="iconehome">TESTE</a>
+                    <a target="_blank"  class="homefacil"><img src="#" alt="" class="iconehome">TESTE</a>
+                    <a target="_blank"  class="homefacil"><img src="#" alt="" class="iconehome">TESTE</a>
+                    <a target="_blank"  class="homefacil"><img src="#" alt="" class="iconehome">TESTE</a>
                 </div>
+            </section>
+
+            <section id="caracteres" style="display: none;">
+                <main class="caracteres1">
+                    <span class="closecaracteres" id="closeModalcaracteres" onclick="reloadPage();"><img
+                            src="IMG/excluir.png" class="fecharcaracteres"></span>
+                    <h2 class="titulocaracteres">Remover caracteres</h2>
+                    <div class="containercaracteres">
+                        <input type="text" id="numeroOriginalcaracteres" placeholder="Digite o número original">
+                        <button id="removecaracteres" class="btn-limparcaracteres"
+                            onclick="removerCaracteres()"><b>REMOVER
+                                CARACTERES</b></button>
+                        <p id="numeroResultadocaracteres"></p>
+                        <div id="buttonsContainercaracteres">
+                            <button id="copyButtoncaracteres" class="btn-copiarcaracteres"
+                                onclick="copyToClipboard()">COPIAR</button>
+                            <button id="limparcaracteres" onclick="limparConteudo()">LIMPAR</button>
+                        </div>
+                    </div>
+                </main>
             </section>
 
             <section id="SGA" class="rotinas" style="display: none;">
@@ -484,6 +509,7 @@
     <script src="sped.js"></script>
     <script src="script.js"></script>
     <script src="form.js"></script>
+    <script src="removercarac.js"></script>
 </body>
 
 </html>

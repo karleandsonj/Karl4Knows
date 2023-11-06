@@ -32,14 +32,17 @@ pre {
 }
 
 .home {
+  overflow:auto;
   border-radius: 15px;
   z-index: 1;
   top: 60px;
   position: relative;
   margin: 0 auto;
-  background-color: blanchedalmond;
+  background-color: #bdb8ad;
+  border: 1px #bdb8ad solid;
   width: 75vw;
   height: auto;
+  max-height: 450px;
   /* Alterado para altura automática para acomodar o conteúdo */
   text-align: center;
   display: flex;
@@ -47,7 +50,33 @@ pre {
   gap: 8px;
   flex-flow: row wrap;
   justify-content: center;
-  /* Centraliza os elementos horizontalmente */
+  scroll-behavior: smooth;
+  /* Rola suavemente quando o usuário clica e arrasta a área de rolagem horizontal */
+}
+
+/* Personalização da barra de rolagem para navegadores WebKit (Chrome, Safari) */
+.home::-webkit-scrollbar {
+  border-radius: 20px;
+  /* Raio de borda do indicador de rolagem */
+  background-color: transparent;
+  /* Define o fundo da barra de rolagem como transparente */
+  width: 10px;
+  /* Largura da barra de rolagem */
+  height: 10px;
+  /* Altura da barra de rolagem horizontal */
+}
+
+.home::-webkit-scrollbar-thumb {
+  background: #747373;
+  /* Cor do indicador de rolagem */
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  /* Raio de borda do indicador de rolagem */
+}
+
+.home::-webkit-scrollbar-thumb:hover {
+  background-color: #3d3d3d;
+  /* Cor do indicador de rolagem ao passar o mouse */
 }
 
 /* Define o tamanho base para os elementos filhos */
@@ -62,13 +91,20 @@ pre {
   text-decoration: none;
   margin: 25px;
   /* Reduzi a margem para diminuir o espaçamento */
-  border: #000544 solid 2px;
+  border: #ebe7e0 solid 2px;
   background-color: rgb(255, 255, 255);
   border-radius: 10px;
   flex: 0 1 calc(20% - 20px);
   /* Define a largura do elemento para ocupar 25% do espaço e considera o espaçamento de 8px */
   max-width: calc(20% - 20px);
   /* Define a largura máxima para evitar que os elementos se espalhem demais */
+}
+
+
+.homefacil:hover {
+  background-color: rgba(207, 207, 207, 0);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
+
 }
 
 /* Estilo para dispositivos menores (mídia query) */
@@ -104,25 +140,21 @@ pre {
 
 }
 
-.homefacil:hover {
-  background-color: rgb(207, 207, 207);
-  border: red solid 2px;
-}
-
 .iconehome {
   margin: 0 auto;
   text-align: center;
   align-content: center;
   display: flex;
   position: relative;
-  width: 80px;
-  height: 60px;
+  width: 75px;
+  height: 65px;
+  margin-bottom: 10px;
 }
 
 /* MANTER SELECIONADO ICONES */
 
 .icons.selected {
-  background-color: #3498db;
+  background-color: #44749d;
   /* Cor de fundo quando selecionado */
   color: #fff;
   /* Cor do texto quando selecionado */
@@ -143,10 +175,10 @@ header {
   top: 0;
   position: absolute;
   display: flex;
-  background-color: aqua;
+  background-color: #c6d4e1;
   height: 50px;
   width: 100%;
-  box-shadow: 0px 0px 2vh rgba(1, 187, 204, 0.8);
+  box-shadow: 0px 0px 2vh rgba(0, 0, 0, 0.8);
   align-items: center;
 }
 
@@ -159,7 +191,7 @@ h1 {
   z-index: 3;
   position: absolute;
   display: flex;
-  background-color: aqua;
+  background-color: #c6d4e1;
   height: 105px;
   width: 105px;
   border-radius: 50%;
@@ -186,13 +218,13 @@ h1 {
 #custom-scroll {
   z-index: 2;
   position: absolute;
-  background-color: aqua;
+  background-color: #c6d4e1;
   width: 70px;
   height: 100%;
   /* Altura igual à altura da viewport */
   top: 0;
   bottom: 0;
-  box-shadow: 0px 0px 2vh rgba(1, 187, 204, 0.8);
+  box-shadow: 0px 0px 2vh rgba(0, 0, 0, 0.8);
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -225,8 +257,9 @@ h1 {
 }
 
 .scroll-up {
+  border-bottom: solid 1px #464646;
   width: 65px;
-  background-color: aqua;
+  background-color: #c6d4e1;
   left: 50%;
   transform: translateX(-50%);
   position: absolute;
@@ -239,8 +272,9 @@ h1 {
 }
 
 .scroll-down {
+  border-top: solid 1px #464646;
   width: 65px;
-  background-color: aqua;
+  background-color: #c6d4e1;
   left: 50%;
   transform: translateX(-50%);
   position: absolute;
@@ -254,8 +288,8 @@ h1 {
 
 .scroll-up:hover,
 .scroll-down:hover {
-  background-color: rgb(88, 118, 255);
-  color: rgb(133, 0, 0);
+  background-color: #bdb8ad;
+  color: rgb(255, 255, 255);
 }
 
 /* Adicione uma Media Query para ajustar o layout em telas menores */
@@ -279,8 +313,9 @@ ul {
 }
 
 .icons {
-  border-top: 1px solid blue;
-  background-color: aquamarine;
+  border-top: 0.5px solid #494949;
+  border-bottom: 0.5px solid #494949;
+  background-color: #c6d4e1;
   font-size: 60%;
   margin: 0;
   padding: 5px 0px 5px 0px;
@@ -294,8 +329,8 @@ ul {
 }
 
 .icons:hover {
-  background-color: rgb(0, 143, 179);
-  color: red;
+  background-color: #bdb8ad;
+  color: rgb(255, 255, 255);
 }
 
 .icones {
@@ -307,7 +342,7 @@ ul {
 
 main {
   display: block;
-  background-color: rgb(223, 188, 255);
+  background-color: #ffffff;
   width: auto;
   height: 100vh;
   position: relative;
@@ -457,7 +492,7 @@ main {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  background-color: blanchedalmond;
+  background-color: #bdb8ad;
   width: 75vw;
   /*   height: 70vh; */
   max-height: 95vh;
@@ -488,7 +523,7 @@ main {
   overflow: auto;
   /* Oculta a barra de rolagem fora da borda */
   border-radius: 20px;
-  border: #333 solid;
+  border: 3px #000000 solid;
   width: 97%;
   /* Definindo um valor máximo para evitar que o container fique muito grande */
   max-height: 60vh;
@@ -525,10 +560,10 @@ main {
 /* Estilo para as células do cabeçalho */
 .data-table th {
   padding: 8px;
-  border: 1px solid #000000;
+  border: 0.5px solid #000000;
   text-align: center;
   /* Centraliza o texto nas células */
-  background-color: #5C6244;
+  background-color: #44749d;
   color: #ffffff;
 }
 
@@ -536,19 +571,19 @@ main {
 .data-table td {
   padding: 5px;
   border: 1px solid #000000;
-  border-bottom: 0px solid #000000;
+  border-bottom: 0.5px solid #000000;
   text-align: center;
   /* Centraliza o texto nas células */
 }
 
 /* Estilo para as linhas alternadas */
 .data-table tr:nth-child(even) {
-  background-color: #f1f1f1;
+  background-color: #e0e0e0;
   color: #000000;
 }
 
 .data-table tr:nth-child(odd) {
-  background-color: #ccc;
+  background-color: #ffffff;
   color: #000000;
 }
 
@@ -608,7 +643,7 @@ main {
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #000544;
+    background: #747373;
     /* Cor da barra de rolagem */
     border-radius: 10px;
   }
@@ -616,16 +651,16 @@ main {
 
 
 .modal-content {
-  background-color: #adadad;
+  background-color: #c6d4e1;
   margin: 15% auto;
   /* Centralizar verticalmente e manter margens laterais */
   margin-top: 60px;
   padding: 20px;
-  border: 2px solid #353333;
+/*   border: 2px solid #ebe7e0; */
   border-radius: 10px;
   width: 80%;
   /* Use uma porcentagem para a largura */
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px 0 #f5f7f8;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -639,10 +674,11 @@ p {
 
 /* ID */
 .modal1 {
+  box-shadow: 0 5px 10px 0 #f5f5f5;
   z-index: 1;
   top: -30px;
   position: absolute;
-  background-color: #a1a1a1;
+  background-color: #c6d4e1;
   text-align: center;
   border-radius: 10px;
   padding: 5px;
@@ -651,18 +687,18 @@ p {
   /* Use uma porcentagem para a largura */
   left: 50%;
   transform: translateX(-50%);
-  border: solid 1.5px rgb(255, 255, 255);
+/*   border: solid 1.5px #ebe7e0; */
 }
 
 /* ERRO DETALHADO */
 .modal2 {
-  background-color: rgb(103, 103, 255);
+  background-color: #ffffff;
   border-radius: 10px;
   padding: 5px;
   width: 50%;
   box-sizing: border-box;
   margin-top: 10px;
-  border: #000000 1px solid;
+  border: #bdb8ad 1px solid;
   margin: 2px;
   text-align: left;
   max-height: 200px;
@@ -671,13 +707,13 @@ p {
 
 /* Solucao */
 .modal3 {
-  background-color: aqua;
+  background-color: #ffffff;
   border-radius: 10px;
   padding: 5px;
   width: 50%;
   box-sizing: border-box;
   margin-top: 10px;
-  border: #000000 1px solid;
+  border: #bdb8ad 1px solid;
   margin: 2px;
   text-align: left;
   max-height: 200px;
@@ -696,15 +732,15 @@ p {
 .modal4 {
   text-align: center;
   position: relative;
-  background-color: rgb(62, 255, 94);
+  background-color: #ffffff;
   border-radius: 10px;
   padding: 10px;
   margin-top: 5px;
   margin: 2px;
-  border: #000000 1px solid;
+  border: #bdb8ad 1px solid;
   width: 100%;
   text-align: left;
-  max-height: 300px;
+  max-height: 250px;
   overflow: auto;
 }
 
@@ -712,13 +748,13 @@ p {
   /*   display: grid; */
   text-align: center;
   position: relative;
-  background-color: rgb(200, 83, 255);
+  background-color: #ffffff;
   border-radius: 10px;
   padding: 10px;
   margin-top: 5px;
   margin: 2px;
-  border: #000000 1px solid;
-  max-height: 300px;
+  border: #bdb8ad 1px solid;
+  max-height: 250px;
   width: 40%;
   overflow-x: auto;
 }
@@ -726,7 +762,7 @@ p {
 /* Define a largura como 100% quando .modal4 não estiver visível */
 .modal5:not(:has(.modal4)) {
   width: 50%;
-  max-height: 300px;
+  max-height: 250px;
   margin: 0 auto;
 }
 
@@ -780,7 +816,7 @@ ol {
   margin: 0 auto;
   overflow-x: auto;
   width: 100%;
-  max-height: 100px;
+  max-height: 80px;
   /* Defina a altura máxima desejada */
   scroll-behavior: smooth;
   /* Rola suavemente quando o usuário clica e arrasta a área de rolagem horizontal */
@@ -800,14 +836,14 @@ ol {
 }
 
 .anexo-main::-webkit-scrollbar-thumb {
-  background-color: #ff0404;
+  background: #747373;
   /* Cor do indicador de rolagem */
   border-radius: 20px;
   /* Raio de borda do indicador de rolagem */
 }
 
 .anexo-main::-webkit-scrollbar-thumb:hover {
-  background-color: #d9ff03;
+  background-color: #3d3d3d;
   /* Cor do indicador de rolagem ao passar o mouse */
 }
 
@@ -844,14 +880,14 @@ ol {
 }
 
 .imagem-div-main::-webkit-scrollbar-thumb {
-  background-color: #ff0404;
+  background: #747373;
   /* Cor do indicador de rolagem */
   border-radius: 20px;
   /* Raio de borda do indicador de rolagem */
 }
 
 .imagem-div-main::-webkit-scrollbar-thumb:hover {
-  background-color: #d9ff03;
+  background-color: #3d3d3d;
   /* Cor do indicador de rolagem ao passar o mouse */
 }
 
@@ -872,11 +908,12 @@ ol {
   position: relative;
   display: grid;
   /*   box-shadow: 0px 0px 2vh black; */
+  background-color: #ebe7e0;
   border: #000 solid 1px;
   border-radius: 10px;
   margin: 5px;
   width: 150px;
-  max-height: 90px;
+  max-height: 80px;
   transition: .5s, color .10s;
   -webkit-transition: .5s, color .10s;
   -moz-transition: .5s, color .10s;
@@ -895,7 +932,7 @@ ol {
   width: 100%;
   height: 100vh;
   position: fixed;
-  background-color: #ff00004b;
+  background-color: #0000005e;
   overflow-x: auto;
 }
 
@@ -907,11 +944,12 @@ ol {
   left: 50%;
   transform: translateX(-50%);
   box-shadow: #000 0 0 2px 2px;
+  background-color: white;
 }
 
 .img-amp-close {
   margin-left: 0;
-  margin: -25px;
+  margin: -27px;
   position: absolute;
   z-index: 5;
 }
@@ -927,6 +965,22 @@ ol {
   height: 80vh;
 }
 
+#copyLink{
+  background-color: #bdb8ad;
+  padding: 2px;
+  border-radius: 20%;
+  position: absolute;
+  top: 0;
+  font-size: 20px;
+  margin: 10px;
+  cursor: copy;
+  text-decoration: none;
+  border: 1px black solid;
+}
+
+#copyLink:hover{
+  background-color: #808080;
+}
 
 @media screen and (max-width: 768px) {
   .imagem-ampliada img {
@@ -1019,24 +1073,24 @@ h3 {
   left: 50%;
   transform: translateX(-50%);
   width: 50%;
+/*   height: 20px; */
   display: flex;
   position: relative;
-  padding: 10px 25px;
-  background-color: #854c03;
-  color: white;
+  padding: 5px 30px;
+  background-color: #ebe7e0;
+  border: #000 solid 1px;
+  color: rgb(0, 0, 0);
   font-family: sans-serif;
   text-decoration: none;
   font-size: 70%;
   text-align: center;
   text-indent: 5px;
-  border: none;
   border-radius: 20px;
   margin-bottom: 10px;
 }
 
 .buttonDownload:hover {
-  background-color: #8d2e16;
-  color: white;
+  background-color: #bdb8ad;
 }
 
 .buttonDownload:before,
@@ -1069,11 +1123,11 @@ h3 {
 }
 
 .buttonDownload:hover:before {
-  border-color: #cdefbd;
+  border-color: #ffffff;
 }
 
 .buttonDownload:hover:after {
-  border-top-color: #cdefbd;
+  border-top-color: #ffffff;
   animation-play-state: running;
 }
 
@@ -1131,7 +1185,7 @@ h3 {
 .jimu-primary-loading:before,
 .jimu-primary-loading:after,
 .jimu-primary-loading {
-  background: #076fe5;
+  background: #44749d;
   -webkit-animation: loading-keys-app-loading 0.8s infinite ease-in-out;
   animation: loading-keys-app-loading 0.8s infinite ease-in-out;
   width: 13.6px;
@@ -1154,13 +1208,13 @@ h3 {
   80%,
   100% {
     opacity: .75;
-    box-shadow: 0 0 #076fe5;
+    box-shadow: 0 0 #44749d;
     height: 32px;
   }
 
   40% {
     opacity: 1;
-    box-shadow: 0 -8px #076fe5;
+    box-shadow: 0 -8px #44749d;
     height: 40px;
   }
 }
@@ -1171,13 +1225,13 @@ h3 {
   80%,
   100% {
     opacity: .75;
-    box-shadow: 0 0 #076fe5;
+    box-shadow: 0 0 #44749d;
     height: 32px;
   }
 
   40% {
     opacity: 1;
-    box-shadow: 0 -8px #076fe5;
+    box-shadow: 0 -8px #44749d;
     height: 40px;
   }
 }
@@ -1208,8 +1262,8 @@ h3 {
 .btn {
   text-align: center;
   border-radius: 50%;
-  background-color: rgb(94, 202, 161);
-  border: solid 2px #000;
+  background-color: #bdb8ad;
+  border: solid 2px #ebe7e0;
   cursor: pointer;
   display: flex;
   margin: 0 auto;
@@ -1221,8 +1275,8 @@ h3 {
 }
 
 .btn:hover {
-  background-color: #199c8b;
-  border: solid 2px #010057;
+  background-color: #ebe7e0;
+  border: solid 2px #bdb8ad;
   cursor: pointer;
 }
 
@@ -1234,9 +1288,9 @@ h3 {
   /*   flex-direction: column; */
   min-width: 0;
   word-wrap: break-word;
-  background-color: #4795ad;
+  background-color: #44749d;
   background-clip: border-box;
-  border: 1px solid #010130;
+  border: 1px solid #c6d4e1;
   border-radius: 6px;
   -webkit-box-shadow: 0px 0px 5px 0px rgb(249, 249, 250);
   -moz-box-shadow: 0px 0px 5px 0px rgba(212, 182, 212, 1);

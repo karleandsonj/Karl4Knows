@@ -99,7 +99,7 @@ const closeModalButtonForm = document.getElementById('closeModalForm');
 const infoModalForm = document.getElementById('envioForm');
 
 closeModalButtonForm.addEventListener('click', () => {
-    infoModalForm.style.display = 'none';
+  infoModalForm.style.display = 'none';
 });
 
 // Função para adicionar classe de seleção ao link clicado e remover de outros links
@@ -126,3 +126,20 @@ scrollRightButton.addEventListener('click', () => {
   const scrollAmount = 50; // Ajuste conforme necessário
   container.scrollLeft += scrollAmount;
 });
+
+function copyToClipboard() {
+  const infoText = document.getElementById("P_sga2").innerText;
+  const tempInput = document.createElement("textarea");
+  tempInput.value = infoText;
+  document.body.appendChild(tempInput);
+  tempInput.select();
+  document.execCommand("copy");
+  document.body.removeChild(tempInput);
+
+  // Estilizar o botão após a cópia
+  const btnCopiar = document.getElementById('copyLink');
+  btnCopiar.innerText = '📄 ✔';
+  setTimeout(() => {
+    btnCopiar.innerText = '📄';
+  }, 3000);
+}

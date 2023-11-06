@@ -1,9 +1,9 @@
 /* Botão p/ abrir erro */
 .form {
     position: absolute;
-    color: red;
+    color: rgb(255, 255, 255);
     font-size: 20px;
-    background-color: #00040563;
+    background-color: #44749d;
     border: none;
     cursor: pointer;
     right: 0;
@@ -24,11 +24,11 @@ textarea {
 #loadinganx, #loadinganxenv{
     position: relative;
     width: 30%;
-    background: #8DB57F;
-    color: #ffffff;
+    background: #bdb8ad;
+    color: #000000;
     border: 0;
     border-radius: 5px;
-    font-size: 22px;
+    font-size: 100%;
     padding-top: 10px;
     padding-bottom: 10px;
     font-weight: 700;
@@ -37,7 +37,7 @@ textarea {
     bottom: 0;
     z-index: 2;
     text-align: center;
-    top: 30px;
+    top: 25px;
 }
 
 /* #progress{
@@ -46,7 +46,7 @@ textarea {
 } */
 
 .form:hover {
-    background-color: #00013b56;
+    background-color: #bdb8ad;
 }
 
 #senhaContainer {
@@ -116,8 +116,8 @@ textarea {
     position: absolute;
     z-index: 10;
     display: none;
-    background-color: #a7fff8;
-    border: #3744ff 2px solid;
+    background-color: #c6d4e1;
+    border: #44749d 2px solid;
     top: 15%;
     left: 50%;
     transform: translateX(-50%);
@@ -127,7 +127,8 @@ textarea {
 }
 
 .active {
-    color: red;
+    color: #a10000;
+    background: #44749d;
     /* Manter ativo botão */
 }
 
@@ -151,8 +152,8 @@ textarea {
 .titulo_form_2 {
     cursor: pointer;
     text-align: center;
-    background-color: #a7fff8;
-    border: #3744ff 2px solid;
+    background-color: #c6d4e1;
+    border: #44749d 2px solid;
     width: 20%;
     border-radius: 20px;
     padding: 5px;
@@ -344,8 +345,8 @@ textarea {
     font-size: 14px;
     border-radius: 3px;
     line-height: 20px;
-    background-color: white;
-    border: 2px solid #60aaff;
+    background-color: #ffffff;
+    border: 2px solid #44749d;
     transition: all 0.3s;
     padding: 11px;
     width: 100%;
@@ -363,7 +364,7 @@ textarea {
     font-size: 12px;
     /*     line-height: 20px; */
     background-color: rgb(255, 255, 255);
-    border: 2px solid #60aaff;
+    border: 2px solid #44749d;
     transition: all 0.3s;
     padding: 11px;
     width: 100%;
@@ -397,8 +398,8 @@ textarea {
     position: relative;
     font-family: 'open_sansregular';
     width: 30%;
-    background: #8DB57F;
-    color: #ffffff;
+    background: #bdb8ad;
+    color: #000000;
     border-radius: 5px;
     border: 0;
     cursor: pointer;
@@ -414,7 +415,7 @@ textarea {
 }
 
 .formulario .botao:hover {
-    background: #669954;
+    background: #ebe7e0;
 }
 
 @media screen and (max-width: 480px) {
