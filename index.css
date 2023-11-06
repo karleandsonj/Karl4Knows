@@ -948,8 +948,7 @@ ol {
 }
 
 .img-amp-close {
-  margin-left: 0;
-  margin: -27px;
+  margin: 1px;
   position: absolute;
   z-index: 5;
 }
@@ -1007,7 +1006,7 @@ ol {
 }
 
 #fecharImagem {
-  font-size: 20px;
+  font-size: 15px;
   text-decoration: none;
   position: absolute;
   display: flex;

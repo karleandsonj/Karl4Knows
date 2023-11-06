@@ -127,7 +127,7 @@ scrollRightButton.addEventListener('click', () => {
   container.scrollLeft += scrollAmount;
 });
 
-function copyToClipboard() {
+function copyToClipboardscript() {
   const infoText = document.getElementById("P_sga2").innerText;
   const tempInput = document.createElement("textarea");
   tempInput.value = infoText;

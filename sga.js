@@ -118,7 +118,7 @@ function loadsgaSheetData(url) {
                             <div id="column">
                                 <div class="modal4" style="${script ? '' : 'display: none;'}">
                                     <h3>Scripts: </h3>
-                                    <a href="#" id="copyLink" onclick="copyToClipboard()" >📄</a> <br>
+                                    <a href="#" id="copyLink" onclick="copyToClipboardscript()" >📄</a> <br>
                                     <p id="P_sga2" class="scroll-modal">${script}</p>
                                 </div>
                                 <div id="Modalanexo" class="modal5" style="${anexo || imagemLink ? '' : 'display: none;'}">
@@ -224,7 +224,7 @@ function loadsgaSheetData(url) {
                                 imagemAmpliada.innerHTML = `
                                     <img src="${imagens[index]}" alt="">
                                     <div class="img-amp-close">
-                                        <a href="#" id="fecharImagem">❎</a>
+                                        <a href="#" id="fecharImagem">✖️</a> 
                                     </div>
                                 `;
                                 modalContainer.appendChild(imagemAmpliada);
