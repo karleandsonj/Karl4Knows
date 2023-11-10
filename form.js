@@ -62,7 +62,7 @@ const butcard = document.getElementById('but_card');
 const butalert = document.getElementById('but_alert');
 
 // Defina a senha válida
-const senhaValida = '123';
+const senhaValida = '1';
 
 // Função para abrir o campo de senha
 function abrirSenhaContainer() {
@@ -169,14 +169,6 @@ document.addEventListener('click', function () {
     fecharSenhaContainer();
 });
 
-
-/* verificarSenhaButton.addEventListener('click', () => {
-    envioForm.style.display = 'block';
-    AbrirErro.style.display = 'block';
-    AbrirAnexo.style.display = 'none';
-    desfoque.style.display = 'block';
-}); */
-
 closeModalButtonForm1.addEventListener('click', () => {
     desfoque.style.display = 'none';
 });
@@ -194,7 +186,6 @@ openErro.addEventListener('click', () => {
     AbrirAnexo.style.display = 'none';
     AbrirErro.style.display = 'block';
 });
-
 
 /* FORM FIM */
 
@@ -247,6 +238,7 @@ function verificarInput(inputId, botaoSelector) {
         botaoExcluir.style.display = "none";
     }
 }
+
 
 /* ------------------------------------------------------------------------------------------------ */
 

@@ -82,11 +82,11 @@
                 <div class="titulo_form_div">
 
                     <a class="titulo_form_1" id="openErro">
-                        <h4 class="titulo_form">Erros</h4>
+                        <h4 class="titulo_form">Erro/Solução</h4>
                     </a>
 
                     <a class="titulo_form_2" id="openAnexo">
-                        <h4 class="titulo_form">Anexos</h4>
+                        <h4 class="titulo_form">Anexo/Script</h4>
                     </a>
 
                 </div>
@@ -95,12 +95,12 @@
 
                     <input type="text" id="uniqueID" name="uniqueID" readonly style="display: none;">
 
-                    <label class="label1_1 ">
+                    <div class="label1_1 ">
                         <span>Erro Resumido</span>
                         <input type="text" name="erro_resumido" class="campo" class="maiuscula"
                             placeholder="Erro Resumido" required="" autocomplete="off" />
-                    </label>
-                    <label class="label1_2">
+                    </div>
+                    <div class="label1_2">
                         <span class="sistem1">Sistema</span>
                         <select name="sistema" class="campo" id="select" required="">
                             <div class="sistema">
@@ -121,19 +121,19 @@
                                 <option>IMPRESSORA</option>
                             </div>
                         </select>
-                    </label>
+                    </div>
 
-                    <label class="label_1">
+                    <div class="label_1">
                         <span>Erro Detalhado</span>
                         <textarea type="text" name="erro" class="campo" id="texto-1" placeholder="Digite Erro Detalhado"
                             required="" autocomplete="off"></textarea>
-                    </label>
+                    </div>
 
-                    <label class="label_2">
+                    <div class="label_2">
                         <span>Solução</span>
                         <textarea type="text" name="solucao" class="campo" id="texto-2" placeholder="Digite a Solução"
                             required="" autocomplete="off"></textarea>
-                    </label>
+                    </div>
 
                 </div>
 
@@ -141,18 +141,19 @@
 
                     <input type="text" name="descricao_anexo" style="display: none;" readonly id="nomearq1" />
 
-                    <label class="label2_3">
+                    <div class="label2_3">
                         <span>Imagens</span>
-                        <input type="file" name="imageUrl1" class="campo_anexo" multiple accept="image/*" id="imgimpt"
+
+                        <input type="file" name="imageUrl1" class="campo_img" multiple accept="image/*" id="imgimpt"
                             title="Clique para Carregar Imagens" onchange="verificarInput('imgimpt', '.excluirimg')"
                             class="excluirimg" />
                         <img src="" alt="" id="imgimpt1" style="display: none;">
                         <input type="text" name="imageUrl" id="imgimpt2" readonly style="display: none;">
                         <a class="excluirimg" style="display: none;" onclick="excluirImagem()"><img src="IMG/lixo2.png"
                                 class="lixo"></a>
-                    </label>
+                    </div>
 
-                    <label class="label2_2">
+                    <div class="label2_2">
                         <span>Anexo</span>
                         <input type="file" name="anexoUrl1" class="campo_anexo" multiple id="anexoimpt"
                             accept=".pdf, .doc, .docx, .xls, .xlsx, .zip" title="Clique para Carregar Arquivos"
@@ -161,19 +162,19 @@
                         <input type="text" name="anexoUrl" id="anexoimpt2" readonly style="display: none;">
                         <a class="excluiranx" style="display: none;" onclick="excluirAnexo()"><img src="IMG/lixo2.png"
                                 class="lixo"></a>
-                    </label>
+                    </div>
 
 
 
-                    <label class="label3">
+                    <div class="label3">
                         <span>Script</span>
                         <textarea type="text" name="script" class="campo" id="texto-3"
                             placeholder="Deixe seu Script"></textarea>
-                    </label>
+                    </div>
 
                 </div>
 
-                <label class="botao_form">
+                <div class="botao_form">
 
                     <div id="loadinganx" style="display: none;">
                         <!-- <progress id="progress" max="100" value="0"> -->
@@ -189,7 +190,7 @@
 
                     <button type="submit" id="submit" class="botao"> Enviar </button>
 
-                </label>
+                </div>
 
             </form>
         </div>
@@ -214,11 +215,11 @@
                         class="homefacil"><img src="icones home/cnpj.png" alt="" class="iconehome">Consulta CNPJ</a>
                     <a href="#" onclick="showSection('caracteres')" class="homefacil" class="iconehome"><img
                             src="icones home/REMOVEDOR-CARACTERE.png" alt="" class="iconehome">Remover Caractere</a>
-                    <a target="_blank"  class="homefacil"><img src="#" alt="" class="iconehome">TESTE</a>
-                    <a target="_blank"  class="homefacil"><img src="#" alt="" class="iconehome">TESTE</a>
-                    <a target="_blank"  class="homefacil"><img src="#" alt="" class="iconehome">TESTE</a>
-                    <a target="_blank"  class="homefacil"><img src="#" alt="" class="iconehome">TESTE</a>
-                    <a target="_blank"  class="homefacil"><img src="#" alt="" class="iconehome">TESTE</a>
+                    <a target="_blank" class="homefacil"><img src="#" alt="" class="iconehome">TESTE</a>
+                    <a target="_blank" class="homefacil"><img src="#" alt="" class="iconehome">TESTE</a>
+                    <a target="_blank" class="homefacil"><img src="#" alt="" class="iconehome">TESTE</a>
+                    <a target="_blank" class="homefacil"><img src="#" alt="" class="iconehome">TESTE</a>
+                    <a target="_blank" class="homefacil"><img src="#" alt="" class="iconehome">TESTE</a>
                 </div>
             </section>
 

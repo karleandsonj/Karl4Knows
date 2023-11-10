@@ -21,7 +21,8 @@ textarea {
     width: 100%;
 }
 
-#loadinganx, #loadinganxenv{
+#loadinganx,
+#loadinganxenv {
     position: relative;
     width: 30%;
     background: #bdb8ad;
@@ -39,11 +40,6 @@ textarea {
     text-align: center;
     top: 25px;
 }
-
-/* #progress{
-    width: 100%;
-    padding: 10px;
-} */
 
 .form:hover {
     background-color: #bdb8ad;
@@ -67,7 +63,6 @@ textarea {
 }
 
 #verificarSenha {
-
     margin-top: 2px;
     cursor: pointer;
     padding: 4px;
@@ -102,11 +97,6 @@ textarea {
     background-color: rgba(0, 0, 0, 0.7);
     overflow: auto;
 }
-
-/* .hidden_main{
-    overflow: auto;
-} */
-
 
 /* Fim Botão p/ abrir erro */
 
@@ -154,7 +144,7 @@ textarea {
     text-align: center;
     background-color: #c6d4e1;
     border: #44749d 2px solid;
-    width: 20%;
+    width: 30%;
     border-radius: 20px;
     padding: 5px;
     padding-top: 10px;
@@ -177,28 +167,26 @@ textarea {
 }
 
 .titulo_form {
-    font-size: 100%;
+    font-size: 90%;
 }
 
-/*   .formulario .title {
-      width: 100%;
-      margin-bottom: 1em;
-      font-size: 1.5em;
-      font-weight: 300;
-      text-align: center;
-      border-bottom: 1px #eceaea solid;
-      padding-bottom: 1em;
-      color: #8db57f;
-  } */
-
-/*   .botao_form {
-      text-align: center;
-  } */
-
 .label1_1 {
+    width: 46%;
+    display: inline-block;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.label1_2 {
+    width: 46%;
+    display: inline-block;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* .label1_1 {
     width: 45%;
     margin-bottom: 10px;
-    /*       margin-left: 3%; */
     display: inline-block;
     text-align: center;
 }
@@ -209,7 +197,7 @@ textarea {
     margin-left: 2.5%;
     display: inline-block;
     text-align: center;
-}
+} */
 
 .label1_1,
 .label1_2 span {
@@ -218,10 +206,23 @@ textarea {
 }
 
 .label_1 {
+    width: 46%;
+    display: inline-block;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.label_2 {
+    width: 46%;
+    display: inline-block;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* .label_1 {
     width: 45%;
     margin-bottom: 10px;
     margin-top: 10px;
-    /*       margin-left: 2.5%; */
     display: inline-block;
     text-align: center;
 }
@@ -233,7 +234,7 @@ textarea {
     margin-left: 3.5%;
     display: inline-block;
     text-align: center;
-}
+} */
 
 .label3 {
     width: 93%;
@@ -270,8 +271,8 @@ textarea {
     }
 
     textarea {
-        min-height: 150px;
-        max-height: 180px;
+        min-height: 100px;
+        max-height: 150px;
     }
 }
 
@@ -283,6 +284,7 @@ textarea {
     margin-bottom: 15px;
 }
 
+/* INPUT IMAGEM */
 .label2_3 {
     width: 46%;
     display: inline-block;
@@ -290,13 +292,23 @@ textarea {
     margin-bottom: 15px;
 }
 
-/* #imgimpt{
-    display: none;
-} */
-
-
-.lixo{
-    width: 25px;
+.formulario .campo_img {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    color: #000000;
+    font-family: 'open_sansregular';
+    font-size: 12px;
+    /*     line-height: 20px; */
+    background-color: rgb(255, 255, 255);
+    border: 2px solid #44749d;
+    transition: all 0.3s;
+    padding: 11px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: 0;
+    border-radius: 10px;
+    /*     margin-bottom: 20px; */
 }
 
 .excluirimg {
@@ -310,6 +322,30 @@ textarea {
     border: 2px solid rgb(0, 0, 0);
     cursor: url('IMG/cursor-X-small.png') 8 8, auto;
     /* 16 16 é o ponto de destino no centro da imagem */
+}
+
+
+.formulario .campo_anexo {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    color: #000000;
+    font-family: 'open_sansregular';
+    font-size: 12px;
+    /*     line-height: 20px; */
+    background-color: rgb(255, 255, 255);
+    border: 2px solid #44749d;
+    transition: all 0.3s;
+    padding: 11px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: 0;
+    border-radius: 10px;
+    /*     margin-bottom: 20px; */
+}
+
+.lixo {
+    width: 25px;
 }
 
 .excluiranx {
@@ -332,11 +368,6 @@ textarea {
     margin-bottom: 3px;
 }
 
-/*   progress{
-    top: 35px;
-    position: absolute;
-  }
- */
 .formulario .campo {
     position: relative;
     display: grid;
@@ -348,38 +379,25 @@ textarea {
     background-color: #ffffff;
     border: 2px solid #44749d;
     transition: all 0.3s;
-    padding: 11px;
+    padding: 5px;
     width: 100%;
     box-sizing: border-box;
     outline: 0;
     border-radius: 10px;
 }
 
-.formulario .campo_anexo {
-    cursor: pointer;
-    position: relative;
-    display: flex;
-    color: #000000;
-    font-family: 'open_sansregular';
-    font-size: 12px;
-    /*     line-height: 20px; */
-    background-color: rgb(255, 255, 255);
-    border: 2px solid #44749d;
-    transition: all 0.3s;
-    padding: 11px;
-    width: 100%;
-    box-sizing: border-box;
-    outline: 0;
-    border-radius: 10px;
-    /*     margin-bottom: 20px; */
+#select{
+    padding: 6.5px;
 }
 
-.campo_anexo::-webkit-file-upload-button{
-    display: none;    
+.campo_anexo::-webkit-file-upload-button,
+.campo_img::-webkit-file-upload-button {
+    display: none;
 }
 
 .formulario .campo:focus,
-.campo_anexo:focus {
+.campo_anexo:focus,
+.campo_img:focus {
     border: 2px solid #3744ff;
     color: #00013b;
 }

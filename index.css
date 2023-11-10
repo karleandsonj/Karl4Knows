@@ -32,7 +32,7 @@ pre {
 }
 
 .home {
-  overflow:auto;
+  overflow: auto;
   border-radius: 15px;
   z-index: 1;
   top: 60px;
@@ -656,7 +656,7 @@ main {
   /* Centralizar verticalmente e manter margens laterais */
   margin-top: 60px;
   padding: 20px;
-/*   border: 2px solid #ebe7e0; */
+  /*   border: 2px solid #ebe7e0; */
   border-radius: 10px;
   width: 80%;
   /* Use uma porcentagem para a largura */
@@ -687,7 +687,7 @@ p {
   /* Use uma porcentagem para a largura */
   left: 50%;
   transform: translateX(-50%);
-/*   border: solid 1.5px #ebe7e0; */
+  /*   border: solid 1.5px #ebe7e0; */
 }
 
 /* ERRO DETALHADO */
@@ -964,7 +964,7 @@ ol {
   height: 80vh;
 }
 
-#copyLink{
+#copyLink {
   background-color: #bdb8ad;
   padding: 2px;
   border-radius: 20%;
@@ -977,13 +977,13 @@ ol {
   border: 1px black solid;
 }
 
-#copyLink:hover{
+#copyLink:hover {
   background-color: #808080;
 }
 
 @media screen and (max-width: 768px) {
   .imagem-ampliada img {
-    height: 60vw; 
+    height: 60vw;
     /* width: 80%; */
   }
 
@@ -996,8 +996,8 @@ ol {
 
 @media screen and (max-width: 480px) {
   .imagem-ampliada img {
-/*     width: 78vw;*/
-    height: 75vw; 
+    /*     width: 78vw;*/
+    height: 75vw;
   }
 
   #modalContainer {
@@ -1072,7 +1072,7 @@ h3 {
   left: 50%;
   transform: translateX(-50%);
   width: 50%;
-/*   height: 20px; */
+  /*   height: 20px; */
   display: flex;
   position: relative;
   padding: 5px 30px;
@@ -1303,3 +1303,40 @@ h3 {
 }
 
 /*  */
+
+/* 
+.form-input {
+  width:350px;
+  padding:20px;
+  background:#fff;
+  box-shadow: -3px -3px 7px rgba(94, 104, 121, 0.377),
+              3px 3px 7px rgba(94, 104, 121, 0.377);
+}
+.form-input input {
+  display:none;
+
+}
+.form-input label {
+  display:block;
+  width:45%;
+  height:45px;
+  margin-left: 25%;
+  line-height:50px;
+  text-align:center;
+  background:#1172c2;
+
+  color:#fff;
+  font-size:15px;
+  font-family:"Open Sans",sans-serif;
+  text-transform:Uppercase;
+  font-weight:600;
+  border-radius:5px;
+  cursor:pointer;
+}
+
+.form-input img {
+  width:100%;
+  display:none;
+
+  margin-bottom:30px;
+} */
