@@ -127,19 +127,3 @@ scrollRightButton.addEventListener('click', () => {
   container.scrollLeft += scrollAmount;
 });
 
-function copyToClipboardscript() {
-  const infoText = document.getElementById("P_sga2").innerText;
-  const tempInput = document.createElement("textarea");
-  tempInput.value = infoText;
-  document.body.appendChild(tempInput);
-  tempInput.select();
-  document.execCommand("copy");
-  document.body.removeChild(tempInput);
-
-  // Estilizar o botão após a cópia
-  const btnCopiar = document.getElementById('copyLink');
-  btnCopiar.innerText = '📄 ✔';
-  setTimeout(() => {
-    btnCopiar.innerText = '📄';
-  }, 3000);
-}

@@ -23,38 +23,63 @@ function loadspedSheetData(url) {
                 const columns = row.querySelectorAll('td');
 
                 // Verificar se todas as colunas relevantes (ID_sped, ERROS, FOTOS, SOLUCOES) estão preenchidas
-                if (columns[2].textContent.trim() !== '') {
+                if (columns[0].textContent.trim() !== '') {
 
                     const errorsressumospedCell = document.createElement('td');
-                    const errorsressumospedData = columns[1].textContent.trim();
+                    const errorsressumospedData = columns[2].textContent.trim();
                     errorsressumospedCell.innerHTML = `<span>${errorsressumospedData}</span>`;
 
                     errorsressumospedCell.classList.add('erro1'); // Substitua 'sua-classe-aqui' pelo nome da classe desejada
 
                     const viewButtonCell = document.createElement('td'); // Criar uma nova célula para o botão
-                    const viewButton = document.createElement('img'); // Criar um elemento de imagem
-                    viewButton.setAttribute('src', 'IMG/lupa.png'); // Definir o atributo 'src' para o caminho da imagem
+                    const viewButton = document.createElement('img');
+                    viewButton.setAttribute('src', 'IMG/lupa.png');
+                    viewButton.classList.add('lupa1');
 
+                    viewButtonCell.classList.add('visu_erro');
 
-                    // Adicionar uma classe ao elemento de imagem
-                    viewButton.classList.add('lupa1'); // Substitua 'sua-classe-aqui' pelo nome da classe desejada
+                    const editButton = document.createElement('img'); // Criar um botão "EDIT"
+                    editButton.setAttribute('src', 'IMG/lapis.png');
+                    editButton.classList.add('edit1'); // Adicionar uma classe ao botão
 
-                    // Adicionar o elemento de imagem à célula da tabela
+                    // Adicionar os botões à célula da tabela
                     viewButtonCell.appendChild(viewButton);
+
+                    // Adicione o botão "EDIT" à célula
+                    viewButtonCell.appendChild(editButton);
+
+                    const closeModalButtonFormED = document.getElementById('closeModalEDForm');
+                    const editform = document.getElementById('editform');
+
+                    closeModalButtonFormED.addEventListener('click', function () {
+                        editform.style.display = 'none';
+                    });
+
+                    editButton.addEventListener('click', function () {
+                        editform.style.display = 'block';
+                    });
+
+
+
+
+
 
                     // Adicionar um evento de clique ao botão para exibir os detalhes da linha
                     viewButton.addEventListener('click', () => {
                         // Obter os dados das colunas relevantes da linha
                         const sistema = columns[0].textContent.trim();
-                        const erros = columns[2].textContent.trim();
-                        const solucoes = columns[3].textContent.trim();
-                        const script = columns[4].textContent.trim();
-                        const descricao_anexo = columns[5].textContent.trim();
-                        const anexo = columns[6].textContent.trim();
-                        const imagemLink = columns[7].textContent.trim();
+                        const erros = columns[3].textContent.trim();
+                        const solucoes = columns[4].textContent.trim();
+                        const script = columns[5].textContent.trim();
+                        const imagemLink = columns[6].textContent.trim();
+                        const descricao_anexo = columns[7].textContent.trim();
+                        const anexo = columns[8].textContent.trim();
+
+                        /* console.log(anexo) */
 
                         // Dividir a variável imagemLink em várias imagens usando o ponto e vírgula como separador
                         const imagens = imagemLink.split('§');
+                        /* const anexos = anexo.split('§'); */
 
                         // Criar uma array de links e descrições de anexo separados pelo caractere especial §
                         const separador = '§';
@@ -92,14 +117,15 @@ function loadspedSheetData(url) {
                             </div>
                             <div id="column">
                                 <div class="modal4" style="${script ? '' : 'display: none;'}">
-                                    <h3>Scripts: </h3><br>
+                                    <h3>Scripts: </h3>
+                                    <a href="#" id="copyLink" onclick="copyToClipboardscript()" >📄</a> <br>
                                     <p id="P_sped2" class="scroll-modal">${script}</p>
                                 </div>
                                 <div id="Modalanexo" class="modal5" style="${anexo || imagemLink ? '' : 'display: none;'}">
                                     <h3>
-                                        ${anexo && imagemLink ? 'Anexo e Imagem' : ''}
+                                        ${anexo && imagemLink ? 'Arquivo e Imagem' : ''}
                                         ${!anexo && imagemLink ? 'Imagem' : ''}
-                                        ${anexo && !imagemLink ? 'Anexo' : ''}
+                                        ${anexo && !imagemLink ? 'Arquivo' : ''}
                                     </h3>
                                     <br>
                                     <div class="anexo-main" style="${anexo ? '' : 'display: none;'}">
@@ -172,6 +198,7 @@ function loadspedSheetData(url) {
                         /* const trocarImagemLink = document.getElementById('trocarImagem'); */
                         const imagemDivs = document.querySelectorAll('.imagem-div');
                         const modalContainer = document.getElementById('modalContainer');
+
                         const modalContainerborda = document.getElementById('modalContainer-borda');
 
                         /* let imagemAtual = 0; */
@@ -179,10 +206,10 @@ function loadspedSheetData(url) {
                         /* trocarImagemLink.addEventListener('click', () => {
                             // Ocultar a imagem atual
                             imagemDivs[imagemAtual].style.display = 'none';
-
+                
                             // Avançar para a próxima imagem
                             imagemAtual = (imagemAtual + 1) % imagens.length;
-
+                
                             // Exibir a nova imagem
                             imagemDivs[imagemAtual].style.display = 'block';
                         }); */
@@ -197,7 +224,7 @@ function loadspedSheetData(url) {
                                 imagemAmpliada.innerHTML = `
                                     <img src="${imagens[index]}" alt="">
                                     <div class="img-amp-close">
-                                        <a href="#" id="fecharImagem">❎</a>
+                                        <a href="#" id="fecharImagem">✖️</a> 
                                     </div>
                                 `;
                                 modalContainer.appendChild(imagemAmpliada);
@@ -235,13 +262,16 @@ function loadspedSheetData(url) {
                         }
 
                         function formatarTextoComQuebrasDeLinha2(elementId) {
-                            var elemento2 = document.querySelector('#' + elementId);
+                            var elemento = document.querySelector('#' + elementId);
 
-                            if (elemento2) {
-                                var texto = elemento2.innerHTML;
-                                var arrayDeLinhas2 = texto.split('§');
-                                var novoTexto2 = arrayDeLinhas2.join('<br>');
-                                elemento2.innerHTML = novoTexto2;
+                            if (elemento) {
+                                elemento.style.whiteSpace = 'pre'; // Aplicar a propriedade 'white-space' com valor 'pre'
+                                var texto = elemento.innerHTML;
+                                var arrayDeLinhas = texto.split('§');
+                                var novoTexto = arrayDeLinhas.join('<br>');
+                                elemento.innerHTML = novoTexto;
+                                elemento.style.whiteSpace = 'pre-wrap'; // Permite quebras de linha e espaço branco
+                                elemento.style.wordWrap = 'break-word'; // Força quebra de palavra em caso de overflow
                             }
                         }
 
@@ -284,3 +314,21 @@ closeModalspedButton.addEventListener('click', () => {
 loadspedSheetData(spedsheetURL);
 
 /* FIM DADOS */
+
+/* Copiar Script-sped */
+function copyToClipboardscript() {
+    const infoText = document.getElementById("P_sped2").innerText;
+    const tempInput = document.createElement("textarea");
+    tempInput.value = infoText;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+
+    // Estilizar o botão após a cópia
+    const btnCopiar = document.getElementById('copyLink');
+    btnCopiar.innerText = '📄 ✔';
+    setTimeout(() => {
+        btnCopiar.innerText = '📄';
+    }, 3000);
+}
