@@ -38,30 +38,8 @@ function loadsgaSheetData(url) {
 
                     viewButtonCell.classList.add('visu_erro');
 
-                    const editButton = document.createElement('img'); // Criar um botão "EDIT"
-                    editButton.setAttribute('src', 'IMG/lapis.png');
-                    editButton.classList.add('edit1'); // Adicionar uma classe ao botão
-
                     // Adicionar os botões à célula da tabela
                     viewButtonCell.appendChild(viewButton);
-
-                    // Adicione o botão "EDIT" à célula
-                    viewButtonCell.appendChild(editButton);
-
-                    const closeModalButtonFormED = document.getElementById('closeModalEDForm');
-                    const editform = document.getElementById('editform');
-
-                    closeModalButtonFormED.addEventListener('click', function () {
-                        editform.style.display = 'none';
-                    });
-
-                    editButton.addEventListener('click', function () {
-                        editform.style.display = 'block';
-                    });
-
-
-
-
 
 
                     // Adicionar um evento de clique ao botão para exibir os detalhes da linha
@@ -107,18 +85,21 @@ function loadsgaSheetData(url) {
                             </div>
                             <div id="column">
                                 <div class="modal2" id="modal2" class="scroll-modal">
-                                    <h3>Erro Detalhado: </h3><br>
+                                    <h3>Erro Detalhado: </h3>
+                                    <hr>
                                     <p id="P_sga">${erros}</p>
                                 </div>
                                 <div class="modal3" class="scroll-modal">
-                                    <h3>Soluções: </h3><br>
+                                    <h3>Soluções: </h3>
+                                    <hr>
                                     <p id="P_sga1">${solucoes}</p>
                                 </div>
                             </div>
                             <div id="column">
                                 <div class="modal4" style="${script ? '' : 'display: none;'}">
-                                    <h3>Scripts: </h3>
-                                    <a href="#" id="copyLink" onclick="copyToClipboardscript()" >📄</a> <br>
+                                    <h3>Scripts:</h3>
+                                    <a href="#" id="copyLink" onclick="copyToClipboardscriptsga()" >📄</a>
+                                    <hr>
                                     <p id="P_sga2" class="scroll-modal">${script}</p>
                                 </div>
                                 <div id="Modalanexo" class="modal5" style="${anexo || imagemLink ? '' : 'display: none;'}">
@@ -127,7 +108,7 @@ function loadsgaSheetData(url) {
                                         ${!anexo && imagemLink ? 'Imagem' : ''}
                                         ${anexo && !imagemLink ? 'Arquivo' : ''}
                                     </h3>
-                                    <br>
+                                    <hr>
                                     <div class="anexo-main" style="${anexo ? '' : 'display: none;'}">
                                         ${linksString}
                                     </div>
@@ -316,7 +297,7 @@ loadsgaSheetData(sgasheetURL);
 /* FIM DADOS */
 
 /* Copiar Script-sga*/
-function copyToClipboardscript() {
+function copyToClipboardscriptsga() {
     const infoText = document.getElementById("P_sga2").innerText;
     const tempInput = document.createElement("textarea");
     tempInput.value = infoText;

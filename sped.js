@@ -118,7 +118,7 @@ function loadspedSheetData(url) {
                             <div id="column">
                                 <div class="modal4" style="${script ? '' : 'display: none;'}">
                                     <h3>Scripts: </h3>
-                                    <a href="#" id="copyLink" onclick="copyToClipboardscript()" >📄</a> <br>
+                                    <a href="#" id="copyLink" onclick="copyToClipboardscriptsped()" >📄</a> <br>
                                     <p id="P_sped2" class="scroll-modal">${script}</p>
                                 </div>
                                 <div id="Modalanexo" class="modal5" style="${anexo || imagemLink ? '' : 'display: none;'}">
@@ -316,7 +316,7 @@ loadspedSheetData(spedsheetURL);
 /* FIM DADOS */
 
 /* Copiar Script-sped */
-function copyToClipboardscript() {
+function copyToClipboardscriptsped() {
     const infoText = document.getElementById("P_sped2").innerText;
     const tempInput = document.createElement("textarea");
     tempInput.value = infoText;
