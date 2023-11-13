@@ -20,6 +20,7 @@ scrollDown.addEventListener('click', () => {
 /* Ativar SECTION */
 
 function showSection(sectionId) {
+  
   var sections = document.querySelectorAll("section");
   for (var i = 0; i < sections.length; i++) {
     sections[i].style.display = "none";
@@ -121,9 +122,5 @@ scrollLeftButton.addEventListener('click', () => {
   container.scrollLeft -= scrollAmount;
 });
 
-scrollRightButton.addEventListener('click', () => {
-  // Define a quantidade de rolagem para a direita
-  const scrollAmount = 50; // Ajuste conforme necessário
-  container.scrollLeft += scrollAmount;
-});
+
 

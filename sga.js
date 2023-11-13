@@ -98,7 +98,7 @@ function loadsgaSheetData(url) {
                             <div id="column">
                                 <div class="modal4" style="${script ? '' : 'display: none;'}">
                                     <h3>Scripts:</h3>
-                                    <a href="#" id="copyLink" onclick="copyToClipboardscriptsga()" >📄</a>
+                                    <a href="#" title="Copiar!" id="copyLink" onclick="copyToClipboardscriptsga()" >📄</a>
                                     <hr>
                                     <p id="P_sga2" class="scroll-modal">${script}</p>
                                 </div>

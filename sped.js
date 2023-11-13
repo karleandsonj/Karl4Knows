@@ -107,18 +107,21 @@ function loadspedSheetData(url) {
                             </div>
                             <div id="column">
                                 <div class="modal2" id="modal2" class="scroll-modal">
-                                    <h3>Erro Detalhado: </h3><br>
+                                    <h3>Erro Detalhado: </h3>
+                                    <hr>
                                     <p id="P_sped">${erros}</p>
                                 </div>
                                 <div class="modal3" class="scroll-modal">
-                                    <h3>Soluções: </h3><br>
+                                    <h3>Soluções: </h3>
+                                    <hr>
                                     <p id="P_sped1">${solucoes}</p>
                                 </div>
                             </div>
                             <div id="column">
                                 <div class="modal4" style="${script ? '' : 'display: none;'}">
                                     <h3>Scripts: </h3>
-                                    <a href="#" id="copyLink" onclick="copyToClipboardscriptsped()" >📄</a> <br>
+                                    <a href="#" title="Copiar!" id="copyLink" onclick="copyToClipboardscriptsped()" >📄</a>
+                                    <hr>
                                     <p id="P_sped2" class="scroll-modal">${script}</p>
                                 </div>
                                 <div id="Modalanexo" class="modal5" style="${anexo || imagemLink ? '' : 'display: none;'}">
@@ -127,7 +130,7 @@ function loadspedSheetData(url) {
                                         ${!anexo && imagemLink ? 'Imagem' : ''}
                                         ${anexo && !imagemLink ? 'Arquivo' : ''}
                                     </h3>
-                                    <br>
+                                    <hr>
                                     <div class="anexo-main" style="${anexo ? '' : 'display: none;'}">
                                         ${linksString}
                                     </div>
