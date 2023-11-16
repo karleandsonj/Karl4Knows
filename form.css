@@ -13,12 +13,13 @@
     border-radius: 20px 0 0 20px;
 }
 
-textarea {
-    resize: vertical;
+textarea{
+    display: grid;
+    resize:unset;
     min-height: 200px;
     max-height: 300px;
     overflow-y: auto;
-    width: 100%;
+    width: 100%;  
 }
 
 #loadinganx,
@@ -114,7 +115,16 @@ textarea {
     padding: 10px;
     width: 75%;
     border-radius: 20px;
+    animation: FormAnim 0.5s linear ;
 }
+@keyframes FormAnim {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 
 .active {
     color: #a10000;
@@ -160,6 +170,7 @@ textarea {
 }
 
 .titulo_form_div {
+    z-index: -5;
     text-align: center;
     width: 100%;
     position: relative;
@@ -292,23 +303,38 @@ textarea {
     margin-bottom: 15px;
 }
 
-.formulario .campo_img {
-    cursor: pointer;
+.campo_img {
     position: relative;
     display: flex;
     color: #000000;
     font-family: 'open_sansregular';
     font-size: 12px;
-    /*     line-height: 20px; */
     background-color: rgb(255, 255, 255);
     border: 2px solid #44749d;
     transition: all 0.3s;
-    padding: 11px;
+/*     padding: 11px; */
     width: 100%;
-    box-sizing: border-box;
+    height: 100px;
+    box-sizing: border-box; /* Garante que o padding e a borda estão incluídos na largura e altura */
     outline: 0;
     border-radius: 10px;
-    /*     margin-bottom: 20px; */
+}
+
+.butt-img {
+    position: relative;
+    cursor: pointer;
+    display: grid;
+    border-right: 2px solid #44749d;
+    padding: 25px 10px 25px;
+    box-sizing: border-box; /* Garante que o padding e a borda estão incluídos na largura e altura */
+}
+
+#imgimpt1 {
+    z-index: 50;
+    position: relative;
+    max-width: 100%; /* Garante que a imagem não ultrapasse a largura do contêiner */
+    height: 80px;
+    display: flex;
 }
 
 .excluirimg {
@@ -316,12 +342,41 @@ textarea {
     z-index: 10;
     position: absolute;
     display: flex;
-    top: 8.6%;
-    right: 51%;
+    right: 0;
+    top: 0;
     background-color: #ffffff;
-    border: 2px solid rgb(0, 0, 0);
+/*     border: 2px solid rgb(0, 0, 0); */
     cursor: url('IMG/cursor-X-small.png') 8 8, auto;
     /* 16 16 é o ponto de destino no centro da imagem */
+}
+
+#imgimpt-container{
+    z-index: 15;
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    margin-right: 25px;
+
+/*     background-color: #000000; */
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.img-preview{
+    position: relative;
+    display: inline-block;
+    /*   box-shadow: 0px 0px 2vh black; */
+    background-color: #ebe7e0;
+    border: #000 solid 1px;
+    border-radius: 10px;
+    margin: 5px;
+    width: 150px;
+    max-height: 80px;
+    transition: .5s, color .10s;
+    -webkit-transition: .5s, color .10s;
+    -moz-transition: .5s, color .10s;
+/*     left: 50%;
+    transform: translateX(-50%); */
 }
 
 
@@ -473,8 +528,8 @@ textarea {
         z-index: 5;
         position: absolute;
         display: flex;
-        top: 7.2%;
-        right: 4%;
+        top: 0;
+        right: 0;
     }
 
 

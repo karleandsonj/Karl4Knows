@@ -1030,6 +1030,7 @@ ol {
 }
 
 .fechar {
+  z-index: 8;
   width: 25px;
   height: 25px;
   transition: .5s, color .10s;
@@ -1301,3 +1302,27 @@ h3 {
   right: 50%;
   transform: translate(-50%, -50%);
 }
+
+/* section {
+	-webkit-animation: fade-in 0.8s linear both;
+	        animation: fade-in 0.8s linear both;
+}
+ @-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+} */
+
+
+

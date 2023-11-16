@@ -1,8 +1,54 @@
-/* INICIO FIRE BASE */
+function exibirImagem() {
+    var input1 = document.getElementById('imgimpt');
+    var imgContainer = document.getElementById('imgimpt-container');
+
+    // Limpa o conteúdo anterior
+    imgContainer.innerHTML = '';
+
+    // Verifica se algum arquivo foi selecionado
+    if (input1.files && input1.files.length > 0) {
+        for (var i = 0; i < input1.files.length; i++) {
+            var reader = new FileReader();
+
+            // Utiliza uma IIFE para capturar o valor correto de img
+            (function (imgIndex) {
+                reader.onload = function (e) {
+                    var img = document.createElement('img');
+
+                    img.title = input1.files[imgIndex].name; // Corrigido aqui
+
+                    // Atribui um id único para cada imagem
+                    img.id = 'img-preview' + imgIndex;
+
+                    img.src = e.target.result;
+                    img.className = 'img-preview';
+
+                    
+
+                    // Adiciona o botão de exclusão
+                    var deleteButton = document.createElement('a');
+                    deleteButton.className = 'excluirimg';
+                    deleteButton.onclick = function () {
+                        excluirImagem(img.id);
+                    };
+                    deleteButton.innerHTML = '<img src="IMG/lixo2.png" class="lixo">';
+                    imgContainer.appendChild(img);
+                    imgContainer.appendChild(deleteButton);
+                };
+            })(i);
+
+            reader.readAsDataURL(input1.files[i]);
+        }
+
+        imgContainer.style.display = 'flex'; // Exibe o contêiner
+    } else {
+        imgContainer.style.display = 'none'; // Oculta o contêiner se nenhum arquivo estiver selecionado
+    }
+}
 
 
 
-/* Fim FIRE BASE */
+
 const meuFormulario = document.getElementById('meu-formulario');
 const camposDeTexto = meuFormulario.querySelectorAll('input');
 
@@ -221,6 +267,15 @@ function excluirImagem() {
     var input = document.getElementById("imgimpt");
     input.value = ""; // Limpa o valor do input
     verificarInput('imgimpt', '.excluirimg'); // Oculta o botão novamente
+
+    var imgContainer = document.getElementById('imgimpt-container');
+
+    // Remove todas as imagens e botões de exclusão
+    while (imgContainer.firstChild) {
+        imgContainer.removeChild(imgContainer.firstChild);
+    }
+
+    imgContainer.style.display = 'none'; // Oculta o contêiner
 }
 
 function excluirAnexo() {

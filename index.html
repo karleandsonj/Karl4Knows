@@ -142,14 +142,18 @@
 
                     <div class="label2_3">
                         <span>Imagens</span>
-
-                        <input type="file" name="imageUrl1" class="campo_img" multiple accept="image/*" id="imgimpt"
-                            title="Clique para Carregar Imagens" onchange="verificarInput('imgimpt', '.excluirimg')"
-                            class="excluirimg" />
-                        <img src="" alt="" id="imgimpt1" style="display: none;">
-                        <input type="text" name="imageUrl" id="imgimpt2" readonly style="display: none;">
-                        <a class="excluirimg" style="display: none;" onclick="excluirImagem()"><img src="IMG/lixo2.png"
-                                class="lixo"></a>
+                        <div class="campo_img">
+                            <label for="imgimpt" class="butt-img">Escolher <br> Imagem</label>
+                            <input type="file" name="imageUrl1" class="campo_img" multiple accept="image/*" id="imgimpt"
+                                title="Clique para Carregar Imagens"
+                                onchange="verificarInput('imgimpt', '.excluirimg'); exibirImagem()" class="excluirimg"
+                                style="display: none;" />
+                            <div id="imgimpt-container" style="display: inline-block;"></div>
+                            <img src="" alt="" id="imgimpt1">
+                            <input type="text" name="imageUrl" id="imgimpt2" readonly style="display: none;">
+                            <a class="excluirimg" style="display: none;" onclick="excluirImagem()"><img
+                                    src="IMG/lixo2.png" class="lixo"></a>
+                        </div>
                     </div>
 
                     <div class="label2_2">
