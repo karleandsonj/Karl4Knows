@@ -23,38 +23,41 @@ function loadsoboxSheetData(url) {
                 const columns = row.querySelectorAll('td');
 
                 // Verificar se todas as colunas relevantes (ID_sobox, ERROS, FOTOS, SOLUCOES) estão preenchidas
-                if (columns[2].textContent.trim() !== '') {
+                if (columns[0].textContent.trim() !== '') {
 
                     const errorsressumosoboxCell = document.createElement('td');
-                    const errorsressumosoboxData = columns[1].textContent.trim();
+                    const errorsressumosoboxData = columns[2].textContent.trim();
                     errorsressumosoboxCell.innerHTML = `<span>${errorsressumosoboxData}</span>`;
 
                     errorsressumosoboxCell.classList.add('erro1'); // Substitua 'sua-classe-aqui' pelo nome da classe desejada
 
                     const viewButtonCell = document.createElement('td'); // Criar uma nova célula para o botão
-                    const viewButton = document.createElement('img'); // Criar um elemento de imagem
-                    viewButton.setAttribute('src', 'IMG/lupa.png'); // Definir o atributo 'src' para o caminho da imagem
+                    const viewButton = document.createElement('img');
+                    viewButton.setAttribute('src', 'IMG/lupa.png');
+                    viewButton.classList.add('lupa1');
 
+                    viewButtonCell.classList.add('visu_erro');
 
-                    // Adicionar uma classe ao elemento de imagem
-                    viewButton.classList.add('lupa1'); // Substitua 'sua-classe-aqui' pelo nome da classe desejada
-
-                    // Adicionar o elemento de imagem à célula da tabela
+                    // Adicionar os botões à célula da tabela
                     viewButtonCell.appendChild(viewButton);
+
 
                     // Adicionar um evento de clique ao botão para exibir os detalhes da linha
                     viewButton.addEventListener('click', () => {
                         // Obter os dados das colunas relevantes da linha
                         const sistema = columns[0].textContent.trim();
-                        const erros = columns[2].textContent.trim();
-                        const solucoes = columns[3].textContent.trim();
-                        const script = columns[4].textContent.trim();
-                        const descricao_anexo = columns[5].textContent.trim();
-                        const anexo = columns[6].textContent.trim();
-                        const imagemLink = columns[7].textContent.trim();
+                        const erros = columns[3].textContent.trim();
+                        const solucoes = columns[4].textContent.trim();
+                        const script = columns[5].textContent.trim();
+                        const imagemLink = columns[6].textContent.trim();
+                        const descricao_anexo = columns[7].textContent.trim();
+                        const anexo = columns[8].textContent.trim();
+
+                        /* console.log(anexo) */
 
                         // Dividir a variável imagemLink em várias imagens usando o ponto e vírgula como separador
                         const imagens = imagemLink.split('§');
+                        /* const anexos = anexo.split('§'); */
 
                         // Criar uma array de links e descrições de anexo separados pelo caractere especial §
                         const separador = '§';
@@ -82,30 +85,34 @@ function loadsoboxSheetData(url) {
                             </div>
                             <div id="column">
                                 <div class="modal2" id="modal2" class="scroll-modal">
-                                    <h3>Erro Detalhado: </h3><br>
+                                    <h3>Erro Detalhado: </h3>
+                                    <hr class="hr-rot">
                                     <p id="P_sobox">${erros}</p>
                                 </div>
                                 <div class="modal3" class="scroll-modal">
-                                    <h3>Soluções: </h3><br>
+                                    <h3>Soluções: </h3>
+                                    <hr class="hr-rot">
                                     <p id="P_sobox1">${solucoes}</p>
                                 </div>
                             </div>
                             <div id="column">
                                 <div class="modal4" style="${script ? '' : 'display: none;'}">
-                                    <h3>Scripts: </h3><br>
+                                    <h3>Scripts:</h3>
+                                    <a href="#" title="Copiar!" id="copyLink" onclick="copyToClipboardscriptsobox()" >📄</a>
+                                    <hr class="hr-rot">
                                     <p id="P_sobox2" class="scroll-modal">${script}</p>
                                 </div>
                                 <div id="Modalanexo" class="modal5" style="${anexo || imagemLink ? '' : 'display: none;'}">
                                     <h3>
-                                        ${anexo && imagemLink ? 'Anexo e Imagem' : ''}
+                                        ${anexo && imagemLink ? 'Arquivo e Imagem' : ''}
                                         ${!anexo && imagemLink ? 'Imagem' : ''}
-                                        ${anexo && !imagemLink ? 'Anexo' : ''}
+                                        ${anexo && !imagemLink ? 'Arquivo' : ''}
                                     </h3>
-                                    <br>
+                                    <hr class="hr-rot">
                                     <div class="anexo-main" style="${anexo ? '' : 'display: none;'}">
                                         ${linksString}
                                     </div>
-                                    <hr style="${anexo && imagemLink ? '' : 'display: none;'}">
+                                    <hr style="${anexo && imagemLink ? '' : 'display: none;'}" class="hr-rot">
                                     <div class="imagem-div-main" style="${imagemLink ? '' : 'display: none;'}">
                                         ${imagensString}
                                     </div>
@@ -172,6 +179,7 @@ function loadsoboxSheetData(url) {
                         /* const trocarImagemLink = document.getElementById('trocarImagem'); */
                         const imagemDivs = document.querySelectorAll('.imagem-div');
                         const modalContainer = document.getElementById('modalContainer');
+
                         const modalContainerborda = document.getElementById('modalContainer-borda');
 
                         /* let imagemAtual = 0; */
@@ -179,10 +187,10 @@ function loadsoboxSheetData(url) {
                         /* trocarImagemLink.addEventListener('click', () => {
                             // Ocultar a imagem atual
                             imagemDivs[imagemAtual].style.display = 'none';
-
+                
                             // Avançar para a próxima imagem
                             imagemAtual = (imagemAtual + 1) % imagens.length;
-
+                
                             // Exibir a nova imagem
                             imagemDivs[imagemAtual].style.display = 'block';
                         }); */
@@ -197,7 +205,7 @@ function loadsoboxSheetData(url) {
                                 imagemAmpliada.innerHTML = `
                                     <img src="${imagens[index]}" alt="">
                                     <div class="img-amp-close">
-                                        <a href="#" id="fecharImagem">❎</a>
+                                        <a href="#" id="fecharImagem">✖️</a> 
                                     </div>
                                 `;
                                 modalContainer.appendChild(imagemAmpliada);
@@ -235,13 +243,16 @@ function loadsoboxSheetData(url) {
                         }
 
                         function formatarTextoComQuebrasDeLinha2(elementId) {
-                            var elemento2 = document.querySelector('#' + elementId);
+                            var elemento = document.querySelector('#' + elementId);
 
-                            if (elemento2) {
-                                var texto = elemento2.innerHTML;
-                                var arrayDeLinhas2 = texto.split('§');
-                                var novoTexto2 = arrayDeLinhas2.join('<br>');
-                                elemento2.innerHTML = novoTexto2;
+                            if (elemento) {
+                                elemento.style.whiteSpace = 'pre'; // Aplicar a propriedade 'white-space' com valor 'pre'
+                                var texto = elemento.innerHTML;
+                                var arrayDeLinhas = texto.split('§');
+                                var novoTexto = arrayDeLinhas.join('<br>');
+                                elemento.innerHTML = novoTexto;
+                                elemento.style.whiteSpace = 'pre-wrap'; // Permite quebras de linha e espaço branco
+                                elemento.style.wordWrap = 'break-word'; // Força quebra de palavra em caso de overflow
                             }
                         }
 
@@ -284,3 +295,21 @@ closeModalsoboxButton.addEventListener('click', () => {
 loadsoboxSheetData(soboxsheetURL);
 
 /* FIM DADOS */
+
+/* Copiar Script-sobox*/
+function copyToClipboardscriptsobox() {
+    const infoText = document.getElementById("P_sobox2").innerText;
+    const tempInput = document.createElement("textarea");
+    tempInput.value = infoText;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+
+    // Estilizar o botão após a cópia
+    const btnCopiar = document.getElementById('copyLink');
+    btnCopiar.innerText = '📄 ✔';
+    setTimeout(() => {
+        btnCopiar.innerText = '📄';
+    }, 3000);
+}

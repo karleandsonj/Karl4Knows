@@ -16,8 +16,7 @@
 textarea{
     display: grid;
     resize:unset;
-    min-height: 200px;
-    max-height: 300px;
+    height: 200px;
     overflow-y: auto;
     width: 100%;  
 }
@@ -282,8 +281,7 @@ textarea{
     }
 
     textarea {
-        min-height: 100px;
-        max-height: 150px;
+        height: 150px;
     }
 }
 
@@ -320,13 +318,60 @@ textarea{
     border-radius: 10px;
 }
 
-.butt-img {
+.campo_anx{
     position: relative;
-    cursor: pointer;
-    display: grid;
-    border-right: 2px solid #44749d;
-    padding: 25px 10px 25px;
+    display: flex;
+    color: #000000;
+    font-family: 'open_sansregular';
+    font-size: 12px;
+    background-color: rgb(255, 255, 255);
+    border: 2px solid #44749d;
+    transition: all 0.3s;
+/*     padding: 11px; */
+    width: 100%;
+    height: 100px;
     box-sizing: border-box; /* Garante que o padding e a borda estão incluídos na largura e altura */
+    outline: 0;
+    border-radius: 10px;
+}
+
+
+.butt-img {
+    width: 60px;
+    position: relative;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    align-self: center;
+    cursor: pointer;
+    display: flex;
+    border-right: 2px solid #44749d;
+    padding: 25px 0;
+    font-size: 90%;
+    box-sizing: border-box; /* Garante que o padding e a borda estão incluídos na largura e altura */
+}
+
+.butt-anx{
+    width: 60px;
+    position: relative;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    align-self: center;
+    cursor: pointer;
+    display: flex;
+    border-right: 2px solid #44749d;
+    padding: 25px 0;
+    font-size: 90%;
+    box-sizing: border-box; /* Garante que o padding e a borda estão incluídos na largura e altura */
+}
+
+.butt-img:hover, .butt-anx:hover{
+    background-color: #ebebebcc;
+    box-shadow: 0 -2px #ebebebcc, 0 2px #ebebebcc;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+
 }
 
 #imgimpt1 {
@@ -346,6 +391,19 @@ textarea{
     top: 0;
     background-color: #ffffff;
 /*     border: 2px solid rgb(0, 0, 0); */
+    cursor: url('IMG/cursor-X-small.png') 8 8, auto;
+    /* 16 16 é o ponto de destino no centro da imagem */
+}
+
+.excluiranx {
+    border-radius: 10px;
+    z-index: 10;
+    position: absolute;
+    display: flex;
+    right: 0;
+    top: 0;
+    background-color: #ffffff;
+    /* border: 2px solid rgb(0, 0, 0); */
     cursor: url('IMG/cursor-X-small.png') 8 8, auto;
     /* 16 16 é o ponto de destino no centro da imagem */
 }
@@ -379,6 +437,12 @@ textarea{
     transform: translateX(-50%); */
 }
 
+.hr-form {
+    border: none;
+    background-color: #000000;
+    height: 0.5px;
+    margin: 5px 0;
+}
 
 .formulario .campo_anexo {
     cursor: pointer;
@@ -403,18 +467,20 @@ textarea{
     width: 25px;
 }
 
-.excluiranx {
-    border-radius: 10px;
-    z-index: 5;
-    position: absolute;
+#anexoList {
     display: flex;
-    top: 8.6%;
-    right: 4.3%;
-    background-color: #ffffff;
-    border: 2px solid rgb(0, 0, 0);
-    cursor: url('IMG/cursor-X-small.png') 8 8, auto;
-    /* 16 16 é o ponto de destino no centro da imagem */
+    z-index: 15;
+    height: calc(100% - 10px); /* 10px é a soma da margem superior (5px) e inferior (5px) */
+    width: 100%;
+    margin-right: 25px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: left;
+    margin-left: 0; /* Define a margem para zero */
+    padding-left: 20px; /* Adiciona espaço à esquerda */
+    padding-top: 10px;
 }
+
 
 /* Remova a largura fixa da tag <span> dentro de .label2 */
 .label2_1,
@@ -445,13 +511,13 @@ textarea{
     padding: 6.5px;
 }
 
-.campo_anexo::-webkit-file-upload-button,
+.campo_anx::-webkit-file-upload-button,
 .campo_img::-webkit-file-upload-button {
     display: none;
 }
 
 .formulario .campo:focus,
-.campo_anexo:focus,
+.campo_anx:focus,
 .campo_img:focus {
     border: 2px solid #3744ff;
     color: #00013b;
@@ -520,8 +586,8 @@ textarea{
         z-index: 5;
         position: absolute;
         display: flex;
-        top: 30.5%;
-        right: 4%;
+        top: 0;
+        right: 0;
     }
 
     .excluirimg {

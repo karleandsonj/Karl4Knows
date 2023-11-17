@@ -3,15 +3,11 @@
   margin: 0;
 }
 
-hr {
-  border: none;
-  /* Remove a borda padrão */
+.hr-rot {
+/*   border: none; */
   background-color: #000000;
-  /* Cor de fundo da linha */
-  height: 1.2px;
-  /* Altura da linha */
+  height: 1px;
   margin: 10px 0;
-  /* Margens superior e inferior para espaçamento */
 }
 
 th {

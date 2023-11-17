@@ -3,7 +3,7 @@
 const sgaboxnewboxnewSheetURL = "https://docs.google.com/spreadsheets/d/1Jovno7NeDFhTmj0_97pbIeVYEZuxTh0qqs9JKP1lnhA/edit#gid=0";
 
 // Função para carregar os dados da planilha na tabela com o id "data-table"
-function loadsgaboxnewSheetData(url) {
+function loadsgaboxnewboxnewSheetData(url) {
     fetch(url)
         .then(response => response.text())
         .then(data => {
@@ -12,7 +12,7 @@ function loadsgaboxnewSheetData(url) {
             const tableRows = htmlDocument.querySelectorAll('tbody tr');
 
             // Limpar a tabela antes de adicionar novos dados
-            const dataTableBody = document.querySelector('#data-table-sgaboxnew tbody');
+            const dataTableBody = document.querySelector('#data-table-sgaboxnewboxnew tbody');
             dataTableBody.innerHTML = '';
             // Definir o limite máximo de linhas a serem carregadas (até a última linha preenchida)
             const maxRows = tableRows.length;
@@ -22,39 +22,42 @@ function loadsgaboxnewSheetData(url) {
                 const row = tableRows[i];
                 const columns = row.querySelectorAll('td');
 
-                // Verificar se todas as colunas relevantes (ID_sgaboxnew, ERROS, FOTOS, SOLUCOES) estão preenchidas
-                if (columns[2].textContent.trim() !== '') {
+                // Verificar se todas as colunas relevantes (ID_sgaboxnewboxnew, ERROS, FOTOS, SOLUCOES) estão preenchidas
+                if (columns[0].textContent.trim() !== '') {
 
-                    const errorsressumosgaboxnewCell = document.createElement('td');
-                    const errorsressumosgaboxnewData = columns[1].textContent.trim();
-                    errorsressumosgaboxnewCell.innerHTML = `<span>${errorsressumosgaboxnewData}</span>`;
+                    const errorsressumosgaboxnewboxnewCell = document.createElement('td');
+                    const errorsressumosgaboxnewboxnewData = columns[2].textContent.trim();
+                    errorsressumosgaboxnewboxnewCell.innerHTML = `<span>${errorsressumosgaboxnewboxnewData}</span>`;
 
-                    errorsressumosgaboxnewCell.classList.add('erro1'); // Substitua 'sua-classe-aqui' pelo nome da classe desejada
+                    errorsressumosgaboxnewboxnewCell.classList.add('erro1'); // Substitua 'sua-classe-aqui' pelo nome da classe desejada
 
                     const viewButtonCell = document.createElement('td'); // Criar uma nova célula para o botão
-                    const viewButton = document.createElement('img'); // Criar um elemento de imagem
-                    viewButton.setAttribute('src', 'IMG/lupa.png'); // Definir o atributo 'src' para o caminho da imagem
+                    const viewButton = document.createElement('img');
+                    viewButton.setAttribute('src', 'IMG/lupa.png');
+                    viewButton.classList.add('lupa1');
 
+                    viewButtonCell.classList.add('visu_erro');
 
-                    // Adicionar uma classe ao elemento de imagem
-                    viewButton.classList.add('lupa1'); // Substitua 'sua-classe-aqui' pelo nome da classe desejada
-
-                    // Adicionar o elemento de imagem à célula da tabela
+                    // Adicionar os botões à célula da tabela
                     viewButtonCell.appendChild(viewButton);
+
 
                     // Adicionar um evento de clique ao botão para exibir os detalhes da linha
                     viewButton.addEventListener('click', () => {
                         // Obter os dados das colunas relevantes da linha
                         const sistema = columns[0].textContent.trim();
-                        const erros = columns[2].textContent.trim();
-                        const solucoes = columns[3].textContent.trim();
-                        const script = columns[4].textContent.trim();
-                        const descricao_anexo = columns[5].textContent.trim();
-                        const anexo = columns[6].textContent.trim();
-                        const imagemLink = columns[7].textContent.trim();
+                        const erros = columns[3].textContent.trim();
+                        const solucoes = columns[4].textContent.trim();
+                        const script = columns[5].textContent.trim();
+                        const imagemLink = columns[6].textContent.trim();
+                        const descricao_anexo = columns[7].textContent.trim();
+                        const anexo = columns[8].textContent.trim();
+
+                        /* console.log(anexo) */
 
                         // Dividir a variável imagemLink em várias imagens usando o ponto e vírgula como separador
                         const imagens = imagemLink.split('§');
+                        /* const anexos = anexo.split('§'); */
 
                         // Criar uma array de links e descrições de anexo separados pelo caractere especial §
                         const separador = '§';
@@ -64,13 +67,13 @@ function loadsgaboxnewSheetData(url) {
 
                         // Criar uma string que contenha todas as tags <a> com os links e descrições correspondentes
                         const linksString = linksArray.map((link, index) => `
-                            <a href="${link}" id="P_sgaboxnew${index + 1}" target="_blank" class="buttonDownload">${descricaoAnexoArray[index]}</a>
+                            <a href="${link}" id="P_sgaboxnewboxnew${index + 1}" target="_blank" class="buttonDownload">${descricaoAnexoArray[index]}</a>
                         `).join('');
 
                         // Criar uma string que contenha todas as tags <img> com as imagens correspondentes
                         const imagensString = imagensArray.map((link, index) => `
                         <div class="imagem-div" >
-                            <img class="img_anexo imagem-div1" id="P_sgaboxnew4${index + 1}" src="${link}" alt="">
+                            <img class="img_anexo imagem-div1" id="P_sgaboxnewboxnew4${index + 1}" src="${link}" alt="">
                         </div>
                         `).join('');
 
@@ -82,30 +85,34 @@ function loadsgaboxnewSheetData(url) {
                             </div>
                             <div id="column">
                                 <div class="modal2" id="modal2" class="scroll-modal">
-                                    <h3>Erro Detalhado: </h3><br>
-                                    <p id="P_sgaboxnew">${erros}</p>
+                                    <h3>Erro Detalhado: </h3>
+                                    <hr class="hr-rot">
+                                    <p id="P_sgaboxnewboxnew">${erros}</p>
                                 </div>
                                 <div class="modal3" class="scroll-modal">
-                                    <h3>Soluções: </h3><br>
-                                    <p id="P_sgaboxnew1">${solucoes}</p>
+                                    <h3>Soluções: </h3>
+                                    <hr class="hr-rot">
+                                    <p id="P_sgaboxnewboxnew1">${solucoes}</p>
                                 </div>
                             </div>
                             <div id="column">
                                 <div class="modal4" style="${script ? '' : 'display: none;'}">
-                                    <h3>Scripts: </h3><br>
-                                    <p id="P_sgaboxnew2" class="scroll-modal">${script}</p>
+                                    <h3>Scripts:</h3>
+                                    <a href="#" title="Copiar!" id="copyLink" onclick="copyToClipboardscriptsgaboxnewboxnew()" >📄</a>
+                                    <hr class="hr-rot">
+                                    <p id="P_sgaboxnewboxnew2" class="scroll-modal">${script}</p>
                                 </div>
                                 <div id="Modalanexo" class="modal5" style="${anexo || imagemLink ? '' : 'display: none;'}">
                                     <h3>
-                                        ${anexo && imagemLink ? 'Anexo e Imagem' : ''}
+                                        ${anexo && imagemLink ? 'Arquivo e Imagem' : ''}
                                         ${!anexo && imagemLink ? 'Imagem' : ''}
-                                        ${anexo && !imagemLink ? 'Anexo' : ''}
+                                        ${anexo && !imagemLink ? 'Arquivo' : ''}
                                     </h3>
-                                    <br>
+                                    <hr class="hr-rot">
                                     <div class="anexo-main" style="${anexo ? '' : 'display: none;'}">
                                         ${linksString}
                                     </div>
-                                    <hr style="${anexo && imagemLink ? '' : 'display: none;'}">
+                                    <hr style="${anexo && imagemLink ? '' : 'display: none;'}" class="hr-rot">
                                     <div class="imagem-div-main" style="${imagemLink ? '' : 'display: none;'}">
                                         ${imagensString}
                                     </div>
@@ -164,14 +171,15 @@ function loadsgaboxnewSheetData(url) {
                         }
 
                         // Chame a função com o ID do elemento desejado
-                        transformarEmListaOrdenada('P_sgaboxnew'); // Substituir 'P_sgaboxnew1' pelo ID desejado
-                        transformarEmListaOrdenada('P_sgaboxnew1'); // Substituir 'P_sgaboxnew2' pelo ID desejado                        
+                        transformarEmListaOrdenada('P_sgaboxnewboxnew'); // Substituir 'P_sgaboxnewboxnew1' pelo ID desejado
+                        transformarEmListaOrdenada('P_sgaboxnewboxnew1'); // Substituir 'P_sgaboxnewboxnew2' pelo ID desejado                        
 
 
                         // Adicionar um evento de clique ao link "Clique para trocar a imagem"
                         /* const trocarImagemLink = document.getElementById('trocarImagem'); */
                         const imagemDivs = document.querySelectorAll('.imagem-div');
                         const modalContainer = document.getElementById('modalContainer');
+
                         const modalContainerborda = document.getElementById('modalContainer-borda');
 
                         /* let imagemAtual = 0; */
@@ -179,10 +187,10 @@ function loadsgaboxnewSheetData(url) {
                         /* trocarImagemLink.addEventListener('click', () => {
                             // Ocultar a imagem atual
                             imagemDivs[imagemAtual].style.display = 'none';
-
+                
                             // Avançar para a próxima imagem
                             imagemAtual = (imagemAtual + 1) % imagens.length;
-
+                
                             // Exibir a nova imagem
                             imagemDivs[imagemAtual].style.display = 'block';
                         }); */
@@ -197,7 +205,7 @@ function loadsgaboxnewSheetData(url) {
                                 imagemAmpliada.innerHTML = `
                                     <img src="${imagens[index]}" alt="">
                                     <div class="img-amp-close">
-                                        <a href="#" id="fecharImagem">❎</a>
+                                        <a href="#" id="fecharImagem">✖️</a> 
                                     </div>
                                 `;
                                 modalContainer.appendChild(imagemAmpliada);
@@ -235,30 +243,33 @@ function loadsgaboxnewSheetData(url) {
                         }
 
                         function formatarTextoComQuebrasDeLinha2(elementId) {
-                            var elemento2 = document.querySelector('#' + elementId);
+                            var elemento = document.querySelector('#' + elementId);
 
-                            if (elemento2) {
-                                var texto = elemento2.innerHTML;
-                                var arrayDeLinhas2 = texto.split('§');
-                                var novoTexto2 = arrayDeLinhas2.join('<br>');
-                                elemento2.innerHTML = novoTexto2;
+                            if (elemento) {
+                                elemento.style.whiteSpace = 'pre'; // Aplicar a propriedade 'white-space' com valor 'pre'
+                                var texto = elemento.innerHTML;
+                                var arrayDeLinhas = texto.split('§');
+                                var novoTexto = arrayDeLinhas.join('<br>');
+                                elemento.innerHTML = novoTexto;
+                                elemento.style.whiteSpace = 'pre-wrap'; // Permite quebras de linha e espaço branco
+                                elemento.style.wordWrap = 'break-word'; // Força quebra de palavra em caso de overflow
                             }
                         }
 
 
                         // Para usar a função com outro campo, basta chamar a função com o ID do novo elemento:
-                        formatarTextoComQuebrasDeLinha('P_sgaboxnew');
-                        formatarTextoComQuebrasDeLinha('P_sgaboxnew1');
-                        formatarTextoComQuebrasDeLinha2('P_sgaboxnew2');
-                        formatarTextoComQuebrasDeLinha2('P_sgaboxnew3');
-                        formatarTextoComQuebrasDeLinha2('P_sgaboxnew4');
-                        formatarTextoComQuebrasDeLinha2('P_sgaboxnew5');
+                        formatarTextoComQuebrasDeLinha('P_sgaboxnewboxnew');
+                        formatarTextoComQuebrasDeLinha('P_sgaboxnewboxnew1');
+                        formatarTextoComQuebrasDeLinha2('P_sgaboxnewboxnew2');
+                        formatarTextoComQuebrasDeLinha2('P_sgaboxnewboxnew3');
+                        formatarTextoComQuebrasDeLinha2('P_sgaboxnewboxnew4');
+                        formatarTextoComQuebrasDeLinha2('P_sgaboxnewboxnew5');
                     });
 
                     viewButtonCell.appendChild(viewButton); // Adicionar o botão à célula
 
                     const newRow = document.createElement('tr');
-                    newRow.appendChild(errorsressumosgaboxnewCell);
+                    newRow.appendChild(errorsressumosgaboxnewboxnewCell);
                     newRow.appendChild(viewButtonCell); // Adicionar a célula do botão à linha
 
                     dataTableBody.appendChild(newRow);
@@ -272,15 +283,34 @@ function loadsgaboxnewSheetData(url) {
 }
 
 // Fechar o card/modal quando o botão de fechar é clicado
-const closeModalsgaboxnewButton = document.getElementById('closeModal');
-const infoModalsgaboxnew = document.getElementById('infoModal');
+const closeModalsgaboxnewboxnewButton = document.getElementById('closeModal');
+const infoModalsgaboxnewboxnew = document.getElementById('infoModal');
 
-closeModalsgaboxnewButton.addEventListener('click', () => {
-    infoModalsgaboxnew.style.display = 'none';
+closeModalsgaboxnewboxnewButton.addEventListener('click', () => {
+    infoModalsgaboxnewboxnew.style.display = 'none';
 });
 
 
 // Chamar a função para carregar os dados da planilha
-loadsgaboxnewSheetData(sgaboxnewsheetURL);
+loadsgaboxnewboxnewSheetData(sgaboxnewboxnewsheetURL);
 
 /* FIM DADOS */
+
+/* Copiar Script-sgaboxnewboxnew*/
+function copyToClipboardscriptsgaboxnewboxnew() {
+    const infoText = document.getElementById("P_sgaboxnewboxnew2").innerText;
+    const tempInput = document.createElement("textarea");
+    tempInput.value = infoText;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+
+    // Estilizar o botão após a cópia
+    const btnCopiar = document.getElementById('copyLink');
+    btnCopiar.innerText = '📄 ✔';
+    setTimeout(() => {
+        btnCopiar.innerText = '📄';
+    }, 3000);
+}
+

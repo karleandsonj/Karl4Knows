@@ -38,30 +38,8 @@ function loadspedSheetData(url) {
 
                     viewButtonCell.classList.add('visu_erro');
 
-                    const editButton = document.createElement('img'); // Criar um botão "EDIT"
-                    editButton.setAttribute('src', 'IMG/lapis.png');
-                    editButton.classList.add('edit1'); // Adicionar uma classe ao botão
-
                     // Adicionar os botões à célula da tabela
                     viewButtonCell.appendChild(viewButton);
-
-                    // Adicione o botão "EDIT" à célula
-                    viewButtonCell.appendChild(editButton);
-
-                    const closeModalButtonFormED = document.getElementById('closeModalEDForm');
-                    const editform = document.getElementById('editform');
-
-                    closeModalButtonFormED.addEventListener('click', function () {
-                        editform.style.display = 'none';
-                    });
-
-                    editButton.addEventListener('click', function () {
-                        editform.style.display = 'block';
-                    });
-
-
-
-
 
 
                     // Adicionar um evento de clique ao botão para exibir os detalhes da linha
@@ -108,20 +86,20 @@ function loadspedSheetData(url) {
                             <div id="column">
                                 <div class="modal2" id="modal2" class="scroll-modal">
                                     <h3>Erro Detalhado: </h3>
-                                    <hr>
+                                    <hr class="hr-rot">
                                     <p id="P_sped">${erros}</p>
                                 </div>
                                 <div class="modal3" class="scroll-modal">
                                     <h3>Soluções: </h3>
-                                    <hr>
+                                    <hr class="hr-rot">
                                     <p id="P_sped1">${solucoes}</p>
                                 </div>
                             </div>
                             <div id="column">
                                 <div class="modal4" style="${script ? '' : 'display: none;'}">
-                                    <h3>Scripts: </h3>
+                                    <h3>Scripts:</h3>
                                     <a href="#" title="Copiar!" id="copyLink" onclick="copyToClipboardscriptsped()" >📄</a>
-                                    <hr>
+                                    <hr class="hr-rot">
                                     <p id="P_sped2" class="scroll-modal">${script}</p>
                                 </div>
                                 <div id="Modalanexo" class="modal5" style="${anexo || imagemLink ? '' : 'display: none;'}">
@@ -130,11 +108,11 @@ function loadspedSheetData(url) {
                                         ${!anexo && imagemLink ? 'Imagem' : ''}
                                         ${anexo && !imagemLink ? 'Arquivo' : ''}
                                     </h3>
-                                    <hr>
+                                    <hr class="hr-rot">
                                     <div class="anexo-main" style="${anexo ? '' : 'display: none;'}">
                                         ${linksString}
                                     </div>
-                                    <hr style="${anexo && imagemLink ? '' : 'display: none;'}">
+                                    <hr style="${anexo && imagemLink ? '' : 'display: none;'}" class="hr-rot">
                                     <div class="imagem-div-main" style="${imagemLink ? '' : 'display: none;'}">
                                         ${imagensString}
                                     </div>
@@ -318,7 +296,7 @@ loadspedSheetData(spedsheetURL);
 
 /* FIM DADOS */
 
-/* Copiar Script-sped */
+/* Copiar Script-sped*/
 function copyToClipboardscriptsped() {
     const infoText = document.getElementById("P_sped2").innerText;
     const tempInput = document.createElement("textarea");

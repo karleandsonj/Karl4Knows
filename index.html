@@ -138,18 +138,16 @@
 
                 <div action="" class="formulario2" id="form_anexo">
 
-                    <input type="text" name="descricao_anexo" style="display: none;" readonly id="nomearq1" />
-
                     <div class="label2_3">
                         <span>Imagens</span>
                         <div class="campo_img">
-                            <label for="imgimpt" class="butt-img">Escolher <br> Imagem</label>
+                            <label for="imgimpt" class="butt-img">Escolher <br> Imagem <br> 🖼️</label>
                             <input type="file" name="imageUrl1" class="campo_img" multiple accept="image/*" id="imgimpt"
                                 title="Clique para Carregar Imagens"
                                 onchange="verificarInput('imgimpt', '.excluirimg'); exibirImagem()" class="excluirimg"
                                 style="display: none;" />
-                            <div id="imgimpt-container" style="display: inline-block;"></div>
-                            <img src="" alt="" id="imgimpt1">
+                            <div id="imgimpt-container" style="display: none;"></div>
+                            <img src="" alt="" id="imgimpt1" style="display: none;">
                             <input type="text" name="imageUrl" id="imgimpt2" readonly style="display: none;">
                             <a class="excluirimg" style="display: none;" onclick="excluirImagem()"><img
                                     src="IMG/lixo2.png" class="lixo"></a>
@@ -158,13 +156,19 @@
 
                     <div class="label2_2">
                         <span>Anexo</span>
-                        <input type="file" name="anexoUrl1" class="campo_anexo" multiple id="anexoimpt"
-                            accept=".pdf, .doc, .docx, .xls, .xlsx, .zip" title="Clique para Carregar Arquivos"
-                            onchange="verificarInput('anexoimpt', '.excluiranx')" />
-                        <img src="" alt="" id="anexoimpt1" style="display: none;">
-                        <input type="text" name="anexoUrl" id="anexoimpt2" readonly style="display: none;">
-                        <a class="excluiranx" style="display: none;" onclick="excluirAnexo()"><img src="IMG/lixo2.png"
-                                class="lixo"></a>
+                        <div class="campo_anx">
+                            <label for="anexoimpt" class="butt-anx">Escolher <br> Anexo <br> 📎</label>
+                            <input type="file" name="anexoUrl1" class="campo_anexo" multiple id="anexoimpt"
+                                accept=".pdf, .doc, .docx, .xls, .xlsx, .zip" title="Clique para Carregar Arquivos"
+                                onchange="verificarInput('anexoimpt', '.excluiranx'); exibiranexo()"
+                                style="display: none;" />
+                            <input type="text" name="anexoUrl" id="anexoimpt2" readonly style="display: none;">
+                            <a class="excluiranx" style="display: none;" onclick="excluirAnexo()"><img
+                                    src="IMG/lixo2.png" class="lixo"></a>
+                            <input type="text" name="descricao_anexo" style="display: none;" readonly id="nomearq1" />
+                            <input for="anexoList" style="display: none;" id="anexoList1"></input>
+                            <ol id="anexoList" style="display: none;"></ol>
+                        </div>
                     </div>
 
 
@@ -210,15 +214,17 @@
                 <div class="home" id="HOMEK">
                     <a target="_blank"
                         href="https://www.nfe.fazenda.gov.br/portal/consultaRecaptcha.aspx?tipoConsulta=resumo&tipoConteudo=7PhJ+gAVw2g="
-                        class="homefacil"><img src="icones home/NFe.png" alt="" class="iconehome">Consulta NF-e</a>
+                        class="homefacil"><img src="icones home/NFe.png" alt="" class="iconehome">Consultar NF-e</a>
                     <a target="_blank"
                         href="http://nfe.sefaz.ba.gov.br/servicos/nfce/Modulos/Geral/NFCEC_consulta_chave_acesso.aspx"
-                        class="homefacil"><img src="icones home/NFCe.png" alt="" class="iconehome">Consulta NFC-e</a>
+                        class="homefacil"><img src="icones home/NFCe.png" alt="" class="iconehome">Consultar NFC-e</a>
                     <a target="_blank" href="https://portal.sefaz.ba.gov.br/scripts/cadastro/cadastroBa/consultaBa.asp"
-                        class="homefacil"><img src="icones home/cnpj.png" alt="" class="iconehome">Consulta CNPJ</a>
+                        class="homefacil"><img src="icones home/cnpj.png" alt="" class="iconehome">Consultar CNPJ</a>
                     <a href="#" onclick="showSection('caracteres')" class="homefacil" class="iconehome"><img
-                            src="icones home/REMOVEDOR-CARACTERE.png" alt="" class="iconehome">Remover Caractere</a>
-                    <a target="_blank" class="homefacil"><img src="#" alt="" class="iconehome">TESTE</a>
+                            src="icones home/REMOVEDOR-CARACTERE.png" alt="" class="iconehome">Remover Caracteres</a>
+                    <a target="_blank"
+                        href="https://www.nfe.fazenda.gov.br/portal/disponibilidade.aspx?AspxAutoDetectCookieSupport=1"
+                        class="homefacil"><img src="icones home/Dispo-SEFAZ.png" alt="" class="iconehome">Ociosidade Sefaz NF-e</a>
                     <a target="_blank" class="homefacil"><img src="#" alt="" class="iconehome">TESTE</a>
                     <a target="_blank" class="homefacil"><img src="#" alt="" class="iconehome">TESTE</a>
                     <a target="_blank" class="homefacil"><img src="#" alt="" class="iconehome">TESTE</a>

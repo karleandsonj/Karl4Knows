@@ -23,22 +23,21 @@ function exibirImagem() {
                     img.src = e.target.result;
                     img.className = 'img-preview';
 
-                    
-
-                    // Adiciona o botão de exclusão
-                    var deleteButton = document.createElement('a');
-                    deleteButton.className = 'excluirimg';
-                    deleteButton.onclick = function () {
-                        excluirImagem(img.id);
-                    };
-                    deleteButton.innerHTML = '<img src="IMG/lixo2.png" class="lixo">';
                     imgContainer.appendChild(img);
-                    imgContainer.appendChild(deleteButton);
                 };
             })(i);
 
             reader.readAsDataURL(input1.files[i]);
         }
+
+        // Adiciona o botão de exclusão após o loop (apenas uma vez)
+        var deleteButton1 = document.createElement('a');
+        /* deleteButton1.className = 'excluirimg'; */
+        /*         deleteButton1.onclick = function () {
+                    excluirImagem();
+                }; */
+        /* deleteButton1.innerHTML = '<img src="IMG/lixo2.png" class="lixo">'; */
+        imgContainer.appendChild(deleteButton1);
 
         imgContainer.style.display = 'flex'; // Exibe o contêiner
     } else {
@@ -47,7 +46,43 @@ function exibirImagem() {
 }
 
 
+function exibiranexo() {
+    var input2 = document.getElementById('anexoimpt');
+    var anexoList = document.getElementById('anexoList');
 
+    // Limpa o conteúdo anterior
+    anexoList.innerHTML = '';
+
+    // Verifica se algum arquivo foi selecionado
+    if (input2.files && input2.files.length > 0) {
+        for (var i = 0; i < input2.files.length; i++) {
+            var listItem = document.createElement('li');
+            listItem.textContent = input2.files[i].name;
+            listItem.classList.add('list-anx');
+
+            // Adiciona o botão de exclusão
+            var deleteButton = document.createElement('a');
+            deleteButton.className = 'excluiranx';
+            deleteButton.onclick = function () {
+                excluirAnexo(listItem);
+            };
+            deleteButton.innerHTML = '<img src="IMG/lixo2.png" class="lixo">';
+
+            // Adiciona o item da lista e o botão de exclusão à lista de anexos
+            anexoList.appendChild(listItem);
+            anexoList.appendChild(deleteButton);
+
+            // Adiciona uma linha hr
+            var hrElement = document.createElement('hr');
+            hrElement.className = 'hr-form'; // Substitua 'suaClasse' pelo nome da classe desejada
+            anexoList.appendChild(hrElement);
+        }
+
+        anexoList.style.display = 'block'; // Exibe a lista de anexos
+    } else {
+        anexoList.style.display = 'none'; // Oculta a lista se nenhum arquivo estiver selecionado
+    }
+}
 
 const meuFormulario = document.getElementById('meu-formulario');
 const camposDeTexto = meuFormulario.querySelectorAll('input');
@@ -108,7 +143,7 @@ const butcard = document.getElementById('but_card');
 const butalert = document.getElementById('but_alert');
 
 // Defina a senha válida
-const senhaValida = '1';
+const senhaValida = '926475';
 
 // Função para abrir o campo de senha
 function abrirSenhaContainer() {
@@ -264,8 +299,8 @@ link2.addEventListener('click', () => {
 /* função IMG ee ANEXO */
 
 function excluirImagem() {
-    var input = document.getElementById("imgimpt");
-    input.value = ""; // Limpa o valor do input
+    var inputimg = document.getElementById("imgimpt");
+    inputimg.value = ""; // Limpa o valor do input
     verificarInput('imgimpt', '.excluirimg'); // Oculta o botão novamente
 
     var imgContainer = document.getElementById('imgimpt-container');
@@ -279,10 +314,22 @@ function excluirImagem() {
 }
 
 function excluirAnexo() {
-    var input = document.getElementById("anexoimpt");
-    input.value = ""; // Limpa o valor do input
+    var inputanx = document.getElementById("anexoimpt");
+    inputanx.value = ""; // Limpa o valor do input
     verificarInput('anexoimpt', '.excluiranx'); // Oculta o botão novamente
+
+    var anxContainer = document.getElementById('anexoList');
+
+    // Remove todas as imagens e botões de exclusão
+    while (anxContainer.firstChild) {
+        anxContainer.removeChild(anxContainer.firstChild);
+    }
+
+    anxContainer.style.display = 'none'; // Oculta o contêiner
+
 }
+
+
 function verificarInput(inputId, botaoSelector) {
     var input = document.getElementById(inputId);
     var botaoExcluir = document.querySelector(botaoSelector);
@@ -341,6 +388,8 @@ form.addEventListener('submit', e => {
     let files = file.files;
     let filesarq = filearq.files;
 
+    const fileNames = [];
+
     // Função para enviar uma única imagem para o Drive e processar a resposta
     const sendImageToDrive = (file) => {
         return new Promise((resolve, reject) => {
@@ -374,12 +423,8 @@ form.addEventListener('submit', e => {
     // Array de promessas para enviar todas as imagens
     const imagePromises = Array.from(files).map(file => sendImageToDrive(file));
 
-    const fileNames = [];
-
-    console.log(fileNames)
-
     // Função para enviar o arquivo anexo e processar a resposta
-    const sendAttachmentToDrive = (filearq) => {
+    const sendAttachmentToDrive = (filearq, index) => {
         return new Promise((resolve, reject) => {
             let fr1 = new FileReader();
             fr1.addEventListener('loadend', () => {
@@ -388,7 +433,8 @@ form.addEventListener('submit', e => {
                 let obj1 = {
                     base64: spt1,
                     type: filearq.type,
-                    name: filearq.name
+                    name: filearq.name,
+                    index: index // Passa o índice para manter a ordem
                 }
                 // Esta linha envia uma solicitação POST para o URL especificado na variável "url", com o objeto "obj" como corpo da solicitação.
                 fetch(urlarq, {
@@ -398,7 +444,7 @@ form.addEventListener('submit', e => {
                     // Esta linha aguarda a resposta do servidor e a converte para JSON
                     .then(response => response.json())
                     .then(data1 => {
-                        fileNames.push(filearq.name);
+                        fileNames[index] = filearq.name; // Define o nome no índice correto
                         resolve(data1);
                     })
                     .catch(error => {
@@ -409,8 +455,9 @@ form.addEventListener('submit', e => {
 
         });
     }
+
     // Array de promessas para enviar todos os anexos
-    const attachmentPromises = Array.from(filesarq).map(filearq => sendAttachmentToDrive(filearq));
+    const attachmentPromises = Array.from(filesarq).map((filearq, index) => sendAttachmentToDrive(filearq, index));
 
     // Promessas para envio de imagens e anexos
     const promises = [...imagePromises, ...attachmentPromises];
@@ -423,7 +470,6 @@ form.addEventListener('submit', e => {
             // Por exemplo, você pode gerar os URLs das imagens e anexos e atualizar o formulário
             const imageUrls = data.filter(item => item.imageId).map(item => "https://drive.google.com/uc?id=" + item.imageId);
             const attachmentUrls = data.filter(item => item.anexoId).map(item => "https://drive.google.com/u/0/uc?id=" + item.anexoId + "&export=download");
-            /* const nomearq = data.filter(item => item.anexoId).map(item => filearq.name); */
 
             const nomearq1 = document.getElementById("nomearq1");
             nomearq1.value = fileNames.join('§'); // Concatena os nomes dos arquivos em uma única string
@@ -439,7 +485,7 @@ form.addEventListener('submit', e => {
         })
         .catch(error => {
             console.error('Erro ao enviar imagens e anexos:', error);
-        });
+        }); 
 });
 
 

@@ -86,12 +86,12 @@ function loadsgaSheetData(url) {
                             <div id="column">
                                 <div class="modal2" id="modal2" class="scroll-modal">
                                     <h3>Erro Detalhado: </h3>
-                                    <hr>
+                                    <hr class="hr-rot">
                                     <p id="P_sga">${erros}</p>
                                 </div>
                                 <div class="modal3" class="scroll-modal">
                                     <h3>Soluções: </h3>
-                                    <hr>
+                                    <hr class="hr-rot">
                                     <p id="P_sga1">${solucoes}</p>
                                 </div>
                             </div>
@@ -99,7 +99,7 @@ function loadsgaSheetData(url) {
                                 <div class="modal4" style="${script ? '' : 'display: none;'}">
                                     <h3>Scripts:</h3>
                                     <a href="#" title="Copiar!" id="copyLink" onclick="copyToClipboardscriptsga()" >📄</a>
-                                    <hr>
+                                    <hr class="hr-rot">
                                     <p id="P_sga2" class="scroll-modal">${script}</p>
                                 </div>
                                 <div id="Modalanexo" class="modal5" style="${anexo || imagemLink ? '' : 'display: none;'}">
@@ -108,11 +108,11 @@ function loadsgaSheetData(url) {
                                         ${!anexo && imagemLink ? 'Imagem' : ''}
                                         ${anexo && !imagemLink ? 'Arquivo' : ''}
                                     </h3>
-                                    <hr>
+                                    <hr class="hr-rot">
                                     <div class="anexo-main" style="${anexo ? '' : 'display: none;'}">
                                         ${linksString}
                                     </div>
-                                    <hr style="${anexo && imagemLink ? '' : 'display: none;'}">
+                                    <hr style="${anexo && imagemLink ? '' : 'display: none;'}" class="hr-rot">
                                     <div class="imagem-div-main" style="${imagemLink ? '' : 'display: none;'}">
                                         ${imagensString}
                                     </div>
