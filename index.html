@@ -141,7 +141,12 @@
                     <div class="label2_3">
                         <span>Imagens</span>
                         <div class="campo_img">
-                            <label for="imgimpt" class="butt-img">Escolher <br> Imagem <br> 🖼️</label>
+                            <label for="imgimpt" class="butt-img">
+                                <div class="container-tituloanexo">
+                                    <h4 class="tituloanexo"> Escolher <br> Imagem <br></h4>
+                                    <img src="IMG/IMG-INPT.png" class="IMG-INPT1">
+                                </div>
+                            </label>
                             <input type="file" name="imageUrl1" class="campo_img" multiple accept="image/*" id="imgimpt"
                                 title="Clique para Carregar Imagens"
                                 onchange="verificarInput('imgimpt', '.excluirimg'); exibirImagem()" class="excluirimg"
@@ -157,9 +162,15 @@
                     <div class="label2_2">
                         <span>Anexo</span>
                         <div class="campo_anx">
-                            <label for="anexoimpt" class="butt-anx">Escolher <br> Anexo <br> 📎</label>
+                            <label for="anexoimpt" class="butt-anx">
+                                <div class="container-tituloanexo">
+                                    <h4 class="tituloanexo"> Escolher <br> Documento <br></h4>
+                                    <img src="IMG/ANX-INPT.png" class="IMG-INPT1">
+                                </div>
+                            </label>
                             <input type="file" name="anexoUrl1" class="campo_anexo" multiple id="anexoimpt"
-                                accept=".pdf, .doc, .docx, .xls, .xlsx, .zip" title="Clique para Carregar Arquivos"
+                                accept=".pdf, .doc, .docx, .xls, .xlsx, .zip, .txt"
+                                title="Clique para Carregar Arquivos"
                                 onchange="verificarInput('anexoimpt', '.excluiranx'); exibiranexo()"
                                 style="display: none;" />
                             <input type="text" name="anexoUrl" id="anexoimpt2" readonly style="display: none;">
@@ -224,7 +235,8 @@
                             src="icones home/REMOVEDOR-CARACTERE.png" alt="" class="iconehome">Remover Caracteres</a>
                     <a target="_blank"
                         href="https://www.nfe.fazenda.gov.br/portal/disponibilidade.aspx?AspxAutoDetectCookieSupport=1"
-                        class="homefacil"><img src="icones home/Dispo-SEFAZ.png" alt="" class="iconehome">Ociosidade Sefaz NF-e</a>
+                        class="homefacil"><img src="icones home/Dispo-SEFAZ.png" alt="" class="iconehome">Ociosidade
+                        Sefaz NF-e</a>
                     <a target="_blank" class="homefacil"><img src="#" alt="" class="iconehome">TESTE</a>
                     <a target="_blank" class="homefacil"><img src="#" alt="" class="iconehome">TESTE</a>
                     <a target="_blank" class="homefacil"><img src="#" alt="" class="iconehome">TESTE</a>

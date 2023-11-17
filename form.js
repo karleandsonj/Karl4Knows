@@ -143,7 +143,7 @@ const butcard = document.getElementById('but_card');
 const butalert = document.getElementById('but_alert');
 
 // Defina a senha válida
-const senhaValida = '926475';
+const senhaValida = '';
 
 // Função para abrir o campo de senha
 function abrirSenhaContainer() {

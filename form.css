@@ -342,33 +342,50 @@ textarea{
     text-align: center;
     justify-content: center;
     align-content: center;
-    align-self: center;
+/*     align-self: center; */
     cursor: pointer;
     display: flex;
     border-right: 2px solid #44749d;
-    padding: 25px 0;
+    padding: 20px 0;
     font-size: 90%;
     box-sizing: border-box; /* Garante que o padding e a borda estão incluídos na largura e altura */
 }
 
+.container-tituloanexo{
+    margin: 5px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.IMG-INPT1{
+    margin-top: 30px;
+    position: absolute;
+    display: flex;
+    width: 25px;
+    height: 25px;
+    align-self: center;
+}
+
 .butt-anx{
-    width: 60px;
+    max-width: 70px;
     position: relative;
     text-align: center;
     justify-content: center;
     align-content: center;
-    align-self: center;
+/*     align-self: center; */
     cursor: pointer;
     display: flex;
     border-right: 2px solid #44749d;
-    padding: 25px 0;
+    padding: 20px 0;
     font-size: 90%;
     box-sizing: border-box; /* Garante que o padding e a borda estão incluídos na largura e altura */
 }
 
 .butt-img:hover, .butt-anx:hover{
     background-color: #ebebebcc;
-    box-shadow: 0 -2px #ebebebcc, 0 2px #ebebebcc;
+    box-shadow: 0 #ebebebcc, 0 #ebebebcc;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
 

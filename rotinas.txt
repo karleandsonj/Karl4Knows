@@ -1,9 +1,9 @@
 /* DADOS */
 
-const sgaboxnewsheetURL = `https://docs.google.com/spreadsheets/d/1PJaUNl46WXZMG9J2R0ZRqWWCIg8Lg_CryODZxOua_CY/edit#gid=0`;
+const ROTINAsheetURL = `LINK SHEET AQUI`;
 
 // Função para carregar os dados da planilha na tabela com o id "data-table"
-function loadsgaboxnewSheetData(url) {
+function loadROTINASheetData(url) {
     fetch(url)
         .then(response => response.text())
         .then(data => {
@@ -12,7 +12,7 @@ function loadsgaboxnewSheetData(url) {
             const tableRows = htmlDocument.querySelectorAll('tbody tr');
 
             // Limpar a tabela antes de adicionar novos dados
-            const dataTableBody = document.querySelector('#data-table-sgaboxnew tbody');
+            const dataTableBody = document.querySelector('#data-table-ROTINA tbody');
             dataTableBody.innerHTML = '';
             // Definir o limite máximo de linhas a serem carregadas (até a última linha preenchida)
             const maxRows = tableRows.length;
@@ -22,14 +22,14 @@ function loadsgaboxnewSheetData(url) {
                 const row = tableRows[i];
                 const columns = row.querySelectorAll('td');
 
-                // Verificar se todas as colunas relevantes (ID_sgaboxnew, ERROS, FOTOS, SOLUCOES) estão preenchidas
+                // Verificar se todas as colunas relevantes (ID_ROTINA, ERROS, FOTOS, SOLUCOES) estão preenchidas
                 if (columns[0].textContent.trim() !== '') {
 
-                    const errorsressumosgaboxnewCell = document.createElement('td');
-                    const errorsressumosgaboxnewData = columns[2].textContent.trim();
-                    errorsressumosgaboxnewCell.innerHTML = `<span>${errorsressumosgaboxnewData}</span>`;
+                    const errorsressumoROTINACell = document.createElement('td');
+                    const errorsressumoROTINAData = columns[2].textContent.trim();
+                    errorsressumoROTINACell.innerHTML = `<span>${errorsressumoROTINAData}</span>`;
 
-                    errorsressumosgaboxnewCell.classList.add('erro1'); // Substitua 'sua-classe-aqui' pelo nome da classe desejada
+                    errorsressumoROTINACell.classList.add('erro1'); // Substitua 'sua-classe-aqui' pelo nome da classe desejada
 
                     const viewButtonCell = document.createElement('td'); // Criar uma nova célula para o botão
                     const viewButton = document.createElement('img');
@@ -67,13 +67,13 @@ function loadsgaboxnewSheetData(url) {
 
                         // Criar uma string que contenha todas as tags <a> com os links e descrições correspondentes
                         const linksString = linksArray.map((link, index) => `
-                            <a href="${link}" id="P_sgaboxnew${index + 1}" target="_blank" class="buttonDownload">${descricaoAnexoArray[index]}</a>
+                            <a href="${link}" id="P_ROTINA${index + 1}" target="_blank" class="buttonDownload">${descricaoAnexoArray[index]}</a>
                         `).join('');
 
                         // Criar uma string que contenha todas as tags <img> com as imagens correspondentes
                         const imagensString = imagensArray.map((link, index) => `
                         <div class="imagem-div" >
-                            <img class="img_anexo imagem-div1" id="P_sgaboxnew4${index + 1}" src="${link}" alt="">
+                            <img class="img_anexo imagem-div1" id="P_ROTINA4${index + 1}" src="${link}" alt="">
                         </div>
                         `).join('');
 
@@ -87,20 +87,20 @@ function loadsgaboxnewSheetData(url) {
                                 <div class="modal2" id="modal2" class="scroll-modal">
                                     <h3>Erro Detalhado: </h3>
                                     <hr class="hr-rot">
-                                    <p id="P_sgaboxnew">${erros}</p>
+                                    <p id="P_ROTINA">${erros}</p>
                                 </div>
                                 <div class="modal3" class="scroll-modal">
                                     <h3>Soluções: </h3>
                                     <hr class="hr-rot">
-                                    <p id="P_sgaboxnew1">${solucoes}</p>
+                                    <p id="P_ROTINA1">${solucoes}</p>
                                 </div>
                             </div>
                             <div id="column">
                                 <div class="modal4" style="${script ? '' : 'display: none;'}">
                                     <h3>Scripts:</h3>
-                                    <a href="#" title="Copiar!" id="copyLink" onclick="copyToClipboardscriptsgaboxnew()" >📄</a>
+                                    <a href="#" title="Copiar!" id="copyLink" onclick="copyToClipboardscriptROTINA()" >📄</a>
                                     <hr class="hr-rot">
-                                    <p id="P_sgaboxnew2" class="scroll-modal">${script}</p>
+                                    <p id="P_ROTINA2" class="scroll-modal">${script}</p>
                                 </div>
                                 <div id="Modalanexo" class="modal5" style="${anexo || imagemLink ? '' : 'display: none;'}">
                                     <h3>
@@ -171,8 +171,8 @@ function loadsgaboxnewSheetData(url) {
                         }
 
                         // Chame a função com o ID do elemento desejado
-                        transformarEmListaOrdenada('P_sgaboxnew'); // Substituir 'P_sgaboxnew1' pelo ID desejado
-                        transformarEmListaOrdenada('P_sgaboxnew1'); // Substituir 'P_sgaboxnew2' pelo ID desejado                        
+                        transformarEmListaOrdenada('P_ROTINA'); // Substituir 'P_ROTINA1' pelo ID desejado
+                        transformarEmListaOrdenada('P_ROTINA1'); // Substituir 'P_ROTINA2' pelo ID desejado                        
 
 
                         // Adicionar um evento de clique ao link "Clique para trocar a imagem"
@@ -258,18 +258,18 @@ function loadsgaboxnewSheetData(url) {
 
 
                         // Para usar a função com outro campo, basta chamar a função com o ID do novo elemento:
-                        formatarTextoComQuebrasDeLinha('P_sgaboxnew');
-                        formatarTextoComQuebrasDeLinha('P_sgaboxnew1');
-                        formatarTextoComQuebrasDeLinha2('P_sgaboxnew2');
-                        formatarTextoComQuebrasDeLinha2('P_sgaboxnew3');
-                        formatarTextoComQuebrasDeLinha2('P_sgaboxnew4');
-                        formatarTextoComQuebrasDeLinha2('P_sgaboxnew5');
+                        formatarTextoComQuebrasDeLinha('P_ROTINA');
+                        formatarTextoComQuebrasDeLinha('P_ROTINA1');
+                        formatarTextoComQuebrasDeLinha2('P_ROTINA2');
+                        formatarTextoComQuebrasDeLinha2('P_ROTINA3');
+                        formatarTextoComQuebrasDeLinha2('P_ROTINA4');
+                        formatarTextoComQuebrasDeLinha2('P_ROTINA5');
                     });
 
                     viewButtonCell.appendChild(viewButton); // Adicionar o botão à célula
 
                     const newRow = document.createElement('tr');
-                    newRow.appendChild(errorsressumosgaboxnewCell);
+                    newRow.appendChild(errorsressumoROTINACell);
                     newRow.appendChild(viewButtonCell); // Adicionar a célula do botão à linha
 
                     dataTableBody.appendChild(newRow);
@@ -283,22 +283,22 @@ function loadsgaboxnewSheetData(url) {
 }
 
 // Fechar o card/modal quando o botão de fechar é clicado
-const closeModalsgaboxnewButton = document.getElementById('closeModal');
-const infoModalsgaboxnew = document.getElementById('infoModal');
+const closeModalROTINAButton = document.getElementById('closeModal');
+const infoModalROTINA = document.getElementById('infoModal');
 
-closeModalsgaboxnewButton.addEventListener('click', () => {
-    infoModalsgaboxnew.style.display = 'none';
+closeModalROTINAButton.addEventListener('click', () => {
+    infoModalROTINA.style.display = 'none';
 });
 
 
 // Chamar a função para carregar os dados da planilha
-loadsgaboxnewSheetData(sgaboxnewsheetURL);
+loadROTINASheetData(ROTINAsheetURL);
 
 /* FIM DADOS */
 
-/* Copiar Script-sgaboxnew*/
-function copyToClipboardscriptsgaboxnew() {
-    const infoText = document.getElementById("P_sgaboxnew2").innerText;
+/* Copiar Script-ROTINA*/
+function copyToClipboardscriptROTINA() {
+    const infoText = document.getElementById("P_ROTINA2").innerText;
     const tempInput = document.createElement("textarea");
     tempInput.value = infoText;
     document.body.appendChild(tempInput);
