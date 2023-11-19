@@ -1,6 +1,6 @@
 /* DADOS */
 
-const sgaboxnewsheetURL = `https://docs.google.com/spreadsheets/d/1PJaUNl46WXZMG9J2R0ZRqWWCIg8Lg_CryODZxOua_CY/edit#gid=0`;
+const sgaboxnewsheetURL = `https://docs.google.com/spreadsheets/d/1Jovno7NeDFhTmj0_97pbIeVYEZuxTh0qqs9JKP1lnhA/edit#gid=0`;
 
 // Função para carregar os dados da planilha na tabela com o id "data-table"
 function loadsgaboxnewSheetData(url) {

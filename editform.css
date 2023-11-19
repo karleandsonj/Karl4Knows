@@ -1,19 +1,219 @@
-.editar_form {
-    margin-left: 38px;
+.EDIT-FORM-SHEET {
     position: absolute;
-    z-index: 10;
-    background-color: #a7fff8;
-    border: #3744ff 2px solid;
-    top: 15%;
+    display: flex;
+    border-radius: 10px;
+    /*     background-color: whitesmoke; */
+    /*     border: #199c8b solid 2px; */
+    filter: drop-shadow(1px 1px 3px #3744ff);
+    padding: 2px 10px;
+    /* Espaçamento interno do botão */
+    cursor: pointer;
+    /* Cursor ao passar o mouse */
+    margin: 2px;
+    /* Espaçamento à esquerda para separar o botão "VIEW" */
+    width: 20px;
+    order: 2;
+    right: 0;
+    top: 1px;
+}
+
+.EDIT-FORM-SHEET:hover {
+    background-color: rgba(132, 234, 241, 0.938);
+}
+
+.editar_form {
+    position: relative;
+    z-index: 5;
+    background-color: #c6d4e1;
+    border: #44749d 2px solid;
+    top: 10%;
     left: 50%;
     transform: translateX(-50%);
     padding: 10px;
     width: 75%;
     border-radius: 20px;
-    height: 100px;
+    height: auto;
     text-align: center;
 }
 
-.edt{
+.desfoque_edit_form {
+    overflow: auto;
+    position: relative;
+    z-index: 99;
+    background-color: rgba(0, 0, 0, 0.192);
+    height: 100%;
+}
+
+.header-edit {
+    top: -50px;
+    /*     border: #3744ff 2px solid; */
+    text-align: center;
+    width: 100%;
+    position: relative;
+}
+
+.modal0-edit {
+    top: -22px;
+    color: #ffffff;
+    z-index: -1;
+    position: absolute;
+    display: inline-flex;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    width: 80px;
+    height: 80px;
+    justify-content: center;
+    justify-self: center;
+    justify-items: center;
+    align-items: center;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    background-color: #44749d;
+    border: #44749d 2px solid;
+    margin: 0 auto;
+}
+
+.edit-ErroSolucao {
+    position: relative;
+    top: 20px;
+    cursor: pointer;
+    text-align: center;
+    background-color: #c6d4e1;
+    border: #44749d 2px solid;
+    width: 35%;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 50px;
+    padding: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.edit-AnexoScript {
+    position: relative;
+    top: 20px;
+    cursor: pointer;
+    text-align: center;
+    background-color: #c6d4e1;
+    border: #44749d 2px solid;
+    width: 35%;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-top-left-radius: 50px;
+    padding: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.ErroSolucaoFORM-EDIT,
+.AnexoScriptFORM-EDIT {
+    top: -10px;
+    position: relative;
+    margin-left: 2.5;
+    text-align: center;
+}
+
+#P_sga0_edit {
+    width: 90%;
+}
+
+.modal2-edit,
+.modal3-edit {
+    width: 46%;
+    display: inline-block;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.campo-edit {
+    text-align: justify;
+    position: relative;
+    display: grid;
+    color: #000000;
+    font-family: 'open_sansregular';
+    font-size: 14px;
+    border-radius: 3px;
+    line-height: 20px;
+    background-color: #ffffff;
+    border: 2px solid #44749d;
+    transition: all 0.3s;
+    padding: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: 0;
+    border-radius: 10px;
+    padding-top: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.campo0-edit {
+    position: relative;
+    color: #000000;
+    font-family: 'open_sansregular';
+    font-size: 14px;
+    border-radius: 3px;
+    background-color: #ffffff;
+    border: 2px solid #44749d;
+    transition: all 0.3s;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: 0;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.campo-edit::-webkit-scrollbar {
+    /*     border: #000 solid 1px; */
+    border-radius: 20px;
+    /* Raio de borda do indicador de rolagem */
+    background-color: transparent;
+    /* Define o fundo da barra de rolagem como transparente */
+    width: 8px;
+    /* Largura da barra de rolagem */
+    height: 10px;
+    /* Altura da barra de rolagem horizontal */
+    margin-top: 100px;
+}
+
+.campo-edit::-webkit-scrollbar-thumb {
+    background: #44749d;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.campo-edit::-webkit-scrollbar-thumb:hover {
+    background-color: #44749d;
+    /* Cor do indicador de rolagem ao passar o mouse */
+}
+
+.modal1-edit {
+    width: 100%;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.activeEDIT {
+    z-index: 99;
+    color: #ffffff;
+    background-color: #44749d;
+}
+
+.edt {
     margin: 20px;
+}
+
+@media screen and (max-width: 480px) {
+    .editar1 {
+        width: 16px;
+    }
 }

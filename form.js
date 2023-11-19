@@ -1,3 +1,26 @@
+// Adicione um listener de evento ao textarea
+const textarea = document.getElementById('texto-3'); // substitua 'texto-1' pelo ID real do seu textarea
+
+textarea.addEventListener('keydown', function (e) {
+    // Verifique se a tecla pressionada é a tecla "Tab"
+    if (e.key === 'Tab') {
+        e.preventDefault(); // Impede o comportamento padrão da tecla "Tab" (mudar para o próximo campo)
+        
+        // Insira uma tabulação na posição atual do cursor no textarea
+        const start = this.selectionStart;
+        const end = this.selectionEnd;
+
+        // Insira a tabulação na posição atual do cursor
+        this.value = this.value.substring(0, start) + '\t' + this.value.substring(end);
+
+        // Posicione o cursor após a tabulação
+        this.selectionStart = this.selectionEnd = start + 1;
+    }
+});
+
+
+
+
 function exibirImagem() {
     var input1 = document.getElementById('imgimpt');
     var imgContainer = document.getElementById('imgimpt-container');
@@ -364,8 +387,6 @@ const uniqueID = generateUniqueID();
 
 // Atualize o campo "uniqueID" no formulário
 document.getElementById('uniqueID').value = uniqueID;
-
-/* FIM Envio de IMAGEM */
 
 const scriptURL = 'https://script.google.com/macros/s/AKfycbw6D9QRNHrEVTgndJz8k-xxS-5iaYfIJ8IFUBbe2PXW4jrSulGwiabNHK3GNrvagFvWMQ/exec'
 const form = document.forms['meu-formulario']

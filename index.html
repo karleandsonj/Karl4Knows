@@ -213,10 +213,14 @@
             </form>
         </div>
     </div>
-    <div id="editform" class="editar_form" style="display: none;">
-        <span class="close" id="closeModalEDForm"><img src="IMG/excluir.png" class="fechar"></span>
-        <h1 class="edt">AQUI VOU FAZER UM EDITOR DE FORM</h1>
+
+    <div id="editform" class="desfoque_edit_form" style="display: none;">
+        <div class="editar_form">
+            <span class="close" id="closeModalEDForm"><img src="IMG/excluir.png" class="fechar"></span>
+            <div id="EditFormContent"></div>
+        </div>
     </div>
+
     <main>
         <div class="section_main">
 
@@ -509,6 +513,7 @@
             </section>
         </div>
     </main>
+
     <div id="infoModal" class="modal">
         <div class="modal-content">
             <span class="close" id="closeModal"><img src="IMG/excluir.png" class="fechar"></span>
@@ -520,12 +525,13 @@
             </div>
         </div>
     </div>
-
+    
     <script type="text/javascript">
         window.onload = function () {
             document.body.classList.add('fade-in');
         } 
     </script>
+    <script src="editform.js"></script>
     <script src="sga.js"></script>
     <script src="sobox.js"></script>
     <script src="sgabox_new.js"></script>
@@ -536,3 +542,4 @@
 </body>
 
 </html>
+
