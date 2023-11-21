@@ -32,7 +32,9 @@ function loadsgaboxnewSheetData(url) {
                     errorsressumosgaboxnewCell.classList.add('erro1'); // Substitua 'sua-classe-aqui' pelo nome da classe desejada
 
                     const viewButtonCell = document.createElement('td'); // Criar uma nova célula para o botão
+
                     const viewButton = document.createElement('img');
+
                     viewButton.setAttribute('src', 'IMG/lupa.png');
                     viewButton.classList.add('lupa1');
 
@@ -40,6 +42,7 @@ function loadsgaboxnewSheetData(url) {
 
                     // Adicionar os botões à célula da tabela
                     viewButtonCell.appendChild(viewButton);
+
 
 
                     // Adicionar um evento de clique ao botão para exibir os detalhes da linha
@@ -53,11 +56,21 @@ function loadsgaboxnewSheetData(url) {
                         const descricao_anexo = columns[7].textContent.trim();
                         const anexo = columns[8].textContent.trim();
 
+                        /*                         // Selecionando os inputs pelos IDs
+                                                const errosInput = document.getElementById('P_sgaboxnew-edit');
+                                                const solucoesInput = document.getElementById('P_sgaboxnew1-edit');
+                                                const scriptInput = document.getElementById('P_sgaboxnew2-edit');
+                        
+                                                // Atribuindo os valores das constantes aos inputs
+                                                errosInput.value = erros;
+                                                solucoesInput.value = solucoes;
+                                                scriptInput.value = script; */
+
                         /* console.log(anexo) */
 
                         // Dividir a variável imagemLink em várias imagens usando o ponto e vírgula como separador
+
                         const imagens = imagemLink.split('§');
-                        /* const anexos = anexo.split('§'); */
 
                         // Criar uma array de links e descrições de anexo separados pelo caractere especial §
                         const separador = '§';
@@ -82,6 +95,7 @@ function loadsgaboxnewSheetData(url) {
                         modalContent.innerHTML = `
                             <div class="modal1">
                                 <h3>${sistema}</h3>
+                                <a id="EDITFORMSHEET-sgaboxnew" title="Editar!"><img src="IMG/EDIT.png" class="EDIT-FORM-SHEET"></a>
                             </div>
                             <div id="column">
                                 <div class="modal2" id="modal2" class="scroll-modal">
@@ -120,6 +134,88 @@ function loadsgaboxnewSheetData(url) {
                             </div>
                         `;
 
+
+                        // Adicionar um ouvinte de evento ao link EDITFORMSHEET dentro do modal
+                        const openEditFormButton = document.getElementById('EDITFORMSHEET-sgaboxnew');
+                        const editFormDiv = document.getElementById('editform');
+
+                        openEditFormButton.addEventListener('click', function() {
+                            editFormDiv.style.display = 'block';
+                            AnexoScript.style.display = 'none';
+                            ErroSolucao.style.display = 'block';
+                            FORMEDIT_BUTON2.classList.remove('activeEDIT');
+                            FORMEDIT_BUTON1.classList.add('activeEDIT');
+                        });
+
+                        const EditForm = document.getElementById('EditFormContent');
+                        EditForm.innerHTML = `
+                                <div class="header-edit">
+                                    <div class="modal0-edit">
+                                        <h3 class="modal01-edit">
+                                            ${sistema}
+                                        </h3>
+                                    </div>
+                                    <div id="edit-ErroSolucao" class="edit-ErroSolucao">Erro / Solucao</div>
+                                    <div id="edit-AnexoScript" class="edit-AnexoScript">Anexo / Script</div>
+                                </div>
+                                <div class="ErroSolucaoFORM-EDIT" id="ErroSolucaoFORM-EDIT">
+                                    <div class="modal1-edit" id="modal1-edit">
+                                        <h3>Erro Resumido: </h3>
+                                        <input type="text" id="P_sgaboxnew0_edit" placeholder="Erro Resumido" class="campo0-edit">
+                                    </div>
+                                    <div class="modal2-edit" id="modal2-edit">
+                                        <h3>Erro Detalhado: </h3>
+                                        <textarea type="text" id="P_sgaboxnew_edit" placeholder="Erros" class="campo-edit"></textarea>
+                                    </div>
+                                    <div class="modal3-edit">
+                                        <h3>Soluções: </h3>
+                                        <textarea type="text" id="P_sgaboxnew1_edit" placeholder="Soluções" class="campo-edit"></textarea>
+                                    </div>
+                                </div>
+                                <div class="AnexoScriptFORM-EDIT" id="AnexoScriptFORM-EDIT" style="display: none;">
+                                    <div class="modal4-edit">
+                                        <h3>Scripts:</h3>
+                                        <textarea type="text" id="P_sgaboxnew2_edit" placeholder="Script" class="campo-edit"></textarea>
+                                    </div>
+                                </div>
+                        `;
+
+
+                        const FORMEDIT_BUTON1 = document.getElementById('edit-ErroSolucao');
+                        const FORMEDIT_BUTON2 = document.getElementById('edit-AnexoScript');
+                        const closeModalEditForm = document.getElementById('closeModalEDForm');
+                        const ErroSolucao = document.getElementById('ErroSolucaoFORM-EDIT');
+                        const AnexoScript = document.getElementById('AnexoScriptFORM-EDIT');
+
+
+                        closeModalEditForm.addEventListener('click', () => {
+                            FORMEDIT_BUTON1.classList.remove('activeEDIT');
+                            FORMEDIT_BUTON2.classList.remove('activeEDIT');
+                            editFormDiv.style.display = 'none';
+                        });
+
+                        FORMEDIT_BUTON1.addEventListener('click', () => {
+                            FORMEDIT_BUTON2.classList.remove('activeEDIT');
+                            FORMEDIT_BUTON1.classList.add('activeEDIT');
+                            AnexoScript.style.display = 'none';
+                            ErroSolucao.style.display = 'block';
+                        });
+
+                        FORMEDIT_BUTON2.addEventListener('click', () => {
+                            FORMEDIT_BUTON1.classList.remove('activeEDIT');
+                            FORMEDIT_BUTON2.classList.add('activeEDIT');
+                            AnexoScript.style.display = 'block';
+                            ErroSolucao.style.display = 'none';
+                        });
+
+                        const P_sgaboxnew0_edit = document.getElementById("P_sgaboxnew0_edit");
+                        const P_sgaboxnew_edit = document.getElementById("P_sgaboxnew_edit");
+                        const P_sgaboxnew1_edit = document.getElementById("P_sgaboxnew1_edit");
+                        const P_sgaboxnew2_edit = document.getElementById("P_sgaboxnew2_edit");
+                        P_sgaboxnew0_edit.value = errorsressumosgaboxnewData;
+                        P_sgaboxnew_edit.value = erros;
+                        P_sgaboxnew1_edit.value = solucoes;
+                        P_sgaboxnew2_edit.value = script;
 
                         const imagemDivMain = document.querySelector('.imagem-div-main');
 
@@ -230,15 +326,19 @@ function loadsgaboxnewSheetData(url) {
                         const infoModal = document.getElementById('infoModal');
                         infoModal.style.display = 'block';
 
-                        //pular linhas onde tiver caracter §
                         function formatarTextoComQuebrasDeLinha(elementId) {
                             var elemento = document.querySelector('#' + elementId);
 
                             if (elemento) {
-                                var texto = elemento.innerHTML;
+                                var texto = elemento.value || elemento.innerHTML;
                                 var arrayDeLinhas = texto.split('§');
-                                var novoTexto = arrayDeLinhas.join('<br><br>');
-                                elemento.innerHTML = novoTexto;
+                                var novoTexto = arrayDeLinhas.join('\n\n');
+
+                                if (elemento.tagName.toLowerCase() === 'textarea') {
+                                    elemento.value = novoTexto;
+                                } else {
+                                    elemento.innerHTML = novoTexto;
+                                }
                             }
                         }
 
@@ -247,10 +347,53 @@ function loadsgaboxnewSheetData(url) {
 
                             if (elemento) {
                                 elemento.style.whiteSpace = 'pre'; // Aplicar a propriedade 'white-space' com valor 'pre'
-                                var texto = elemento.innerHTML;
+                                var texto = elemento.value || elemento.innerHTML;
                                 var arrayDeLinhas = texto.split('§');
-                                var novoTexto = arrayDeLinhas.join('<br>');
-                                elemento.innerHTML = novoTexto;
+                                var novoTexto = arrayDeLinhas.join('\n');
+
+                                if (elemento.tagName.toLowerCase() === 'textarea') {
+                                    elemento.value = novoTexto;
+                                } else {
+                                    elemento.innerHTML = novoTexto;
+                                }
+
+                                elemento.style.whiteSpace = 'pre-wrap'; // Permite quebras de linha e espaço branco
+                                elemento.style.wordWrap = 'break-word'; // Força quebra de palavra em caso de overflow
+                            }
+                        }
+
+
+                        function formatarTextoComQuebrasDeLinhaEDIT(elementId) {
+                            var elemento = document.querySelector('#' + elementId);
+
+                            if (elemento) {
+                                var texto = elemento.value || elemento.innerHTML;
+                                var arrayDeLinhas = texto.split('§');
+                                var novoTexto = arrayDeLinhas.join('\n');
+
+                                if (elemento.tagName.toLowerCase() === 'textarea') {
+                                    elemento.value = novoTexto;
+                                } else {
+                                    elemento.innerHTML = novoTexto;
+                                }
+                            }
+                        }
+
+                        function formatarTextoComQuebrasDeLinhaEDIT2(elementId) {
+                            var elemento = document.querySelector('#' + elementId);
+
+                            if (elemento) {
+                                elemento.style.whiteSpace = 'pre'; // Aplicar a propriedade 'white-space' com valor 'pre'
+                                var texto = elemento.value || elemento.innerHTML;
+                                var arrayDeLinhas = texto.split('§');
+                                var novoTexto = arrayDeLinhas.join('\n');
+
+                                if (elemento.tagName.toLowerCase() === 'textarea') {
+                                    elemento.value = novoTexto;
+                                } else {
+                                    elemento.innerHTML = novoTexto;
+                                }
+
                                 elemento.style.whiteSpace = 'pre-wrap'; // Permite quebras de linha e espaço branco
                                 elemento.style.wordWrap = 'break-word'; // Força quebra de palavra em caso de overflow
                             }
@@ -264,6 +407,14 @@ function loadsgaboxnewSheetData(url) {
                         formatarTextoComQuebrasDeLinha2('P_sgaboxnew3');
                         formatarTextoComQuebrasDeLinha2('P_sgaboxnew4');
                         formatarTextoComQuebrasDeLinha2('P_sgaboxnew5');
+
+                        //quebrar linha do edit
+                        formatarTextoComQuebrasDeLinhaEDIT('P_sgaboxnew_edit');
+                        formatarTextoComQuebrasDeLinhaEDIT('P_sgaboxnew1_edit');
+                        formatarTextoComQuebrasDeLinhaEDIT2('P_sgaboxnew2_edit');
+                        formatarTextoComQuebrasDeLinhaEDIT2('P_sgaboxnew3_edit');
+                        formatarTextoComQuebrasDeLinhaEDIT2('P_sgaboxnew4_edit');
+                        formatarTextoComQuebrasDeLinhaEDIT2('P_sgaboxnew5_edit');
                     });
 
                     viewButtonCell.appendChild(viewButton); // Adicionar o botão à célula
@@ -279,7 +430,7 @@ function loadsgaboxnewSheetData(url) {
 
         })
 
-        .catch(error => console.error('Erro ao carregar dados da planilha:', error));
+    .catch(error => console.error('Erro ao carregar dados da planilha:', error));
 }
 
 // Fechar o card/modal quando o botão de fechar é clicado
@@ -313,4 +464,3 @@ function copyToClipboardscriptsgaboxnew() {
         btnCopiar.innerText = '📄';
     }, 3000);
 }
-
