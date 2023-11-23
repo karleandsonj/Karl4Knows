@@ -149,6 +149,7 @@ function loadsgaSheetData(url) {
 
                         const EditForm = document.getElementById('EditFormContent');
                         EditForm.innerHTML = `
+                                <input type="text" id="uniqueID_edit" name="uniqueID" readonly style="display: none;">
                                 <div class="header-edit">
                                     <div class="modal0-edit">
                                         <h3>${sistema}</h3>
@@ -176,8 +177,29 @@ function loadsgaSheetData(url) {
                                         <textarea type="text" id="P_sga2_edit" placeholder="Script" class="campo-edit"></textarea>
                                     </div>
                                 </div>
+
+                                <div class="botao_edit">
+
+                                    <div id="loadinganx-edit" style="display: none;">
+                                        Enviando Anexo...
+                                    </div>
+                                    <div id="loadinganxenv-edit" style="display: none;">
+                                        Anexo Enviado...
+                                    </div>
+                                    <div id="loadingarq-edit" style="display: none;">
+                                        Enviando arquivo...
+                                    </div>
+                
+                                    <button type="submit" id="submit-edit" class="bt-edt"> Salvar </button>
+            
+                                </div>
                         `;
 
+                        /* ----------------------------------------------------------------------------- */
+
+
+
+                        /* ----------------------------------------------------------------------------- */
 
                         const FORMEDIT_BUTON1 = document.getElementById('edit-ErroSolucao');
                         const FORMEDIT_BUTON2 = document.getElementById('edit-AnexoScript');
@@ -206,6 +228,7 @@ function loadsgaSheetData(url) {
                             ErroSolucao.style.display = 'none';
                         });
 
+                        const uniqueID = document.getElementById("uniqueID");
                         const P_sga0_edit = document.getElementById("P_sga0_edit");
                         const P_sga_edit = document.getElementById("P_sga_edit");
                         const P_sga1_edit = document.getElementById("P_sga1_edit");
@@ -214,6 +237,7 @@ function loadsgaSheetData(url) {
                         P_sga_edit.value = erros;
                         P_sga1_edit.value = solucoes;
                         P_sga2_edit.value = script;
+                        uniqueID.value = uniqueID;
 
                         const imagemDivMain = document.querySelector('.imagem-div-main');
 

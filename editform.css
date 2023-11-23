@@ -220,6 +220,51 @@
     margin: 20px;
 }
 
+.bt-edt {
+    position: relative;
+    font-family: 'open_sansregular';
+    width: 30%;
+    background: #bdb8ad;
+    color: #000000;
+    border-radius: 5px;
+    border: 0;
+    cursor: pointer;
+    font-size: 22px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: all 0.3s;
+    margin-top: -100%;
+    font-weight: 700;
+    /*     left: 50%;
+    transform: translateX(-50%); */
+    margin: 0 auto;
+    bottom: 0;
+}
+
+.bt-edt:hover {
+    background: #ebe7e0;
+}
+
+#loadinganx-edit,
+#loadinganxenv-edit {
+    position: relative;
+    width: 30%;
+    background: #bdb8ad;
+    color: #000000;
+    border: 0;
+    border-radius: 5px;
+    font-size: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: 700;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    z-index: 2;
+    text-align: center;
+    top: 25px;
+}
+
 @media screen and (max-width: 480px) {
     .editar1 {
         width: 16px;

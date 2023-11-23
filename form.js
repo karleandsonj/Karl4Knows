@@ -1,11 +1,11 @@
 // Adicione um listener de evento ao textarea
 const textarea = document.getElementById('texto-3'); // substitua 'texto-1' pelo ID real do seu textarea
 
-textarea.addEventListener('keydown', function (e) {
+textarea.addEventListener('keydown', function(e) {
     // Verifique se a tecla pressionada é a tecla "Tab"
     if (e.key === 'Tab') {
         e.preventDefault(); // Impede o comportamento padrão da tecla "Tab" (mudar para o próximo campo)
-        
+
         // Insira uma tabulação na posição atual do cursor no textarea
         const start = this.selectionStart;
         const end = this.selectionEnd;
@@ -34,8 +34,8 @@ function exibirImagem() {
             var reader = new FileReader();
 
             // Utiliza uma IIFE para capturar o valor correto de img
-            (function (imgIndex) {
-                reader.onload = function (e) {
+            (function(imgIndex) {
+                reader.onload = function(e) {
                     var img = document.createElement('img');
 
                     img.title = input1.files[imgIndex].name; // Corrigido aqui
@@ -55,11 +55,7 @@ function exibirImagem() {
 
         // Adiciona o botão de exclusão após o loop (apenas uma vez)
         var deleteButton1 = document.createElement('a');
-        /* deleteButton1.className = 'excluirimg'; */
-        /*         deleteButton1.onclick = function () {
-                    excluirImagem();
-                }; */
-        /* deleteButton1.innerHTML = '<img src="IMG/lixo2.png" class="lixo">'; */
+
         imgContainer.appendChild(deleteButton1);
 
         imgContainer.style.display = 'flex'; // Exibe o contêiner
@@ -86,7 +82,7 @@ function exibiranexo() {
             // Adiciona o botão de exclusão
             var deleteButton = document.createElement('a');
             deleteButton.className = 'excluiranx';
-            deleteButton.onclick = function () {
+            deleteButton.onclick = function() {
                 excluirAnexo(listItem);
             };
             deleteButton.innerHTML = '<img src="IMG/lixo2.png" class="lixo">';
@@ -111,8 +107,8 @@ const meuFormulario = document.getElementById('meu-formulario');
 const camposDeTexto = meuFormulario.querySelectorAll('input');
 
 // Adiciona event listeners para o evento "keydown" nos campos de texto
-camposDeTexto.forEach(function (campo) {
-    campo.addEventListener('keydown', function (event) {
+camposDeTexto.forEach(function(campo) {
+    campo.addEventListener('keydown', function(event) {
         if (event.key === 'Enter') {
             event.preventDefault(); // Impede o comportamento padrão (envio do formulário)
         }
@@ -121,7 +117,7 @@ camposDeTexto.forEach(function (campo) {
 
 
 //adicionado para inserir caracter § sempre que tiver uma quebra de linha nos textarea
-document.getElementById('submit').addEventListener('click', function () {
+document.getElementById('submit').addEventListener('click', function() {
     console.log('Botão "Enviar" clicado.');
     const textarea1 = document.getElementById('texto-1');
     const textarea2 = document.getElementById('texto-2');
@@ -138,15 +134,6 @@ document.getElementById('submit').addEventListener('click', function () {
     textarea1.value = formattedText1;
     textarea2.value = formattedText2;
     textarea3.value = formattedText3;
-    /* 
-        function addAsteriskToText(textarea) {
-            textarea.value = '*' + textarea.value;
-        }
-    
-        // Chama a função para cada área de texto
-        addAsteriskToText(textarea1);
-        addAsteriskToText(textarea2); */
-
 });
 
 /* FORM ABRIR CORRIGIR NO HIDDEN DO CSS O DISPLAY DEPOIS */
@@ -213,19 +200,19 @@ function verificarSenha() {
 }
 
 // Adicione um ouvinte de evento ao botão "Cad. Erro" para abrir o campo de senha
-openFormButton.addEventListener('click', function (e) {
+openFormButton.addEventListener('click', function(e) {
     e.stopPropagation(); // Impedir a propagação do evento para o documento
     abrirSenhaContainer();
 });
 
 // Adicione um ouvinte de evento ao botão "Verificar" para verificar a senha
-verificarSenhaButton.addEventListener('click', function (e) {
+verificarSenhaButton.addEventListener('click', function(e) {
     e.stopPropagation(); // Impedir a propagação do evento para o documento
     verificarSenha();
 });
 
 // Ouvinte de evento de teclado para o campo de senha
-senhaInput.addEventListener('keydown', function (e) {
+senhaInput.addEventListener('keydown', function(e) {
     // Verifique se a tecla pressionada é a tecla "Enter" (código de tecla 13)
     if (e.key === 'Enter') {
         verificarSenha();
@@ -240,18 +227,18 @@ function fecharSenhaContainerAoClicarFora(e) {
 }
 
 // Impedir a propagação de cliques dentro do módulo de senha para evitar o fechamento imediato
-senhaContainer.addEventListener('click', function (e) {
+senhaContainer.addEventListener('click', function(e) {
     e.stopPropagation();
 });
 
 // Adicione um ouvinte de evento ao documento para fechar o campo de senha ao clicar fora dele
-document.addEventListener('click', function () {
+document.addEventListener('click', function() {
     fecharSenhaContainer();
 });
 
 
 // Adicione um ouvinte de evento ao botão "Verificar" para verificar a senha
-verificarSenhaButton.addEventListener('click', function (e) {
+verificarSenhaButton.addEventListener('click', function(e) {
     e.stopPropagation(); // Impedir a propagação do evento para o documento
     verificarSenha();
 });
@@ -264,12 +251,12 @@ function fecharSenhaContainerAoClicarFora(e) {
 }
 
 // Impedir a propagação de cliques dentro do módulo de senha para evitar o fechamento imediato
-senhaContainer.addEventListener('click', function (e) {
+senhaContainer.addEventListener('click', function(e) {
     e.stopPropagation();
 });
 
 // Adicione um ouvinte de evento ao documento para fechar o módulo de senha ao clicar fora dele
-document.addEventListener('click', function () {
+document.addEventListener('click', function() {
     fecharSenhaContainer();
 });
 
@@ -419,15 +406,15 @@ form.addEventListener('submit', e => {
                 let res = fr.result;
                 let spt = res.split("base64,")[1];
                 let obj = {
-                    base64: spt,
-                    type: file.type,
-                    name: file.name
-                }
-                // Esta linha envia uma solicitação POST para o URL especificado na variável "url", com o objeto "obj" como corpo da solicitação.
+                        base64: spt,
+                        type: file.type,
+                        name: file.name
+                    }
+                    // Esta linha envia uma solicitação POST para o URL especificado na variável "url", com o objeto "obj" como corpo da solicitação.
                 fetch(url, {
-                    method: "POST",
-                    body: JSON.stringify(obj)
-                })
+                        method: "POST",
+                        body: JSON.stringify(obj)
+                    })
                     // Esta linha aguarda a resposta do servidor e a converte para JSON
                     .then(response => response.json())
                     .then(data => {
@@ -452,16 +439,16 @@ form.addEventListener('submit', e => {
                 let res1 = fr1.result;
                 let spt1 = res1.split("base64,")[1];
                 let obj1 = {
-                    base64: spt1,
-                    type: filearq.type,
-                    name: filearq.name,
-                    index: index // Passa o índice para manter a ordem
-                }
-                // Esta linha envia uma solicitação POST para o URL especificado na variável "url", com o objeto "obj" como corpo da solicitação.
+                        base64: spt1,
+                        type: filearq.type,
+                        name: filearq.name,
+                        index: index // Passa o índice para manter a ordem
+                    }
+                    // Esta linha envia uma solicitação POST para o URL especificado na variável "url", com o objeto "obj" como corpo da solicitação.
                 fetch(urlarq, {
-                    method: "POST",
-                    body: JSON.stringify(obj1)
-                })
+                        method: "POST",
+                        body: JSON.stringify(obj1)
+                    })
                     // Esta linha aguarda a resposta do servidor e a converte para JSON
                     .then(response => response.json())
                     .then(data1 => {
@@ -506,7 +493,7 @@ form.addEventListener('submit', e => {
         })
         .catch(error => {
             console.error('Erro ao enviar imagens e anexos:', error);
-        }); 
+        });
 });
 
 
@@ -558,12 +545,12 @@ const removeloading = () => {
     const reloadButton = document.querySelector('#reloadButton');
     const divToClose = document.querySelector('#alerta1');
 
-    reloadButton.addEventListener('click', function () {
-        setTimeout(function () {
+    reloadButton.addEventListener('click', function() {
+        setTimeout(function() {
             divToClose.style.display = 'none';
         });
 
-        setTimeout(function () {
+        setTimeout(function() {
             location.reload();
         }, 2000); // 2000 milissegundos = 2 segundos
 
