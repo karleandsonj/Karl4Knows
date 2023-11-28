@@ -1,6 +1,6 @@
 /* DADOS */
 
-const soboxsheetURL = `https://docs.google.com/spreadsheets/d/1v15f9FgEGHEuIqM_UNkoOAo704EL7Whm0d60gl_CrFI/edit#gid=0`;
+const soboxsheetURL = `https://docs.google.com/spreadsheets/d/1v15f9FgEGHEuIqM_UNkoOAo704EL7Whm0d60gl_CrFI/edit?usp=drive_link`;
 
 // Função para carregar os dados da planilha na tabela com o id "data-table"
 function loadsoboxSheetData(url) {
@@ -32,7 +32,9 @@ function loadsoboxSheetData(url) {
                     errorsressumosoboxCell.classList.add('erro1'); // Substitua 'sua-classe-aqui' pelo nome da classe desejada
 
                     const viewButtonCell = document.createElement('td'); // Criar uma nova célula para o botão
+
                     const viewButton = document.createElement('img');
+
                     viewButton.setAttribute('src', 'IMG/lupa.png');
                     viewButton.classList.add('lupa1');
 
@@ -40,6 +42,7 @@ function loadsoboxSheetData(url) {
 
                     // Adicionar os botões à célula da tabela
                     viewButtonCell.appendChild(viewButton);
+
 
 
                     // Adicionar um evento de clique ao botão para exibir os detalhes da linha
@@ -53,11 +56,21 @@ function loadsoboxSheetData(url) {
                         const descricao_anexo = columns[7].textContent.trim();
                         const anexo = columns[8].textContent.trim();
 
+                        /*                         // Selecionando os inputs pelos IDs
+                                                const errosInput = document.getElementById('P_sobox-edit');
+                                                const solucoesInput = document.getElementById('P_sobox1-edit');
+                                                const scriptInput = document.getElementById('P_sobox2-edit');
+                        
+                                                // Atribuindo os valores das constantes aos inputs
+                                                errosInput.value = erros;
+                                                solucoesInput.value = solucoes;
+                                                scriptInput.value = script; */
+
                         /* console.log(anexo) */
 
                         // Dividir a variável imagemLink em várias imagens usando o ponto e vírgula como separador
+
                         const imagens = imagemLink.split('§');
-                        /* const anexos = anexo.split('§'); */
 
                         // Criar uma array de links e descrições de anexo separados pelo caractere especial §
                         const separador = '§';
@@ -82,6 +95,7 @@ function loadsoboxSheetData(url) {
                         modalContent.innerHTML = `
                             <div class="modal1">
                                 <h3>${sistema}</h3>
+                                <a id="EDITFORMSHEET-sobox" title="Editar!"><img src="IMG/EDIT.png" class="EDIT-FORM-SHEET"></a>
                             </div>
                             <div id="column">
                                 <div class="modal2" id="modal2" class="scroll-modal">
@@ -120,6 +134,175 @@ function loadsoboxSheetData(url) {
                             </div>
                         `;
 
+
+                        // Adicionar um ouvinte de evento ao link EDITFORMSHEET dentro do modal
+                        const openEditFormButton = document.getElementById('EDITFORMSHEET-sobox');
+                        const editFormDiv = document.getElementById('editform');
+
+                        openEditFormButton.addEventListener('click', function () {
+                            editFormDiv.style.display = 'block';
+                            AnexoScript.style.display = 'none';
+                            ErroSolucao.style.display = 'block';
+                            FORMEDIT_BUTON2.classList.remove('activeEDIT');
+                            FORMEDIT_BUTON1.classList.add('activeEDIT');
+                        });
+
+                        const EditForm = document.getElementById('EditFormContent');
+                        EditForm.innerHTML = `
+                                <input type="text" id="uniqueID_edit" name="uniqueID" readonly style="display: none;">
+                                <div class="header-edit">
+                                    <div class="modal0-edit">
+                                        <h3>${sistema}</h3>
+                                    </div>
+                                    <div id="edit-ErroSolucao" class="edit-ErroSolucao">Erro / Solucao</div>
+                                    <div id="edit-AnexoScript" class="edit-AnexoScript">Anexo / Script</div>
+                                </div>
+                                <div class="ErroSolucaoFORM-EDIT" id="ErroSolucaoFORM-EDIT">
+                                    <div class="modal1-edit" id="modal1-edit">
+                                        <h3>Erro Resumido: </h3>
+                                        <input type="text" id="P_sobox0_edit" placeholder="Erro Resumido" class="campo0-edit">
+                                    </div>
+                                    <div class="modal2-edit" id="modal2-edit">
+                                        <h3>Erro Detalhado: </h3>
+                                        <textarea type="text" id="P_sobox_edit" placeholder="Erros" class="campo-edit"></textarea>
+                                    </div>
+                                    <div class="modal3-edit">
+                                        <h3>Soluções: </h3>
+                                        <textarea type="text" id="P_sobox1_edit" placeholder="Soluções" class="campo-edit"></textarea>
+                                    </div>
+                                </div>
+                                <div class="AnexoScriptFORM-EDIT" id="AnexoScriptFORM-EDIT" style="display: none;">
+                                    <div class="modal4-edit">
+                                        <h3>Scripts:</h3>
+                                        <textarea type="text" id="P_sobox2_edit" placeholder="Script" class="campo-edit"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="botao_edit">
+
+                                    <div id="loadinganx-edit" style="display: none;">
+                                        Enviando...
+                                    </div>
+                                    <div id="loadinganxenv-edit" style="display: none;">
+                                        Concluido...
+                                    </div>
+                                    <div id="loadingarq-edit" style="display: none;">
+                                        Concluido...
+                                    </div>
+                
+                                    <button type="submit" id="submit-edit" class="bt-edt"> Salvar </button>
+            
+                                </div>
+                        `;
+
+                        /* ----------------------------------------------------------------------------- */
+
+                        const scriptURLEDIT = 'https://script.google.com/macros/s/AKfycbw6D9QRNHrEVTgndJz8k-xxS-5iaYfIJ8IFUBbe2PXW4jrSulGwiabNHK3GNrvagFvWMQ/exec';
+                        const formEdit = document.forms['EditFormContent'];
+
+                        // Associar a função sendFormEdit ao evento de clique do botão
+                        const submitButton = document.getElementById('submit-edit');
+                        submitButton.addEventListener('click', e => {
+                            e.preventDefault();
+                            addloadingedit();
+                            let loadinganxedit = document.getElementById("loadinganx-edit");
+                            loadinganxedit.style.display = 'block'; // Mostra o elemento de carregamento
+
+                            // Chamar a função sendFormEdit
+                            sendFormEdit();
+                        });
+
+                        function sendFormEdit() {
+                            // Aqui você deve colocar a lógica para enviar o formulário
+                            fetch(scriptURLEDIT, { method: 'POST', body: new FormData(formEdit) })
+                                .then(response => {
+                                    if (response.status === 200) {
+                                        // Atualize a imagem no formulário com o URL da imagem
+                                        // No caso de várias imagens, você pode atualizar uma área do formulário ou uma lista de miniaturas, por exemplo.
+                                        console.log('Formulário enviado com sucesso');
+                                        removeloadingedit(); // Remova o alerta de sucesso após o sucesso
+                                    } else {
+                                        console.error('Erro no servidor:', response.status);
+                                    }
+                                })
+                                .catch(error => console.error('Erro na requisição:', error.message));
+                        }
+
+                        const addloadingedit = () => {
+                            const load = document.querySelector('#load');
+                            load.innerHTML = `
+                            <div class="loader">
+                                <div class="justify-content-center jimu-primary-loading">
+                                </div> 
+                            </div>`;
+                        }
+
+                        const reloadButtonedit = document.querySelector('#reloadButton');
+                        const divToCloseedit = document.querySelector('#alerta1');
+                        const removeloadingedit = () => {
+                            let loadinganxedit = document.getElementById("loadinganx-edit");
+                            loadinganxedit.style.display = 'none'; // Mostra o elemento de carregamento
+                            let loadinganxenvedit = document.getElementById("loadinganxenv-edit");
+                            loadinganxenvedit.style.display = 'block'; // Mostra o elemento de carregamento
+                            const alertaedit = document.querySelector('#alerta');
+                            alertaedit.innerHTML = `
+                            <div class="d-flex justify-content-center mt-5 h-100" id="alerta1">
+                                <div class="d-flex align-items-center align-self-center card p-3 text-center cookies">
+                                    <span class="mt-2"><b>Informações salvas com sucesso</b><br><b>Se não aparecer Press "F5"<br> <i>OBRIGADO!</i></b></span>
+                                    <button class="btn btn-dark mt-3 px-4" type="button" id="reloadButton">✔️</button>
+                                </div>
+                            </div>`;
+
+                            reloadButtonedit.addEventListener('click', function () {
+                                setTimeout(function () {
+                                    divToCloseedit.style.display = 'none';
+                                });
+
+                                setTimeout(function () {
+                                    location.reload();
+                                }, 2000); // 2000 milissegundos = 2 segundos
+                            });
+                        }
+
+                        /* ----------------------------------------------------------------------------- */
+
+                        const FORMEDIT_BUTON1 = document.getElementById('edit-ErroSolucao');
+                        const FORMEDIT_BUTON2 = document.getElementById('edit-AnexoScript');
+                        const closeModalEditForm = document.getElementById('closeModalEDForm');
+                        const ErroSolucao = document.getElementById('ErroSolucaoFORM-EDIT');
+                        const AnexoScript = document.getElementById('AnexoScriptFORM-EDIT');
+
+
+                        closeModalEditForm.addEventListener('click', () => {
+                            FORMEDIT_BUTON1.classList.remove('activeEDIT');
+                            FORMEDIT_BUTON2.classList.remove('activeEDIT');
+                            editFormDiv.style.display = 'none';
+                        });
+
+                        FORMEDIT_BUTON1.addEventListener('click', () => {
+                            FORMEDIT_BUTON2.classList.remove('activeEDIT');
+                            FORMEDIT_BUTON1.classList.add('activeEDIT');
+                            AnexoScript.style.display = 'none';
+                            ErroSolucao.style.display = 'block';
+                        });
+
+                        FORMEDIT_BUTON2.addEventListener('click', () => {
+                            FORMEDIT_BUTON1.classList.remove('activeEDIT');
+                            FORMEDIT_BUTON2.classList.add('activeEDIT');
+                            AnexoScript.style.display = 'block';
+                            ErroSolucao.style.display = 'none';
+                        });
+
+                        const uniqueID = document.getElementById("uniqueID");
+                        const P_sobox0_edit = document.getElementById("P_sobox0_edit");
+                        const P_sobox_edit = document.getElementById("P_sobox_edit");
+                        const P_sobox1_edit = document.getElementById("P_sobox1_edit");
+                        const P_sobox2_edit = document.getElementById("P_sobox2_edit");
+                        P_sobox0_edit.value = errorsressumosoboxData;
+                        P_sobox_edit.value = erros;
+                        P_sobox1_edit.value = solucoes;
+                        P_sobox2_edit.value = script;
+                        uniqueID.value = uniqueID;
 
                         const imagemDivMain = document.querySelector('.imagem-div-main');
 
@@ -230,15 +413,19 @@ function loadsoboxSheetData(url) {
                         const infoModal = document.getElementById('infoModal');
                         infoModal.style.display = 'block';
 
-                        //pular linhas onde tiver caracter §
                         function formatarTextoComQuebrasDeLinha(elementId) {
                             var elemento = document.querySelector('#' + elementId);
 
                             if (elemento) {
-                                var texto = elemento.innerHTML;
+                                var texto = elemento.value || elemento.innerHTML;
                                 var arrayDeLinhas = texto.split('§');
-                                var novoTexto = arrayDeLinhas.join('<br><br>');
-                                elemento.innerHTML = novoTexto;
+                                var novoTexto = arrayDeLinhas.join('\n\n');
+
+                                if (elemento.tagName.toLowerCase() === 'textarea') {
+                                    elemento.value = novoTexto;
+                                } else {
+                                    elemento.innerHTML = novoTexto;
+                                }
                             }
                         }
 
@@ -247,10 +434,53 @@ function loadsoboxSheetData(url) {
 
                             if (elemento) {
                                 elemento.style.whiteSpace = 'pre'; // Aplicar a propriedade 'white-space' com valor 'pre'
-                                var texto = elemento.innerHTML;
+                                var texto = elemento.value || elemento.innerHTML;
                                 var arrayDeLinhas = texto.split('§');
-                                var novoTexto = arrayDeLinhas.join('<br>');
-                                elemento.innerHTML = novoTexto;
+                                var novoTexto = arrayDeLinhas.join('\n');
+
+                                if (elemento.tagName.toLowerCase() === 'textarea') {
+                                    elemento.value = novoTexto;
+                                } else {
+                                    elemento.innerHTML = novoTexto;
+                                }
+
+                                elemento.style.whiteSpace = 'pre-wrap'; // Permite quebras de linha e espaço branco
+                                elemento.style.wordWrap = 'break-word'; // Força quebra de palavra em caso de overflow
+                            }
+                        }
+
+
+                        function formatarTextoComQuebrasDeLinhaEDIT(elementId) {
+                            var elemento = document.querySelector('#' + elementId);
+
+                            if (elemento) {
+                                var texto = elemento.value || elemento.innerHTML;
+                                var arrayDeLinhas = texto.split('§');
+                                var novoTexto = arrayDeLinhas.join('\n');
+
+                                if (elemento.tagName.toLowerCase() === 'textarea') {
+                                    elemento.value = novoTexto;
+                                } else {
+                                    elemento.innerHTML = novoTexto;
+                                }
+                            }
+                        }
+
+                        function formatarTextoComQuebrasDeLinhaEDIT2(elementId) {
+                            var elemento = document.querySelector('#' + elementId);
+
+                            if (elemento) {
+                                elemento.style.whiteSpace = 'pre'; // Aplicar a propriedade 'white-space' com valor 'pre'
+                                var texto = elemento.value || elemento.innerHTML;
+                                var arrayDeLinhas = texto.split('§');
+                                var novoTexto = arrayDeLinhas.join('\n');
+
+                                if (elemento.tagName.toLowerCase() === 'textarea') {
+                                    elemento.value = novoTexto;
+                                } else {
+                                    elemento.innerHTML = novoTexto;
+                                }
+
                                 elemento.style.whiteSpace = 'pre-wrap'; // Permite quebras de linha e espaço branco
                                 elemento.style.wordWrap = 'break-word'; // Força quebra de palavra em caso de overflow
                             }
@@ -264,6 +494,14 @@ function loadsoboxSheetData(url) {
                         formatarTextoComQuebrasDeLinha2('P_sobox3');
                         formatarTextoComQuebrasDeLinha2('P_sobox4');
                         formatarTextoComQuebrasDeLinha2('P_sobox5');
+
+                        //quebrar linha do edit
+                        formatarTextoComQuebrasDeLinhaEDIT('P_sobox_edit');
+                        formatarTextoComQuebrasDeLinhaEDIT('P_sobox1_edit');
+                        formatarTextoComQuebrasDeLinhaEDIT2('P_sobox2_edit');
+                        formatarTextoComQuebrasDeLinhaEDIT2('P_sobox3_edit');
+                        formatarTextoComQuebrasDeLinhaEDIT2('P_sobox4_edit');
+                        formatarTextoComQuebrasDeLinhaEDIT2('P_sobox5_edit');
                     });
 
                     viewButtonCell.appendChild(viewButton); // Adicionar o botão à célula
@@ -308,7 +546,7 @@ function copyToClipboardscriptsobox() {
 
     // Estilizar o botão após a cópia
     const btnCopiar = document.getElementById('copyLink');
-    btnCopiar.innerText = '📄 ✔';
+    btnCopiar.innerText = '  ✔  ';
     setTimeout(() => {
         btnCopiar.innerText = '📄';
     }, 3000);

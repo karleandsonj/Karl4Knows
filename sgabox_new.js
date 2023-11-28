@@ -1,6 +1,6 @@
 /* DADOS */
 
-const sgaboxnewsheetURL = `https://docs.google.com/spreadsheets/d/1Jovno7NeDFhTmj0_97pbIeVYEZuxTh0qqs9JKP1lnhA/edit#gid=0`;
+const sgaboxnewsheetURL = `https://docs.google.com/spreadsheets/d/1Jovno7NeDFhTmj0_97pbIeVYEZuxTh0qqs9JKP1lnhA/edit?usp=drive_link`;
 
 // Função para carregar os dados da planilha na tabela com o id "data-table"
 function loadsgaboxnewSheetData(url) {
@@ -139,7 +139,7 @@ function loadsgaboxnewSheetData(url) {
                         const openEditFormButton = document.getElementById('EDITFORMSHEET-sgaboxnew');
                         const editFormDiv = document.getElementById('editform');
 
-                        openEditFormButton.addEventListener('click', function() {
+                        openEditFormButton.addEventListener('click', function () {
                             editFormDiv.style.display = 'block';
                             AnexoScript.style.display = 'none';
                             ErroSolucao.style.display = 'block';
@@ -149,11 +149,10 @@ function loadsgaboxnewSheetData(url) {
 
                         const EditForm = document.getElementById('EditFormContent');
                         EditForm.innerHTML = `
+                                <input type="text" id="uniqueID_edit" name="uniqueID" readonly style="display: none;">
                                 <div class="header-edit">
                                     <div class="modal0-edit">
-                                        <h3 class="modal01-edit">
-                                            ${sistema}
-                                        </h3>
+                                        <h3>${sistema}</h3>
                                     </div>
                                     <div id="edit-ErroSolucao" class="edit-ErroSolucao">Erro / Solucao</div>
                                     <div id="edit-AnexoScript" class="edit-AnexoScript">Anexo / Script</div>
@@ -178,8 +177,94 @@ function loadsgaboxnewSheetData(url) {
                                         <textarea type="text" id="P_sgaboxnew2_edit" placeholder="Script" class="campo-edit"></textarea>
                                     </div>
                                 </div>
+
+                                <div class="botao_edit">
+
+                                    <div id="loadinganx-edit" style="display: none;">
+                                        Enviando...
+                                    </div>
+                                    <div id="loadinganxenv-edit" style="display: none;">
+                                        Concluido...
+                                    </div>
+                                    <div id="loadingarq-edit" style="display: none;">
+                                        Concluido...
+                                    </div>
+                
+                                    <button type="submit" id="submit-edit" class="bt-edt"> Salvar </button>
+            
+                                </div>
                         `;
 
+                        /* ----------------------------------------------------------------------------- */
+
+                        const scriptURLEDIT = 'https://script.google.com/macros/s/AKfycbw6D9QRNHrEVTgndJz8k-xxS-5iaYfIJ8IFUBbe2PXW4jrSulGwiabNHK3GNrvagFvWMQ/exec';
+                        const formEdit = document.forms['EditFormContent'];
+
+                        // Associar a função sendFormEdit ao evento de clique do botão
+                        const submitButton = document.getElementById('submit-edit');
+                        submitButton.addEventListener('click', e => {
+                            e.preventDefault();
+                            addloadingedit();
+                            let loadinganxedit = document.getElementById("loadinganx-edit");
+                            loadinganxedit.style.display = 'block'; // Mostra o elemento de carregamento
+
+                            // Chamar a função sendFormEdit
+                            sendFormEdit();
+                        });
+
+                        function sendFormEdit() {
+                            // Aqui você deve colocar a lógica para enviar o formulário
+                            fetch(scriptURLEDIT, { method: 'POST', body: new FormData(formEdit) })
+                                .then(response => {
+                                    if (response.status === 200) {
+                                        // Atualize a imagem no formulário com o URL da imagem
+                                        // No caso de várias imagens, você pode atualizar uma área do formulário ou uma lista de miniaturas, por exemplo.
+                                        console.log('Formulário enviado com sucesso');
+                                        removeloadingedit(); // Remova o alerta de sucesso após o sucesso
+                                    } else {
+                                        console.error('Erro no servidor:', response.status);
+                                    }
+                                })
+                                .catch(error => console.error('Erro na requisição:', error.message));
+                        }
+
+                        const addloadingedit = () => {
+                            const load = document.querySelector('#load');
+                            load.innerHTML = `
+                            <div class="loader">
+                                <div class="justify-content-center jimu-primary-loading">
+                                </div> 
+                            </div>`;
+                        }
+
+                        const reloadButtonedit = document.querySelector('#reloadButton');
+                        const divToCloseedit = document.querySelector('#alerta1');
+                        const removeloadingedit = () => {
+                            let loadinganxedit = document.getElementById("loadinganx-edit");
+                            loadinganxedit.style.display = 'none'; // Mostra o elemento de carregamento
+                            let loadinganxenvedit = document.getElementById("loadinganxenv-edit");
+                            loadinganxenvedit.style.display = 'block'; // Mostra o elemento de carregamento
+                            const alertaedit = document.querySelector('#alerta');
+                            alertaedit.innerHTML = `
+                            <div class="d-flex justify-content-center mt-5 h-100" id="alerta1">
+                                <div class="d-flex align-items-center align-self-center card p-3 text-center cookies">
+                                    <span class="mt-2"><b>Informações salvas com sucesso</b><br><b>Se não aparecer Press "F5"<br> <i>OBRIGADO!</i></b></span>
+                                    <button class="btn btn-dark mt-3 px-4" type="button" id="reloadButton">✔️</button>
+                                </div>
+                            </div>`;
+
+                            reloadButtonedit.addEventListener('click', function () {
+                                setTimeout(function () {
+                                    divToCloseedit.style.display = 'none';
+                                });
+
+                                setTimeout(function () {
+                                    location.reload();
+                                }, 2000); // 2000 milissegundos = 2 segundos
+                            });
+                        }
+
+                        /* ----------------------------------------------------------------------------- */
 
                         const FORMEDIT_BUTON1 = document.getElementById('edit-ErroSolucao');
                         const FORMEDIT_BUTON2 = document.getElementById('edit-AnexoScript');
@@ -208,6 +293,7 @@ function loadsgaboxnewSheetData(url) {
                             ErroSolucao.style.display = 'none';
                         });
 
+                        const uniqueID = document.getElementById("uniqueID");
                         const P_sgaboxnew0_edit = document.getElementById("P_sgaboxnew0_edit");
                         const P_sgaboxnew_edit = document.getElementById("P_sgaboxnew_edit");
                         const P_sgaboxnew1_edit = document.getElementById("P_sgaboxnew1_edit");
@@ -216,6 +302,7 @@ function loadsgaboxnewSheetData(url) {
                         P_sgaboxnew_edit.value = erros;
                         P_sgaboxnew1_edit.value = solucoes;
                         P_sgaboxnew2_edit.value = script;
+                        uniqueID.value = uniqueID;
 
                         const imagemDivMain = document.querySelector('.imagem-div-main');
 
@@ -430,7 +517,7 @@ function loadsgaboxnewSheetData(url) {
 
         })
 
-    .catch(error => console.error('Erro ao carregar dados da planilha:', error));
+        .catch(error => console.error('Erro ao carregar dados da planilha:', error));
 }
 
 // Fechar o card/modal quando o botão de fechar é clicado
@@ -459,7 +546,7 @@ function copyToClipboardscriptsgaboxnew() {
 
     // Estilizar o botão após a cópia
     const btnCopiar = document.getElementById('copyLink');
-    btnCopiar.innerText = '📄 ✔';
+    btnCopiar.innerText = '  ✔  ';
     setTimeout(() => {
         btnCopiar.innerText = '📄';
     }, 3000);

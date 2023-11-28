@@ -38,7 +38,7 @@
                 <a id="abrir-rotina" class="icons" href="#" onclick="showSection('SGA'); setSelected(this);" title="SGA"><img src="Icones/SGA.png" class="icones">SGA</a>
                 <a id="abrir-rotina" class="icons" href="#" onclick="showSection('SGABOXNEW'); setSelected(this);" title="SGABOX NOVO"><img src="Icones/SGABOX_LITE.png" class="icones">SGABOX (NOVO)</a>
                 <a id="abrir-rotina" class="icons" href="#" onclick="showSection('SOBOX'); setSelected(this);" title="SOBOX"><img src="Icones/SOBOX.png" class="icones">SOBOX</a>
-                <a id="abrir-rotina" class="icons" href="#" onclick="showSection('SGABOX2010'); setSelected(this);" title="SGABOX2010"><img src="Icones/SGABOX2010.png" class="icones">SGABOX (2010)</a>
+                <a id="abrir-rotina" class="icons" href="#" onclick="showSection('SGABOX2010'); setSelected(this);" title="SGABOX2010"><img src="Icones/SGABOX2010.png" class="icones">SGABOX <br> (2010)</a>
                 <a id="abrir-rotina" class="icons" href="#" onclick="showSection('SGALITE'); setSelected(this);" title="SGALITE"><img src="Icones/SGABOX_LITE.png" class="icones">SGA-Lite</a>
                 <a id="abrir-rotina" class="icons" href="#" onclick="showSection('GOURMET'); setSelected(this);" title="GOURMET"><img src="Icones/GOURMET.png" class="icones">Gourmet</a>
                 <a id="abrir-rotina" class="icons" href="#" onclick="showSection('SGAOS'); setSelected(this);" title="SGAOS"><img src="Icones/OS.png" class="icones">SGA-OS</a>
@@ -89,13 +89,13 @@
                             <div class="sistema">
                                 <option></option>
                                 <option>SGA</option>
-                                <option>SGABOXN</option>
+                                <option>SGABOX-NOVO</option>
                                 <option>SOBOX</option>
-                                <option>SGABOX2010</option>
-                                <option>SGA-Lite</option>
+                                <option>SGABOX-2010</option>
+                                <option>SGA-LITE</option>
                                 <option>GOURMET</option>
                                 <option>SGA-OS</option>
-                                <option>SGA OTICA</option>
+                                <option>SGA-OTICA</option>
                                 <option>SPEDS</option>
                                 <option>MONITOR</option>
                                 <option>ROBOT</option>
@@ -231,6 +231,7 @@
             </section>
 
             <section id="SGA" class="rotinas" style="display: none;">
+
                 <div class="container-input">
                     <a class="pesquisa1">
                         <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input" id="pesquisa_sga" title="Pesquisa">
@@ -265,7 +266,7 @@
                     </a>
                 </div>
                 <div class="sistemas" id="SGABOXNEWK">
-                    <h2> SGABOX NEW </h2>
+                    <h2> SGABOX NOVO </h2>
                     <div class="containerD1">
                         <div class="containerD">
                             <table id="data-table-sgaboxnew" class="data-table">
@@ -464,6 +465,156 @@
                     </div>
                 </div>
             </section>
+
+            <section id="MONITOR" class="rotinas" style="display: none;">
+                <div class="container-input">
+                    <a class="pesquisa1">
+                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input" id="pesquisa_monitor" title="Pesquisa">
+                    </a>
+                </div>
+                <div class="sistemas" id="MONITORK">
+                    <h2> MONITOR </h2>
+                    <div class="containerD1">
+                        <div class="containerD">
+                            <table id="data-table-monitor" class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Resumo do Erro</th>
+                                        <th>Visualizar</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabela_monitor">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="ROBOT" class="rotinas" style="display: none;">
+                <div class="container-input">
+                    <a class="pesquisa1">
+                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input" id="pesquisa_robot" title="Pesquisa">
+                    </a>
+                </div>
+                <div class="sistemas" id="ROBOTK">
+                    <h2> ROBOT </h2>
+                    <div class="containerD1">
+                        <div class="containerD">
+                            <table id="data-table-robot" class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Resumo do Erro</th>
+                                        <th>Visualizar</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabela_robot">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="ETIQUETAS" class="rotinas" style="display: none;">
+                <div class="container-input">
+                    <a class="pesquisa1">
+                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input" id="pesquisa_etiquetas" title="Pesquisa">
+                    </a>
+                </div>
+                <div class="sistemas" id="ETIQUETASK">
+                    <h2> ETIQUESTAS </h2>
+                    <div class="containerD1">
+                        <div class="containerD">
+                            <table id="data-table-etiquetas" class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Resumo do Erro</th>
+                                        <th>Visualizar</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabela_etiquetas">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="DISPOSITIVO" class="rotinas" style="display: none;">
+                <div class="container-input">
+                    <a class="pesquisa1">
+                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input" id="pesquisa_dispositivo" title="Pesquisa">
+                    </a>
+                </div>
+                <div class="sistemas" id="DISPOSITIVOK">
+                    <h2> DISPOSITIVO </h2>
+                    <div class="containerD1">
+                        <div class="containerD">
+                            <table id="data-table-dispositivo" class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Resumo do Erro</th>
+                                        <th>Visualizar</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabela_dispositivo">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="IMPRESSORA" class="rotinas" style="display: none;">
+                <div class="container-input">
+                    <a class="pesquisa1">
+                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input" id="pesquisa_impressora" title="Pesquisa">
+                    </a>
+                </div>
+                <div class="sistemas" id="IMPRESSORAK">
+                    <h2> IMPRESSORA </h2>
+                    <div class="containerD1">
+                        <div class="containerD">
+                            <table id="data-table-impressora" class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Resumo do Erro</th>
+                                        <th>Visualizar</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabela_impressora">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="TEF" class="rotinas" style="display: none;">
+                <div class="container-input">
+                    <a class="pesquisa1">
+                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input" id="pesquisa_tef" title="Pesquisa">
+                    </a>
+                </div>
+                <div class="sistemas" id="TEFK">
+                    <h2> TEF </h2>
+                    <div class="containerD1">
+                        <div class="containerD">
+                            <table id="data-table-tef" class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Resumo do Erro</th>
+                                        <th>Visualizar</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabela_tef">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     </main>
 
@@ -484,11 +635,22 @@
             document.body.classList.add('fade-in');
         }
     </script>
-    <script src="editform.js"></script>
+    <!-- <script src="editform.js"></script> -->
     <script src="sga.js"></script>
+    <script src="sgabox2010.js"></script>
     <script src="sobox.js"></script>
     <script src="sgabox_new.js"></script>
     <script src="sped.js"></script>
+    <script src="sgalite.js"></script>
+    <script src="sgaos.js"></script>
+    <script src="sgaotica.js"></script>
+    <script src="robot.js"></script>
+    <script src="monitor.js"></script>
+    <script src="impressora.js"></script>
+    <script src="gourmet.js"></script>
+    <script src="etiquetas.js"></script>
+    <script src="dispositivo.js"></script>
+    <script src="tef.js"></script>
     <script src="script.js"></script>
     <script src="form.js"></script>
     <script src="removercarac.js"></script>

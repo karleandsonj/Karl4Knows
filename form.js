@@ -152,8 +152,8 @@ const verificarSenhaButton = document.getElementById('verificarSenha');
 const butcard = document.getElementById('but_card');
 const butalert = document.getElementById('but_alert');
 
-// Defina a senha válida
-const senhaValida = '';
+
+const philips = '1';
 
 // Função para abrir o campo de senha
 function abrirSenhaContainer() {
@@ -186,7 +186,7 @@ function fecharSenhaContainer() {
 function verificarSenha() {
     const senhaInserida = senhaInput.value;
 
-    if (senhaInserida === senhaValida) {
+    if (senhaInserida === philips) {
         // Senha correta, execute o código desejado
         envioForm.style.display = 'block';
         AbrirErro.style.display = 'block';

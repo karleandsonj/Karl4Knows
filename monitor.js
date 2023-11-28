@@ -1,9 +1,9 @@
 /* DADOS */
 
-const sgasheetURL = `https://docs.google.com/spreadsheets/d/1PJaUNl46WXZMG9J2R0ZRqWWCIg8Lg_CryODZxOua_CY/edit#gid=0`;
+const monitorsheetURL = `https://docs.google.com/spreadsheets/d/1Vmbm586MWeESMiOpbPEchscgrf6jtCVYkPRqC6VK680/edit?usp=drive_link`;
 
 // Função para carregar os dados da planilha na tabela com o id "data-table"
-function loadsgaSheetData(url) {
+function loadmonitorSheetData(url) {
     fetch(url)
         .then(response => response.text())
         .then(data => {
@@ -12,24 +12,24 @@ function loadsgaSheetData(url) {
             const tableRows = htmlDocument.querySelectorAll('tbody tr');
 
             // Limpar a tabela antes de adicionar novos dados
-            const dataTableBody = document.querySelector('#data-table-sga tbody');
+            const dataTableBody = document.querySelector('#data-table-monitor tbody');
             dataTableBody.innerHTML = '';
             // Definir o limite máximo de linhas a serem carregadas (até a última linha preenchida)
             const maxRows = tableRows.length;
 
             // Percorrer as linhas da planilha e adicionar apenas as linhas preenchidas à tabela
-            for (let i = 3; i < maxRows; i++) {
+            for (let i = 2; i < maxRows; i++) {
                 const row = tableRows[i];
                 const columns = row.querySelectorAll('td');
 
-                // Verificar se todas as colunas relevantes (ID_sga, ERROS, FOTOS, SOLUCOES) estão preenchidas
+                // Verificar se todas as colunas relevantes (ID_monitor, ERROS, FOTOS, SOLUCOES) estão preenchidas
                 if (columns[0].textContent.trim() !== '') {
 
-                    const errorsressumosgaCell = document.createElement('td');
-                    const errorsressumosgaData = columns[2].textContent.trim();
-                    errorsressumosgaCell.innerHTML = `<span>${errorsressumosgaData}</span>`;
+                    const errorsressumomonitorCell = document.createElement('td');
+                    const errorsressumomonitorData = columns[2].textContent.trim();
+                    errorsressumomonitorCell.innerHTML = `<span>${errorsressumomonitorData}</span>`;
 
-                    errorsressumosgaCell.classList.add('erro1'); // Substitua 'sua-classe-aqui' pelo nome da classe desejada
+                    errorsressumomonitorCell.classList.add('erro1'); // Substitua 'sua-classe-aqui' pelo nome da classe desejada
 
                     const viewButtonCell = document.createElement('td'); // Criar uma nova célula para o botão
 
@@ -57,9 +57,9 @@ function loadsgaSheetData(url) {
                         const anexo = columns[8].textContent.trim();
 
                         /*                         // Selecionando os inputs pelos IDs
-                                                const errosInput = document.getElementById('P_sga-edit');
-                                                const solucoesInput = document.getElementById('P_sga1-edit');
-                                                const scriptInput = document.getElementById('P_sga2-edit');
+                                                const errosInput = document.getElementById('P_monitor-edit');
+                                                const solucoesInput = document.getElementById('P_monitor1-edit');
+                                                const scriptInput = document.getElementById('P_monitor2-edit');
                         
                                                 // Atribuindo os valores das constantes aos inputs
                                                 errosInput.value = erros;
@@ -80,13 +80,13 @@ function loadsgaSheetData(url) {
 
                         // Criar uma string que contenha todas as tags <a> com os links e descrições correspondentes
                         const linksString = linksArray.map((link, index) => `
-                            <a href="${link}" id="P_sga${index + 1}" target="_blank" class="buttonDownload">${descricaoAnexoArray[index]}</a>
+                            <a href="${link}" id="P_monitor${index + 1}" target="_blank" class="buttonDownload">${descricaoAnexoArray[index]}</a>
                         `).join('');
 
                         // Criar uma string que contenha todas as tags <img> com as imagens correspondentes
                         const imagensString = imagensArray.map((link, index) => `
                         <div class="imagem-div" >
-                            <img class="img_anexo imagem-div1" id="P_sga4${index + 1}" src="${link}" alt="">
+                            <img class="img_anexo imagem-div1" id="P_monitor4${index + 1}" src="${link}" alt="">
                         </div>
                         `).join('');
 
@@ -95,26 +95,26 @@ function loadsgaSheetData(url) {
                         modalContent.innerHTML = `
                             <div class="modal1">
                                 <h3>${sistema}</h3>
-                                <a id="EDITFORMSHEET-sga" title="Editar!"><img src="IMG/EDIT.png" class="EDIT-FORM-SHEET"></a>
+                                <a id="EDITFORMSHEET-monitor" title="Editar!"><img src="IMG/EDIT.png" class="EDIT-FORM-SHEET"></a>
                             </div>
                             <div id="column">
                                 <div class="modal2" id="modal2" class="scroll-modal">
                                     <h3>Erro Detalhado: </h3>
                                     <hr class="hr-rot">
-                                    <p id="P_sga">${erros}</p>
+                                    <p id="P_monitor">${erros}</p>
                                 </div>
                                 <div class="modal3" class="scroll-modal">
                                     <h3>Soluções: </h3>
                                     <hr class="hr-rot">
-                                    <p id="P_sga1">${solucoes}</p>
+                                    <p id="P_monitor1">${solucoes}</p>
                                 </div>
                             </div>
                             <div id="column">
                                 <div class="modal4" style="${script ? '' : 'display: none;'}">
                                     <h3>Scripts:</h3>
-                                    <a href="#" title="Copiar!" id="copyLink" onclick="copyToClipboardscriptsga()" >📄</a>
+                                    <a href="#" title="Copiar!" id="copyLink" onclick="copyToClipboardscriptmonitor()" >📄</a>
                                     <hr class="hr-rot">
-                                    <p id="P_sga2" class="scroll-modal">${script}</p>
+                                    <p id="P_monitor2" class="scroll-modal">${script}</p>
                                 </div>
                                 <div id="Modalanexo" class="modal5" style="${anexo || imagemLink ? '' : 'display: none;'}">
                                     <h3>
@@ -136,7 +136,7 @@ function loadsgaSheetData(url) {
 
 
                         // Adicionar um ouvinte de evento ao link EDITFORMSHEET dentro do modal
-                        const openEditFormButton = document.getElementById('EDITFORMSHEET-sga');
+                        const openEditFormButton = document.getElementById('EDITFORMSHEET-monitor');
                         const editFormDiv = document.getElementById('editform');
 
                         openEditFormButton.addEventListener('click', function () {
@@ -160,21 +160,21 @@ function loadsgaSheetData(url) {
                                 <div class="ErroSolucaoFORM-EDIT" id="ErroSolucaoFORM-EDIT">
                                     <div class="modal1-edit" id="modal1-edit">
                                         <h3>Erro Resumido: </h3>
-                                        <input type="text" id="P_sga0_edit" placeholder="Erro Resumido" class="campo0-edit">
+                                        <input type="text" id="P_monitor0_edit" placeholder="Erro Resumido" class="campo0-edit">
                                     </div>
                                     <div class="modal2-edit" id="modal2-edit">
                                         <h3>Erro Detalhado: </h3>
-                                        <textarea type="text" id="P_sga_edit" placeholder="Erros" class="campo-edit"></textarea>
+                                        <textarea type="text" id="P_monitor_edit" placeholder="Erros" class="campo-edit"></textarea>
                                     </div>
                                     <div class="modal3-edit">
                                         <h3>Soluções: </h3>
-                                        <textarea type="text" id="P_sga1_edit" placeholder="Soluções" class="campo-edit"></textarea>
+                                        <textarea type="text" id="P_monitor1_edit" placeholder="Soluções" class="campo-edit"></textarea>
                                     </div>
                                 </div>
                                 <div class="AnexoScriptFORM-EDIT" id="AnexoScriptFORM-EDIT" style="display: none;">
                                     <div class="modal4-edit">
                                         <h3>Scripts:</h3>
-                                        <textarea type="text" id="P_sga2_edit" placeholder="Script" class="campo-edit"></textarea>
+                                        <textarea type="text" id="P_monitor2_edit" placeholder="Script" class="campo-edit"></textarea>
                                     </div>
                                 </div>
 
@@ -294,14 +294,14 @@ function loadsgaSheetData(url) {
                         });
 
                         const uniqueID = document.getElementById("uniqueID");
-                        const P_sga0_edit = document.getElementById("P_sga0_edit");
-                        const P_sga_edit = document.getElementById("P_sga_edit");
-                        const P_sga1_edit = document.getElementById("P_sga1_edit");
-                        const P_sga2_edit = document.getElementById("P_sga2_edit");
-                        P_sga0_edit.value = errorsressumosgaData;
-                        P_sga_edit.value = erros;
-                        P_sga1_edit.value = solucoes;
-                        P_sga2_edit.value = script;
+                        const P_monitor0_edit = document.getElementById("P_monitor0_edit");
+                        const P_monitor_edit = document.getElementById("P_monitor_edit");
+                        const P_monitor1_edit = document.getElementById("P_monitor1_edit");
+                        const P_monitor2_edit = document.getElementById("P_monitor2_edit");
+                        P_monitor0_edit.value = errorsressumomonitorData;
+                        P_monitor_edit.value = erros;
+                        P_monitor1_edit.value = solucoes;
+                        P_monitor2_edit.value = script;
                         uniqueID.value = uniqueID;
 
                         const imagemDivMain = document.querySelector('.imagem-div-main');
@@ -354,8 +354,8 @@ function loadsgaSheetData(url) {
                         }
 
                         // Chame a função com o ID do elemento desejado
-                        transformarEmListaOrdenada('P_sga'); // Substituir 'P_sga1' pelo ID desejado
-                        transformarEmListaOrdenada('P_sga1'); // Substituir 'P_sga2' pelo ID desejado                        
+                        transformarEmListaOrdenada('P_monitor'); // Substituir 'P_monitor1' pelo ID desejado
+                        transformarEmListaOrdenada('P_monitor1'); // Substituir 'P_monitor2' pelo ID desejado                        
 
 
                         // Adicionar um evento de clique ao link "Clique para trocar a imagem"
@@ -488,26 +488,26 @@ function loadsgaSheetData(url) {
 
 
                         // Para usar a função com outro campo, basta chamar a função com o ID do novo elemento:
-                        formatarTextoComQuebrasDeLinha('P_sga');
-                        formatarTextoComQuebrasDeLinha('P_sga1');
-                        formatarTextoComQuebrasDeLinha2('P_sga2');
-                        formatarTextoComQuebrasDeLinha2('P_sga3');
-                        formatarTextoComQuebrasDeLinha2('P_sga4');
-                        formatarTextoComQuebrasDeLinha2('P_sga5');
+                        formatarTextoComQuebrasDeLinha('P_monitor');
+                        formatarTextoComQuebrasDeLinha('P_monitor1');
+                        formatarTextoComQuebrasDeLinha2('P_monitor2');
+                        formatarTextoComQuebrasDeLinha2('P_monitor3');
+                        formatarTextoComQuebrasDeLinha2('P_monitor4');
+                        formatarTextoComQuebrasDeLinha2('P_monitor5');
 
                         //quebrar linha do edit
-                        formatarTextoComQuebrasDeLinhaEDIT('P_sga_edit');
-                        formatarTextoComQuebrasDeLinhaEDIT('P_sga1_edit');
-                        formatarTextoComQuebrasDeLinhaEDIT2('P_sga2_edit');
-                        formatarTextoComQuebrasDeLinhaEDIT2('P_sga3_edit');
-                        formatarTextoComQuebrasDeLinhaEDIT2('P_sga4_edit');
-                        formatarTextoComQuebrasDeLinhaEDIT2('P_sga5_edit');
+                        formatarTextoComQuebrasDeLinhaEDIT('P_monitor_edit');
+                        formatarTextoComQuebrasDeLinhaEDIT('P_monitor1_edit');
+                        formatarTextoComQuebrasDeLinhaEDIT2('P_monitor2_edit');
+                        formatarTextoComQuebrasDeLinhaEDIT2('P_monitor3_edit');
+                        formatarTextoComQuebrasDeLinhaEDIT2('P_monitor4_edit');
+                        formatarTextoComQuebrasDeLinhaEDIT2('P_monitor5_edit');
                     });
 
                     viewButtonCell.appendChild(viewButton); // Adicionar o botão à célula
 
                     const newRow = document.createElement('tr');
-                    newRow.appendChild(errorsressumosgaCell);
+                    newRow.appendChild(errorsressumomonitorCell);
                     newRow.appendChild(viewButtonCell); // Adicionar a célula do botão à linha
 
                     dataTableBody.appendChild(newRow);
@@ -521,22 +521,22 @@ function loadsgaSheetData(url) {
 }
 
 // Fechar o card/modal quando o botão de fechar é clicado
-const closeModalsgaButton = document.getElementById('closeModal');
-const infoModalsga = document.getElementById('infoModal');
+const closeModalmonitorButton = document.getElementById('closeModal');
+const infoModalmonitor = document.getElementById('infoModal');
 
-closeModalsgaButton.addEventListener('click', () => {
-    infoModalsga.style.display = 'none';
+closeModalmonitorButton.addEventListener('click', () => {
+    infoModalmonitor.style.display = 'none';
 });
 
 
 // Chamar a função para carregar os dados da planilha
-loadsgaSheetData(sgasheetURL);
+loadmonitorSheetData(monitorsheetURL);
 
 /* FIM DADOS */
 
-/* Copiar Script-sga*/
-function copyToClipboardscriptsga() {
-    const infoText = document.getElementById("P_sga2").innerText;
+/* Copiar Script-monitor*/
+function copyToClipboardscriptmonitor() {
+    const infoText = document.getElementById("P_monitor2").innerText;
     const tempInput = document.createElement("textarea");
     tempInput.value = infoText;
     document.body.appendChild(tempInput);
