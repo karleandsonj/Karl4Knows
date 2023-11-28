@@ -294,7 +294,7 @@ openFormButton1.addEventListener('click', () => {
 });
 
 link1.addEventListener('click', () => {
-    openFormButton1.classList.add('active');
+    /* openFormButton1.classList.add('active'); */
     link1.classList.add('active');
     link2.classList.remove('active');
 });

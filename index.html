@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>🔍Karl4Knows🔍</title>
     <link rel="icon" href="IMG/LOGO.png" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="index.css">
-    <link rel="stylesheet" type="text/css" href="form.css">
-    <link rel="stylesheet" type="text/css" href="editform.css">
-    <link rel="stylesheet" type="text/css" href="sechome.css">
+    <link rel="stylesheet" type="text/css" href="CSS/index.css">
+    <link rel="stylesheet" type="text/css" href="CSS/form.css">
+    <link rel="stylesheet" type="text/css" href="CSS/editform.css">
+    <link rel="stylesheet" type="text/css" href="CSS/sechome.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 </head>
 
@@ -35,21 +35,36 @@
     <aside id="custom-scroll">
         <div class="scroll-content">
             <ul>
-                <a id="abrir-rotina" class="icons" href="#" onclick="showSection('SGA'); setSelected(this);" title="SGA"><img src="Icones/SGA.png" class="icones">SGA</a>
-                <a id="abrir-rotina" class="icons" href="#" onclick="showSection('SGABOXNEW'); setSelected(this);" title="SGABOX NOVO"><img src="Icones/SGABOX_LITE.png" class="icones">SGABOX (NOVO)</a>
-                <a id="abrir-rotina" class="icons" href="#" onclick="showSection('SOBOX'); setSelected(this);" title="SOBOX"><img src="Icones/SOBOX.png" class="icones">SOBOX</a>
-                <a id="abrir-rotina" class="icons" href="#" onclick="showSection('SGABOX2010'); setSelected(this);" title="SGABOX2010"><img src="Icones/SGABOX2010.png" class="icones">SGABOX <br> (2010)</a>
-                <a id="abrir-rotina" class="icons" href="#" onclick="showSection('SGALITE'); setSelected(this);" title="SGALITE"><img src="Icones/SGABOX_LITE.png" class="icones">SGA-Lite</a>
-                <a id="abrir-rotina" class="icons" href="#" onclick="showSection('GOURMET'); setSelected(this);" title="GOURMET"><img src="Icones/GOURMET.png" class="icones">Gourmet</a>
-                <a id="abrir-rotina" class="icons" href="#" onclick="showSection('SGAOS'); setSelected(this);" title="SGAOS"><img src="Icones/OS.png" class="icones">SGA-OS</a>
-                <a id="abrir-rotina" class="icons" href="#" onclick="showSection('SGAOTICA'); setSelected(this);" title="SGAOTICA"><img src="Icones/OTICA.png" class="icones">SGA Ótica</a>
-                <a id="abrir-rotina" class="icons" href="#" onclick="showSection('SPEDS'); setSelected(this);" title="SPEDS"><img src="Icones/SPEDs.png" class="icones">SPEDS</a>
-                <a id="abrir-rotina" class="icons" href="#" onclick="showSection('MONITOR'); setSelected(this);" title="MONITOR"><img src="Icones/MONITOR.png" class="icones">MONITOR</a>
-                <a id="abrir-rotina" class="icons" href="#" onclick="showSection('ROBOT'); setSelected(this);" title="ROBOT"><img src="Icones/ROBOT.png" class="icones">ROBOT</a>
-                <a id="abrir-rotina" class="icons" href="#" onclick="showSection('ETIQUETAS'); setSelected(this);" title="ETIQUETAS"><img src="Icones/ETIQUETAS.png" class="icones">ETIQUETAS</a>
-                <a id="abrir-rotina" class="icons" href="#" onclick="showSection('DISPOSITIVO'); setSelected(this);" title="DISPOSITIVO"><img src="Icones/Dispositivo.png" class="icones">DISPOSITIVO</a>
-                <a id="abrir-rotina" class="icons" href="#" onclick="showSection('IMPRESSORA'); setSelected(this);" title="IMPRESSORA"><img src="Icones/IMP.png" class="icones">IMPRESSORA</a>
-                <a id="abrir-rotina" class="icons" href="#" onclick="showSection('TEF'); setSelected(this);" title="TEF"><img src="Icones/TEF.png" class="icones">TEF</a>
+                <a id="abrir-rotina" class="icons" href="#" onclick="showSection('SGA'); setSelected(this);"
+                    title="SGA"><img src="Icones/SGA.png" class="icones">SGA</a>
+                <a id="abrir-rotina" class="icons" href="#" onclick="showSection('SGABOXNEW'); setSelected(this);"
+                    title="SGABOX NOVO"><img src="Icones/SGABOX_LITE.png" class="icones">SGABOX (NOVO)</a>
+                <a id="abrir-rotina" class="icons" href="#" onclick="showSection('SOBOX'); setSelected(this);"
+                    title="SOBOX"><img src="Icones/SOBOX.png" class="icones">SOBOX</a>
+                <a id="abrir-rotina" class="icons" href="#" onclick="showSection('SGABOX2010'); setSelected(this);"
+                    title="SGABOX2010"><img src="Icones/SGABOX2010.png" class="icones">SGABOX <br> (2010)</a>
+                <a id="abrir-rotina" class="icons" href="#" onclick="showSection('SGALITE'); setSelected(this);"
+                    title="SGALITE"><img src="Icones/SGABOX_LITE.png" class="icones">SGA-Lite</a>
+                <a id="abrir-rotina" class="icons" href="#" onclick="showSection('GOURMET'); setSelected(this);"
+                    title="GOURMET"><img src="Icones/GOURMET.png" class="icones">Gourmet</a>
+                <a id="abrir-rotina" class="icons" href="#" onclick="showSection('SGAOS'); setSelected(this);"
+                    title="SGAOS"><img src="Icones/OS.png" class="icones">SGA-OS</a>
+                <a id="abrir-rotina" class="icons" href="#" onclick="showSection('SGAOTICA'); setSelected(this);"
+                    title="SGAOTICA"><img src="Icones/OTICA.png" class="icones">SGA Ótica</a>
+                <a id="abrir-rotina" class="icons" href="#" onclick="showSection('SPEDS'); setSelected(this);"
+                    title="SPEDS"><img src="Icones/SPEDs.png" class="icones">SPEDS</a>
+                <a id="abrir-rotina" class="icons" href="#" onclick="showSection('MONITOR'); setSelected(this);"
+                    title="MONITOR"><img src="Icones/MONITOR.png" class="icones">MONITOR</a>
+                <a id="abrir-rotina" class="icons" href="#" onclick="showSection('ROBOT'); setSelected(this);"
+                    title="ROBOT"><img src="Icones/ROBOT.png" class="icones">ROBOT</a>
+                <a id="abrir-rotina" class="icons" href="#" onclick="showSection('ETIQUETAS'); setSelected(this);"
+                    title="ETIQUETAS"><img src="Icones/ETIQUETAS.png" class="icones">ETIQUETAS</a>
+                <a id="abrir-rotina" class="icons" href="#" onclick="showSection('DISPOSITIVO'); setSelected(this);"
+                    title="DISPOSITIVO"><img src="Icones/Dispositivo.png" class="icones">DISPOSITIVO</a>
+                <a id="abrir-rotina" class="icons" href="#" onclick="showSection('IMPRESSORA'); setSelected(this);"
+                    title="IMPRESSORA"><img src="Icones/IMP.png" class="icones">IMPRESSORA</a>
+                <a id="abrir-rotina" class="icons" href="#" onclick="showSection('TEF'); setSelected(this);"
+                    title="TEF"><img src="Icones/TEF.png" class="icones">TEF</a>
             </ul>
         </div>
         <div class="scroll-up">▲</div>
@@ -81,7 +96,8 @@
 
                     <div class="label1_1 ">
                         <span>Erro Resumido</span>
-                        <input type="text" name="erro_resumido" class="campo" class="maiuscula" placeholder="Erro Resumido" required="" autocomplete="off" />
+                        <input type="text" name="erro_resumido" class="campo" class="maiuscula"
+                            placeholder="Erro Resumido" required="" autocomplete="off" />
                     </div>
                     <div class="label1_2">
                         <span class="sistem1">Sistema</span>
@@ -108,12 +124,14 @@
 
                     <div class="label_1">
                         <span>Erro Detalhado</span>
-                        <textarea type="text" name="erro" class="campo" id="texto-1" placeholder="Digite Erro Detalhado" required="" autocomplete="off"></textarea>
+                        <textarea type="text" name="erro" class="campo" id="texto-1" placeholder="Digite Erro Detalhado"
+                            required="" autocomplete="off"></textarea>
                     </div>
 
                     <div class="label_2">
                         <span>Solução</span>
-                        <textarea type="text" name="solucao" class="campo" id="texto-2" placeholder="Digite a Solução" required="" autocomplete="off"></textarea>
+                        <textarea type="text" name="solucao" class="campo" id="texto-2" placeholder="Digite a Solução"
+                            required="" autocomplete="off"></textarea>
                     </div>
 
                 </div>
@@ -129,11 +147,15 @@
                                     <img src="IMG/IMG-INPT.png" class="IMG-INPT1">
                                 </div>
                             </label>
-                            <input type="file" name="imageUrl1" class="campo_img" multiple accept="image/*" id="imgimpt" title="Clique para Carregar Imagens" onchange="verificarInput('imgimpt', '.excluirimg'); exibirImagem()" class="excluirimg" style="display: none;" />
+                            <input type="file" name="imageUrl1" class="campo_img" multiple accept="image/*" id="imgimpt"
+                                title="Clique para Carregar Imagens"
+                                onchange="verificarInput('imgimpt', '.excluirimg'); exibirImagem()" class="excluirimg"
+                                style="display: none;" />
                             <div id="imgimpt-container" style="display: none;"></div>
                             <img src="" alt="" id="imgimpt1" style="display: none;">
                             <input type="text" name="imageUrl" id="imgimpt2" readonly style="display: none;">
-                            <a class="excluirimg" style="display: none;" onclick="excluirImagem()"><img src="IMG/lixo2.png" class="lixo"></a>
+                            <a class="excluirimg" style="display: none;" onclick="excluirImagem()"><img
+                                    src="IMG/lixo2.png" class="lixo"></a>
                         </div>
                     </div>
 
@@ -146,10 +168,14 @@
                                     <img src="IMG/ANX-INPT.png" class="IMG-INPT1">
                                 </div>
                             </label>
-                            <input type="file" name="anexoUrl1" class="campo_anexo" multiple id="anexoimpt" accept=".pdf, .doc, .docx, .xls, .xlsx, .zip, .txt" title="Clique para Carregar Arquivos" onchange="verificarInput('anexoimpt', '.excluiranx'); exibiranexo()" style="display: none;"
-                            />
+                            <input type="file" name="anexoUrl1" class="campo_anexo" multiple id="anexoimpt"
+                                accept=".pdf, .doc, .docx, .xls, .xlsx, .zip, .txt"
+                                title="Clique para Carregar Arquivos"
+                                onchange="verificarInput('anexoimpt', '.excluiranx'); exibiranexo()"
+                                style="display: none;" />
                             <input type="text" name="anexoUrl" id="anexoimpt2" readonly style="display: none;">
-                            <a class="excluiranx" style="display: none;" onclick="excluirAnexo()"><img src="IMG/lixo2.png" class="lixo"></a>
+                            <a class="excluiranx" style="display: none;" onclick="excluirAnexo()"><img
+                                    src="IMG/lixo2.png" class="lixo"></a>
                             <input type="text" name="descricao_anexo" style="display: none;" readonly id="nomearq1" />
                             <input for="anexoList" style="display: none;" id="anexoList1"></input>
                             <ol id="anexoList" style="display: none;"></ol>
@@ -160,7 +186,8 @@
 
                     <div class="label3">
                         <span>Script</span>
-                        <textarea type="text" name="script" class="campo" id="texto-3" placeholder="Deixe seu Script"></textarea>
+                        <textarea type="text" name="script" class="campo" id="texto-3"
+                            placeholder="Deixe seu Script"></textarea>
                     </div>
 
                 </div>
@@ -206,11 +233,20 @@
             <section id="HOME" class="rotinas" style="display: block;">
                 <h2 class="bemvindo"> Bem Vindo ao Karl4Knows </h2>
                 <div class="home" id="HOMEK">
-                    <a target="_blank" href="https://www.nfe.fazenda.gov.br/portal/consultaRecaptcha.aspx?tipoConsulta=resumo&tipoConteudo=7PhJ+gAVw2g=" class="homefacil"><img src="icones home/NFe.png" alt="" class="iconehome">Consultar NF-e</a>
-                    <a target="_blank" href="http://nfe.sefaz.ba.gov.br/servicos/nfce/Modulos/Geral/NFCEC_consulta_chave_acesso.aspx" class="homefacil"><img src="icones home/NFCe.png" alt="" class="iconehome">Consultar NFC-e</a>
-                    <a target="_blank" href="https://portal.sefaz.ba.gov.br/scripts/cadastro/cadastroBa/consultaBa.asp" class="homefacil"><img src="icones home/cnpj.png" alt="" class="iconehome">Consultar CNPJ</a>
-                    <a href="#" onclick="showSection('caracteres')" class="homefacil" class="iconehome"><img src="icones home/REMOVEDOR-CARACTERE.png" alt="" class="iconehome">Remover Caracteres</a>
-                    <a target="_blank" href="https://www.nfe.fazenda.gov.br/portal/disponibilidade.aspx?AspxAutoDetectCookieSupport=1" class="homefacil"><img src="icones home/Dispo-SEFAZ.png" alt="" class="iconehome">Ociosidade Sefaz NF-e</a>
+                    <a target="_blank"
+                        href="https://www.nfe.fazenda.gov.br/portal/consultaRecaptcha.aspx?tipoConsulta=resumo&tipoConteudo=7PhJ+gAVw2g="
+                        class="homefacil"><img src="icones home/NFe.png" alt="" class="iconehome">Consultar NF-e</a>
+                    <a target="_blank"
+                        href="http://nfe.sefaz.ba.gov.br/servicos/nfce/Modulos/Geral/NFCEC_consulta_chave_acesso.aspx"
+                        class="homefacil"><img src="icones home/NFCe.png" alt="" class="iconehome">Consultar NFC-e</a>
+                    <a target="_blank" href="https://portal.sefaz.ba.gov.br/scripts/cadastro/cadastroBa/consultaBa.asp"
+                        class="homefacil"><img src="icones home/cnpj.png" alt="" class="iconehome">Consultar CNPJ</a>
+                    <a href="#" onclick="showSection('caracteres')" class="homefacil" class="iconehome"><img
+                            src="icones home/REMOVEDOR-CARACTERE.png" alt="" class="iconehome">Remover Caracteres</a>
+                    <a target="_blank"
+                        href="https://www.nfe.fazenda.gov.br/portal/disponibilidade.aspx?AspxAutoDetectCookieSupport=1"
+                        class="homefacil"><img src="icones home/Dispo-SEFAZ.png" alt="" class="iconehome">Ociosidade
+                        Sefaz NF-e</a>
                     <a target="_blank" class="homefacil"><img src="#" alt="" class="iconehome">TESTE</a>
                     <a target="_blank" class="homefacil"><img src="#" alt="" class="iconehome">TESTE</a>
                     <a target="_blank" class="homefacil"><img src="#" alt="" class="iconehome">TESTE</a>
@@ -225,11 +261,13 @@
                     <h2 class="titulocaracteres">Remover caracteres</h2>
                     <div class="containercaracteres">
                         <input type="text" id="numeroOriginalcaracteres" placeholder="Digite o número original">
-                        <button id="removecaracteres" class="btn-limparcaracteres" onclick="removerCaracteres()"><b>REMOVER
+                        <button id="removecaracteres" class="btn-limparcaracteres"
+                            onclick="removerCaracteres()"><b>REMOVER
                                 CARACTERES</b></button>
                         <p id="numeroResultadocaracteres"></p>
                         <div id="buttonsContainercaracteres">
-                            <button id="copyButtoncaracteres" class="btn-copiarcaracteres" onclick="copyToClipboard()">COPIAR</button>
+                            <button id="copyButtoncaracteres" class="btn-copiarcaracteres"
+                                onclick="copyToClipboard()">COPIAR</button>
                             <button id="limparcaracteres" onclick="limparConteudo()">LIMPAR</button>
                         </div>
                     </div>
@@ -240,7 +278,8 @@
 
                 <div class="container-input">
                     <a class="pesquisa1">
-                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input" id="pesquisa_sga" title="Pesquisa">
+                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input"
+                            id="pesquisa_sga" title="Pesquisa">
                     </a>
                 </div>
                 <div class="sistemas" id="SGAK">
@@ -268,7 +307,8 @@
             <section id="SGABOXNEW" class="rotinas" style="display: none;">
                 <div class="container-input">
                     <a class="pesquisa1">
-                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input" id="pesquisa_sgaboxnew" title="Pesquisa">
+                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input"
+                            id="pesquisa_sgaboxnew" title="Pesquisa">
                     </a>
                 </div>
                 <div class="sistemas" id="SGABOXNEWK">
@@ -294,7 +334,8 @@
             <section id="SOBOX" class="rotinas" style="display: none;">
                 <div class="container-input">
                     <a class="pesquisa1">
-                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input" id="pesquisa_sobox" title="Pesquisa">
+                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input"
+                            id="pesquisa_sobox" title="Pesquisa">
                     </a>
                 </div>
                 <div class="sistemas" id="SOBOXK">
@@ -320,7 +361,8 @@
             <section id="SGABOX2010" class="rotinas" style="display: none;">
                 <div class="container-input">
                     <a class="pesquisa1">
-                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input" id="pesquisa_sgabox2010" title="Pesquisa">
+                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input"
+                            id="pesquisa_sgabox2010" title="Pesquisa">
                     </a>
                 </div>
                 <div class="sistemas" id="SGABOX2010K">
@@ -346,7 +388,8 @@
             <section id="SGALITE" class="rotinas" style="display: none;">
                 <div class="container-input">
                     <a class="pesquisa1">
-                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input" id="pesquisa_sgalite" title="Pesquisa">
+                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input"
+                            id="pesquisa_sgalite" title="Pesquisa">
                     </a>
                 </div>
                 <div class="sistemas" id="SGALITEK">
@@ -372,7 +415,8 @@
             <section id="GOURMET" class="rotinas" style="display: none;">
                 <div class="container-input">
                     <a class="pesquisa1">
-                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input" id="pesquisa_gourmet" title="Pesquisa">
+                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input"
+                            id="pesquisa_gourmet" title="Pesquisa">
                     </a>
                 </div>
                 <div class="sistemas" id="GOURMETK">
@@ -398,7 +442,8 @@
             <section id="SGAOS" class="rotinas" style="display: none;">
                 <div class="container-input">
                     <a class="pesquisa1">
-                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input" id="pesquisa_sgaos" title="Pesquisa">
+                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input"
+                            id="pesquisa_sgaos" title="Pesquisa">
                     </a>
                 </div>
                 <div class="sistemas" id="SGAOSK">
@@ -424,7 +469,8 @@
             <section id="SGAOTICA" class="rotinas" style="display: none;">
                 <div class="container-input">
                     <a class="pesquisa1">
-                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input" id="pesquisa_sgaotica" title="Pesquisa">
+                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input"
+                            id="pesquisa_sgaotica" title="Pesquisa">
                     </a>
                 </div>
                 <div class="sistemas" id="SGAOTICAK">
@@ -450,7 +496,8 @@
             <section id="SPEDS" class="rotinas" style="display: none;">
                 <div class="container-input">
                     <a class="pesquisa1">
-                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input" id="pesquisa_sped" title="Pesquisa">
+                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input"
+                            id="pesquisa_sped" title="Pesquisa">
                     </a>
                 </div>
                 <div class="sistemas" id="SPEDSK">
@@ -475,7 +522,8 @@
             <section id="MONITOR" class="rotinas" style="display: none;">
                 <div class="container-input">
                     <a class="pesquisa1">
-                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input" id="pesquisa_monitor" title="Pesquisa">
+                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input"
+                            id="pesquisa_monitor" title="Pesquisa">
                     </a>
                 </div>
                 <div class="sistemas" id="MONITORK">
@@ -500,7 +548,8 @@
             <section id="ROBOT" class="rotinas" style="display: none;">
                 <div class="container-input">
                     <a class="pesquisa1">
-                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input" id="pesquisa_robot" title="Pesquisa">
+                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input"
+                            id="pesquisa_robot" title="Pesquisa">
                     </a>
                 </div>
                 <div class="sistemas" id="ROBOTK">
@@ -525,7 +574,8 @@
             <section id="ETIQUETAS" class="rotinas" style="display: none;">
                 <div class="container-input">
                     <a class="pesquisa1">
-                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input" id="pesquisa_etiquetas" title="Pesquisa">
+                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input"
+                            id="pesquisa_etiquetas" title="Pesquisa">
                     </a>
                 </div>
                 <div class="sistemas" id="ETIQUETASK">
@@ -550,7 +600,8 @@
             <section id="DISPOSITIVO" class="rotinas" style="display: none;">
                 <div class="container-input">
                     <a class="pesquisa1">
-                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input" id="pesquisa_dispositivo" title="Pesquisa">
+                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input"
+                            id="pesquisa_dispositivo" title="Pesquisa">
                     </a>
                 </div>
                 <div class="sistemas" id="DISPOSITIVOK">
@@ -575,7 +626,8 @@
             <section id="IMPRESSORA" class="rotinas" style="display: none;">
                 <div class="container-input">
                     <a class="pesquisa1">
-                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input" id="pesquisa_impressora" title="Pesquisa">
+                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input"
+                            id="pesquisa_impressora" title="Pesquisa">
                     </a>
                 </div>
                 <div class="sistemas" id="IMPRESSORAK">
@@ -600,7 +652,8 @@
             <section id="TEF" class="rotinas" style="display: none;">
                 <div class="container-input">
                     <a class="pesquisa1">
-                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input" id="pesquisa_tef" title="Pesquisa">
+                        <input type="text" placeholder="🔍" name="text" autocomplete="off" class="input"
+                            id="pesquisa_tef" title="Pesquisa">
                     </a>
                 </div>
                 <div class="sistemas" id="TEFK">
@@ -637,29 +690,29 @@
     </div>
 
     <script type="text/javascript">
-        window.onload = function() {
+        window.onload = function () {
             document.body.classList.add('fade-in');
         }
     </script>
     <!-- <script src="editform.js"></script> -->
-    <script src="sga.js"></script>
-    <script src="sgabox2010.js"></script>
-    <script src="sobox.js"></script>
-    <script src="sgabox_new.js"></script>
-    <script src="sped.js"></script>
-    <script src="sgalite.js"></script>
-    <script src="sgaos.js"></script>
-    <script src="sgaotica.js"></script>
-    <script src="robot.js"></script>
-    <script src="monitor.js"></script>
-    <script src="impressora.js"></script>
-    <script src="gourmet.js"></script>
-    <script src="etiquetas.js"></script>
-    <script src="dispositivo.js"></script>
-    <script src="tef.js"></script>
-    <script src="script.js"></script>
-    <script src="form.js"></script>
-    <script src="removercarac.js"></script>
+    <script src="JS/Rotinas/sga.js"></script>
+    <script src="JS/Rotinas/sgabox2010.js"></script>
+    <script src="JS/Rotinas/sobox.js"></script>
+    <script src="JS/Rotinas/sgabox_new.js"></script>
+    <script src="JS/Rotinas/sped.js"></script>
+    <script src="JS/Rotinas/sgalite.js"></script>
+    <script src="JS/Rotinas/sgaos.js"></script>
+    <script src="JS/Rotinas/sgaotica.js"></script>
+    <script src="JS/Rotinas/robot.js"></script>
+    <script src="JS/Rotinas/monitor.js"></script>
+    <script src="JS/Rotinas/impressora.js"></script>
+    <script src="JS/Rotinas/gourmet.js"></script>
+    <script src="JS/Rotinas/etiquetas.js"></script>
+    <script src="JS/Rotinas/dispositivo.js"></script>
+    <script src="JS/Rotinas/tef.js"></script>
+    <script src="JS/script.js"></script>
+    <script src="JS/form.js"></script>
+    <script src="JS/removercarac.js"></script>
 </body>
 
 </html>

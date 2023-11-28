@@ -22,7 +22,7 @@
 }
 
 .editar_form {
-    position: relative;
+    position: absolute;
     z-index: 5;
     background-color: #c6d4e1;
     border: #44749d 2px solid;
@@ -37,6 +37,7 @@
 }
 
 .desfoque_edit_form {
+    top: 0;
     overflow: auto;
     position: relative;
     z-index: 99;
