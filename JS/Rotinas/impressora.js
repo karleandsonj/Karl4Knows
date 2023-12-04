@@ -49,6 +49,7 @@ function loadimpressoraSheetData(url) {
                     viewButton.addEventListener('click', () => {
                         // Obter os dados das colunas relevantes da linha
                         const sistema = columns[0].textContent.trim();
+                        const uniqueID = columns[1].textContent.trim();
                         const erros = columns[3].textContent.trim();
                         const solucoes = columns[4].textContent.trim();
                         const script = columns[5].textContent.trim();
@@ -149,7 +150,11 @@ function loadimpressoraSheetData(url) {
 
                         const EditForm = document.getElementById('EditFormContent');
                         EditForm.innerHTML = `
-                                <input type="text" id="uniqueID_edit" name="uniqueID" readonly style="display: none;">
+                                <input type="hidden" id="uniqueID_impressora_Edit" name="uniqueID" style="display: none;">
+                                <input type="hidden" id="sistema_impressora_EDIT" name="sistema" style="display: none;">
+                                <input type="hidden" id="img_impressora_EDIT" name="imageUrl" style="display: none;">
+                                <input type="hidden" id="nomearq_impressora_EDIT" name="descricao_anexo" style="display: none;">
+                                <input type="hidden" id="arq_impressora_EDIT" name="anexoUrl" style="display: none;">
                                 <div class="header-edit">
                                     <div class="modal0-edit">
                                         <h3>${sistema}</h3>
@@ -160,21 +165,21 @@ function loadimpressoraSheetData(url) {
                                 <div class="ErroSolucaoFORM-EDIT" id="ErroSolucaoFORM-EDIT">
                                     <div class="modal1-edit" id="modal1-edit">
                                         <h3>Erro Resumido: </h3>
-                                        <input type="text" id="P_impressora0_edit" placeholder="Erro Resumido" class="campo0-edit">
+                                        <input type="text" id="P_impressora0_edit" name="erro_resumido" placeholder="Erro Resumido" class="campo0-edit" autocomplete="off">
                                     </div>
                                     <div class="modal2-edit" id="modal2-edit">
                                         <h3>Erro Detalhado: </h3>
-                                        <textarea type="text" id="P_impressora_edit" placeholder="Erros" class="campo-edit"></textarea>
+                                        <textarea type="text" id="P_impressora_edit" name="erro" placeholder="Erros" class="campo-edit" autocomplete="off"></textarea>
                                     </div>
                                     <div class="modal3-edit">
                                         <h3>Soluções: </h3>
-                                        <textarea type="text" id="P_impressora1_edit" placeholder="Soluções" class="campo-edit"></textarea>
+                                        <textarea type="text" id="P_impressora1_edit" name="solucao" placeholder="Soluções" class="campo-edit" autocomplete="off"></textarea>
                                     </div>
                                 </div>
                                 <div class="AnexoScriptFORM-EDIT" id="AnexoScriptFORM-EDIT" style="display: none;">
                                     <div class="modal4-edit">
                                         <h3>Scripts:</h3>
-                                        <textarea type="text" id="P_impressora2_edit" placeholder="Script" class="campo-edit"></textarea>
+                                        <textarea type="text" id="P_impressora2_edit" name="script" placeholder="Script" class="campo-edit" autocomplete="off"></textarea>
                                     </div>
                                 </div>
 
@@ -197,12 +202,24 @@ function loadimpressoraSheetData(url) {
 
                         /* ----------------------------------------------------------------------------- */
 
-                        const scriptURLEDIT = 'https://script.google.com/macros/s/AKfycbw6D9QRNHrEVTgndJz8k-xxS-5iaYfIJ8IFUBbe2PXW4jrSulGwiabNHK3GNrvagFvWMQ/exec';
+                        const scriptURLEDIT = 'https://script.google.com/macros/s/AKfycbyZH9pmwXpQQQ3TqTsPNV7_p_SpJKk6LW_DCOcASoCvx8Sovj1CgZfCe9nHhApfN1tTqw/exec';
                         const formEdit = document.forms['EditFormContent'];
 
                         // Associar a função sendFormEdit ao evento de clique do botão
                         const submitButton = document.getElementById('submit-edit');
+
                         submitButton.addEventListener('click', e => {
+                            const textareaedit1 = document.getElementById('P_impressora_edit');
+                            const textareaedit2 = document.getElementById('P_impressora1_edit');
+                            const textedit1 = textareaedit1.value;
+                            const textedit2 = textareaedit2.value;
+                            const linesedit1 = textedit1.split('\n');
+                            const linesedit2 = textedit2.split('\n');
+                            const formattedTextedit1 = linesedit1.join('§');
+                            const formattedTextedit2 = linesedit2.join('§');
+                            textareaedit1.value = formattedTextedit1;
+                            textareaedit2.value = formattedTextedit2;
+
                             e.preventDefault();
                             addloadingedit();
                             let loadinganxedit = document.getElementById("loadinganx-edit");
@@ -213,16 +230,26 @@ function loadimpressoraSheetData(url) {
                         });
 
                         function sendFormEdit() {
-                            // Aqui você deve colocar a lógica para enviar o formulário
-                            fetch(scriptURLEDIT, { method: 'POST', body: new FormData(formEdit) })
-                                .then(response => {
-                                    if (response.status === 200) {
-                                        // Atualize a imagem no formulário com o URL da imagem
-                                        // No caso de várias imagens, você pode atualizar uma área do formulário ou uma lista de miniaturas, por exemplo.
+                            // Adicione o valor de uniqueID ao corpo do FormData
+                            const uniqueIDEdit = document.getElementById('uniqueID_impressora_Edit').value;
+                            formEdit.append('ID: ', uniqueIDEdit);
+                        
+                            // Obter dados do formulário
+                            const formData = new FormData(formEdit);
+                        
+                            // Log para verificar os dados antes do envio
+                            console.log("Dados do Formulário:", formData);
+                        
+                            // Enviar dados do formulário para o script do Google
+                            fetch(scriptURLEDIT, { method: 'POST', body: formData })
+                                .then(response => response.json())
+                                .then(data => {
+                                    console.log('Resposta:', data);
+                                    if (data.result === 'success') {
                                         console.log('Formulário enviado com sucesso');
                                         removeloadingedit(); // Remova o alerta de sucesso após o sucesso
                                     } else {
-                                        console.error('Erro no servidor:', response.status);
+                                        console.error('Erro no servidor:', data.error);
                                     }
                                 })
                                 .catch(error => console.error('Erro na requisição:', error.message));
@@ -237,8 +264,8 @@ function loadimpressoraSheetData(url) {
                             </div>`;
                         }
 
-                        const reloadButtonedit = document.querySelector('#reloadButton');
-                        const divToCloseedit = document.querySelector('#alerta1');
+                        /* const reloadButtonedit = document.querySelector('#reloadButtonedit'); */
+                        /* const divToCloseedit = document.getElementById('#alertaedit'); */
                         const removeloadingedit = () => {
                             let loadinganxedit = document.getElementById("loadinganx-edit");
                             loadinganxedit.style.display = 'none'; // Mostra o elemento de carregamento
@@ -246,16 +273,17 @@ function loadimpressoraSheetData(url) {
                             loadinganxenvedit.style.display = 'block'; // Mostra o elemento de carregamento
                             const alertaedit = document.querySelector('#alerta');
                             alertaedit.innerHTML = `
-                            <div class="d-flex justify-content-center mt-5 h-100" id="alerta1">
+                            <div class="d-flex justify-content-center mt-5 h-100" id="alertaedit">
                                 <div class="d-flex align-items-center align-self-center card p-3 text-center cookies">
                                     <span class="mt-2"><b>Informações salvas com sucesso</b><br><b>Se não aparecer Press "F5"<br> <i>OBRIGADO!</i></b></span>
-                                    <button class="btn btn-dark mt-3 px-4" type="button" id="reloadButton">✔️</button>
+                                    <button class="btn btn-dark mt-3 px-4" type="button" id="reloadButtonedit">✔️</button>
                                 </div>
                             </div>`;
 
+                            const reloadButtonedit = document.getElementById('reloadButtonedit');
                             reloadButtonedit.addEventListener('click', function () {
                                 setTimeout(function () {
-                                    divToCloseedit.style.display = 'none';
+                                    alertaedit.style.display = 'none';
                                 });
 
                                 setTimeout(function () {
@@ -293,16 +321,25 @@ function loadimpressoraSheetData(url) {
                             ErroSolucao.style.display = 'none';
                         });
 
-                        const uniqueID = document.getElementById("uniqueID");
+                        const uniqueID_impressora_Edit = document.getElementById("uniqueID_impressora_Edit");
+                        const sistema_impressora_edit = document.getElementById("sistema_impressora_EDIT");
                         const P_impressora0_edit = document.getElementById("P_impressora0_edit");
                         const P_impressora_edit = document.getElementById("P_impressora_edit");
                         const P_impressora1_edit = document.getElementById("P_impressora1_edit");
                         const P_impressora2_edit = document.getElementById("P_impressora2_edit");
+                        const img_impressora_EDIT = document.getElementById("img_impressora_EDIT");
+                        const nomearq_impressora_EDIT = document.getElementById("nomearq_impressora_EDIT");
+                        const arq_impressora_EDIT = document.getElementById("arq_impressora_EDIT");
+
+                        img_impressora_EDIT.value = imagemLink;
+                        nomearq_impressora_EDIT.value = descricao_anexo;
+                        arq_impressora_EDIT.value = anexo;
                         P_impressora0_edit.value = errorsressumoimpressoraData;
                         P_impressora_edit.value = erros;
                         P_impressora1_edit.value = solucoes;
                         P_impressora2_edit.value = script;
-                        uniqueID.value = uniqueID;
+                        sistema_impressora_edit.value = sistema;
+                        uniqueID_impressora_Edit.value = uniqueID;
 
                         const imagemDivMain = document.querySelector('.imagem-div-main');
 

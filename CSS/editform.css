@@ -34,13 +34,35 @@
     border-radius: 20px;
     height: auto;
     text-align: center;
+
+    -webkit-animation: slide-in-fwd-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-in-fwd-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
+
+ @-webkit-keyframes slide-in-fwd-center {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes slide-in-fwd-center {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+
 
 .desfoque_edit_form {
     top: 0;
     overflow: auto;
     position: relative;
-    z-index: 99;
+    z-index: 10;
     background-color: rgba(0, 0, 0, 0.192);
     height: 100%;
 }
@@ -248,22 +270,25 @@
 
 #loadinganx-edit,
 #loadinganxenv-edit {
-    position: relative;
+    z-index: 5;
+    position: absolute;
+    font-family: 'open_sansregular';
     width: 30%;
     background: #bdb8ad;
     color: #000000;
-    border: 0;
     border-radius: 5px;
-    font-size: 100%;
+    border: 0;
+    cursor: pointer;
+    font-size: 22px;
     padding-top: 10px;
     padding-bottom: 10px;
+    transition: all 0.3s;
+    margin-top: -100%;
     font-weight: 700;
     left: 50%;
     transform: translateX(-50%);
-    bottom: 0;
-    z-index: 2;
-    text-align: center;
-    top: 25px;
+    margin: 0 auto;
+    /*     bottom: 0; */
 }
 
 @media screen and (max-width: 480px) {
@@ -273,10 +298,12 @@
 }
 
 @media screen and (max-width: 768px) {
+
     .edit-AnexoScript,
     .edit-ErroSolucao {
         margin: 0 5px;
     }
+
     .modal2-edit,
     .modal3-edit {
         width: 90%;
@@ -288,7 +315,7 @@
 }
 
 
-.editsemfuncionar{
+.editsemfuncionar {
     color: #ffffff;
     display: flex;
     position: absolute;
